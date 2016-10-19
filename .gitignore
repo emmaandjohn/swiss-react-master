@@ -2,7 +2,6 @@
 node_modules/
 Material/
 dist/
-src/config.js
 *.iml
 webpack-assets.json
 webpack-stats.json
