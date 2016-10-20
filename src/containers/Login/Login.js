@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import cookie from 'react-cookie';
 import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
 
@@ -20,10 +19,8 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const ck_activation = cookie.load('ck_activation');
-
-    if(ck_activation === true){
-      const inputEmail = this.refs.email.value;
-      const inputPassword = this.refs.password.value;
+    const inputEmail = this.refs.email.value;
+    const inputPassword = this.refs.password.value;
 
       superagent
       .post('/login')
@@ -32,9 +29,8 @@ export default class Login extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if (res.body.status === 1) {
-          this.setState({formStatus: 2});
-          this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + inputEmail + '</strong>!'});
-
+            this.setState({formStatus: 2});
+            this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + inputEmail + '</strong>!'});
           /*this.props.dispatch(registerNewUser(true, inputEmail, inputPassword, res.body.uuid));
 
           cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
@@ -43,17 +39,15 @@ export default class Login extends Component {
           cookie.save('ck_activation', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });*/
         } else {
           this.setState({formStatus: 1});
-          this.setState({formMsg: 'Fehler: Der Username oder das Passwort stimmen nicht überein!'});
+          this.setState({formMsg: 'Fehler: Der Username oder das Passwort stimmen nicht überein (oder du hast dein Account noch nicht aktiviert)!'});
         }
       });
-    } else{
-      this.setState({formStatus: 1});
-      this.setState({formMsg: 'Fehler: Bitte aktiviere zuerst deinen Account!'});  
     }
   }
 
   forgotPassword = (event) => {
     event.preventDefault();
+    console.log("password vergessen");
     /* TODO: Handle Forgot Password */
   }
 

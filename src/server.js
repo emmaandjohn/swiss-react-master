@@ -116,7 +116,7 @@ app.post('/login', function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
 
-    UserModel.findOne({ email: email, password: password }, 'email', function(error, result){
+    UserModel.findOne({ email: email, password: password, activation: true }, 'email', function(error, result){
         if(error){
             res.json(error);
         }
