@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
+import cookie from 'react-cookie';
 
 @connect((store) => {
   return {
