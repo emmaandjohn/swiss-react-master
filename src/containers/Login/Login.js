@@ -18,7 +18,10 @@ export default class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const ck_activation = cookie.load('ck_activation');
+    const ck_activation = null;
+    if(cookie){
+      ck_activation = cookie.load('ck_activation');
+    }
     const inputEmail = this.refs.email.value;
     const inputPassword = this.refs.password.value;
 
