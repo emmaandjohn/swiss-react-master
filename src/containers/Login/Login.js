@@ -42,18 +42,16 @@ export default class Login extends Component {
           this.setState({formMsg: 'Fehler: Der Username oder das Passwort stimmen nicht überein (oder du hast dein Account noch nicht aktiviert)!'});
         }
       });
-    }
   }
 
   forgotPassword = (event) => {
     event.preventDefault();
     console.log("password vergessen");
-    /* TODO: Handle Forgot Password */
   }
 
   render() {
     const { registerNewUserState } = this.props;
-    const {formStatus, formMsg} = this.state;
+    const { formStatus, formMsg } = this.state;
 
     return (
         <div className="container">
