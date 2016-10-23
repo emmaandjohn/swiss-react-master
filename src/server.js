@@ -159,9 +159,10 @@ app.post('/community', function(req, res) {
     var userEmail = req.body.userEmail;$
 
     if(loadStatus === 1){
-      BlogModel.find({}, 'markup', function(error, result){
+      BlogModel.find({}, function(error, result){
           if(error){
-              res.json(error);
+            res.json(error);
+            res.json({ status: 0 });
           }
           else if(result === null){
             res.json({ status: 0 });
