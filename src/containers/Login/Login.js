@@ -19,7 +19,7 @@ export default class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const ck_activation = '';
+    let ck_activation = null;
     if(cookie){
       ck_activation = cookie.load('ck_activation');
     }
