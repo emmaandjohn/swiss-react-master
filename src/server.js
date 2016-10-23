@@ -142,8 +142,12 @@ app.post('/activation', function(req, res) {
       if (err) {
         console.log('activation: got an error');
         res.json({ status: 0 });
-      } else {
-        res.json({ status: 1 });
+      }
+      else if(result !== null){
+          res.json({ status: 1 });
+      }
+      else {
+        res.json({ status: 0 });
       }
     });
 });
