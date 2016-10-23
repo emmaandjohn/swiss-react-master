@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Well from 'react-bootstrap/lib/Well';
 import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import Helmet from 'react-helmet';
@@ -41,10 +42,7 @@ export default class RichEditorExample extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        console.log(res.body.blogArticles);
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
-      } else {
-        console.log("FAIL LOAD BLOG ARTICLES");
       }
     });
   }
@@ -94,6 +92,10 @@ export default class RichEditorExample extends Component {
       if (res.body.status === 1) {
         this.setState({draftjsStatus: 1});
         this.setState({draftjsMsg: res.body.blogEntry});
+
+        const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+        this.setState({ editorState });
+
       } else {
         this.setState({draftjsStatus: 0});
         this.setState({draftjsMsg: 'Fehler beim Speichern des Beitrages!'});
@@ -115,7 +117,7 @@ export default class RichEditorExample extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += entry.markup + '<br>' + entry.userEmail + '<hr><br /><br />';
+      blogContentDef += '<Well>'+entry.markup + '<br><span style="font-size: 10px; color: grey;">' + entry.userEmail + '</span></Well>';
     });
 
     return (
