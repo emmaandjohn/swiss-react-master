@@ -138,7 +138,7 @@ app.post('/activation', function(req, res) {
     var query = {"email": queryM, "uuid": queryU};
     var update = {activation: true};
     var options = {new: true};
-    UserModel.findOneAndUpdate(query, update, options, function(err, person) {
+    UserModel.findOneAndUpdate(query, update, options, function(err, result) {
       if (err) {
         console.log('activation: got an error');
         res.json({ status: 0 });
