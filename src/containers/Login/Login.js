@@ -37,13 +37,16 @@ export default class Login extends Component {
         if (res.body.status === 1) {
           this.setState({formStatus: 2});
           this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + inputEmail + '</strong>!'});
-
+          console.log("1: "+res.body.uuid);
+          console.log("2: "+JSON.stringify(res.body.uuid));
+          console.log("1.1: "+res.body.uuid.uuid);
+          console.log("2.1: "+JSON.stringify(res.body.uuid.uuid));
           this.props.dispatch(activateNewUser(true, true));
 
           cookie.save('ck_userLoggedIn', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_pw', inputPassword, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_uuid', res.body.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_uuid', res.body.uuid.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_activation', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         } else {
           this.setState({formStatus: 1});
