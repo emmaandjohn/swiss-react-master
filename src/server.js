@@ -117,14 +117,13 @@ app.post('/login', function(req, res) {
     var password = req.body.password;
 
     UserModel.findOne({ email: email, password: password, activation: true }, 'uuid', function(error, result){
-      console.log("JSON.stringify(result) +++++++++++++++++++++++++++++");
-      console.log(result);
-      console.log(result.uuid);
         if(error){
             res.json(error);
         }
         else if(result !== null){
-            res.json({ status: 1, uuid: result.uuid });
+          console.log("JSON.stringify(result) +++++++++++++++++++++++++++++");
+          console.log(result);
+            res.json({ status: 1, uuid: result });
         }
         else{
             res.json({ status: 0 });
