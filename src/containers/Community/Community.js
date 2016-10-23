@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 @connect((store) => {
   return {
-    registerNewUserState: store.registerNewUser.user,
     activateNewUserState: store.activateNewUser.userStatus
   };
 })

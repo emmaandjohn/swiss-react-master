@@ -36,7 +36,6 @@ import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
 @connect((store) => {
   return {
-    registerNewUserState: store.registerNewUser.user,
     getUserState: store.getUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
   };
@@ -90,9 +89,9 @@ export default class App extends Component {
       const ck_pw2 = cookie.load('ck_pw');
       const ck_uuid2 = cookie.load('ck_uuid');
 
-      console.log("activateNewUserState TRUE FALSE - 1");
+      /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
-      console.log("activateNewUserState TRUE FALSE - 2");
+      alert("Erfolgreich ausgeloggt!");
     }
 
     onNavbarToggle = () => {
@@ -105,7 +104,7 @@ export default class App extends Component {
 
     render() {
       const styles = require('./App.scss');
-      const { registerNewUserState, getUserState, activateNewUserState } = this.props;
+      const { getUserState, activateNewUserState } = this.props;
 
       return (
         <div className={styles.app}>
