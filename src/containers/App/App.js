@@ -125,7 +125,7 @@ export default class App extends Component {
                     <LinkContainer to="/community">
                       <NavItem eventKey={1} onClick={ this.onNavItemClick }>Community</NavItem>
                     </LinkContainer>
-                    { getUserState.activation === true || activateNewUserState.activatedUser === true ?
+                    { activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true ?
                     <LinkContainer to="/profil">
                       <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mein Profil</NavItem>
                     </LinkContainer>
@@ -137,7 +137,7 @@ export default class App extends Component {
                     <LinkContainer to="/kontakt">
                       <NavItem eventKey={3}>Kontakt</NavItem>
                     </LinkContainer>
-                    { getUserState.activation === true || activateNewUserState.activatedUser === true ?
+                    { activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true ?
                       <NavItem eventKey={4} onClick={ this.onLogout }>Logout</NavItem>
                     :
                     <LinkContainer to="/login">
