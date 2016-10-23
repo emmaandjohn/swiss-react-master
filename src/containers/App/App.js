@@ -89,8 +89,9 @@ export default class App extends Component {
       const ck_pw2 = cookie.load('ck_pw');
       const ck_uuid2 = cookie.load('ck_uuid');
 
+      console.log("activateNewUserState TRUE FALSE - 1");
       this.props.dispatch(activateNewUserState(true, false));
-      console.log("activateNewUserState TRUE FALSE");
+      console.log("activateNewUserState TRUE FALSE - 2");
     }
 
     onNavbarToggle = () => {

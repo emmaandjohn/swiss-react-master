@@ -121,12 +121,14 @@ app.post('/login', function(req, res) {
             res.json(error);
         }
         else if(result !== null){
-            res.json({ uuid: result });
             res.json({ status: 1 });
         }
         else{
             res.json({ status: 0 });
         }
+        console.log("JSON.stringify(result) +++++++++++++++++++++++++++++");
+        console.log(result);
+        console.log(JSON.stringify(result));
     });
 });
 
