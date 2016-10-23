@@ -112,8 +112,11 @@ export default class RichEditorExample extends Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
-    console.log("11: "+getBlogEntriesState);
-    console.log(JSON.stringify(getBlogEntriesState));
+
+    let blogContentDef = '';
+    getBlogEntriesState.articles.forEach(function(entry){
+      blogContentDef += entry.markup + '<br>' + entry.userEmail + '<hr><br /><br />';
+    });
 
     return (
       <div className="container">
@@ -150,6 +153,8 @@ export default class RichEditorExample extends Component {
         :
         <p>Bitte aktiviere zuerst deinen Account!</p>
         }
+        <br /><br /><br />
+        <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
       </div>
     );
   }
