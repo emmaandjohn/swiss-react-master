@@ -124,7 +124,7 @@ app.post('/login', function(req, res) {
             res.json(error);
         }
         else if(result !== null){
-            res.json({ status: 1, result.uuid });
+            res.json({ status: 1, uuid: result.uuid });
         }
         else{
             res.json({ status: 0 });
