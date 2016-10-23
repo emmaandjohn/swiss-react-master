@@ -1,6 +1,6 @@
 export default function reducer(state={
     articleList: {
-      articles: null
+      articles: []
     },
   }, action) {
     switch (action.type) {

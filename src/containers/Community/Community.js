@@ -42,7 +42,7 @@ export default class RichEditorExample extends Component {
     .end((error, res) => {
       if (res.body.status === 1) {
         console.log(res.body.blogArticles);
-        //this.props.dispatch(getBlogEntries(res.body.blogArticles.userEmail, res.body.blogArticles.markup));
+        this.props.dispatch(getBlogEntries(res.body.blogArticles));
       } else {
         console.log("FAIL LOAD BLOG ARTICLES");
       }
@@ -103,7 +103,7 @@ export default class RichEditorExample extends Component {
 
   render() {
     const {draftjsStatus, draftjsMsg, editorState} = this.state;
-    const { activateNewUserState } = this.props;
+    const { activateNewUserState, getBlogEntriesState } = this.props;
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
@@ -112,6 +112,8 @@ export default class RichEditorExample extends Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
+    console.log("11: "+getBlogEntriesState);
+    console.log(JSON.stringify(getBlogEntriesState));
 
     return (
       <div className="container">
