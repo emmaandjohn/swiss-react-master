@@ -155,7 +155,7 @@ export default class RichEditorExample extends Component {
         :
         <p>Bitte aktiviere zuerst deinen Account!</p>
         }
-        <hr><br />
+        <br />
         <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
       </div>
     );
