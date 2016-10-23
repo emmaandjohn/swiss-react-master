@@ -17,10 +17,10 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 })
 
 export default class RichEditorExample extends Component {
-  state = {
+  /*state = {
     draftjsStatus: 0,
     draftjsMsg: ''
-  }
+  }*/
 
   constructor(props) {
     super(props);
@@ -90,16 +90,19 @@ export default class RichEditorExample extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
+        /* Still needed this 2 lines?
         this.setState({draftjsStatus: 1});
-        this.setState({draftjsMsg: res.body.blogEntry});
+        this.setState({draftjsMsg: res.body.blogEntry}); */
 
+        this.props.dispatch(getBlogEntries(res.body.blogArticles));
+
+        /* Clear editor state */
         const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
         this.setState({ editorState });
-
-      } else {
+      } /*else {
         this.setState({draftjsStatus: 0});
         this.setState({draftjsMsg: 'Fehler beim Speichern des Beitrages!'});
-      }
+      }*/
     });
   }
 

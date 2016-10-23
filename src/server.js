@@ -158,7 +158,7 @@ app.post('/community', function(req, res) {
     var markupData = req.body.markupData;
     var userEmail = req.body.userEmail;
 
-    function getAllArticles() {
+    if(loadStatus === 1){
       BlogModel.find({}, function(error, result){
           if(error){
             res.json(error);
@@ -171,10 +171,6 @@ app.post('/community', function(req, res) {
             res.json({ status: 1, blogArticles: result });
           }
       });
-    }
-
-    if(loadStatus === 1){
-      getAllArticles();
     }
 
     if(loadStatus === 0){
@@ -192,8 +188,19 @@ app.post('/community', function(req, res) {
             BlogData.save(function (err) {
               if (err) return console.log(err);
             });
-            res.json({ status: 1, blogEntry: markupData });
-            getAllArticles();
+            /* Success: After that, show new State with new Data */
+            BlogModel.find({}, function(error, result2){
+                if(error){
+                  res.json(error);
+                  res.json({ status: 0 });
+                }
+                else if(result === null){
+                  res.json({ status: 0 });
+                }
+                else{
+                  res.json({ status: 1, blogArticles: result2 });
+                }
+            });
           }
       });
     }
