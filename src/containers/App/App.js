@@ -79,7 +79,7 @@ export default class App extends Component {
       this.setState({ navExpanded: false });
     }
 
-    onLogout(){
+    onLogout = () => {
       cookie.save('ck_userLoggedIn', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
       this.setState({ navExpanded: false });
       /* Update UserState */
@@ -133,7 +133,7 @@ export default class App extends Component {
                       <NavItem eventKey={3}>Kontakt</NavItem>
                     </LinkContainer>
                     { getUserState.activation === true || activateNewUserState.activatedUser === true ?
-                      <NavItem eventKey={4} onClick={ () => this.onLogout() }>Logout</NavItem>
+                      <NavItem eventKey={4} onClick={ this.onLogout }>Logout</NavItem>
                     :
                     <LinkContainer to="/login">
                       <NavItem eventKey={5} onClick={ this.onNavItemClick }>Login</NavItem>

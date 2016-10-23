@@ -5,9 +5,12 @@ import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
 import cookie from 'react-cookie';
 
+import { getUser } from '../../redux/actions/getUserActions';
+
 @connect((store) => {
   return {
     registerNewUserState: store.registerNewUser.user,
+    getUserState: store.getUser.user
   };
 })
 
@@ -35,6 +38,8 @@ export default class Login extends Component {
         if (res.body.status === 1) {
             this.setState({formStatus: 2});
             this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + inputEmail + '</strong>!'});
+            cookie.save('ck_userLoggedIn', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+            this.props.dispatch(getUser());
           /*this.props.dispatch(registerNewUser(true, inputEmail, inputPassword, res.body.uuid));
 
           cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
@@ -54,7 +59,7 @@ export default class Login extends Component {
   }
 
   render() {
-    const { registerNewUserState } = this.props;
+    const { registerNewUserState, getUserState } = this.props;
     const { formStatus, formMsg } = this.state;
 
     return (
