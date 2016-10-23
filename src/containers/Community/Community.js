@@ -117,7 +117,7 @@ export default class RichEditorExample extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<Well>'+entry.markup + '<br><span style="font-size: 10px; color: grey;">' + entry.userEmail + '</span></Well>';
+      blogContentDef += '<div style="background-color: #E1E1E1; border: 1px dotted #9F9F9F; padding: 12px; margin: 30px auto;">'+entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">' + entry.userEmail + '</span></div>';
     });
 
     return (
