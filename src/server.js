@@ -158,7 +158,7 @@ app.post('/community', function(req, res) {
     var markupData = req.body.markupData;
     var userEmail = req.body.userEmail;
 
-    function _getAllArticles() {
+    function getAllArticles() {
       BlogModel.find({}, function(error, result){
           if(error){
             res.json(error);
@@ -174,7 +174,7 @@ app.post('/community', function(req, res) {
     }
 
     if(loadStatus === 1){
-      _getAllArticles();
+      getAllArticles();
     }
 
     if(loadStatus === 0){
@@ -193,9 +193,9 @@ app.post('/community', function(req, res) {
               if (err) return console.log(err);
             });
             res.json({ status: 1, blogEntry: markupData });
+            getAllArticles();
           }
       });
-      _getAllArticles();
     }
 });
 
