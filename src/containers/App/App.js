@@ -15,6 +15,7 @@ import { asyncConnect } from 'redux-async-connect';
 import cookie from 'react-cookie';
 import Loader from 'react-loader-advanced';
 
+/* Import here only for Dispatchers */
 import { getUser } from '../../redux/actions/getUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
@@ -90,7 +91,7 @@ export default class App extends Component {
       const ck_uuid2 = cookie.load('ck_uuid');
 
       console.log("activateNewUserState TRUE FALSE - 1");
-      this.props.dispatch(activateNewUserState(true, false));
+      this.props.dispatch(activateNewUser(true, false));
       console.log("activateNewUserState TRUE FALSE - 2");
     }
 

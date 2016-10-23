@@ -116,19 +116,19 @@ app.post('/login', function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
 
-    UserModel.findOne({ email: email, password: password, activation: true }, 'email', function(error, result){
+    UserModel.findOne({ email: email, password: password, activation: true }, 'uuid', function(error, result){
+      console.log("JSON.stringify(result) +++++++++++++++++++++++++++++");
+      console.log(result);
+      console.log(result.uuid);
         if(error){
             res.json(error);
         }
         else if(result !== null){
-            res.json({ status: 1 });
+            res.json({ status: 1, result.uuid });
         }
         else{
             res.json({ status: 0 });
         }
-        console.log("JSON.stringify(result) +++++++++++++++++++++++++++++");
-        console.log(result);
-        console.log(JSON.stringify(result));
     });
 });
 
