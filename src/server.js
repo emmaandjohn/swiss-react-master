@@ -156,7 +156,7 @@ app.post('/activation', function(req, res) {
 app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
     var markupData = req.body.markupData;
-    var userEmail = req.body.userEmail;$
+    var userEmail = req.body.userEmail;
 
     if(loadStatus === 1){
       BlogModel.find({}, function(error, result){
