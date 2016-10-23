@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
-import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
