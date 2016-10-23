@@ -16,6 +16,7 @@ import cookie from 'react-cookie';
 import Loader from 'react-loader-advanced';
 
 import { getUser } from '../../redux/actions/getUserActions';
+import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -83,12 +84,13 @@ export default class App extends Component {
       cookie.save('ck_userLoggedIn', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
       this.setState({ navExpanded: false });
       /* Update UserState */
-      const ck_activation = cookie.load('ck_activation');
-      const ck_email = cookie.load('ck_email');
-      const ck_pw = cookie.load('ck_pw');
-      const ck_uuid = cookie.load('ck_uuid');
+      const ck_activation2 = cookie.load('ck_activation');
+      const ck_email2 = cookie.load('ck_email');
+      const ck_pw2 = cookie.load('ck_pw');
+      const ck_uuid2 = cookie.load('ck_uuid');
 
-      this.props.dispatch(getUser(ck_activation, ck_email, ck_pw, ck_uuid));
+      this.props.dispatch(activateNewUserState(true, false));
+      console.log("activateNewUserState TRUE FALSE");
     }
 
     onNavbarToggle = () => {
