@@ -117,7 +117,7 @@ export default class RichEditorExample extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #E1E1E1; border: 1px dotted #9F9F9F; padding: 12px; margin: 30px auto;">'+entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">' + entry.userEmail + '</span></div>';
+      blogContentDef += '<div style="background-color: #F6F6F6; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">'+entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Autor: ' + entry.userEmail + '</span></div>';
     });
 
     return (
@@ -155,7 +155,7 @@ export default class RichEditorExample extends Component {
         :
         <p>Bitte aktiviere zuerst deinen Account!</p>
         }
-        <br /><br /><br />
+        <hr><br />
         <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
       </div>
     );
