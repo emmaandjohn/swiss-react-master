@@ -154,26 +154,42 @@ app.post('/activation', function(req, res) {
 
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
+    var loadStatus = req.body.loadStatus;
     var markupData = req.body.markupData;
-    var userEmail = req.body.userEmail;
+    var userEmail = req.body.userEmail;$
 
-    var BlogData = new BlogModel({
-      userEmail: userEmail,
-      markup: markupData
-    });
-    UserModel.findOne({ email: userEmail }, 'email', function(error, result){
-        if(error){
-            res.json(error);
-        }
-        else if(result == null){
-        }
-        else{ /* Success: Save data to mongoose */
-          BlogData.save(function (err) {
-            if (err) return console.log(err);
-          });
-          res.json({ status: 1, blogEntry: markupData });
-        }
-    });
+    if(loadStatus === 1){
+      BlogModel.find({ userEmail, markup }, 'markup', function(error, result){
+          if(error){
+              res.json(error);
+          }
+          else if(result === null){
+            res.json({ status: 0 });
+          }
+          else{
+            res.json({ status: 1, blogArticles: result });
+          }
+      });
+
+    }else{
+      var BlogData = new BlogModel({
+        userEmail: userEmail,
+        markup: markupData
+      });
+      UserModel.findOne({ email: userEmail }, 'email', function(error, result){
+          if(error){
+              res.json(error);
+          }
+          else if(result == null){
+          }
+          else{ /* Success: Save data to mongoose */
+            BlogData.save(function (err) {
+              if (err) return console.log(err);
+            });
+            res.json({ status: 1, blogEntry: markupData });
+          }
+      });
+    }
 });
 
 

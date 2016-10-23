@@ -6,9 +6,12 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 
+import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+
 @connect((store) => {
   return {
-    activateNewUserState: store.activateNewUser.userStatus
+    activateNewUserState: store.activateNewUser.userStatus,
+    getBlogEntriesState: store.getBlogEntries.articleList,
   };
 })
 
@@ -29,6 +32,21 @@ export default class RichEditorExample extends Component {
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+  }
+
+  componentDidMount() {
+    superagent
+    .post('/community')
+    .send({ loadStatus: 1 })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if (res.body.status === 1) {
+        console.log(res.body.blogArticles);
+        //this.props.dispatch(getBlogEntries(res.body.blogArticles.userEmail, res.body.blogArticles.markup));
+      } else {
+        console.log("FAIL LOAD BLOG ARTICLES");
+      }
+    });
   }
 
   _handleKeyCommand(command) {
@@ -70,7 +88,7 @@ export default class RichEditorExample extends Component {
 
     superagent
     .post('/community')
-    .send({ markupData: markupData, userEmail: userEmail })
+    .send({ loadStatus: 0, markupData: markupData, userEmail: userEmail })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
