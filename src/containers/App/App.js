@@ -81,6 +81,7 @@ export default class App extends Component {
     }
 
     onLogout = () => {
+      this.onNavItemClick();
       cookie.save('ck_userLoggedIn', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
       this.setState({ navExpanded: false });
       /* Update UserState */
@@ -134,11 +135,11 @@ export default class App extends Component {
                     </LinkContainer>
                     :
                     <LinkContainer to="/registrieren">
-                      <NavItem eventKey={2}>Mitmachen</NavItem>
+                      <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mitmachen</NavItem>
                     </LinkContainer>
                     }
                     <LinkContainer to="/kontakt">
-                      <NavItem eventKey={3}>Kontakt</NavItem>
+                      <NavItem eventKey={3} onClick={ this.onNavItemClick }>Kontakt</NavItem>
                     </LinkContainer>
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
                       <NavItem eventKey={4} onClick={ this.onLogout }>Logout</NavItem>

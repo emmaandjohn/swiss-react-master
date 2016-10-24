@@ -130,6 +130,25 @@ app.post('/login', function(req, res) {
 });
 
 
+/* **** Forgot PW */
+app.post('/forgot', function(req, res) {
+
+    var email = req.body.email;
+
+    UserModel.findOne({ email: email, activation: true }, 'password', function(error, result){
+        if(error){
+            res.json(error);
+        }
+        else if(result !== null){
+            res.json({ status: 1, pw: result });
+        }
+        else{
+            res.json({ status: 0 });
+        }
+    });
+});
+
+
 /* **** Activation User */
 app.post('/activation', function(req, res) {
     var queryM = req.body.queryM;
