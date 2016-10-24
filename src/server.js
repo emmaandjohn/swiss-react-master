@@ -205,20 +205,23 @@ app.post('/community', function(req, res) {
           }
           else{ /* Success: Save data to mongoose */
             BlogData.save(function (err) {
-              if (err) return console.log(err);
-            });
-            /* Success: After that, show new State with new Data */
-            BlogModel.find({}, function(error, result2){
-                if(error){
-                  res.json(error);
-                  res.json({ status: 0 });
-                }
-                else if(result === null){
-                  res.json({ status: 0 });
-                }
-                else{
-                  res.json({ status: 1, blogArticles: result2 });
-                }
+              if (err) {
+                return console.log(err);
+              } else{
+                /* Success: After that, show new State with new Data */
+                BlogModel.find({}, function(error, result2){
+                    if(error){
+                      res.json(error);
+                      res.json({ status: 0 });
+                    }
+                    else if(result === null){
+                      res.json({ status: 0 });
+                    }
+                    else{
+                      res.json({ status: 1, blogArticles: result2 });
+                    }
+                });
+              }
             });
           }
       });
