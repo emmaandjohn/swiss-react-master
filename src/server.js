@@ -196,8 +196,12 @@ app.post('/community', function(req, res) {
 
     if(loadStatus === 0){
 
+      function n(n) {
+        return n > 9 ? "" + n: "0" + n;
+      }
+
       var d = new Date();
-      var timestampNow = n(d.getDate()) + '/' + n((d.getMonth()+1)) + '/' + d.getFullYear() + '/' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
+      var timestampNow = n(d.getDate()) + '/' + n((d.getMonth()+1)) + '/' + d.getFullYear() + ' - ' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
 
       var BlogData = new BlogModel({
         userEmail: userEmail,

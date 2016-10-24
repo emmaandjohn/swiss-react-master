@@ -81,10 +81,6 @@ export default class RichEditorExample extends Component {
     );
   }
 
-  n(n) {
-    return n > 9 ? "" + n: "0" + n;
-  }
-
   saveDataToDatabase() {
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userEmail = cookie.load('ck_email');
