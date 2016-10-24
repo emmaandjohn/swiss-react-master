@@ -46,7 +46,9 @@ var UserModel = mongoose.model('User', userSchema);
 
 var blogSchema = new mongoose.Schema({
   userEmail: String,
-  markup: String
+  markup: String,
+  timestamp: String,
+  unixtimestamp: Number
 });
 var BlogModel = mongoose.model('Blog', blogSchema);
 
@@ -193,10 +195,17 @@ app.post('/community', function(req, res) {
     }
 
     if(loadStatus === 0){
+
+      var d = new Date();
+      var timestampNow = n(d.getDate()) + '/' + n((d.getMonth()+1)) + '/' + d.getFullYear() + '/' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
+
       var BlogData = new BlogModel({
         userEmail: userEmail,
-        markup: markupData
+        markup: markupData,
+        timestamp: timestampNow,
+        unixtimestamp: d
       });
+
       UserModel.findOne({ email: userEmail }, 'email', function(error, result){
           if(error){
               res.json(error);

@@ -81,6 +81,10 @@ export default class RichEditorExample extends Component {
     );
   }
 
+  n(n) {
+    return n > 9 ? "" + n: "0" + n;
+  }
+
   saveDataToDatabase() {
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userEmail = cookie.load('ck_email');
@@ -122,7 +126,7 @@ export default class RichEditorExample extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #F6F6F6; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">'+entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Autor: ' + entry.userEmail + '</span></div>';
+      blogContentDef += '<div style="background-color: #F6F6F6; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Autor: ' + entry.userEmail + ' | ' + entry.timestamp +'</span></div>';
     });
 
     return (
