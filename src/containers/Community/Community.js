@@ -42,6 +42,7 @@ export default class RichEditorExample extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
+        console.log("1: "+res.body.blogArticles);
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });
@@ -93,6 +94,7 @@ export default class RichEditorExample extends Component {
         /* Still needed this 2 lines?
         this.setState({draftjsStatus: 1});
         this.setState({draftjsMsg: res.body.blogEntry}); */
+        console.log("2: "+res.body.blogArticles);
 
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
