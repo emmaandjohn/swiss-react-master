@@ -41,14 +41,18 @@ var userSchema = new mongoose.Schema({
   email: String,
   password: String,
   activation: Boolean
+},
+{
+  timestamps: true
 });
 var UserModel = mongoose.model('User', userSchema);
 
 var blogSchema = new mongoose.Schema({
   userEmail: String,
-  markup: String,
-  timestamp: String,
-  unixtimestamp: Number
+  markup: String
+},
+{
+  timestamps: true
 });
 var BlogModel = mongoose.model('Blog', blogSchema);
 
@@ -180,7 +184,7 @@ app.post('/community', function(req, res) {
     var userEmail = req.body.userEmail;
 
     if(loadStatus === 1){
-      BlogModel.find({}, function(error, result){
+      BlogModel.find({}, null, {sort: {unixtimestamp: -1}}, function(error, result){
           if(error){
             res.json(error);
             res.json({ status: 0 });
@@ -195,21 +199,10 @@ app.post('/community', function(req, res) {
     }
 
     if(loadStatus === 0){
-
-      function n(n) {
-        return n > 9 ? "" + n: "0" + n;
-      }
-
-      var d = parseInt(Math.floor(new Date() / 1000));
-      var timestampNow = n(d.getDate()) + '/' + n((d.getMonth()+1)) + '/' + d.getFullYear() + ' - ' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
-
       var BlogData = new BlogModel({
         userEmail: userEmail,
-        markup: markupData,
-        timestamp: timestampNow,
-        unixtimestamp: d
+        markup: markupData
       });
-
       UserModel.findOne({ email: userEmail }, 'email', function(error, result){
           if(error){
               res.json(error);
@@ -240,7 +233,6 @@ app.post('/community', function(req, res) {
       });
     }
 });
-
 
 
 
