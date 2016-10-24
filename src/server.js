@@ -200,7 +200,7 @@ app.post('/community', function(req, res) {
         return n > 9 ? "" + n: "0" + n;
       }
 
-      var d = new Date();
+      var d = parseInt(Math.floor(new Date() / 1000));
       var timestampNow = n(d.getDate()) + '/' + n((d.getMonth()+1)) + '/' + d.getFullYear() + ' - ' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
 
       var BlogData = new BlogModel({
