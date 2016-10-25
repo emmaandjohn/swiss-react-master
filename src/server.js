@@ -41,14 +41,14 @@ var userSchema = new mongoose.Schema({
   email: String,
   password: String,
   activation: Boolean
-}
+});
 var UserModel = mongoose.model('User', userSchema);
 
 var blogSchema = new mongoose.Schema({
   userEmail: String,
   markup: String,
   timestamp: String
-}
+});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 
