@@ -106,6 +106,7 @@
     "compression": "^1.6.0",
     "cookie-parser": "^1.4.3",
     "draft-js": "^0.9.1",
+    "draft-js-code": "^0.2.0",
     "draft-js-editor": "^1.7.2",
     "draft-js-export-html": "^0.5.0",
     "express": "^4.13.3",

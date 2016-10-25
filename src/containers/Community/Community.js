@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
 import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
 import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
@@ -31,6 +32,9 @@ export default class RichEditorExample extends Component {
 
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this._onTab(e);
+    this.handleReturn = (e) => this._handleReturn(e);
+    this.keyBindingFn = (e) => this._keyBindingFn(e);
+
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
   }
@@ -49,18 +53,56 @@ export default class RichEditorExample extends Component {
   }
 
   _handleKeyCommand(command) {
-    const {editorState} = this.state;
-    const newState = RichUtils.handleKeyCommand(editorState, command);
+    var newState;
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+        newState = CodeUtils.handleKeyCommand(editorState, command);
+    }
+    if (!newState) {
+        newState = Draft.RichUtils.handleKeyCommand(editorState, command);
+    }
     if (newState) {
-      this.onChange(newState);
-      return true;
+        this.onChange(newState);
+        return true;
     }
     return false;
   }
 
+  _keyBindingFn(e) {
+      var editorState = this.state.editorState;
+      var command;
+
+      if (CodeUtils.hasSelectionInBlock(editorState)) {
+          command = CodeUtils.getKeyBinding(e);
+      }
+      if (command) {
+          return command;
+      }
+
+      return Draft.getDefaultKeyBinding(e);
+  }
+
+  _handleReturn(e) {
+      var editorState = this.state.editorState;
+
+      if (!CodeUtils.hasSelectionInBlock(editorState)) {
+          return;
+      }
+      this.onChange(
+          CodeUtils.handleReturn(e, editorState)
+      );
+      return true;
+  }
+
   _onTab(e) {
-    const maxDepth = 4;
-    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
+    /*const maxDepth = 4;
+    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));*/
+    var editorState = this.state.editorState;
+    if (!CodeUtils.hasSelectionInBlock(editorState)) {
+        return;
+    }
+    this.onChange(
+        CodeUtils.handleTab(e, editorState)
+    );
   }
 
   _toggleBlockType(blockType) {
@@ -125,7 +167,7 @@ export default class RichEditorExample extends Component {
         return b.unixtime-a.unixtime
     });
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #F6F6F6; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
+      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
     });
 
     return (
@@ -149,7 +191,9 @@ export default class RichEditorExample extends Component {
               customStyleMap={styleMap}
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
+              handleReturn={this.handleReturn}
               onChange={this.onChange}
+              keyBindingFn={this.keyBindingFn}
               onTab={this.onTab}
               placeholder=""
               ref="editor"
