@@ -28,7 +28,7 @@ export default class RichEditorExample extends Component {
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this._onTab(e);
     this.handleReturn = (e) => this._handleReturn(e);
-    this.keyBindingFn = (e) => this._keyBindingFn(e);
+    //this.keyBindingFn = (e) => this._keyBindingFn(e);
 
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
@@ -62,7 +62,7 @@ export default class RichEditorExample extends Component {
     return false;
   }
 
-  _keyBindingFn(e) {
+  /*_keyBindingFn(e) {
       var editorState = this.state.editorState;
       var command;
 
@@ -74,7 +74,7 @@ export default class RichEditorExample extends Component {
       }
 
       return Draft.getDefaultKeyBinding(e);
-  }
+  }*/
 
   _handleReturn(e) {
       var editorState = this.state.editorState;
@@ -188,7 +188,7 @@ export default class RichEditorExample extends Component {
               handleKeyCommand={this.handleKeyCommand}
               handleReturn={this.handleReturn}
               onChange={this.onChange}
-              keyBindingFn={this.keyBindingFn}
+              //keyBindingFn={this.keyBindingFn}
               onTab={this.onTab}
               placeholder=""
               ref="editor"
