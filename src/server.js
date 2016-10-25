@@ -205,15 +205,15 @@ app.post('/community', function(req, res) {
       }
       var d = new Date();
       console.log("d1: "+d);
-      var d2 = Moment().tz('Europe/Amsterdam').format();
-      console.log("d2a: "+d2); console.log("d2b: "+d2.getDate());
+      var d2 = Moment(unixDateNow).tz('America/Phoenix').format('DD-MM-YYYY HH:mm')
+      console.log("d2a: "+d2);
       //var timestampNow = n(d2.getDate()) + '.' + n((d2.getMonth()+1)) + '.' + d2.getFullYear() + ' - ' + n(d2.getHours()) + ':' + n(d2.getMinutes()) + ':' + n(d2.getSeconds());
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
         markup: markupData,
         timeFormatted: d,
-        unixtime: unixDateNow
+        unixtime: d2
       });
       UserModel.findOne({ email: userEmail }, 'email', function(error, result){
           if(error){
