@@ -184,7 +184,7 @@ app.post('/community', function(req, res) {
     var userEmail = req.body.userEmail;
 
     if(loadStatus === 1){
-      BlogModel.find({}, null, {sort: {unixtimestamp: -1}}, function(error, result){
+      BlogModel.find({}, null, {sort: {date: -1}}, function(error, result){
           if(error){
             res.json(error);
             res.json({ status: 0 });
