@@ -48,7 +48,7 @@ export default class Home extends Component {
 
         <div className="container">
           <h3>Neuste Blogeinträge</h3>
-          {blogContentDef}
+          <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
     );
