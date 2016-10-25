@@ -198,6 +198,7 @@ app.post('/community', function(req, res) {
 
     if(loadStatus === 0){
       var unixDateNow = Date.now(); // e.g. 1299827226
+      console.log("d1: "+unixDateNow);
 
       function n(n) {
         return n > 9 ? "" + n: "0" + n;
@@ -206,12 +207,12 @@ app.post('/community', function(req, res) {
       console.log("d1: "+d);
       var d2 = Moment().tz('Europe/Amsterdam').format(d);
       console.log("d2: "+d2);
-      var timestampNow = n(d2.getDate()) + '.' + n((d2.getMonth()+1)) + '.' + d2.getFullYear() + ' - ' + n(d2.getHours()) + ':' + n(d2.getMinutes()) + ':' + n(d2.getSeconds());
+      //var timestampNow = n(d2.getDate()) + '.' + n((d2.getMonth()+1)) + '.' + d2.getFullYear() + ' - ' + n(d2.getHours()) + ':' + n(d2.getMinutes()) + ':' + n(d2.getSeconds());
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
         markup: markupData,
-        timeFormatted: timestampNow,
+        timeFormatted: d,
         unixtime: unixDateNow
       });
       UserModel.findOne({ email: userEmail }, 'email', function(error, result){
