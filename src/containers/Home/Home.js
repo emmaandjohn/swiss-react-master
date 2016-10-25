@@ -1,16 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import Well from 'react-bootstrap/lib/Well';
 import {connect} from 'react-redux';
-/* { import { Link } from 'react-router'; } */
-/* { import { CounterButton } from 'components'; } */
 import config from '../../config';
 import Helmet from 'react-helmet';
 
-/*@connect(
-  state => ({ userLoggedIn: 'wis' })
-)*/
 @connect((store) => {
   return {
-    registerNewUserState: store.registerNewUser.user,
+    getBlogEntriesState: store.getBlogEntries.articleList,
   };
 })
 
@@ -22,9 +18,17 @@ export default class Home extends Component {
 
   render() {
     const styles = require('./Home.scss');
-    const {registerNewUserState} = this.props;
+    const { getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
+
+    let blogContentDef = '';
+    getBlogEntriesState.articles.sort(function(a, b){
+        return b.unixtime-a.unixtime
+    });
+    getBlogEntriesState.articles.forEach(function(entry){
+      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
+    });
 
     return (
       <div className={styles.home}>
@@ -43,21 +47,8 @@ export default class Home extends Component {
         </div>
 
         <div className="container">
-          { /* {
-          <div className={styles.counterContainer}>
-            <CounterButton multireducerKey="counter1"/>
-            <CounterButton multireducerKey="counter2"/>
-            <CounterButton multireducerKey="counter3"/>
-          </div>
-          } */
-          }
           <h3>Neuste Blogeinträge</h3>
-
-          <h2>
-            React-Applikation produktiv auf Heroku publizieren (Node.js, Express.js, Heroku)<br />
-            {registerNewUserState.email}
-          </h2>
-
+          {blogContentDef}
         </div>
       </div>
     );
