@@ -41,7 +41,6 @@ export default class RichEditorExample extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        console.log("1: "+JSON.stringify(res.body.blogArticles));
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });

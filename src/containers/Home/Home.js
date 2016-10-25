@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
 
+import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+
 @connect((store) => {
   return {
     getBlogEntriesState: store.getBlogEntries.articleList,
@@ -11,6 +13,18 @@ import Helmet from 'react-helmet';
 })
 
 export default class Home extends Component {
+
+  componentDidMount() {
+    superagent
+    .post('/community')
+    .send({ loadStatus: 1 })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if (res.body.status === 1) {
+        this.props.dispatch(getBlogEntries(res.body.blogArticles));
+      }
+    });
+  }
 
   static propTypes = {
     userLoggedIn: PropTypes.string
