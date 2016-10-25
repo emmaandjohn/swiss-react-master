@@ -32,6 +32,11 @@ const proxy = httpProxy.createProxyServer({
   ws: true
 });
 
+/* **** NODE-TIME */
+var time = require('time');
+
+var d = new Date();
+d.setTimezone('UTC');
 
 /* **** Mongoose */
 var mongoose = require('mongoose');
@@ -196,12 +201,14 @@ app.post('/community', function(req, res) {
 
     if(loadStatus === 0){
 
+      var dateNow = time.time(); // e.g. 1299827226
+      
       function n(n) {
         return n > 9 ? "" + n: "0" + n;
       }
 
-      var dateNow = Date.now();
-      var d = new Date();
+      var d = new time.Date();
+      now.setTimezone("Europe/Zurich");
       var timestampNow = n(d.getDate()) + '.' + n((d.getMonth()+1)) + '.' + d.getFullYear() + ' - ' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
 
       var BlogData = new BlogModel({
