@@ -198,15 +198,15 @@ app.post('/community', function(req, res) {
 
     if(loadStatus === 0){
       var unixDateNow = Date.now(); // e.g. 1299827226
-      console.log("d1: "+unixDateNow);
+      console.log("d0: "+unixDateNow);
 
       function n(n) {
         return n > 9 ? "" + n: "0" + n;
       }
       var d = new Date();
       console.log("d1: "+d);
-      var d2 = Moment().tz('Europe/Amsterdam').format(d);
-      console.log("d2: "+d2);
+      var d2 = Moment().tz('Europe/Amsterdam').format();
+      console.log("d2a: "+d2); console.log("d2b: "+d2.getDate());
       //var timestampNow = n(d2.getDate()) + '.' + n((d2.getMonth()+1)) + '.' + d2.getFullYear() + ' - ' + n(d2.getHours()) + ':' + n(d2.getMinutes()) + ':' + n(d2.getSeconds());
 
       var BlogData = new BlogModel({
