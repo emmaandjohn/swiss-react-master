@@ -110,7 +110,7 @@ export default class RichEditorExample extends Component {
 
   render() {
     const {draftjsStatus, draftjsMsg, editorState} = this.state;
-    const { activateNewUserState, getBlogEntriesState } = this.props;
+    let { activateNewUserState, getBlogEntriesState } = this.props;
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
