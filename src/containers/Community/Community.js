@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
-import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
 import Helmet from 'react-helmet';
@@ -18,11 +18,6 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 })
 
 export default class RichEditorExample extends Component {
-  /*state = {
-    draftjsStatus: 0,
-    draftjsMsg: ''
-  }*/
-
   constructor(props) {
     super(props);
     this.state = {editorState: EditorState.createEmpty()};

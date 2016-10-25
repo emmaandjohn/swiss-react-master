@@ -198,13 +198,12 @@ app.post('/community', function(req, res) {
 
     if(loadStatus === 0){
       var unixDateNow = Date.now(); // e.g. 1299827226
-      var d2 = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss')
-      console.log("d2a: "+d2);
+      var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss')
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
         markup: markupData,
-        timeFormatted: d2,
+        timeFormatted: humanDate,
         unixtime: unixDateNow
       });
       UserModel.findOne({ email: userEmail }, 'email', function(error, result){
