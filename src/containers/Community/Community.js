@@ -48,19 +48,14 @@ export default class RichEditorExample extends Component {
   }
 
   _handleKeyCommand(command) {
-    var newState;
-    if (CodeUtils.hasSelectionInBlock(editorState)) {
-        newState = CodeUtils.handleKeyCommand(editorState, command);
-    }
-    if (!newState) {
-        newState = Draft.RichUtils.handleKeyCommand(editorState, command);
-    }
+    const {editorState} = this.state;
+    const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
-        this.onChange(newState);
-        return true;
+      this.onChange(newState);
+      return true;
     }
     return false;
-  }
+}
 
   /*_keyBindingFn(e) {
       var editorState = this.state.editorState;
