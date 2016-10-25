@@ -33,10 +33,7 @@ const proxy = httpProxy.createProxyServer({
 });
 
 /* **** NODE-TIME */
-var time = require('time');
-
-var d = new Date();
-d.setTimezone('UTC');
+var Moment = require('moment-timezone');
 
 /* **** Mongoose */
 var mongoose = require('mongoose');
@@ -52,7 +49,7 @@ var UserModel = mongoose.model('User', userSchema);
 var blogSchema = new mongoose.Schema({
   userEmail: String,
   markup: String,
-  timestamp: String,
+  timeFormatted: String,
   unixtime: String
 });
 var BlogModel = mongoose.model('Blog', blogSchema);
@@ -200,22 +197,20 @@ app.post('/community', function(req, res) {
     }
 
     if(loadStatus === 0){
+      var unixDateNow = Date.now(); // e.g. 1299827226
 
-      var dateNow = time.time(); // e.g. 1299827226
-      
       function n(n) {
         return n > 9 ? "" + n: "0" + n;
       }
 
-      var d = new time.Date();
-      now.setTimezone("Europe/Zurich");
+      var d = Moment().tz('Europe/Zurich').format();
       var timestampNow = n(d.getDate()) + '.' + n((d.getMonth()+1)) + '.' + d.getFullYear() + ' - ' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
         markup: markupData,
-        timestamp: dateNow,
-        unixtime: timestampNow
+        timeFormatted: timestampNow,
+        unixtime: unixDateNow
       });
       UserModel.findOne({ email: userEmail }, 'email', function(error, result){
           if(error){

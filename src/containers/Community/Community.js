@@ -122,10 +122,10 @@ export default class RichEditorExample extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.sort(function(a, b){
-        return b.timestamp-a.timestamp
+        return b.unixtime-a.unixtime
     });
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #F6F6F6; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.unixtime + '</span></div>';
+      blogContentDef += '<div style="background-color: #F6F6F6; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
     });
 
     return (
