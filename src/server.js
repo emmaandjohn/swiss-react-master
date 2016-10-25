@@ -202,9 +202,11 @@ app.post('/community', function(req, res) {
       function n(n) {
         return n > 9 ? "" + n: "0" + n;
       }
-
-      var d = Moment().tz('Europe/Zurich').format();
-      var timestampNow = n(d.getDate()) + '.' + n((d.getMonth()+1)) + '.' + d.getFullYear() + ' - ' + n(d.getHours()) + ':' + n(d.getMinutes()) + ':' + n(d.getSeconds());
+      var d = new Date();
+      console.log("d1: "+d);
+      var d2 = Moment().tz('Europe/Amsterdam').format(d);
+      console.log("d2: "+d2);
+      var timestampNow = n(d2.getDate()) + '.' + n((d2.getMonth()+1)) + '.' + d2.getFullYear() + ' - ' + n(d2.getHours()) + ':' + n(d2.getMinutes()) + ':' + n(d2.getSeconds());
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
