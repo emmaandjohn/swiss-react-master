@@ -218,7 +218,7 @@ app.post('/community', function(req, res) {
                 return console.log(err);
               } else{
                 /* Success: After that, show new State with new Data */
-                BlogModel.find({}, function(error, result2){
+                BlogModel.find({}.sort({'unixtime': 1}).limit(3), function(error, result2){
                     if(error){
                       res.json(error);
                       res.json({ status: 0 });

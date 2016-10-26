@@ -38,9 +38,9 @@ export default class Home extends Component {
     const logoImage = require('./logo.png');
 
     let blogContentDef = '';
-    getBlogEntriesState.articles.sort(function(a, b){
+    /*getBlogEntriesState.articles.sort(function(a, b){
         return b.unixtime-a.unixtime
-    });
+    });*/
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
     });
