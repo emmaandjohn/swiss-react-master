@@ -218,18 +218,22 @@ app.post('/community', function(req, res) {
                 return console.log(err);
               } else{
                 /* Success: After that, show new State with new Data */
-                BlogModel.find({}.sort({'unixtime': 1}).limit(3), function(error, result2){
-                    if(error){
-                      res.json(error);
-                      res.json({ status: 0 });
-                    }
-                    else if(result === null){
-                      res.json({ status: 0 });
-                    }
-                    else{
-                      res.json({ status: 1, blogArticles: result2 });
-                    }
+                BlogModel.find({}).sort({'unixtime': -1}).limit(2).exec(function(err, result2) {
+                  if(err){
+                    res.json(err);
+                    res.json({ status: 0 });
+                  }
+                  else if(result2 === null){
+                    res.json({ status: 0 });
+                  }
+                  else{
+                    console.log(JSON.stringify(result2));
+                    res.json({ status: 1, blogArticles: result2 });
+                  }
                 });
+                /*BlogModel.find({}.sort({'unixtime': -1}).limit(2), function(error, result2){
+
+                });*/
               }
             });
           }
