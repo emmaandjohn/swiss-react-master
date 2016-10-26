@@ -88,7 +88,7 @@ export default class Login extends Component {
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" className="form-control"/>
               </div>
               <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Login</button>
-              <button onClick={this.forgotPassword.bind(this)} className="btn btn-link">Passwort vergessen</button>
+              <button onClick="/forgot" className="btn btn-link">Passwort vergessen</button>
             </form>
           </div>
           : null
