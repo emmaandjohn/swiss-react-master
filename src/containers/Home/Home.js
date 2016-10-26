@@ -3,6 +3,7 @@ import Well from 'react-bootstrap/lib/Well';
 import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
+import superagent from 'superagent';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
