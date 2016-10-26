@@ -181,8 +181,9 @@ app.post('/community', function(req, res) {
     var markupData = req.body.markupData;
     var userEmail = req.body.userEmail;
 
-    if(loadStatus === 1){
-      BlogModel.find({}).sort({'unixtime': 1}).limit(2).exec(function(err, result) {
+    if(loadStatus === 1 || loadStatus === 2){ /* 1 = Community Initial - 2 = Home Initial*/
+      let l = loadStatus === 2 ? 3 : 10;
+      BlogModel.find({}).sort({'unixtime': 1}).limit(l).exec(function(err, result) {
         if(err){
           res.json(err);
           res.json({ status: 0 });
@@ -218,7 +219,7 @@ app.post('/community', function(req, res) {
                 return console.log(err);
               } else{
                 /* Success: After that, show new State with new Data */
-                BlogModel.find({}).sort({'unixtime': 1}).limit(2).exec(function(err, result) {
+                BlogModel.find({}).sort({'unixtime': 1}).limit(10).exec(function(err, result) {
                   if(err){
                     res.json(err);
                     res.json({ status: 0 });

@@ -18,7 +18,7 @@ export default class Home extends Component {
   componentDidMount() {
     superagent
     .post('/community')
-    .send({ loadStatus: 1 })
+    .send({ loadStatus: 2 })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
