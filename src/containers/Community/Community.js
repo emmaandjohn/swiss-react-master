@@ -8,6 +8,7 @@ import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
