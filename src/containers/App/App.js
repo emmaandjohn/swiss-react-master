@@ -15,7 +15,7 @@ import { asyncConnect } from 'redux-async-connect';
 import cookie from 'react-cookie';
 import Loader from 'react-loader-advanced';
 
-/* Import here only for Dispatchers */
+/* Import here only for Dispatchers 1 */
 import { getUser } from '../../redux/actions/getUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
