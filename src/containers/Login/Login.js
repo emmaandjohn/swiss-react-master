@@ -3,8 +3,9 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
+import Button from 'react-bootstrap/lib/Button';
 import cookie from 'react-cookie';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router';
 
 /* Import here only for Dispatchers */
 import { getUser } from '../../redux/actions/getUserActions';
@@ -60,9 +61,10 @@ export default class Login extends Component {
   render() {
     const { getUserState } = this.props;
     const { formStatus, formMsg } = this.state;
+    const styles = require('./Login.scss');
 
     return (
-        <div className="container">
+        <div className={styles.loginPage + ' container'}>
           <h1>Login</h1>
           <Helmet title="Login"/>
           {formStatus === 2 ?
@@ -89,9 +91,7 @@ export default class Login extends Component {
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" className="form-control"/>
               </div>
               <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Login</button>
-              <LinkContainer to="/forgot">
-                <button className="btn btn-link">Passwort vergessen</button>
-              </LinkContainer>
+              <Button><Link to="/forgot">Passwort vergessen</Link></Button>
             </form>
           </div>
           : null

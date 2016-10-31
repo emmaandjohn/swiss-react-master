@@ -58,9 +58,10 @@ export default class Forgot extends Component {
   render() {
     const { getUserState } = this.props;
     const { formStatus, formMsg } = this.state;
+    const styles = require('./Forgot.scss');
 
     return (
-        <div className="container">
+        <div className={styles.forgotPage + ' container'}>
           <h1>Login</h1>
           <Helmet title="Login"/>
           {formStatus === 2 ?
