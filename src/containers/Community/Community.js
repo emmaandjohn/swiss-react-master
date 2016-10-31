@@ -8,7 +8,7 @@ import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -196,7 +196,7 @@ export default class RichEditorExample extends Component {
         <button className="btn btn-primary" onClick={this.saveDataToDatabase.bind(this)}>Speichern</button>
         </div>
         :
-        <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <a href="registrieren">hier</a> dein eigener Account.</Alert>
+        <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> dein eigener Account.</Alert>
         }
         <br />
         <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
