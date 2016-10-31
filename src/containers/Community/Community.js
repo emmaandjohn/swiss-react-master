@@ -194,7 +194,7 @@ export default class RichEditorExample extends Component {
         <button className="btn btn-primary" onClick={this.saveDataToDatabase.bind(this)}>Speichern</button>
         </div>
         :
-        <p>Du musst eingeloggt sein um Beiträge zu verfassen.</p>
+        <div bsStyle="warning">Du musst eingeloggt sein um Beiträge zu verfassen.</div>
         }
         <br />
         <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
