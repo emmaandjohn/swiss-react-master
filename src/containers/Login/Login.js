@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
 import cookie from 'react-cookie';
+import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import here only for Dispatchers */
 import { getUser } from '../../redux/actions/getUserActions';
@@ -88,7 +89,9 @@ export default class Login extends Component {
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" className="form-control"/>
               </div>
               <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Login</button>
-              <button onClick="/forgot" className="btn btn-link">Passwort vergessen</button>
+              <LinkContainer to="/forgot">
+                <button className="btn btn-link">Passwort vergessen</button>
+              </LinkContainer>
             </form>
           </div>
           : null

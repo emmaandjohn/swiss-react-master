@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
+import Alert from 'react-bootstrap/lib/Alert';
 import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
@@ -194,7 +195,7 @@ export default class RichEditorExample extends Component {
         <button className="btn btn-primary" onClick={this.saveDataToDatabase.bind(this)}>Speichern</button>
         </div>
         :
-        <div bsStyle="warning">Du musst eingeloggt sein um Beiträge zu verfassen.</div>
+        <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <LinkContainer to="/registrieren">hier</LinkContainer> dein eigener Account.</Alert>
         }
         <br />
         <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
