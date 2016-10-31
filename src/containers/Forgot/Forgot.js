@@ -34,25 +34,12 @@ export default class Forgot extends Component {
       .end((error, res) => {
         if (res.body.status === 1) {
           this.setState({formStatus: 2});
-          this.setState({formMsg: 'Das Passwort wurde an '+inputEmail+' / '+res.body.pw.password+' zugeschickt!'});
-
-          /*this.props.dispatch(activateNewUser(true, true));
-
-          cookie.save('ck_userLoggedIn', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_pw', inputPassword, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_uuid', res.body.uuid.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_activation', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });*/
+          this.setState({formMsg: 'Das Passwort wurde erfolgreich an '+inputEmail+' / '+res.body.pw.password+' zugeschickt!'});
         } else {
           this.setState({formStatus: 1});
           this.setState({formMsg: 'Fehler: Diese Email-Adresse existiert nicht!'});
         }
       });
-  }
-
-  forgotPassword = (event) => {
-    event.preventDefault();
-    console.log("password vergessen");
   }
 
   render() {
@@ -62,11 +49,11 @@ export default class Forgot extends Component {
 
     return (
         <div className={styles.forgotPage + ' container'}>
-          <h1>Login</h1>
-          <Helmet title="Login"/>
+          <h1>Passwort vergessen</h1>
+          <Helmet title="Passwort vergessen"/>
           {formStatus === 2 ?
             <Well>
-              <h3>Passwort verschickt</h3>
+              <h3>Passwort erfolgreich verschickt</h3>
               <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
             </Well>
             : null
@@ -84,14 +71,12 @@ export default class Forgot extends Component {
               <div className="form-group">
                 <input type="text" ref="email" name="email" id="email" placeholder="Email" className="form-control"/>
               </div>
-              <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Login</button>
-              <button onClick={this.forgotPassword.bind(this)} className="btn btn-link">Passwort vergessen</button>
+              <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Passwort zustellen</button>
             </form>
           </div>
           : null
         }
         </div>
-
     );
   }
 

@@ -53,11 +53,6 @@ export default class Login extends Component {
       });
   }
 
-  forgotPassword = (event) => {
-    event.preventDefault();
-    console.log("password vergessen");
-  }
-
   render() {
     const { getUserState } = this.props;
     const { formStatus, formMsg } = this.state;
