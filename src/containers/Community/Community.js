@@ -9,7 +9,6 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-require("./style.scss");
 
 var PrismDecorator = require('draft-js-prism');
 
@@ -306,3 +305,5 @@ export default class RichEditorExample extends Component {
      </div>
    );
  };
+
+require("./style.scss");
