@@ -9,9 +9,9 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+require("./style.css");
 
 var PrismDecorator = require('draft-js-prism');
-var decorator = new PrismDecorator();
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -25,6 +25,7 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 export default class RichEditorExample extends Component {
   constructor(props) {
     super(props);
+    var decorator = new PrismDecorator();
     this.state = {editorState: EditorState.createEmpty(decorator)};
 
     this.focus = () => this.refs.editor.focus();
