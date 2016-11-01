@@ -1,4 +1,7 @@
 .forgotPage {
+  h3{
+    margin-top: 0px;
+  }
   input {
     padding: 5px 10px;
     border-radius: 5px;
@@ -15,6 +18,9 @@
 
 @media (max-width: 768px) {
   .forgotPage {
+    h3{
+      margin-top: 0px;
+    }
     form {
       :global(.btn) {
         margin-left: 0px;
