@@ -34,7 +34,7 @@ export default class Forgot extends Component {
       .end((error, res) => {
         if (res.body.status === 1) {
           this.setState({formStatus: 2});
-          this.setState({formMsg: 'Das Passwort wurde erfolgreich an '+inputEmail+' zugeschickt!'});
+          this.setState({formMsg: 'Das Passwort wurde erfolgreich an <strong>'+inputEmail+'</strong> zugeschickt!'});
         } else {
           this.setState({formStatus: 1});
           this.setState({formMsg: 'Fehler: Diese Email-Adresse existiert nicht!'});
