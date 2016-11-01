@@ -198,7 +198,6 @@ export default class RichEditorExample extends Component {
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
         }
-        <br />
         <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
       </div>
     );

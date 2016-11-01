@@ -86,7 +86,7 @@ export default class Login extends Component {
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" className="form-control"/>
               </div>
               <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Login</button>
-              <Button><Link to="/forgot">Passwort vergessen</Link></Button>
+              <Link to="/forgot"><Button>Passwort vergessen</Button></Link>
             </form>
           </div>
           : null
