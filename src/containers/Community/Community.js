@@ -12,7 +12,6 @@ import { Link } from 'react-router';
 
 var PrismDecorator = require('draft-js-prism');
 var decorator = new PrismDecorator();
-var editorState = Draft.EditorState.createEmpty(decorator)
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -26,7 +25,7 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 export default class RichEditorExample extends Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+    this.state = {editorState: EditorState.createEmpty(decorator)};
 
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => this.setState({editorState});
