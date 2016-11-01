@@ -145,7 +145,7 @@ app.post('/forgot', function(req, res) {
             res.json(error);
         }
         else if(result !== null){
-            getPw = pw.password;
+            getPw = result.password;
             var mailOptions = {
                 from: '"Swiss React Community: Passwort vergessen" <info@swiss-react.ch>',
                 to: email,
