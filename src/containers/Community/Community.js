@@ -10,6 +10,8 @@ import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+var PrismDecorator = require('draft-js-prism');
+
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
 @connect((store) => {
@@ -22,7 +24,8 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 export default class RichEditorExample extends Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+    var decorator = new PrismDecorator();
+    this.state = {editorState: EditorState.createEmpty(decorator)};
 
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => this.setState({editorState});
@@ -144,6 +147,7 @@ export default class RichEditorExample extends Component {
   render() {
     const {draftjsStatus, draftjsMsg, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
+    const styles = require('./Community.scss');
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
@@ -162,7 +166,7 @@ export default class RichEditorExample extends Component {
     });
 
     return (
-      <div className="container">
+      <div className={styles.communityPage + ' container'}>
         <h1>Community</h1>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
