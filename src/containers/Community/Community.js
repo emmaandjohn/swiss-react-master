@@ -13,6 +13,7 @@ import { Link } from 'react-router';
 var PrismDecorator = require('draft-js-prism');
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+require("./style.css");
 
 @connect((store) => {
   return {
@@ -305,5 +306,3 @@ export default class RichEditorExample extends Component {
      </div>
    );
  };
-
-require("./style.scss");
