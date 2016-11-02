@@ -176,8 +176,8 @@ export default class RichEditorExample extends Component {
         <div>
         <div id="community-title-form">
           <form className="community-title-form form-inline">
-            <div className="form-group titleStyle">
-              <input type="text" ref="titel" name="titel" id="titel" placeholder="Titel" className="form-control"/>
+            <div className="form-group">
+              <input type="text" ref="titel" name="titel" id="titel" placeholder="Titel" className="titleStyle form-control"/>
             </div>
           </form>
         </div>
