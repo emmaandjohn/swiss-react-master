@@ -137,9 +137,9 @@ pre {
 	h2{
 		margin-top: 10px;
 	}
-	.titelStyle{
-		width: 100%;
-		margin-bottom: 10px;
+	.form-inline .form-group {
+	    margin-bottom: 10px !important;
+	    width: 100% !important;
 	}
 
 @media print {
