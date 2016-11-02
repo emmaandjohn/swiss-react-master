@@ -131,11 +131,15 @@ pre {
 		margin: 16px 0;
 		padding: 10px 20px;
 	}
-	.communityPage p{
+	#communityPage p{
 		margin: 0;
 	}
-	.communityPage h2{
+	#communityPage h2{
 		margin-top: 10px;
+	}
+	#communityPage #titel{
+		width: 100%;
+		margin-bottom: 10px;
 	}
 
 @media print {

@@ -123,22 +123,28 @@ export default class RichEditorExample extends Component {
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userEmail = cookie.load('ck_email');
 
-    superagent
-    .post('/community')
-    .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userEmail: userEmail })
-    .set('Accept', 'application/json')
-    .end((error, res) => {
-      if (res.body.status === 1) {
-        this.props.dispatch(getBlogEntries(res.body.blogArticles));
+    if(titelData.length > 2 && titelData.length < 60){
+      if (markupData.length > 40) {
+        this.refs.titel.value = '';
+        superagent
+        .post('/community')
+        .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userEmail: userEmail })
+        .set('Accept', 'application/json')
+        .end((error, res) => {
+          if (res.body.status === 1) {
+            this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
-        /* Clear editor state */
-        const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
-        this.setState({ editorState });
-      } /*else {
-        this.setState({draftjsStatus: 0});
-        this.setState({draftjsMsg: 'Fehler beim Speichern des Beitrages!'});
-      }*/
-    });
+            /* Clear editor state */
+            const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+            this.setState({ editorState });
+          }
+        });
+      } else{
+        console.log("Minimum 40 Zeichen bei Markup Daten!");
+      }
+    } else{
+      console.log("Minimum 3 Zeichen & maximal 60 Zeichen für Titel!");
+    }
   }
 
   render() {
@@ -163,7 +169,7 @@ export default class RichEditorExample extends Component {
     });
 
     return (
-      <div className='container communityPage'>
+      <div className="container" id="communityPage">
         <h1>Community</h1>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
