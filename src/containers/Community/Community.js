@@ -174,10 +174,10 @@ export default class RichEditorExample extends Component {
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
         <div>
-        <div className="community-title-form">
+        <div id="community-title-form">
           <form className="community-title-form form-inline">
-            <div className="form-group">
-              <input type="text" ref="titel" name="titel" id="titel" placeholder="Titel" className="form-control" style="margin-bottom: 10px; width: 100%;"/>
+            <div className="form-group" style="margin-bottom: 10px; width: 100%;">
+              <input type="text" ref="titel" name="titel" id="titel" placeholder="Titel" className="form-control"/>
             </div>
           </form>
         </div>
