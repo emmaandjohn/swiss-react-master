@@ -159,7 +159,7 @@ export default class RichEditorExample extends Component {
 
   render() {
     const {draftjsStatus, draftjsMsg, editorState} = this.state;
-    const { activateNewUserState, getBlogEntriesState } = this.props;
+    const { formStatus, formMsg, activateNewUserState, getBlogEntriesState } = this.props;
     //const styles = require('./Community.scss');
 
     let className = 'RichEditor-editor';
