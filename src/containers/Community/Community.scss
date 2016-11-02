@@ -1,6 +1,5 @@
-.communityPage {
-	code,
-	pre {
+code,
+pre {
 		color: white;
 		background: none;
 		text-shadow: 0 -.1em .2em black;
@@ -125,13 +124,10 @@
 	    color: #333;
 	    background-color: #f5f5f5;
 	}
-}
 
 @media print {
-	.communityPage {
 		code,
 		pre {
 			text-shadow: none;
 		}
-	}
 }

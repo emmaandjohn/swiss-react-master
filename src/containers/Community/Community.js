@@ -149,7 +149,7 @@ export default class RichEditorExample extends Component {
   render() {
     const {draftjsStatus, draftjsMsg, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
-    const styles = require('./Community.scss');
+    //const styles = require('./Community.scss');
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
@@ -168,7 +168,7 @@ export default class RichEditorExample extends Component {
     });
 
     return (
-      <div className={styles.communityPage + ' container'}>
+      <div className='container'>
         <h1>Community</h1>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
