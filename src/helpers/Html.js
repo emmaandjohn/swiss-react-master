@@ -40,6 +40,8 @@ export default class Html extends Component {
             <link href={assets.styles[style]} key={key} media="screen, projection"
                   rel="stylesheet" type="text/css" charSet="UTF-8"/>
           )}
+          <link href="/prism.css" media="screen, projection"
+                rel="stylesheet" type="text/css" charSet="UTF-8"/>
 
           {/* (will be present only in development mode) */}
           {/* outputs a <style/> tag with all bootstrap styles + App.scss + it could be CurrentPage.scss. */}
