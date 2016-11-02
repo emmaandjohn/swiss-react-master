@@ -23,6 +23,11 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 })
 
 export default class RichEditorExample extends Component {
+  state = {
+    formStatus: 0,
+    formMsg: ''
+  }
+
   constructor(props) {
     super(props);
     var decorator = new PrismDecorator();
@@ -137,13 +142,18 @@ export default class RichEditorExample extends Component {
             /* Clear editor state */
             const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
             this.setState({ editorState });
+
+            this.setState({formStatus: 2});
+            this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
           }
         });
       } else{
-        console.log("Minimum 40 Zeichen bei Markup Daten!");
+        this.setState({formStatus: 1});
+        this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
       }
     } else{
-      console.log("Minimum 3 Zeichen & maximal 60 Zeichen für Titel!");
+      this.setState({formStatus: 1});
+      this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 60 Zeichen nicht überschreiten!'});
     }
   }
 
@@ -174,6 +184,14 @@ export default class RichEditorExample extends Component {
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
         <div>
+        {formStatus === 2 ?
+          <Alert bsStyle="success" dangerouslySetInnerHTML={{__html: formMsg}}></Alert>
+        : null
+        }
+        {formStatus === 1 ?
+          <Alert bsStyle="danger" dangerouslySetInnerHTML={{__html: formMsg}}></Alert>
+        : null
+        }
         <div id="community-title-form">
           <form className="community-title-form form-inline">
             <div className="form-group">
