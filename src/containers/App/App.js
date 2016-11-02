@@ -115,7 +115,7 @@ export default class App extends Component {
             <Navbar fixedTop expanded={ this.state.navExpanded } onToggle={ this.onNavbarToggle }>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <IndexLink to="/" activeStyle={{color: '#d52b1e'}}>
+                  <IndexLink to="/" onClick={ this.onNavItemClick } activeStyle={{color: '#d52b1e'}}>
                     <div className={styles.brand}/>
                     <span>
                       {config.app.title}
@@ -130,7 +130,7 @@ export default class App extends Component {
                       <NavItem eventKey={1} onClick={ this.onNavItemClick }>Community</NavItem>
                     </LinkContainer>
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-                    <LinkContainer to="/profil">
+                    <LinkContainer to="/meinprofil">
                       <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mein Profil</NavItem>
                     </LinkContainer>
                     :

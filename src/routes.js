@@ -14,6 +14,7 @@ import {
     Register,
     Kontakt,
     Community,
+    MyProfile,
     //Survey,
     NotFound,
   } from 'containers';
@@ -58,6 +59,7 @@ export default (store) => {
       <Route path="registrieren" component={Register}/>
       <Route path="kontakt" component={Kontakt}/>
       <Route path="community" component={Community}/>
+      <Route path="meinprofil" component={MyProfile}/>
       { /*<Route path="survey" component={Survey}/>
         <Route path="widgets" component={Widgets}/> */ }
       <Route path="activation" component={Activation}/>

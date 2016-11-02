@@ -12,3 +12,4 @@ export Kontakt from './Kontakt/Kontakt';
 export Community from './Community/Community';
 export Activation from './Activation/Activation';
 export Forgot from './Forgot/Forgot';
+export Forgot from './MyProfile/MyProfile';
