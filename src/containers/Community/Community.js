@@ -159,11 +159,11 @@ export default class RichEditorExample extends Component {
         return b.unixtime-a.unixtime
     });*/
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h3>' + entry.titel + '</h3>' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
+      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' + entry.titel + '</h2><hr />' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
     });
 
     return (
-      <div className='container'>
+      <div className='container communityPage'>
         <h1>Community</h1>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
@@ -255,8 +255,8 @@ export default class RichEditorExample extends Component {
  const BLOCK_TYPES = [
    /*{label: 'H1', style: 'header-one'},
    {label: 'H2', style: 'header-two'},
-   {label: 'H3', style: 'header-three'},*/
-   {label: 'Titel', style: 'header-four'},
+   {label: 'H3', style: 'header-four'},*/
+   {label: 'Headline', style: 'header-three'},
    /*{label: 'H5', style: 'header-five'},
    {label: 'H6', style: 'header-six'},*/
    {label: 'Blockquote', style: 'blockquote'},
