@@ -33,7 +33,7 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
-          <div className="avatarRound avatarM01"><div>
+          <div className="avatarRound avatarM01"></div>
         </div>
 
     );
