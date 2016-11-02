@@ -1,8 +1,5 @@
 code,
 pre {
-		color: white;
-		background: none;
-		text-shadow: 0 -.1em .2em black;
 		font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 		text-align: left;
 		white-space: pre;
@@ -25,7 +22,7 @@ pre {
 		background: hsl(30, 20%, 25%);
 	}
 
-	/* Code blocks */
+	/* Code blocks
 	pre {
 		padding: 1em;
 		margin: .5em 0;
@@ -33,7 +30,7 @@ pre {
 		border: .3em solid hsl(30, 20%, 40%);
 		border-radius: .5em;
 		box-shadow: 1px 1px .5em black inset;
-	}
+	*/
 
 	/* Inline code */
 	:not(pre) > code {
@@ -120,8 +117,11 @@ pre {
 	    line-height: 1.42857;
 	    word-break: break-all;
 	    word-wrap: break-word;
-	    color: #333;
-	    background-color: #f5f5f5;
+	    color: #FFF;
+	    background-color: #000;
+	}
+	code br {
+		display: none;
 	}
 
 @media print {
