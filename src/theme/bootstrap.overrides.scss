@@ -77,11 +77,23 @@
   color: #d52b1e;
 }
 
-
+/* Community Title Fix */
 .community-title-form .form-group{
   width: 100% !important;
 }
 .titleStyle{
   width: 100% !important;
   margin-bottom: 10px !important;
+}
+
+/* Avatar */
+.avatarRound {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+.avatarM01{
+  background-image: '../containers/MyProfile/img/m/avatar_m_01.jpg';
 }

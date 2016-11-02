@@ -33,26 +33,7 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
-          {formStatus === 2 ?
-            <Well>
-              <h3>Erfolgreich eingeloggt</h3>
-              <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
-            </Well>
-            : null
-          }
-          {formStatus === 1 ?
-              <Well>
-                <h3>Fehler beim Login</h3>
-                <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
-              </Well>
-              : null
-          }
-          {formStatus < 2 ?
-          <div id="myprofile-form">
-            <p>adsasadsasd</p>
-          </div>
-          : null
-        }
+          <div className="avatarRound avatarM01"><<div>
         </div>
 
     );

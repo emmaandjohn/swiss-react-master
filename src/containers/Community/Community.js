@@ -158,7 +158,7 @@ export default class RichEditorExample extends Component {
   }
 
   render() {
-    const {formStatus, formMsg, draftjsStatus, draftjsMsg, editorState} = this.state;
+    const {formStatus, formMsg, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
     //const styles = require('./Community.scss');
 
@@ -185,11 +185,11 @@ export default class RichEditorExample extends Component {
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
         <div>
         {formStatus === 2 ?
-          <Alert bsStyle="success" dangerouslySetInnerHTML={{__html: formMsg}}></Alert>
+          <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
         : null
         }
         {formStatus === 1 ?
-          <Alert bsStyle="danger" dangerouslySetInnerHTML={{__html: formMsg}}></Alert>
+          <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
         : null
         }
         <div id="community-title-form">
