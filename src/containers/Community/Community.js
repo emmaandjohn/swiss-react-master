@@ -119,21 +119,16 @@ export default class RichEditorExample extends Component {
   }
 
   saveDataToDatabase() {
+    const titelData = this.refs.titel.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userEmail = cookie.load('ck_email');
-    console.log(markupData);
 
     superagent
     .post('/community')
-    .send({ loadStatus: 0, markupData: markupData, userEmail: userEmail })
+    .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userEmail: userEmail })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        /* Still needed this 2 lines?
-        this.setState({draftjsStatus: 1});
-        this.setState({draftjsMsg: res.body.blogEntry}); */
-        console.log("2: "+JSON.stringify(res.body.blogArticles));
-
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
         /* Clear editor state */
@@ -164,7 +159,7 @@ export default class RichEditorExample extends Component {
         return b.unixtime-a.unixtime
     });*/
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;">' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
+      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h3>' + entry.titel + '</h3>' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
     });
 
     return (
@@ -173,6 +168,13 @@ export default class RichEditorExample extends Component {
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
         <div>
+        <div id="community-title-form">
+          <form className="community-title-form form-inline">
+            <div className="form-group">
+              <input type="text" ref="titel" name="titel" id="titel" placeholder="Titel" className="form-control"/>
+            </div>
+          </form>
+        </div>
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
@@ -289,8 +291,8 @@ export default class RichEditorExample extends Component {
  var INLINE_STYLES = [
    {label: 'Bold', style: 'BOLD'},
    {label: 'Italic', style: 'ITALIC'},
-   {label: 'Underline', style: 'UNDERLINE'},
-   {label: 'Monospace', style: 'CODE'},
+   {label: 'Underline', style: 'UNDERLINE'}
+   /*{label: 'Monospace', style: 'CODE'},*/
  ];
 
  const InlineStyleControls = (props) => {

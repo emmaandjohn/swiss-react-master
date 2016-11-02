@@ -48,6 +48,7 @@ var UserModel = mongoose.model('User', userSchema);
 
 var blogSchema = new mongoose.Schema({
   userEmail: String,
+  titel: String,
   markup: String,
   timeFormatted: String,
   unixtime: String
@@ -194,6 +195,7 @@ app.post('/activation', function(req, res) {
 app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
     var markupData = req.body.markupData;
+    var titelData = req.body.titelData;
     var userEmail = req.body.userEmail;
 
     if(loadStatus === 1 || loadStatus === 2){ /* 1 = Community Initial - 2 = Home Initial*/
@@ -218,6 +220,7 @@ app.post('/community', function(req, res) {
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
+        titel: titelData,
         markup: markupData,
         timeFormatted: humanDate,
         unixtime: unixDateNow

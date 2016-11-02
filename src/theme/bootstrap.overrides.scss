@@ -43,10 +43,11 @@
 }
 
 .RichEditor-editor .RichEditor-blockquote {
-  border-left: 5px solid #eee;
+  border-left: 5px solid #ccc;
   color: #666;
-  font-family: 'Hoefler Text', 'Georgia', serif;
+  font-family: 'Hoefler Text','Georgia',serif;
   font-style: italic;
+  background-color: #efefef;
   margin: 16px 0;
   padding: 10px 20px;
 }
@@ -54,7 +55,7 @@
 .RichEditor-editor .public-DraftStyleDefault-pre {
   background-color: rgba(0, 0, 0, 0.05);
   font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .RichEditor-controls {
