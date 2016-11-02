@@ -25,7 +25,7 @@ pre {
 		background: hsl(30, 20%, 25%);
 	}
 
-	/* Code blocks
+	/* Code blocks */
 	pre {
 		padding: 1em;
 		margin: .5em 0;
@@ -34,7 +34,6 @@ pre {
 		border-radius: .5em;
 		box-shadow: 1px 1px .5em black inset;
 	}
-	*/
 
 	/* Inline code */
 	:not(pre) > code {
