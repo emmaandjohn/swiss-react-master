@@ -1,4 +1,14 @@
 .myprofilePage {
+  .avatarRound {
+      width: 60px;
+      height: 60px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+  }
+  .avatarM01{
+    background: url('../MyProfile/img/m/avatar_m_01.jpg') no-repeat center center;
+  }
   h3{
     margin-top: 0px;
   }
