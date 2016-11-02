@@ -220,6 +220,7 @@ export default class RichEditorExample extends Component {
  function getBlockStyle(block) {
    switch (block.getType()) {
      case 'blockquote': return 'RichEditor-blockquote';
+     case 'code-block': return 'language-css';
      default: return null;
    }
  }
