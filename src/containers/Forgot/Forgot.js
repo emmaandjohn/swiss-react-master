@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
+import Alert from 'react-bootstrap/lib/Alert';
 import cookie from 'react-cookie';
 
 /* Import here only for Dispatchers */
@@ -52,18 +53,12 @@ export default class Forgot extends Component {
           <h1>Passwort vergessen</h1>
           <Helmet title="Passwort vergessen"/>
           {formStatus === 2 ?
-            <Well>
-              <h3>Passwort erfolgreich verschickt</h3>
-              <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
-            </Well>
+            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
             : null
           }
           {formStatus === 1 ?
-              <Well>
-                <h3>Fehler</h3>
-                <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
-              </Well>
-              : null
+            <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
+            : null
           }
           {formStatus < 2 ?
           <div id="login-form">

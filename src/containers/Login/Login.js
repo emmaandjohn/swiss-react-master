@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
 import Well from 'react-bootstrap/lib/Well';
+import Alert from 'react-bootstrap/lib/Alert';
 import Button from 'react-bootstrap/lib/Button';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
@@ -63,18 +64,12 @@ export default class Login extends Component {
           <h1>Login</h1>
           <Helmet title="Login"/>
           {formStatus === 2 ?
-            <Well>
-              <h3>Erfolgreich eingeloggt</h3>
-              <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
-            </Well>
+            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
             : null
           }
           {formStatus === 1 ?
-              <Well>
-                <h3>Fehler beim Login</h3>
-                <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
-              </Well>
-              : null
+            <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
+            : null
           }
           {formStatus < 2 ?
           <div id="login-form">
