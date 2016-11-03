@@ -72,7 +72,7 @@ export default class App extends Component {
         this.props.pushState('/loginSuccess');
       } else if (this.props.user && !nextProps.user) {
         // logout
-        this.props.pushState('/');
+        this.props.dispatch(push('/'));
       }
     }
 
@@ -92,16 +92,16 @@ export default class App extends Component {
 
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
-      alert("Erfolgreich ausgeloggt!");
+      this.props.pushState('/');
     }
 
     onNavbarToggle = () => {
       this.setState({ navExpanded: ! this.state.navExpanded });
     }
-    handleLogout = (event) => {
+    /*handleLogout = (event) => {
       event.preventDefault();
       this.props.logout();
-    }
+    }*/
 
     render() {
       const styles = require('./App.scss');
