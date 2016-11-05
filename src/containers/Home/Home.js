@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Well from 'react-bootstrap/lib/Well';
+import { Grid, Row, Col, Well } from 'react-bootstrap/lib';
 import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
@@ -63,6 +63,12 @@ export default class Home extends Component {
 
         <div className="container">
           <h3>Neuste Blogeinträge</h3>
+          <Grid>
+            <Row className="show-grid">
+              <Col xs={12} md={6}><code>&lt;{'Col xs={12} md={8}'} /&gt;</code></Col>
+              <Col xs={12} md={6}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
+            </Row>
+          </Grid>
           <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
