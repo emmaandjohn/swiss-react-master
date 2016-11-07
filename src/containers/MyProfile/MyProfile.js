@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
+import { Grid, Row, Col, Well, Label, Button } from 'react-bootstrap/lib';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
-import Well from 'react-bootstrap/lib/Well';
-import Button from 'react-bootstrap/lib/Button';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
 
@@ -46,7 +45,6 @@ export default class MyProfile extends Component {
           </Grid>
           <div className={styles.avatarRound + ' ' + styles.avatarM01}></div>
         </div>
-
     );
   }
 
