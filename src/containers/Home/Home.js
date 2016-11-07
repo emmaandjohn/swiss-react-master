@@ -63,7 +63,6 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3>Neuste Blogeinträge</h3>
-          <Grid>
             <Row className="show-grid">
               <Col xs={1}>{'Avatar'}</Col>
               <Col xs={2}><Label bsStyle="primary">Project</Label></Col>
@@ -71,8 +70,7 @@ export default class Home extends Component {
               <Col xs={3}><Label>ES6</Label> <Label>ReactJs</Label> <Label>Superagent</Label></Col>
               <Col xs={2}><div className={styles.dateStyle}>{'12.12.2012 - 12:12'}</div></Col>
             </Row>
-          </Grid>
-          <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
+            <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
     );

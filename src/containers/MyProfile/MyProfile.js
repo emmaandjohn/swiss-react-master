@@ -38,6 +38,11 @@ export default class MyProfile extends Component {
     const { formStatus, formMsg, showModal } = this.state;
     const styles = require('./MyProfile.scss');
 
+    let avatarContentDef = '';
+    for(let i=0; i<26; i++){
+        avatarContentDef += '<Col xs={1}>aaaa</Col>';
+    }
+
     return (
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
@@ -60,10 +65,9 @@ export default class MyProfile extends Component {
                 <Modal.Title>Avatar auswählen</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <h4>Text in a modal</h4>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                <h4>Popover in a modal</h4>
-                <p>there is a here</p>
+                <Row className="show-grid">
+                  <div dangerouslySetInnerHTML={{__html: avatarContentDef}}></div>
+                </Row>
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={this.modalClose}>Schliessen</Button>
