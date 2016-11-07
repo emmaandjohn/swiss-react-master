@@ -43,25 +43,25 @@ export default class Login extends Component {
           cookie.save('ck_userLoggedIn', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_pw', inputPassword, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_uuid', res.body.uuid.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_uuid', res.body.userData.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_activation', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          /*
-          cookie.save('ck_birthday', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_avatar', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_nickname', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_job', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_company', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_description', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_membersince', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_kanton', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
-          cookie.save('ck_social_fb', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_social_github', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_social_twitter', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_social_linkedin', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_social_xing', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          cookie.save('ck_social_website', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          */
+          cookie.save('ck_birthday', res.body.userData.birthday, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_avatar', res.body.userData.avatar, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_nickname', res.body.userData.nickname, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_job', res.body.userData.job, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_company', res.body.userData.company, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_description', res.body.userData.description, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_membersince', res.body.userData.membersince, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_kanton', res.body.userData.kanton, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+          cookie.save('ck_social_fb', res.body.userData.socialFb, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_github', res.body.userData.socialGithub, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_twitter', res.body.userData.socialTwitter, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_linkedin', res.body.userData.socialLinkedin, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
         } else {
           this.setState({formStatus: 1});
           this.setState({formMsg: 'Fehler: Der Username oder das Passwort stimmen nicht überein (oder du hast dein Account noch nicht aktiviert)!'});

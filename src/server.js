@@ -42,7 +42,20 @@ var userSchema = new mongoose.Schema({
   uuid: String,
   email: String,
   password: String,
-  activation: Boolean
+  activation: Boolean,
+  birthday: String,
+  avatar: String,
+  nickname: String,
+  job: String,
+  company: String,
+  description: String,
+  membersince: String,
+  kanton: String,
+  socialFb: String,
+  socialGithub: String,
+  socialTwitter: String,
+  socialXing: String,
+  socialWebsite: String
 });
 var UserModel = mongoose.model('User', userSchema);
 
@@ -126,9 +139,7 @@ app.post('/login', function(req, res) {
             res.json(error);
         }
         else if(result !== null){
-            console.log("asdadsdsadasdsa ZZZZZZZZZ");
-            console.log(result);
-            res.json({ status: 1, uuid: result });
+            res.json({ status: 1, userData: result });
         }
         else{
             res.json({ status: 0 });

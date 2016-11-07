@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
-import { Grid, Row, Col, Well, Label, Button, Modal } from 'react-bootstrap/lib';
+import { Grid, Row, Col, Well, Label, Button, Modal, Alert } from 'react-bootstrap/lib';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
 import cookie from 'react-cookie';
@@ -44,6 +44,7 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
+        {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Grid>
             <Row className="show-grid">
               <Col xs={12} md={6}>
@@ -71,6 +72,9 @@ export default class MyProfile extends Component {
               <Button onClick={this.modalClose}>Schliessen</Button>
             </Modal.Footer>
           </Modal>
+          :
+          <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
+          }
         </div>
     );
   }
