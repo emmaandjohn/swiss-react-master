@@ -38,7 +38,7 @@ export default class MyProfile extends Component {
     const styles = require('./MyProfile.scss');
 
     return (
-        <div className={styles.myprofilePage}>
+        <div className={styles.myprofilePage} + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
           <Grid>
