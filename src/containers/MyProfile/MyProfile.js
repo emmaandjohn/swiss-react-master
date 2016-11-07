@@ -61,8 +61,8 @@ export default class MyProfile extends Component {
               </Modal.Header>
               <Modal.Body>
                   <Row className="show-grid">
-                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(1)} className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(2)}className={styles.avatarM02 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.chooseAvatar(1)} className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                    /*<Col xs={3} sm={2}><div onClick={this.chooseAvatar(2)}className={styles.avatarM02 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={3} sm={2}><div onClick={this.chooseAvatar(3)}className={styles.avatarM03 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={3} sm={2}><div onClick={this.chooseAvatar(4)}className={styles.avatarM04 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={3} sm={2}><div onClick={this.chooseAvatar(5)}className={styles.avatarM05 + ' ' + styles.avatarRound}></div></Col>
@@ -86,6 +86,7 @@ export default class MyProfile extends Component {
                     <Col xs={3} sm={2}><div onClick={this.chooseAvatar(23)}className={styles.avatarM23 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={3} sm={2}><div onClick={this.chooseAvatar(24)}className={styles.avatarM24 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={3} sm={2}><div onClick={this.chooseAvatar(25)}className={styles.avatarM25 + ' ' + styles.avatarRound}></div></Col>
+                    */
                   </Row>
               </Modal.Body>
               <Modal.Footer>
