@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Grid, Row, Col, Well } from 'react-bootstrap/lib';
+import { Grid, Row, Col, Well, Label } from 'react-bootstrap/lib';
 import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
@@ -64,9 +64,12 @@ export default class Home extends Component {
         <div className="container">
           <h3>Neuste Blogeinträge</h3>
           <Grid>
-            <Row className="show-grid" style="border: 1px solid red">
-              <Col xs={12} md={6} style="border: 1px solid red"><code>&lt;{'Col xs={12} md={8}'} /&gt;</code></Col>
-              <Col xs={12} md={6} style="border: 1px solid red"><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
+            <Row className="show-grid">
+              <Col xs={1}>{'Avatar'}</Col>
+              <Col xs={2}><Label bsStyle="primary">Project</Label></Col>
+              <Col xs={4}>{'Titel titel titel titel'}</Col>
+              <Col xs={3}><Label>ES6</Label><Label>ReactJs</Label><Label>Superagent</Label></Col>
+              <Col xs={2}>{'07.11.2016 - 09:37'}</Col>
             </Row>
           </Grid>
           <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
