@@ -33,6 +33,15 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
+          <Grid>
+            <Row className="show-grid">
+              <Col xs={12} md={6}>
+                <Col md={6}>{'Avatar1'}</Col>
+                <Col md={6}>{'Avatar2'}</Col>
+              </Col>
+              <Col xs={12} md={6}>{'Avatar3'}</Col>
+            </Row>
+          </Grid>
           <div className={styles.avatarRound + ' ' + styles.avatarM01}></div>
         </div>
 
