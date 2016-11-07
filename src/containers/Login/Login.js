@@ -45,6 +45,23 @@ export default class Login extends Component {
           cookie.save('ck_pw', inputPassword, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_uuid', res.body.uuid.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_activation', true, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          /*
+          cookie.save('ck_birthday', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_avatar', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_nickname', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_job', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_company', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_description', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_membersince', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_kanton', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+          cookie.save('ck_social_fb', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_github', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_twitter', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_linkedin', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_xing', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_website', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          */
         } else {
           this.setState({formStatus: 1});
           this.setState({formMsg: 'Fehler: Der Username oder das Passwort stimmen nicht überein (oder du hast dein Account noch nicht aktiviert)!'});

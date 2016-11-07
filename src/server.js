@@ -126,6 +126,8 @@ app.post('/login', function(req, res) {
             res.json(error);
         }
         else if(result !== null){
+            console.log("asdadsdsadasdsa ZZZZZZZZZ");
+            console.log(result);
             res.json({ status: 1, uuid: result });
         }
         else{
@@ -255,7 +257,6 @@ app.post('/community', function(req, res) {
       });
     }
 });
-
 
 
 app.use(compression());
