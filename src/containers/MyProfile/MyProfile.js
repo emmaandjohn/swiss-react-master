@@ -44,7 +44,6 @@ export default class MyProfile extends Component {
           <Helmet title="Mein Profil"/>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <div>
-            <Grid>
               <Row className="show-grid">
                 <Col xs={12} md={6}>
                   <Row className="show-grid">
@@ -56,7 +55,6 @@ export default class MyProfile extends Component {
                 </Col>
                 <Col xs={12} md={6}>{'Avatar3'}</Col>
               </Row>
-            </Grid>
             <Modal show={this.state.showModal} onHide={this.modalClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Avatar auswählen</Modal.Title>
