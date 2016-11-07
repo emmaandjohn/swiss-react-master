@@ -61,15 +61,15 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <div className="container">
+        <div>
           <h3>Neuste Blogeinträge</h3>
           <Grid>
             <Row className="show-grid">
               <Col xs={1}>{'Avatar'}</Col>
               <Col xs={2}><Label bsStyle="primary">Project</Label></Col>
               <Col xs={4}>{'Titel titel titel titel'}</Col>
-              <Col xs={3}><Label>ES6</Label><Label>ReactJs</Label><Label>Superagent</Label></Col>
-              <Col xs={2}>{'07.11.2016 - 09:37'}</Col>
+              <Col xs={3}><Label>ES6</Label> <Label>ReactJs</Label> <Label>Superagent</Label></Col>
+              <Col xs={2}><span style="font-size: 10px;font-style: italic;color: grey;">{'07.11.2016 - 09:37'}</span></Col>
             </Row>
           </Grid>
           <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>

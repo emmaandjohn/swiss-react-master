@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
-import Well from 'react-bootstrap/lib/Well';
-import Alert from 'react-bootstrap/lib/Alert';
-import Button from 'react-bootstrap/lib/Button';
+import { Well, Alert, Button } from 'react-bootstrap/lib';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
 
