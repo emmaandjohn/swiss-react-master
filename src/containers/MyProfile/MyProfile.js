@@ -49,9 +49,10 @@ export default class MyProfile extends Component {
               <Col xs={12} md={6}>
                 <Row className="show-grid">
                   <Col xs={2}>
+                    Avatar
                   </Col>
                   <Col xs={9}>{'Nichname XY'}</Col>
-                  <Col xs={1}><Button onClick={this.editProfile}><i className="fa fa-sign-in"/></Button></Col>
+                  <Col xs={1}><Button onClick={this.editProfile}><i className="fa fa-pencil"/></Button></Col>
                 </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>
