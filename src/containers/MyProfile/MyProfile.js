@@ -48,14 +48,9 @@ export default class MyProfile extends Component {
             <Row className="show-grid">
               <Col xs={12} md={6}>
                 <Row className="show-grid">
-                  <Col xs={2}>
-                    /*<Link onClick={this.modalOpen}>
-                      {'Nichname XYyyy'}
-                    </Link>*/
-                    <div className={styles.avatarRound + ' ' + styles.avatarM01}></div>
-                  </Col>
+                  <Col xs={2}></Col>
                   <Col xs={9}>{'Nichname XY'}</Col>
-                  <Col xs={1}>/*<Link onClick={this.editProfile}><i className="fa fa-pencil-square-o" aria-hidden="true" /></Link>*/</Col>
+                  <Col xs={1}></Col>
                 </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>
