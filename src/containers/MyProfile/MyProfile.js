@@ -22,8 +22,8 @@ export default class MyProfile extends Component {
     showModal: false
   }
 
-  editProfile = () => {
-    console.log("Edit dude!");
+  chooseAvatar = (n) => {
+    console.log("Edit dude!" + n);
   }
 
   modalOpen = () => {
@@ -60,35 +60,33 @@ export default class MyProfile extends Component {
                 <Modal.Title>Avatar auswählen</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Grid>
                   <Row className="show-grid">
-                    <Col xs={2}><div onClick={this.editProfile} className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM02 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM03 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM04 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM05 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM06 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM07 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM08 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM09 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM10 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM11 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM12 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM13 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM14 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM15 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM16 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM17 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM18 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM19 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM20 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM21 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM22 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM23 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM24 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={2}><div className={styles.avatarM25 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(1)} className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(2)}className={styles.avatarM02 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(3)}className={styles.avatarM03 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(4)}className={styles.avatarM04 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(5)}className={styles.avatarM05 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(6)}className={styles.avatarM06 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(7)}className={styles.avatarM07 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(8)}className={styles.avatarM08 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(9)}className={styles.avatarM09 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(10)}className={styles.avatarM10 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(11)}className={styles.avatarM11 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(12)}className={styles.avatarM12 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(13)}className={styles.avatarM13 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(14)}className={styles.avatarM14 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(15)}className={styles.avatarM15 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(16)}className={styles.avatarM16 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(17)}className={styles.avatarM17 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(18)}className={styles.avatarM18 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(19)}className={styles.avatarM19 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(20)}className={styles.avatarM20 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(21)}className={styles.avatarM21 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(22)}className={styles.avatarM22 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(23)}className={styles.avatarM23 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(24)}className={styles.avatarM24 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={this.chooseAvatar(25)}className={styles.avatarM25 + ' ' + styles.avatarRound}></div></Col>
                   </Row>
-                </Grid>
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={this.modalClose}>Schliessen</Button>
