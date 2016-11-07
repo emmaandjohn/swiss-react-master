@@ -36,8 +36,10 @@ export default class MyProfile extends Component {
           <Grid>
             <Row className="show-grid">
               <Col xs={12} md={6}>
-                <Col md={6}>{'Avatar1'}</Col>
-                <Col md={6}>{'Avatar2'}</Col>
+                <Row className="show-grid">
+                  <Col md={6}>{'Avatar1'}</Col>
+                  <Col md={6}>{'Avatar2'}</Col>
+                </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>
             </Row>
