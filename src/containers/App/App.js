@@ -84,15 +84,10 @@ export default class App extends Component {
       this.onNavItemClick();
       cookie.save('ck_userLoggedIn', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
       this.setState({ navExpanded: false });
-      /* Update UserState */
-      const ck_activation2 = cookie.load('ck_activation');
-      const ck_email2 = cookie.load('ck_email');
-      const ck_pw2 = cookie.load('ck_pw');
-      const ck_uuid2 = cookie.load('ck_uuid');
 
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
-      this.props.pushState('/');
+      this.props.dispatch(push('/'));
     }
 
     onNavbarToggle = () => {
