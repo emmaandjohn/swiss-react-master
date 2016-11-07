@@ -69,7 +69,7 @@ export default class Home extends Component {
               <Col xs={2}><Label bsStyle="primary">Project</Label></Col>
               <Col xs={4}>{'Titel titel titel titel'}</Col>
               <Col xs={3}><Label>ES6</Label> <Label>ReactJs</Label> <Label>Superagent</Label></Col>
-              <Col xs={2}><div style="font-size: 10px;font-style: italic;color: grey;">{'07.11.2016 - 09:37'}</div></Col>
+              <Col xs={2} componentClass="dateStyle">{'12.12.2012 - 12:12'}</Col>
             </Row>
           </Grid>
           <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>

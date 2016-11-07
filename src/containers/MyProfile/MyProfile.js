@@ -24,6 +24,11 @@ export default class MyProfile extends Component {
     showModal: false
   }
 
+  editProfile = () => {
+    alert("Edit dude!");
+  }
+
+
   modalOpen = () => {
     this.setState({ showModal: true });
   }
@@ -45,8 +50,13 @@ export default class MyProfile extends Component {
             <Row className="show-grid">
               <Col xs={12} md={6}>
                 <Row className="show-grid">
-                  <Col md={6}><div className={styles.avatarRound + ' ' + styles.avatarM01}></div></Col>
-                  <Col md={6}><Button bsStyle="link" onClick={this.modalOpen}>Avatar ändern</Button></Col>
+                  <Col xs={2}>
+                    <Link onClick={this.modalOpen}>
+                      <div className={styles.avatarRound + ' ' + styles.avatarM01}></div>
+                    </Link>
+                  </Col>
+                  <Col xs={9}><h4>Nichname XY</h4></Col>
+                  <Col xs={1}><Link onClick={this.editProfile}><i className="fa fa-pencil-square-o" aria-hidden="true" /></Link></Col>
                 </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>
