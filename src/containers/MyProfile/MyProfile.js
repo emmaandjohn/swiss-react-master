@@ -53,7 +53,7 @@ export default class MyProfile extends Component {
                 <Col xs={12} md={6}>
                   <Row className="show-grid">
                     <Col xs={2}>
-                      Avatar
+                      <Link onClick={this.modalOpen}>Avatar</Link>
                     </Col>
                     <Col xs={10}>{'Nichname XY'} <Button onClick={this.editProfile}><i className="fa fa-pencil"/></Button></Col>
                   </Row>
