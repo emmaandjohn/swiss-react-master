@@ -38,11 +38,6 @@ export default class MyProfile extends Component {
     const { formStatus, formMsg, showModal } = this.state;
     const styles = require('./MyProfile.scss');
 
-    let avatarContentDef = '';
-    for(let i=0; i<26; i++){
-        avatarContentDef += '<Col xs={1}>aaaa</Col>';
-    }
-
     return (
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
@@ -53,7 +48,7 @@ export default class MyProfile extends Component {
                 <Col xs={12} md={6}>
                   <Row className="show-grid">
                     <Col xs={2}>
-                      Avatar
+                      <div className={styles.avatarM01 + ' ' + styles.avatarRound}></div>
                     </Col>
                     <Col xs={10}>{'Nichname XY'} <Button onClick={this.modalOpen}><i className="fa fa-pencil"/></Button></Col>
                   </Row>
@@ -66,7 +61,24 @@ export default class MyProfile extends Component {
               </Modal.Header>
               <Modal.Body>
                 <Row className="show-grid">
-                  <div dangerouslySetInnerHTML={{__html: avatarContentDef}}></div>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
+                  <Col xs={1}><div className={styles.avatarM01 + ' ' + styles.avatarRound}></div></Col>
                 </Row>
               </Modal.Body>
               <Modal.Footer>
