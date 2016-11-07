@@ -44,34 +44,36 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
-        {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-          <Grid>
-            <Row className="show-grid">
-              <Col xs={12} md={6}>
-                <Row className="show-grid">
-                  <Col xs={2}>
-                    Avatar
-                  </Col>
-                  <Col xs={10}>{'Nichname XY'} <Button onClick={this.editProfile}><i className="fa fa-pencil"/></Button></Col>
-                </Row>
-              </Col>
-              <Col xs={12} md={6}>{'Avatar3'}</Col>
-            </Row>
-          </Grid>
-          <Modal show={this.state.showModal} onHide={this.modalClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Avatar auswählen</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <h4>Text in a modal</h4>
-              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-              <h4>Popover in a modal</h4>
-              <p>there is a here</p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.modalClose}>Schliessen</Button>
-            </Modal.Footer>
-          </Modal>
+          {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
+          <div>
+            <Grid>
+              <Row className="show-grid">
+                <Col xs={12} md={6}>
+                  <Row className="show-grid">
+                    <Col xs={2}>
+                      Avatar
+                    </Col>
+                    <Col xs={10}>{'Nichname XY'} <Button onClick={this.editProfile}><i className="fa fa-pencil"/></Button></Col>
+                  </Row>
+                </Col>
+                <Col xs={12} md={6}>{'Avatar3'}</Col>
+              </Row>
+            </Grid>
+            <Modal show={this.state.showModal} onHide={this.modalClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Avatar auswählen</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <h4>Text in a modal</h4>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                <h4>Popover in a modal</h4>
+                <p>there is a here</p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.modalClose}>Schliessen</Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
           :
           <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
           }
