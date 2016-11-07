@@ -74,6 +74,8 @@ export default class MyProfile extends Component {
                     <Col xs={1}><div className={styles.avatarM10 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={1}><div className={styles.avatarM11 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={1}><div className={styles.avatarM12 + ' ' + styles.avatarRound}></div></Col>
+                  </Row>
+                  <Row className="show-grid">
                     <Col xs={1}><div className={styles.avatarM13 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={1}><div className={styles.avatarM14 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={1}><div className={styles.avatarM15 + ' ' + styles.avatarRound}></div></Col>
@@ -86,6 +88,8 @@ export default class MyProfile extends Component {
                     <Col xs={1}><div className={styles.avatarM22 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={1}><div className={styles.avatarM23 + ' ' + styles.avatarRound}></div></Col>
                     <Col xs={1}><div className={styles.avatarM24 + ' ' + styles.avatarRound}></div></Col>
+                  </Row>
+                  <Row className="show-grid">
                     <Col xs={1}><div className={styles.avatarM25 + ' ' + styles.avatarRound}></div></Col>
                   </Row>
                 </Grid>
