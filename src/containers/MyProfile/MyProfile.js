@@ -51,7 +51,7 @@ export default class MyProfile extends Component {
                   <Col xs={2}>
                   </Col>
                   <Col xs={9}>{'Nichname XY'}</Col>
-                  <Col xs={1}><Link onClick={this.editProfile}><i className="fa fa-pencil-square-o"/></Link></Col>
+                  <Col xs={1}><Button onClick={this.editProfile}><i className="fa fa-sign-in"/></Button></Col>
                 </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>
