@@ -37,7 +37,7 @@ export default class MyProfile extends Component {
 
   render() {
     const { getUserState } = this.props;
-    const { formStatus, formMsg } = this.state;
+    const { formStatus, formMsg, showModal } = this.state;
     const styles = require('./MyProfile.scss');
 
     return (
@@ -49,13 +49,13 @@ export default class MyProfile extends Component {
               <Col xs={12} md={6}>
                 <Row className="show-grid">
                   <Col xs={2}>
-                    <Link onClick={this.modalOpen}>
+                    /*<Link onClick={this.modalOpen}>
                       {'Nichname XYyyy'}
-                    </Link>
+                    </Link>*/
                     <div className={styles.avatarRound + ' ' + styles.avatarM01}></div>
                   </Col>
-                  <Col xs={9}><h4>{'Nichname XY'}</h4></Col>
-                  <Col xs={1}><Link onClick={this.editProfile}><i className="fa fa-pencil-square-o" aria-hidden="true" /></Link></Col>
+                  <Col xs={9}>{'Nichname XY'}</Col>
+                  <Col xs={1}>/*<Link onClick={this.editProfile}><i className="fa fa-pencil-square-o" aria-hidden="true" /></Link>*/</Col>
                 </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>

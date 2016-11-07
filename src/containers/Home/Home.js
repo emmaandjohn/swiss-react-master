@@ -46,7 +46,7 @@ export default class Home extends Component {
     });
 
     return (
-      <div className={styles.home + ' container'}>
+      <div className={styles.home}>
         <Helmet title="Home"/>
         <div className={styles.masthead}>
           <div className="container">
@@ -61,7 +61,7 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <div>
+        <div className='container'>
           <h3>Neuste Blogeinträge</h3>
           <Grid>
             <Row className="show-grid">
