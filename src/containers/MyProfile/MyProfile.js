@@ -55,14 +55,13 @@ export default class MyProfile extends Component {
                       <div className={styles.avatarRound + ' ' + styles.avatarM01}></div>
                     </Link>
                   </Col>
-                  <Col xs={9}><h4>Nichname XY</h4></Col>
-                  <Col xs={1}><Link onClick={this.editProfile}><i className="fa fa-pencil-square-o" aria-hidden="true" /></Link></Col>
+                  <Col xs={9}><h4>{'Nichname XY'}</h4></Col>
+                  <Col xs={1}></Col>
                 </Row>
               </Col>
               <Col xs={12} md={6}>{'Avatar3'}</Col>
             </Row>
           </Grid>
-
           <Modal show={this.state.showModal} onHide={this.modalClose}>
             <Modal.Header closeButton>
               <Modal.Title>Avatar auswählen</Modal.Title>
