@@ -78,12 +78,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 /* **** Get POST Form data from Registration */
 app.post('/registrieren', function(req, res) {
-
-    function reverse_a_number(n){
-      n = n + "";
-      return n.split("").reverse().join("");
-    }
-
     var email = req.body.email;
     var password = req.body.password;
 
@@ -97,7 +91,8 @@ app.post('/registrieren', function(req, res) {
     var uuid = uniqueId+Math.random();
     uuid = uuid.replace(/\D/g,'');
     uuid = uuid.substring(0,15));
-    uuid = reverse_a_number(uuid);
+    uuid = uuid + "";
+    uuid = uuid.split("").reverse().join("");
 
     var UserData = new UserModel({
       uuid: uuid,
