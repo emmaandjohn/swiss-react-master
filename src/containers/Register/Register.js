@@ -42,7 +42,7 @@ export default class Register extends Component {
           if (res.body.status === 1) {
             this.setState({formStatus: 2});
             this.setState({formMsg: 'Herzlich willkommen bei der Swiss React Community! Um deinen Account zu aktivieren, klicke bitte auf den Aktivierungslink in dem Bestätigungsmail welches dir automatisch an <strong>' + inputEmail + '</strong> gesendet wurde!'});
-            let convertedUuid = ((res.body.uuid).toString()));
+            let convertedUuid = ((res.body.uuid).toString());
             console.log("res.body.uuid: " + res.body.uuid + ' ZZZ ' + convertedUuid);
             this.props.dispatch(registerNewUser(true, inputEmail, inputPassword, convertedUuid));
 
