@@ -88,11 +88,11 @@ app.post('/registrieren', function(req, res) {
          dateObject.getDate() + '' +
          dateObject.getTime();
 
-    var uuid = uniqueId+Math.random();
-    uuid = uuid.replace(/\D/g,'');
+    var uuid = uniqueId+Math.random()+"s";
+    /*uuid = uuid.replace(/\D/g,'');
     uuid = uuid.substring(0,15);
     uuid = uuid + "";
-    uuid = uuid.split("").reverse().join("");
+    uuid = uuid.split("").reverse().join("");*/
 
     var UserData = new UserModel({
       uuid: uuid,
