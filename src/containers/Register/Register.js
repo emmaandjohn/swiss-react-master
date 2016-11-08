@@ -47,8 +47,11 @@ export default class Register extends Component {
 
             cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
             cookie.save('ck_pw', inputPassword, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-            cookie.save('ck_uuid', String(res.body.uuid), { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+            cookie.save('ck_uuid', res.body.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
             cookie.save('ck_activation', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+            let uuuid = cookie.load('ck_uuid');
+            console.log(cookie.load('ck_uuid') + " TTT " + uuuid);
 
           } else {
             this.setState({formStatus: 1});
