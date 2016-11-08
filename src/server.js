@@ -281,6 +281,7 @@ app.post('/updateUserProfile', function(req, res) {
     var query = {"email": getEmail, "uuid": getUuid};
     var update = {};
     update[getField] = newValue;
+    console.log(update + JSON.stringify(update));
     var options = {new: true};
     UserModel.findOneAndUpdate(query, update, options, function(err, result) {
       console.log("2: "+result);
