@@ -215,7 +215,7 @@ app.post('/activation', function(req, res) {
         res.json({ status: 0 });
       }
       else if(result !== null){
-          res.json({ status: 1 });
+          res.json({ status: 1, membersince: humanDate });
       }
       else {
         res.json({ status: 0 });

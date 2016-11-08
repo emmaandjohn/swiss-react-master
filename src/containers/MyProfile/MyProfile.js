@@ -40,7 +40,6 @@ export default class MyProfile extends Component {
     .end((error, res) => {
       if (res.body.status === 1) {
         console.log("db success: "+ res + JSON.stringify(res));
-        this.props.dispatch(updateUser(whichFieldDef, newValueDef));
 
         cookie.save('ck_pw', res.body.userData.password, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_birthday', res.body.userData.birthday, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
@@ -58,6 +57,8 @@ export default class MyProfile extends Component {
         cookie.save('ck_social_linkedin', res.body.userData.socialLinkedin, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+        this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
 
       } else {
 
@@ -82,11 +83,12 @@ export default class MyProfile extends Component {
     const { formStatus, formMsg, showModalMale, showModalFemale } = this.state;
     const styles = require('./MyProfile.scss');
 
-    console.log("as: "+updateUserState.avatar);
+    console.log("state.avatar: "+updateUserState.avatar+", ck.load.avatar: "+cookie.load('ck_avatar'));
 
-    let avatarClass = styles.avatarM01;
+    let avatarClass = styles.avatar+cookie.load('ck_avatar');
     if(updateUserState.avatar){
-      avatarClass = styles.avatarM02;
+      console.log("yep change: "+updateUserState.avatar);
+      avatarClass = styles.avatar+updateUserState.avatar;
     }
 
     return (
