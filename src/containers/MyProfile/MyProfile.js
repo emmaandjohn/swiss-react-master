@@ -92,11 +92,11 @@ export default class MyProfile extends Component {
 
     return (
         <div className={styles.myprofilePage + ' container'}>
+          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
           <div className="preload-images"></div>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               <Row className="show-grid">
                 <Col xs={12} md={6}>
                   <Row className="show-grid">
@@ -184,10 +184,10 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
-          </Loader>
           :
           <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
           }
+          </Loader>
         </div>
     );
   }
