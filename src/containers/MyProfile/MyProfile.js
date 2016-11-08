@@ -30,6 +30,7 @@ export default class MyProfile extends Component {
     const updatersUuidDef = cookie.load('ck_uuid');
     const whichFieldDef = whichField;
     const newValueDef = newValue;
+    console.log(cookie.load('ck_uuid') + ' GGG ' + updatersUuidDef);
     console.log("updateUserProfile: "+ updatersEmailDef+updatersUuidDef+whichFieldDef+newValueDef)
 
     superagent
