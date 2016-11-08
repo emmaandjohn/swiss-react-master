@@ -7,12 +7,10 @@ import cookie from 'react-cookie';
 import { Link } from 'react-router';
 
 /* Import here only for Dispatchers */
-import { getUser } from '../../redux/actions/getUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
 @connect((store) => {
   return {
-    getUserState: store.getUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
   };
 })
@@ -70,7 +68,6 @@ export default class Login extends Component {
   }
 
   render() {
-    const { getUserState } = this.props;
     const { formStatus, formMsg } = this.state;
     const styles = require('./Login.scss');
 

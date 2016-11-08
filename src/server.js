@@ -270,6 +270,31 @@ app.post('/community', function(req, res) {
 });
 
 
+/* **** Activation User */
+app.post('/updateUserProfile', function(req, res) {
+    var getField = req.body.field;
+    var getEmail = req.body.email;
+    var getUuid = req.body.uuid;
+    var newValue = req.body.newValue;
+
+    var query = {"email": getEmail, "uuid": getUuid};
+    var update = {[getField]: newValue};
+    var options = {new: true};
+    UserModel.findOneAndUpdate(query, update, options, function(err, result) {
+      if (err) {
+        console.log('activation: got an error');
+        res.json({ status: 0 });
+      }
+      else if(result !== null){
+          res.json({ status: 1, userData: result });
+      }
+      else {
+        res.json({ status: 0 });
+      }
+    });
+});
+
+
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
