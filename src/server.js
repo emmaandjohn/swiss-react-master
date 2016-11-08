@@ -100,7 +100,7 @@ app.post('/registrieren', function(req, res) {
       password: password,
       activation: false,
       birthday: null,
-      avatar: "1",
+      avatar: 1,
       nickname: null,
       job: null,
       company: null,
