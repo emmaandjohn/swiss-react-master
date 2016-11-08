@@ -26,9 +26,14 @@ export default class MyProfile extends Component {
   }
 
   updateUserProfile = (whichField, newValue) => {
+    const updatersEmail = cookie.load('ck_email');
+    const updatersUuid = cookie.load('ck_uuid');
+    const whichField = whichField;
+    const newValue = newValue;
+
     superagent
     .post('/updateUserProfile')
-    .send({ field: whichField, email: cookie.load('ck_email'), uuid: cookie.load('ck_uuid'), newvalue: newValue })
+    .send({ field: whichField, email: updatersEmail, uuid: updatersUuid, newvalue: newValue })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {

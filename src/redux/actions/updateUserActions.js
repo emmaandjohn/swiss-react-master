@@ -1,6 +1,7 @@
 export function updateUser(whichField, newValue){
+  var avatar = '';
   if(whichField === 'avatar'){
-    let avatar = newValue;
+    avatar = newValue;
   }
   return function(dispatch) {
     dispatch({
