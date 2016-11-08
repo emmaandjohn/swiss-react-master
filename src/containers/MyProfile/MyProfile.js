@@ -88,8 +88,7 @@ export default class MyProfile extends Component {
     let objectSelector = 'avatar'+cookie.load('ck_avatar');
     let avatarClass = styles[objectSelector];
     if(updateUserState.avatar){
-      console.log("yep change: "+updateUserState.avatar);
-      let objectSelector = updateUserState.avatar;
+      let objectSelector = 'avatar'+updateUserState.avatar;
       avatarClass = styles[objectSelector];
     }
 
