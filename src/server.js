@@ -90,7 +90,7 @@ app.post('/registrieren', function(req, res) {
 
     var uuid = uniqueId+Math.random();
     uuid = uuid.replace(/\D/g,'');
-    uuid = uuid.substring(0,15));
+    uuid = uuid.substring(0,15);
     uuid = uuid + "";
     uuid = uuid.split("").reverse().join("");
 
