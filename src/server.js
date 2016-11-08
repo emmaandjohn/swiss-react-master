@@ -295,21 +295,17 @@ app.post('/updateUserProfile', function(req, res) {
     var getEmail = req.body.email;
     var getUuid = req.body.uuid;
     var newValue = req.body.newvalue;
-    console.log("1: "+getField, getEmail, getUuid, newValue);
 
     var query = {"email": getEmail, "uuid": getUuid};
     var update = {};
     update[getField] = newValue;
-    console.log(update + JSON.stringify(update));
     var options = {new: true};
     UserModel.findOneAndUpdate(query, update, options, function(err, result) {
-      console.log("2: "+result);
       if (err) {
         console.log('activation: got an error');
         res.json({ status: 0 });
       }
       else if(result !== null){
-          console.log("3: "+ result);
           res.json({ status: 1, userData: result });
       }
       else {
