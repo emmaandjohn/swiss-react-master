@@ -42,17 +42,16 @@ export default class Register extends Component {
           if (res.body.status === 1) {
             this.setState({formStatus: 2});
             this.setState({formMsg: 'Herzlich willkommen bei der Swiss React Community! Um deinen Account zu aktivieren, klicke bitte auf den Aktivierungslink in dem Bestätigungsmail welches dir automatisch an <strong>' + inputEmail + '</strong> gesendet wurde!'});
-            let convertedUuid = ((res.body.uuid).substring(0,13));
-            console.log("res.body.uuid: " + res.body.uuid + ' ZZZ ' + convertedUuid);
-            this.props.dispatch(registerNewUser(true, inputEmail, inputPassword, convertedUuid));
+
+            console.log("res.body.uuid: " + res.body.uuid + ' ZZZ ');
+            this.props.dispatch(registerNewUser(true, inputEmail, inputPassword, res.body.uuid));
 
             cookie.save('ck_email', inputEmail, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
             cookie.save('ck_pw', inputPassword, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-            cookie.save('ck_uuid', convertedUuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+            cookie.save('ck_uuid', res.body.uuid, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
             cookie.save('ck_activation', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
-            let uuuid = cookie.load('ck_uuid');
-            console.log(cookie.load('ck_uuid') + " TTT " + uuuid);
+            console.log(cookie.load('ck_uuid') + " TT");
 
           } else {
             this.setState({formStatus: 1});
