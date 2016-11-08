@@ -89,7 +89,8 @@ app.post('/registrieren', function(req, res) {
          dateObject.getDate() + '' +
          dateObject.getTime();
 
-    var uuid = uniqueId+Math.random();
+    var uuid = uniqueId+Math.random().replace(/\D/g,'');
+    uuid = String(uuid);
 
     var UserData = new UserModel({
       uuid: uuid,
