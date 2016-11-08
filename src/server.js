@@ -95,7 +95,20 @@ app.post('/registrieren', function(req, res) {
       uuid: uuid,
       email: email,
       password: password,
-      activation: false
+      activation: false,
+      birthday: null,
+      avatar: 1,
+      nickname: null,
+      job: null,
+      company: null,
+      description: null,
+      membersince: null,
+      kanton: null,
+      socialFb: null,
+      socialGithub: null,
+      socialTwitter: null,
+      socialXing: null,
+      socialWebsite: null
     });
 
     UserModel.findOne({ email: email }, 'email', function(error, result){
@@ -187,8 +200,11 @@ app.post('/activation', function(req, res) {
     var queryM = req.body.queryM;
     var queryU = req.body.queryU;
 
+    var unixDateNow = Date.now(); // e.g. 1299827226
+    var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
+
     var query = {"email": queryM, "uuid": queryU};
-    var update = {activation: true};
+    var update = {activation: true, membersince: humanDate};
     var options = {new: true};
     UserModel.findOneAndUpdate(query, update, options, function(err, result) {
       if (err) {
@@ -229,7 +245,7 @@ app.post('/community', function(req, res) {
 
     if(loadStatus === 0){
       var unixDateNow = Date.now(); // e.g. 1299827226
-      var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss')
+      var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
       var BlogData = new BlogModel({
         userEmail: userEmail,
