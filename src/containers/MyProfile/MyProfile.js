@@ -26,18 +26,18 @@ export default class MyProfile extends Component {
   }
 
   updateUserProfile = (whichField, newValue) => {
-    const updatersEmail = cookie.load('ck_email');
-    const updatersUuid = cookie.load('ck_uuid');
-    const whichField = whichField;
-    const newValue = newValue;
+    const updatersEmailDef = cookie.load('ck_email');
+    const updatersUuidDef = cookie.load('ck_uuid');
+    const whichFieldDef = whichField;
+    const newValueDef = newValue;
 
     superagent
     .post('/updateUserProfile')
-    .send({ field: whichField, email: updatersEmail, uuid: updatersUuid, newvalue: newValue })
+    .send({ field: whichFieldDef, email: updatersEmailDef, uuid: updatersUuidDef, newvalue: newValueDef })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        this.props.dispatch(updateUser(whichField, newValue));
+        this.props.dispatch(updateUser(whichFieldDef, newValueDef));
 
         cookie.save('ck_pw', res.body.userData.password, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_birthday', res.body.userData.birthday, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
