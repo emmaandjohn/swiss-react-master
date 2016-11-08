@@ -281,11 +281,13 @@ app.post('/updateUserProfile', function(req, res) {
     var update = {[getField]: newValue};
     var options = {new: true};
     UserModel.findOneAndUpdate(query, update, options, function(err, result) {
+      console.log(result);
       if (err) {
         console.log('activation: got an error');
         res.json({ status: 0 });
       }
       else if(result !== null){
+          console.log(result);
           res.json({ status: 1, userData: result });
       }
       else {

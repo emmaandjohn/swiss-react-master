@@ -38,6 +38,7 @@ export default class MyProfile extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
+        console.log("db success: "+ res + JSON.stringify(res));
         this.props.dispatch(updateUser(whichFieldDef, newValueDef));
 
         cookie.save('ck_pw', res.body.userData.password, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
