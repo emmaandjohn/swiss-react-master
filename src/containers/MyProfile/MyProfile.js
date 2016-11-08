@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 import superagent from 'superagent';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
+import Loader from 'react-loader-advanced';
 
 /* Import here only for Dispatchers */
+import { getUser } from '../../redux/actions/getUserActions';
 import { updateUser } from '../../redux/actions/updateUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
 @connect((store) => {
   return {
+    getUserState: store.getUser.user,
     updateUserState: store.updateUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
   };
@@ -30,8 +33,6 @@ export default class MyProfile extends Component {
     const updatersUuidDef = cookie.load('ck_uuid');
     const whichFieldDef = whichField;
     const newValueDef = newValue;
-    console.log(cookie.load('ck_uuid') + ' GGG ' + updatersUuidDef);
-    console.log("updateUserProfile: "+ updatersEmailDef+updatersUuidDef+whichFieldDef+newValueDef)
 
     superagent
     .post('/updateUserProfile')
@@ -39,8 +40,6 @@ export default class MyProfile extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        console.log("db success: "+ res + JSON.stringify(res));
-
         cookie.save('ck_pw', res.body.userData.password, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_birthday', res.body.userData.birthday, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_avatar', res.body.userData.avatar, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
@@ -79,12 +78,11 @@ export default class MyProfile extends Component {
   }
 
   render() {
-    const { activateNewUserState, updateUserState } = this.props;
+    const { getUserState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale } = this.state;
     const styles = require('./MyProfile.scss');
 
-    console.log("state.avatar: "+updateUserState.avatar+", ck.load.avatar: "+cookie.load('ck_avatar'));
-
+    /* Set avatar either from Cache or when ou change the avatar -> from State */
     let objectSelector = 'avatar'+cookie.load('ck_avatar');
     let avatarClass = styles[objectSelector];
     if(updateUserState.avatar){
@@ -96,8 +94,9 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
+          <div className="preload-images"></div>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-          <div>
+          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               <Row className="show-grid">
                 <Col xs={12} md={6}>
                   <Row className="show-grid">
@@ -185,7 +184,7 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
-          </div>
+          </Loader>
           :
           <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
           }
