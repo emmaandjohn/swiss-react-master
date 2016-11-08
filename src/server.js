@@ -275,7 +275,7 @@ app.post('/updateUserProfile', function(req, res) {
     var getField = req.body.field;
     var getEmail = req.body.email;
     var getUuid = req.body.uuid;
-    var newValue = req.body.newValue;
+    var newValue = req.body.newvalue;
 
     var query = {"email": getEmail, "uuid": getUuid};
     var update = {[getField]: newValue};
