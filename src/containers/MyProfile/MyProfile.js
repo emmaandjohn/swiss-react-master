@@ -28,7 +28,8 @@ export default class MyProfile extends Component {
     showModalFemale: false,
     show1a: true,
     show2a: true,
-    show3a: true
+    show3a: true,
+    show4a: true
   }
 
   modalOpen = (gender) => {
@@ -45,6 +46,7 @@ export default class MyProfile extends Component {
   show1a = (status) => { this.setState({ show1a: status }); }
   show2a = (status) => { this.setState({ show2a: status }); }
   show3a = (status) => { this.setState({ show3a: status }); }
+  show4a = (status) => { this.setState({ show4a: status }); }
 
   updateUserProfile = (whichField, newValue) => {
     const updatersEmailDef = cookie.load('ck_email');
@@ -77,11 +79,11 @@ export default class MyProfile extends Component {
 
         this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
         this.modalClose();
-        this.show1a(true); this.show2a(true); this.show3a(true);
+        this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
       }
       if (res.body.status === 2) {
         this.modalClose();
-        this.show1a(true); this.show2a(true); this.show3a(true);
+        this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
       }
     });
   }
@@ -119,6 +121,13 @@ export default class MyProfile extends Component {
       getCompany = updateUserState.company;
     }
     if(getCompany === null){getCompany = 'Keine Angabe';}
+
+    /* Set description */
+    let getDescription = cookie.load('ck_description');
+    if(updateUserState.description){
+      getDescription = updateUserState.description;
+    }
+    if(getDescription === null){getDescription = 'Wer bist du? Deine Skills? Was machst du?';}
 
     return (
         <div className={styles.myprofilePage + ' container'}>
@@ -185,6 +194,23 @@ export default class MyProfile extends Component {
                         </div>
                       }
                     </Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Über dich</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show4a === true ?
+                        <div>{getDescription} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <form className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <textarea name="description" ref="description" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getDescription}> </textarea>
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </form>
+                        </div>
+                      }
+                    </Col>
+
                 </Row>
               </Col>
               <Col xs={12} sm={6}>
