@@ -146,8 +146,8 @@ export default class MyProfile extends Component {
     return (
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
-          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
+          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               {this.state.show1a === true ?
                 <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
               :
@@ -162,8 +162,9 @@ export default class MyProfile extends Component {
               <Row>
                 <Col xs={12} sm={6}>
                   <Row>
+                    <Col xs={12}><h4>Profil</h4></Col>
 
-                    <Col xs={12}>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                       <Row>
                         <Col xs={4}>
                           <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
@@ -317,12 +318,14 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
+          </Loader>
           :
-          <div>
-              <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
-          </div>
+          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
+            <div>
+                <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
+            </div>
+          </Loader>
           }
-        </Loader>  
         </div>
     );
   }
