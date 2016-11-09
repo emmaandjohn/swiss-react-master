@@ -132,7 +132,7 @@ export default class MyProfile extends Component {
                       <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
                         <i className="fa fa-male" />
                       </Button>
-                      <Button className{styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
+                      <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
                         <i className="fa fa-female" />
                       </Button>
                       <div className={styles.dateStyle}>Mitglied seit: {cookie.load('ck_membersince')}</div>
