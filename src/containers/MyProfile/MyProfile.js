@@ -122,7 +122,7 @@ export default class MyProfile extends Component {
               :
               <div>
                 <form className={styles.mb10}>
-                    <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
+                    <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
                     <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                 </form>
               </div>
@@ -154,7 +154,7 @@ export default class MyProfile extends Component {
                         <div>
                           <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="job" name="job" id="job" className={styles.pro70} placeholder={getJob} />
+                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getJob} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
