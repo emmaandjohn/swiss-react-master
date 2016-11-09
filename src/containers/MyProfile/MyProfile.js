@@ -95,7 +95,7 @@ export default class MyProfile extends Component {
   }
 
   handleKeyPress = (event) => {
-    event.preventDefault();
+    console.log(event.key);
     if(event.key == 'Enter'){
         console.log("yepyep");
         //this.updateUserProfile(whichField, newValue);
@@ -149,16 +149,7 @@ export default class MyProfile extends Component {
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               <Row>
-                <Col xs={2}>
-                  <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
-                  <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
-                    <i className="fa fa-male" />
-                  </Button>
-                  <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
-                    <i className="fa fa-female" />
-                  </Button>
-                </Col>
-                <Col xs={10}>
+                <Col xs={12}>
                   {this.state.show1a === true ?
                     <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
@@ -177,6 +168,22 @@ export default class MyProfile extends Component {
                 <Col xs={12} sm={6}>
                   <Row>
                     <Col xs={12}><h4>Profil</h4></Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
+                      <Row>
+                        <Col xs={4}>
+                          <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
+                        </Col>
+                        <Col xs={8}>
+                          <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
+                            <i className="fa fa-male" />
+                          </Button>
+                          <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
+                            <i className="fa fa-female" />
+                          </Button>
+                        </Col>
+                      </Row>
+                    </Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Mitglied seit</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
