@@ -114,7 +114,6 @@ export default class MyProfile extends Component {
     return (
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
-          <div className="preload-images"></div>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               {this.state.show1a === true ?
