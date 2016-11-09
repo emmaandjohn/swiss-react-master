@@ -262,6 +262,7 @@ export default class MyProfile extends Component {
             </Col>
             </Row>
 
+            <div>
             <Modal show={this.state.showModalMale} onHide={this.modalClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Avatar auswählen</Modal.Title>
@@ -337,6 +338,7 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
+            </div>
           :
             <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
                 <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
