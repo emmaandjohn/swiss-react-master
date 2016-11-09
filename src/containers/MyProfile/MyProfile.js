@@ -121,7 +121,7 @@ export default class MyProfile extends Component {
                 <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
               :
               <div>
-                <form className={styles.m0p0}>
+                <form className={styles.mb10}>
                     <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
                     <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                 </form>
@@ -154,7 +154,7 @@ export default class MyProfile extends Component {
                         <div>
                           <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
+                              <input type="text" ref="job" name="job" id="job" className={styles.pro70} placeholder={getJob} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
