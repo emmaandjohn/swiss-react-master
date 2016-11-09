@@ -148,8 +148,6 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-          <Row>
-            <Col xs={12}>
 
               <Row>
                 <Col xs={12}>
@@ -160,16 +158,15 @@ export default class MyProfile extends Component {
                     <div className={styles.mb10}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={this.handleKeyPress} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                    </div>
+                    </form>
                   </div>
                   }
                   <hr />
                 </Col>
-              </Row>
 
-              <Row>
                 <Col xs={12} sm={6}>
                   <Row>
+
                     <Col xs={12}>
                       <Row>
                         <Col xs={4}>
@@ -185,19 +182,13 @@ export default class MyProfile extends Component {
                         </Col>
                       </Row>
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Mitglied seit</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
-                  </Row>
 
-                  <Row>
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Email</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_email')}</Col>
-                  </Row>
 
-                  <Row>
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Job</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show2a === true ?
@@ -209,13 +200,11 @@ export default class MyProfile extends Component {
                               <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={() => this.handleKeyPress('job', this.refs.job.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </div>
+                          </form>
                         </div>
                       }
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Firma</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show3a === true ?
@@ -227,13 +216,11 @@ export default class MyProfile extends Component {
                               <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={() => this.handleKeyPress('company', this.refs.company.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </div>
+                          </form>
                         </div>
                       }
                     </Col>
-                  </Row>
 
-                  <Row>
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
                     <Col className={styles.m15} xs={12}>
                       {this.state.show4a === true ?
@@ -245,12 +232,12 @@ export default class MyProfile extends Component {
                               <textarea name="description" ref="description" className={'form-control ' + styles.fixTextarea}>{getDescription}</textarea>
                               <Button bsSize="small" className={styles.btnSave + ' ' + styles.btnSaveTextarea} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </div>
+                          </form>
                         </div>
                       }
                     </Col>
-                  </Row>
 
+                </Row>
               </Col>
               <Col xs={12} sm={6}>
                 <h4>Beiträge</h4>
@@ -259,10 +246,6 @@ export default class MyProfile extends Component {
               </Col>
             </Row>
 
-            </Col>
-            </Row>
-
-            <div>
             <Modal show={this.state.showModalMale} onHide={this.modalClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Avatar auswählen</Modal.Title>
@@ -338,7 +321,6 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
-            </div>
           :
             <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
                 <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
