@@ -155,10 +155,10 @@ export default class MyProfile extends Component {
                     <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                   <div>
-                    <form className={styles.mb10}>
+                    <div className={styles.mb10}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={this.handleKeyPress} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                    </form>
+                    </div>
                   </div>
                   }
                   <hr />
@@ -202,12 +202,12 @@ export default class MyProfile extends Component {
                         <div>{getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
-                          <form className={styles.m15 + ' ' + styles.m0p0}>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
                               <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={() => this.handleKeyPress('job', this.refs.job.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       }
                     </Col>
@@ -220,12 +220,12 @@ export default class MyProfile extends Component {
                         <div>{getCompany} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
-                          <form className={styles.m15 + ' ' + styles.m0p0}>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
                               <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={() => this.handleKeyPress('company', this.refs.company.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       }
                     </Col>
@@ -238,12 +238,12 @@ export default class MyProfile extends Component {
                         <div className={styles.makeItalic + ' ' + styles.whiteSpacePreWrap}>{getDescription}</div>
                       :
                         <div>
-                          <form className={styles.m15 + ' ' + styles.m0p0}>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
                               <textarea name="description" ref="description" className={'form-control ' + styles.fixTextarea}>{getDescription}</textarea>
                               <Button bsSize="small" className={styles.btnSave + ' ' + styles.btnSaveTextarea} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       }
                     </Col>
