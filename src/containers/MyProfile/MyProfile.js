@@ -158,7 +158,7 @@ export default class MyProfile extends Component {
                     <div className={styles.mb10}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={this.handleKeyPress} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                    </form>
+                    </div>
                   </div>
                   }
                   <hr />
@@ -200,7 +200,7 @@ export default class MyProfile extends Component {
                               <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={() => this.handleKeyPress('job', this.refs.job.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       }
                     </Col>
@@ -216,7 +216,7 @@ export default class MyProfile extends Component {
                               <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={() => this.handleKeyPress('company', this.refs.company.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       }
                     </Col>
@@ -232,7 +232,7 @@ export default class MyProfile extends Component {
                               <textarea name="description" ref="description" className={'form-control ' + styles.fixTextarea}>{getDescription}</textarea>
                               <Button bsSize="small" className={styles.btnSave + ' ' + styles.btnSaveTextarea} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       }
                     </Col>
