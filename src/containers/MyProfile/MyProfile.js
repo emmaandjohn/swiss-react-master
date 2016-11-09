@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
-import { Grid, Row, Col, Well, Label, Button, Modal, Alert, Table } from 'react-bootstrap/lib';
+import { Grid, Row, Col, Well, Label, Button, Modal, Alert } from 'react-bootstrap/lib';
 import { connect } from 'react-redux';
 import superagent from 'superagent';
 import cookie from 'react-cookie';
@@ -120,24 +120,28 @@ export default class MyProfile extends Component {
               {this.state.show1a === true ?
                 <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
               :
+              <div>
                 <form>
                     <h4>
                     <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
                     <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                     </h4>
                 </form>
+              </div>
               }
               <Row>
                 <Col xs={12} sm={6}>
-                  <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
-                  <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
-                    <i className="fa fa-male" />
-                  </Button>
-                  <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
-                    <i className="fa fa-female" />
-                  </Button>
-
                   <Row>
+                    <Col xs={12}>
+                      <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
+                      <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
+                        <i className="fa fa-male" />
+                      </Button>
+                      <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
+                        <i className="fa fa-female" />
+                      </Button>
+                    </Col>
+
                     <Col xs={6}>Mitglied seit</Col>
                     <Col xs={6}>{cookie.load('ck_membersince')}</Col>
 
@@ -147,14 +151,16 @@ export default class MyProfile extends Component {
                     <Col xs={6}>Job</Col>
                     <Col xs={6}>
                       {this.state.show2a === true ?
-                        {getJob}
+                        <div>{getJob}</div>
                       :
-                        <form className={styles.m15}>
-                          <div>
-                            <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
-                            <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
-                          </div>
-                        </form>
+                        <div>
+                          <form className={styles.m15}>
+                            <div>
+                              <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </form>
+                        </div>
                       }
                       <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button>
                     </Col>
