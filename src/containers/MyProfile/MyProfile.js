@@ -120,10 +120,10 @@ export default class MyProfile extends Component {
                   <h1>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                 :
                 <form>
-                    <div className="form-group">
-                      <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} className="form-control"/>
-                    </div>
+                    <h1>
+                    <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
                     <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
+                    </h1>
                 </form>
               }
               <Row className="show-grid">
@@ -135,17 +135,17 @@ export default class MyProfile extends Component {
                       <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
                         <i className="fa fa-female" />
                       </Button>
-                      <div className={styles.dateStyle}>Mitglied seit: {cookie.load('ck_membersince')}</div>
-                      <div className={styles.dateStyle}>{cookie.load('ck_email')}</div>
+                      <div className={styles.dateStyle + ' ' + styles.m5}>Mitglied seit: {cookie.load('ck_membersince')}</div>
+                      <div className={styles.dateStyle + ' ' + styles.m5}>{cookie.load('ck_email')}</div>
 
                       {this.state.show2a === true ?
-                        <div>{getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div className={styles.m5}>{getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
-                      <form>
-                          <div className="form-group">
-                            <input type="text" ref="job" name="job" id="job" placeholder={getJob} className="form-control"/>
-                          </div>
+                      <form className={styles.m5}>
+                        <div>
+                          <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
                           <Button bsSize="small" onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
+                        </div>
                       </form>
                       }
                 </Col>
