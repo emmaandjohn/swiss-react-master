@@ -148,23 +148,26 @@ export default class MyProfile extends Component {
           <Helmet title="Mein Profil"/>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
-              {this.state.show1a === true ?
-                <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
-              :
-              <div>
-                <form className={styles.mb10}>
-                    <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value)} />
-                    <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                </form>
-              </div>
-              }
-              <hr />
+
               <Row>
+                <Col xs={12}>
+                  {this.state.show1a === true ?
+                    <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                  :
+                  <div>
+                    <form className={styles.mb10}>
+                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value)} />
+                        <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
+                    </form>
+                  </div>
+                  }
+                  <hr />
+                </Col>
+
                 <Col xs={12} sm={6}>
                   <Row>
-                    <Col xs={12}><h4>Profil</h4></Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
+                    <Col xs={12}>
                       <Row>
                         <Col xs={4}>
                           <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
@@ -319,13 +322,12 @@ export default class MyProfile extends Component {
               </Modal.Footer>
             </Modal>
           </Loader>
-          :
-          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
-            <div>
+          : null }
+          {(activateNewUserState.activatedUser !== true && activateNewUserState.loggedInUser !== true) || (cookie.load('ck_userLoggedIn') !== true && cookie.load('ck_activation') !== true) ?
+            <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
                 <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
-            </div>
-          </Loader>
-          }
+            </Loader>
+          : null }
         </div>
     );
   }
