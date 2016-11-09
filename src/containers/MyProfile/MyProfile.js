@@ -144,9 +144,9 @@ export default class MyProfile extends Component {
     if(getDescription === null){getDescription = 'Keine Angabe';}
 
     return (
-      <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
+          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
               {this.state.show1a === true ?
                 <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
@@ -322,8 +322,8 @@ export default class MyProfile extends Component {
               <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
           </div>
           }
+        </Loader>  
         </div>
-      </Loader>
     );
   }
 
