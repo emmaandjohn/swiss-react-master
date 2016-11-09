@@ -94,9 +94,11 @@ export default class MyProfile extends Component {
     });
   }
 
-  handleKeyPress = (event, whichField, newValue) => {
+  handleKeyPress = (event) => {
+    event.preventDefault();
     if(event.key == 'Enter'){
-        this.updateUserProfile(whichField, newValue);
+        console.log("yepyep");
+        //this.updateUserProfile(whichField, newValue);
     }
   }
 
@@ -147,7 +149,7 @@ export default class MyProfile extends Component {
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               <Row>
-                <Col xs={3} sm={2} md={1}>
+                <Col xs={2}>
                   <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                   <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
                     <i className="fa fa-male" />
@@ -156,7 +158,7 @@ export default class MyProfile extends Component {
                     <i className="fa fa-female" />
                   </Button>
                 </Col>
-                <Col xs={9} sm={10} md={11}>
+                <Col xs={10}>
                   {this.state.show1a === true ?
                     <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
