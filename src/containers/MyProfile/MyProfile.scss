@@ -28,6 +28,8 @@
 }
 .btnSaveTextarea{
   margin-left: 0 !important;
+  margin-top: 5px;
+  float: right;
 }
 .m5 {
   margin-top: 5px;
@@ -56,10 +58,12 @@
 }
 .fixTextarea{
   min-height: 100px;
-  white-space: pre-wrap;
 }
 .makeItalic{
   font-style: italic;
+}
+.whiteSpacePreWrap{
+  white-space:: pre-wrap;
 }
 .font999{
   color: #999999;

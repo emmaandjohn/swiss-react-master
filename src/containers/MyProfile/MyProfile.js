@@ -204,12 +204,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
                     <Col className={styles.m15} xs={12}>
                       {this.state.show4a === true ?
-                        <div className={styles.makeItalic}>{getDescription}</div>
+                        <div className={styles.makeItalic + ' ' + styles.whiteSpacePreWrap}>{getDescription}</div>
                       :
                         <div>
                           <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <textarea name="description" ref="description" className={'form-control ' + styles.fixTextarea} placeholder={getDescription}> </textarea>
+                              <textarea name="description" ref="description" className={'form-control ' + styles.fixTextarea}>{getDescription}</textarea>
                               <Button bsSize="small" className={styles.btnSave + ' ' + styles.btnSaveTextarea} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
