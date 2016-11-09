@@ -148,7 +148,7 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-
+            <div>
               <Row>
                 <Col xs={12}>
                   {this.state.show1a === true ?
@@ -321,6 +321,7 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
+            </div>
           :
             <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
                 <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
