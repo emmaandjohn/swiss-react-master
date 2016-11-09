@@ -27,7 +27,8 @@ export default class MyProfile extends Component {
     showModalMale: false,
     showModalFemale: false,
     show1a: true,
-    show2a: true
+    show2a: true,
+    show3a: true
   }
 
   modalOpen = (gender) => {
@@ -43,6 +44,7 @@ export default class MyProfile extends Component {
   }
   show1a = (status) => { this.setState({ show1a: status }); }
   show2a = (status) => { this.setState({ show2a: status }); }
+  show3a = (status) => { this.setState({ show3a: status }); }
 
   updateUserProfile = (whichField, newValue) => {
     const updatersEmailDef = cookie.load('ck_email');
@@ -75,11 +77,11 @@ export default class MyProfile extends Component {
 
         this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
         this.modalClose();
-        this.show1a(true); this.show2a(true);
+        this.show1a(true); this.show2a(true); this.show3a(true);
       }
       if (res.body.status === 2) {
         this.modalClose();
-        this.show1a(true); this.show2a(true);
+        this.show1a(true); this.show2a(true); this.show3a(true);
       }
     });
   }
@@ -111,6 +113,13 @@ export default class MyProfile extends Component {
     }
     if(getJob === null){getJob = 'Keine Angabe';}
 
+    /* Set company */
+    let getCompany = cookie.load('ck_company');
+    if(updateUserState.company){
+      getCompany = updateUserState.company;
+    }
+    if(getCompany === null){getCompany = 'Keine Angabe';}
+
     return (
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
@@ -139,14 +148,14 @@ export default class MyProfile extends Component {
                       </Button>
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={5}>Mitglied seit</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={7}>{cookie.load('ck_membersince')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Mitglied seit</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={5}>Email</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={7}>{cookie.load('ck_email')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Email</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_email')}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={5}>Job</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={7}>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Job</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show2a === true ?
                         <div>{getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
@@ -155,6 +164,22 @@ export default class MyProfile extends Component {
                             <div>
                               <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getJob} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </form>
+                        </div>
+                      }
+                    </Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Firma</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show3a === true ?
+                        <div>{getCompany} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <form className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getCompany} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
                         </div>
