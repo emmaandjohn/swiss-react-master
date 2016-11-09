@@ -156,7 +156,7 @@ export default class MyProfile extends Component {
                 </form>
               </div>
               }
-              <hr />
+
               <Row>
                 <Col xs={12} sm={6}>
                   <Row>
