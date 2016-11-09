@@ -120,10 +120,10 @@ export default class MyProfile extends Component {
                   <h1>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                 :
                 <form>
-                    <h1>
+                    <h4>
                     <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
                     <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                    </h1>
+                    </h4>
                 </form>
               }
               <Row className="show-grid">
@@ -135,13 +135,13 @@ export default class MyProfile extends Component {
                       <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
                         <i className="fa fa-female" />
                       </Button>
-                      <div className={styles.dateStyle + ' ' + styles.m5}>Mitglied seit: {cookie.load('ck_membersince')}</div>
+                      <div className={styles.dateStyle + ' ' + styles.m15}>Mitglied seit: {cookie.load('ck_membersince')}</div>
                       <div className={styles.dateStyle + ' ' + styles.m5}>{cookie.load('ck_email')}</div>
 
                       {this.state.show2a === true ?
-                        <div className={styles.m5}>{getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div className={styles.m15}>{getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
-                      <form className={styles.m5}>
+                      <form className={styles.m15}>
                         <div>
                           <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
                           <Button bsSize="small" onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
