@@ -129,16 +129,15 @@ export default class MyProfile extends Component {
               <Row className="show-grid">
                 <Col xs={12} sm={6}>
                       <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
-                      <Button bsSize="small" onClick={() => this.modalOpen(1)}>
+                      <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
                         <i className="fa fa-male" />
                       </Button>
-                      <Button bsSize="small" onClick={() => this.modalOpen(2)}>
+                      <Button className{styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
                         <i className="fa fa-female" />
                       </Button>
                       <div className={styles.dateStyle}>Mitglied seit: {cookie.load('ck_membersince')}</div>
                       <div className={styles.dateStyle}>{cookie.load('ck_email')}</div>
-                    </Col>
-                    <Col xs={12}>
+
                       {this.state.show2a === true ?
                         <div>{getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
@@ -148,7 +147,7 @@ export default class MyProfile extends Component {
                           </div>
                           <Button bsSize="small" onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                       </form>
-                    }
+                      }
                 </Col>
                 <Col xs={12} sm={6}>
                   <h4>Beiträge</h4>
