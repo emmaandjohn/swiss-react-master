@@ -163,13 +163,13 @@ export default class MyProfile extends Component {
                       </Button>
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Mitglied seit</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Mitglied seit</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Email</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Email</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_email')}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Job</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Job</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show2a === true ?
                         <div>{getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
@@ -185,7 +185,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={4}>Firma</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Firma</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show3a === true ?
                         <div>{getCompany} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button></div>
@@ -201,16 +201,16 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
                     <Col className={styles.m15} xs={12}>
                       {this.state.show4a === true ?
-                        <div>{getDescription}</div>
+                        <div className={styles.makeItalic}>{getDescription}</div>
                       :
                         <div>
                           <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <textarea name="description" ref="description" className={styles.fixTextarea} placeholder={getDescription}> </textarea>
-                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
+                              <textarea name="description" ref="description" className={'form-control ' + styles.fixTextarea} placeholder={getDescription}> </textarea>
+                              <Button bsSize="small" className={styles.btnSave + ' ' + styles.btnSaveTextarea} onClick={() => this.updateUserProfile('description', this.refs.description.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
                         </div>
