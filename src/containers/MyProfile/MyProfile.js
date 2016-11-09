@@ -25,7 +25,23 @@ export default class MyProfile extends Component {
     formStatus: 0,
     formMsg: '',
     showModalMale: false,
-    showModalFemale: false
+    showModalFemale: false,
+    show1a: true
+  }
+
+  modalOpen = (gender) => {
+    if(gender === 1){
+      this.setState({ showModalMale: true });
+    }else{
+      this.setState({ showModalFemale: true });
+    }
+  }
+  modalClose = () => {
+    this.setState({ showModalMale: false });
+    this.setState({ showModalFemale: false });
+  }
+  show1a = (status) => {
+    this.setState({ show1a: status });
   }
 
   updateUserProfile = (whichField, newValue) => {
@@ -58,23 +74,13 @@ export default class MyProfile extends Component {
         cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
         this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
+        this.modalClose();
+        this.show1a(true);
 
       } else {
 
       }
     });
-  }
-
-  modalOpen = (gender) => {
-    if(gender === 1){
-      this.setState({ showModalMale: true });
-    }else{
-      this.setState({ showModalFemale: true });
-    }
-  }
-  modalClose = () => {
-    this.setState({ showModalMale: false });
-    this.setState({ showModalFemale: false });
   }
 
   render() {
@@ -90,6 +96,13 @@ export default class MyProfile extends Component {
       avatarClass = styles[objectSelector];
     }
 
+    /* Set nickname */
+    let getNickname = cookie.load('ck_nickname');
+    if(updateUserState.nickname){
+      getNickname = updateUserState.nickname;
+    }
+    if(getNickname === null){getNickname = 'noob';}
+
     return (
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
@@ -102,12 +115,36 @@ export default class MyProfile extends Component {
                   <Row className="show-grid">
                     <Col xs={2}>
                       <div className={avatarClass + ' ' + styles.avatarRound}></div>
-                      <i onClick={() => this.modalOpen(1)} className="fa fa-male" /> <i onClick={() => this.modalOpen(2)} className="fa fa-female" />
+                      <Button bsSize="small" onClick={() => this.modalOpen(1)}>
+                        <i className="fa fa-male" /> Avatar wählen
+                      </Button>
+                      <Button bsSize="small" onClick={() => this.modalOpen(2)}>
+                        <i className="fa fa-female" /> Avatar wählen
+                      </Button>
                     </Col>
-                    <Col xs={10}><h4>Nickname XY</h4> <Button onClick={this.modalOpen}><i className="fa fa-pencil"/></Button></Col>
+                    <Col xs={10}>
+                      {this.state.show1a === true ?
+                      <div className="formField1a">
+                        <h4>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h4>
+                      </div>
+                      :
+                      <div className="formField1b">
+                        <form>
+                          <div className="form-group">
+                            <input type="text" ref="nickname" name="nickname" id="nickname" value={getNickname} className="form-control"/>
+                            <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
+                          </div>
+                        </form>
+                      </div>
+                    }
+                    </Col>
                   </Row>
                 </Col>
-                <Col xs={12} md={6}>{'Avatar3'}</Col>
+                <Col xs={12} md={6}>
+                  <Button bsSize="small" onClick={() => this.modalOpen(2)}>
+                    Nachricht senden
+                  </Button>
+                </Col>
               </Row>
             <Modal show={this.state.showModalMale} onHide={this.modalClose}>
               <Modal.Header closeButton>
@@ -115,31 +152,31 @@ export default class MyProfile extends Component {
               </Modal.Header>
               <Modal.Body>
                   <Row className="show-grid">
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '1')} className={styles.avatar1 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '2')} className={styles.avatar2 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '3')} className={styles.avatar3 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '4')} className={styles.avatar4 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '5')} className={styles.avatar5 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '6')} className={styles.avatar6 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '7')} className={styles.avatar7 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '8')} className={styles.avatar8 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '9')} className={styles.avatar9 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '10')} className={styles.avatar10 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '11')} className={styles.avatar11 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '12')} className={styles.avatar12 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '13')} className={styles.avatar13 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '14')} className={styles.avatar14 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '15')} className={styles.avatar15 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '16')} className={styles.avatar16 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '17')} className={styles.avatar17 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '18')} className={styles.avatar18 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '19')} className={styles.avatar19 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '20')} className={styles.avatar20 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '21')} className={styles.avatar21 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '22')} className={styles.avatar22 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '23')} className={styles.avatar23 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '24')} className={styles.avatar24 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '25')} className={styles.avatar25 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '1')} className={styles.avatar1 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '2')} className={styles.avatar2 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '3')} className={styles.avatar3 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '4')} className={styles.avatar4 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '5')} className={styles.avatar5 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '6')} className={styles.avatar6 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '7')} className={styles.avatar7 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '8')} className={styles.avatar8 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '9')} className={styles.avatar9 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '10')} className={styles.avatar10 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '11')} className={styles.avatar11 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '12')} className={styles.avatar12 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '13')} className={styles.avatar13 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '14')} className={styles.avatar14 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '15')} className={styles.avatar15 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '16')} className={styles.avatar16 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '17')} className={styles.avatar17 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '18')} className={styles.avatar18 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '19')} className={styles.avatar19 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '20')} className={styles.avatar20 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '21')} className={styles.avatar21 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '22')} className={styles.avatar22 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '23')} className={styles.avatar23 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '24')} className={styles.avatar24 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '25')} className={styles.avatar25 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
                   </Row>
               </Modal.Body>
               <Modal.Footer>
@@ -153,31 +190,31 @@ export default class MyProfile extends Component {
               </Modal.Header>
               <Modal.Body>
                   <Row className="show-grid">
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '26')} className={styles.avatar26 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '27')} className={styles.avatar27 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '28')} className={styles.avatar28 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '29')} className={styles.avatar29 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '30')} className={styles.avatar30 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '31')} className={styles.avatar31 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '32')} className={styles.avatar32 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '33')} className={styles.avatar33 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '34')} className={styles.avatar34 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '35')} className={styles.avatar35 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '36')} className={styles.avatar36 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '37')} className={styles.avatar37 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '38')} className={styles.avatar38 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '39')} className={styles.avatar39 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '40')} className={styles.avatar40 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '41')} className={styles.avatar41 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '42')} className={styles.avatar42 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '43')} className={styles.avatar43 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '44')} className={styles.avatar44 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '45')} className={styles.avatar45 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '46')} className={styles.avatar46 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '47')} className={styles.avatar47 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '48')} className={styles.avatar48 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '49')} className={styles.avatar49 + ' ' + styles.avatarRound}></div></Col>
-                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '50')} className={styles.avatar50 + ' ' + styles.avatarRound}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '26')} className={styles.avatar26 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '27')} className={styles.avatar27 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '28')} className={styles.avatar28 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '29')} className={styles.avatar29 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '30')} className={styles.avatar30 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '31')} className={styles.avatar31 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '32')} className={styles.avatar32 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '33')} className={styles.avatar33 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '34')} className={styles.avatar34 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '35')} className={styles.avatar35 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '36')} className={styles.avatar36 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '37')} className={styles.avatar37 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '38')} className={styles.avatar38 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '39')} className={styles.avatar39 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '40')} className={styles.avatar40 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '41')} className={styles.avatar41 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '42')} className={styles.avatar42 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '43')} className={styles.avatar43 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '44')} className={styles.avatar44 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '45')} className={styles.avatar45 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '46')} className={styles.avatar46 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '47')} className={styles.avatar47 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '48')} className={styles.avatar48 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '49')} className={styles.avatar49 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={3} sm={2}><div onClick={() => this.updateUserProfile('avatar', '50')} className={styles.avatar50 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
                   </Row>
               </Modal.Body>
               <Modal.Footer>

@@ -87,10 +87,10 @@ export default class Login extends Component {
           <div id="login-form">
             <form className="login-form form-inline" onSubmit={this.handleSubmit.bind(this)}>
               <div className="form-group">
-                <input type="text" ref="email" name="email" id="email" placeholder="Email" className="form-control"/>
+                <input type="email" ref="email" name="email" id="email" placeholder="Email" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <div className="form-group">
-                <input type="password" ref="password" name="password" id="password" placeholder="Passwort" className="form-control"/>
+                <input type="password" ref="password" name="password" id="password" placeholder="Passwort" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <button type="submit" className={styles.btnSpacer + ' btn btn-success'}><i className="fa fa-sign-in"/> Login</button>
               <Link to="/forgot"><Button>Passwort vergessen</Button></Link>
