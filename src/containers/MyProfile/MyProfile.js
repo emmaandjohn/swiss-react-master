@@ -142,16 +142,16 @@ export default class MyProfile extends Component {
                       </Button>
                     </Col>
 
-                    <Col xs={6}>Mitglied seit</Col>
-                    <Col xs={6}>{cookie.load('ck_membersince')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>Mitglied seit</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>{cookie.load('ck_membersince')}</Col>
 
-                    <Col xs={6}>Email</Col>
-                    <Col xs={6}>{cookie.load('ck_email')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>Email</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>{cookie.load('ck_email')}</Col>
 
-                    <Col xs={6}>Job</Col>
-                    <Col xs={6}>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>Job</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>
                       {this.state.show2a === true ?
-                        <div>{getJob}</div>
+                        <div>{getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <form className={styles.m15}>
@@ -162,7 +162,6 @@ export default class MyProfile extends Component {
                           </form>
                         </div>
                       }
-                      <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button>
                     </Col>
                 </Row>
               </Col>
