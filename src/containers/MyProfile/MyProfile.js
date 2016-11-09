@@ -112,16 +112,23 @@ export default class MyProfile extends Component {
 
     return (
         <div className={styles.myprofilePage + ' container'}>
-          <h1>Mein Profil</h1>
           <Helmet title="Mein Profil"/>
           <div className="preload-images"></div>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
+                {this.state.show1a === true ?
+                  <h1>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                :
+                <form>
+                    <div className="form-group">
+                      <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} className="form-control"/>
+                    </div>
+                    <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
+                </form>
+              }
               <Row className="show-grid">
                 <Col xs={12} sm={6}>
-                  <Row className="show-grid">
-                    <Col xs={3}>
-                      <div className={avatarClass + ' ' + styles.avatarRound}></div>
+                      <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                       <Button bsSize="small" onClick={() => this.modalOpen(1)}>
                         <i className="fa fa-male" />
                       </Button>
@@ -130,18 +137,6 @@ export default class MyProfile extends Component {
                       </Button>
                       <div className={styles.dateStyle}>Mitglied seit: {cookie.load('ck_membersince')}</div>
                       <div className={styles.dateStyle}>{cookie.load('ck_email')}</div>
-                    </Col>
-                    <Col xs={9}>
-                      {this.state.show1a === true ?
-                        <h4>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h4>
-                      :
-                      <form>
-                          <div className="form-group">
-                            <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} className="form-control"/>
-                          </div>
-                          <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                      </form>
-                    }
                     </Col>
                     <Col xs={12}>
                       {this.state.show2a === true ?
@@ -154,8 +149,6 @@ export default class MyProfile extends Component {
                           <Button bsSize="small" onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                       </form>
                     }
-                    </Col>
-                  </Row>
                 </Col>
                 <Col xs={12} sm={6}>
                   <h4>Beiträge</h4>
