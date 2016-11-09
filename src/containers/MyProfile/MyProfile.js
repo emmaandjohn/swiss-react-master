@@ -170,7 +170,7 @@ export default class MyProfile extends Component {
                       </Button>
                     </Col>
 
-                    <Col xs={12} sm={6}><h4>Profil</h4></Col>
+                    <Col xs={12}><h4>Profil</h4></Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Mitglied seit</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
