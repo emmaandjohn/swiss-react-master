@@ -156,7 +156,7 @@ export default class MyProfile extends Component {
                 </form>
               </div>
               }
-
+              <hr />
               <Row>
                 <Col xs={12} sm={6}>
                   <Row>
@@ -313,7 +313,9 @@ export default class MyProfile extends Component {
           </Loader>
           :
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
+          <div>
               <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
+          </div>
           </Loader>
           }
         </div>
