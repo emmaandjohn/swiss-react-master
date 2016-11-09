@@ -16,20 +16,24 @@
   padding: 4px 12px;
   font-size: 15px;
   margin-bottom: 13px;
+  border: 1px solid #eee;
 }
 .btnEdit {
   padding: 4px 10px;
   font-size: 10px;
+  border: 1px solid #eee;
 }
 .btnSave{
   padding: 4px 10px;
   font-size: 10px;
   margin-top: -1px;
+  border: 1px solid #eee;
 }
 .btnSaveTextarea{
   margin-left: 0 !important;
   margin-top: 5px;
   float: right;
+  border: 1px solid #eee;
 }
 .m5 {
   margin-top: 5px;
@@ -69,7 +73,7 @@
   color: #999999;
 }
 .clickElement{
-    cursor: pointer; cursor: hand;
+  cursor: pointer; cursor: hand;
 }
 .avatar1{background: #ffffff url('../MyProfile/img/m/avatar_m_01.jpg') no-repeat center center; background-size: cover; background-position: center;}
 .avatar2{background: #ffffff url('../MyProfile/img/m/avatar_m_02.jpg') no-repeat center center; background-size: cover; background-position: center;}
