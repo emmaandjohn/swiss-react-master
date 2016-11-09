@@ -26,7 +26,8 @@ export default class MyProfile extends Component {
     formMsg: '',
     showModalMale: false,
     showModalFemale: false,
-    show1a: true
+    show1a: true,
+    show2a: true
   }
 
   modalOpen = (gender) => {
@@ -40,9 +41,8 @@ export default class MyProfile extends Component {
     this.setState({ showModalMale: false });
     this.setState({ showModalFemale: false });
   }
-  show1a = (status) => {
-    this.setState({ show1a: status });
-  }
+  show1a = (status) => { this.setState({ show1a: status }); }
+  show2a = (status) => { this.setState({ show2a: status }); }
 
   updateUserProfile = (whichField, newValue) => {
     const updatersEmailDef = cookie.load('ck_email');
@@ -75,7 +75,7 @@ export default class MyProfile extends Component {
 
         this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
         this.modalClose();
-        this.show1a(true);
+        this.show1a(true); this.show2a(true);
 
       } else {
 
@@ -103,6 +103,13 @@ export default class MyProfile extends Component {
     }
     if(getNickname === null){getNickname = 'noob';}
 
+    /* Set job */
+    let getJob = cookie.load('ck_job');
+    if(updateUserState.job){
+      getJob = updateUserState.job;
+    }
+    if(getJob === null){getJob = 'Keine Angabe';}
+
     return (
         <div className={styles.myprofilePage + ' container'}>
           <h1>Mein Profil</h1>
@@ -111,39 +118,47 @@ export default class MyProfile extends Component {
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               <Row className="show-grid">
-                <Col xs={12} md={6}>
+                <Col xs={12} sm={6}>
                   <Row className="show-grid">
-                    <Col xs={2}>
+                    <Col xs={3}>
                       <div className={avatarClass + ' ' + styles.avatarRound}></div>
                       <Button bsSize="small" onClick={() => this.modalOpen(1)}>
-                        <i className="fa fa-male" /> Avatar wählen
+                        <i className="fa fa-male" />
                       </Button>
                       <Button bsSize="small" onClick={() => this.modalOpen(2)}>
-                        <i className="fa fa-female" /> Avatar wählen
+                        <i className="fa fa-female" />
                       </Button>
                     </Col>
-                    <Col xs={10}>
+                    <Col xs={9}>
                       {this.state.show1a === true ?
-                      <div className="formField1a">
                         <h4>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h4>
-                      </div>
                       :
-                      <div className="formField1b">
-                        <form>
+                      <form>
                           <div className="form-group">
                             <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} className="form-control"/>
                           </div>
                           <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                        </form>
-                      </div>
+                      </form>
+                    }
+                    </Col>
+                    <Col xs={12}>
+                      {this.state.show2a === true ?
+                        {getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button>
+                      :
+                      <form>
+                          <div className="form-group">
+                            <input type="text" ref="job" name="job" id="job" placeholder={getJob} className="form-control"/>
+                          </div>
+                          <Button bsSize="small" onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
+                      </form>
                     }
                     </Col>
                   </Row>
                 </Col>
-                <Col xs={12} md={6}>
-                  <Button bsSize="small" onClick={() => this.modalOpen(2)}>
-                    Nachricht senden
-                  </Button>
+                <Col xs={12} sm={6}>
+                  <h4>Beiträge</h4>
+                  <h4>Kommentare</h4>
+                  <h4>Projekte</h4>
                 </Col>
               </Row>
             <Modal show={this.state.showModalMale} onHide={this.modalClose}>
