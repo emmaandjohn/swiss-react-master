@@ -128,6 +128,8 @@ export default class MyProfile extends Component {
                       <Button bsSize="small" onClick={() => this.modalOpen(2)}>
                         <i className="fa fa-female" />
                       </Button>
+                      <div className={styles.dateStyle}>Mitglied seit: {cookie.load('ck_membersince')}</div>
+                      <div className={styles.dateStyle}>{cookie.load('ck_email')}</div>
                     </Col>
                     <Col xs={9}>
                       {this.state.show1a === true ?
@@ -143,7 +145,7 @@ export default class MyProfile extends Component {
                     </Col>
                     <Col xs={12}>
                       {this.state.show2a === true ?
-                        {getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button>
+                        <div>{getJob} <Button bsSize="small" onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                       <form>
                           <div className="form-group">
