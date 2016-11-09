@@ -94,6 +94,12 @@ export default class MyProfile extends Component {
     });
   }
 
+  handleKeyPress = (event, whichField, newValue) => {
+    if(event.key == 'Enter'){
+        this.updateUserProfile(whichField, newValue);
+    }
+  }
+
   render() {
     const { getUserState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale } = this.state;
@@ -145,11 +151,12 @@ export default class MyProfile extends Component {
               :
               <div>
                 <form className={styles.mb10}>
-                    <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
+                    <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} onKeyPress={() => this.handleKeyPress(event, 'nickname', this.refs.nickname.value)} />
                     <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                 </form>
               </div>
               }
+              <hr />
               <Row>
                 <Col xs={12} sm={6}>
                   <Row>
@@ -162,6 +169,8 @@ export default class MyProfile extends Component {
                         <i className="fa fa-female" />
                       </Button>
                     </Col>
+
+                    <Col xs={12} sm={6}><h4>Profil</h4></Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Mitglied seit</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
@@ -177,7 +186,7 @@ export default class MyProfile extends Component {
                         <div>
                           <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getJob} />
+                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getJob} onKeyPress={() => this.handleKeyPress(event, 'nickname', this.refs.nickname.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
@@ -193,7 +202,7 @@ export default class MyProfile extends Component {
                         <div>
                           <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getCompany} />
+                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} placeholder={getCompany} onKeyPress={() => this.handleKeyPress(event, 'nickname', this.refs.nickname.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </form>
