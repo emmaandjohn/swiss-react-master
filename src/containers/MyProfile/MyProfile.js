@@ -117,8 +117,7 @@ export default class MyProfile extends Component {
           <div className="preload-images"></div>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
-              <div>
-                /* Nickname */
+                {/* Nickname */}
                 {this.state.show1a === true ?
                   <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                 :
@@ -131,8 +130,7 @@ export default class MyProfile extends Component {
                 }
               <Row className="show-grid">
                 <Col xs={12} sm={6}>
-
-                  /* Avatar */
+                  {/* Avatar */}
                   <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                   <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
                     <i className="fa fa-male" />
@@ -140,22 +138,21 @@ export default class MyProfile extends Component {
                   <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(2)}>
                     <i className="fa fa-female" />
                   </Button>
-
                   <Table responsive>
                       <tbody>
-                        /* Membersince */
+                        {/* Membersince */}
                         <tr>
                           <td>Mitglied seit</td>
                           <td>{cookie.load('ck_membersince')}</td>
                           <td>x</td>
                         </tr>
-                        /* Email */
+                        {/* Email */}
                         <tr>
                           <td>Email</td>
                           <td>{cookie.load('ck_email')}</td>
                           <td>x</td>
                         </tr>
-                        /* Job */
+                        {/* Job */}
                         <tr>
                           <td>Job</td>
                           <td>
@@ -256,7 +253,6 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
-            </div>
           </Loader>
           :
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
