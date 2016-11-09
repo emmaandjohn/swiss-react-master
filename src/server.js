@@ -296,22 +296,26 @@ app.post('/updateUserProfile', function(req, res) {
     var getUuid = req.body.uuid;
     var newValue = req.body.newvalue;
 
-    var query = {"email": getEmail, "uuid": getUuid};
-    var update = {};
-    update[getField] = newValue;
-    var options = {new: true};
-    UserModel.findOneAndUpdate(query, update, options, function(err, result) {
-      if (err) {
-        console.log('activation: got an error');
-        res.json({ status: 0 });
-      }
-      else if(result !== null){
-          res.json({ status: 1, userData: result });
-      }
-      else {
-        res.json({ status: 0 });
-      }
-    });
+    if(newValue.length > 0){
+      var query = {"email": getEmail, "uuid": getUuid};
+      var update = {};
+      update[getField] = newValue;
+      var options = {new: true};
+      UserModel.findOneAndUpdate(query, update, options, function(err, result) {
+        if (err) {
+          console.log('activation: got an error');
+          res.json({ status: 0 });
+        }
+        else if(result !== null){
+            res.json({ status: 1, userData: result });
+        }
+        else {
+          res.json({ status: 0 });
+        }
+      });
+    } else{
+        res.json({ status: 2 });
+    }
 });
 
 

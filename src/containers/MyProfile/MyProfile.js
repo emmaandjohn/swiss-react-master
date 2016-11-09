@@ -76,9 +76,10 @@ export default class MyProfile extends Component {
         this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
         this.modalClose();
         this.show1a(true); this.show2a(true);
-
-      } else {
-
+      }
+      if (res.body.status === 2) {
+        this.modalClose();
+        this.show1a(true); this.show2a(true);
       }
     });
   }
@@ -117,12 +118,12 @@ export default class MyProfile extends Component {
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
                 {this.state.show1a === true ?
-                  <h1>{getNickname} <Button bsSize="small" onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                  <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                 :
                 <form>
                     <h4>
                     <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
-                    <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
+                    <Button className={styles.btnEdit} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                     </h4>
                 </form>
               }
@@ -144,7 +145,7 @@ export default class MyProfile extends Component {
                       <form className={styles.m15}>
                         <div>
                           <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
-                          <Button bsSize="small" onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
+                          <Button bsSize="small" className={styles.btnEdit} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                         </div>
                       </form>
                       }
