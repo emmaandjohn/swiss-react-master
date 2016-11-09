@@ -94,9 +94,9 @@ export default class MyProfile extends Component {
     });
   }
 
-  handleKeyPress = (event) => {
-    console.log(event.key);
-    if(event.key == 'Enter'){
+  handleKeyPress = (e) => {
+    console.log(e.key);
+    if(e.key === 'Enter'){
         console.log("yepyep");
         //this.updateUserProfile(whichField, newValue);
     }
@@ -156,7 +156,7 @@ export default class MyProfile extends Component {
                   :
                   <div>
                     <form className={styles.mb10}>
-                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value)} />
+                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={this.handleKeyPress} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                     </form>
                   </div>
