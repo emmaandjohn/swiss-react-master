@@ -131,9 +131,9 @@ export default class MyProfile extends Component {
                       <div className="formField1b">
                         <form>
                           <div className="form-group">
-                            <input type="text" ref="nickname" name="nickname" id="nickname" value={getNickname} className="form-control"/>
-                            <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
+                            <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} className="form-control"/>
                           </div>
+                          <Button bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                         </form>
                       </div>
                     }
