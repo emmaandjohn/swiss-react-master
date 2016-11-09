@@ -121,11 +121,9 @@ export default class MyProfile extends Component {
                 <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
               :
               <div>
-                <form>
-                    <h4>
+                <form className={styles.m0p0}>
                     <input type="text" ref="nickname" name="nickname" id="nickname" placeholder={getNickname} />
                     <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
-                    </h4>
                 </form>
               </div>
               }
@@ -142,19 +140,19 @@ export default class MyProfile extends Component {
                       </Button>
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>Mitglied seit</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>{cookie.load('ck_membersince')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={5}>Mitglied seit</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={7}>{cookie.load('ck_membersince')}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>Email</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>{cookie.load('ck_email')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={5}>Email</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={7}>{cookie.load('ck_email')}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>Job</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={6}>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={5}>Job</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={7}>
                       {this.state.show2a === true ?
                         <div>{getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
-                          <form className={styles.m15}>
+                          <form className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
                               <input type="text" ref="job" name="job" id="job" placeholder={getJob} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
