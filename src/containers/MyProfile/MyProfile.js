@@ -148,6 +148,8 @@ export default class MyProfile extends Component {
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
           {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
+          <Row>
+            <Col xs={12}>
 
               <Row>
                 <Col xs={12}>
@@ -255,6 +257,9 @@ export default class MyProfile extends Component {
                 <h4>Kommentare</h4>
                 <h4>Projekte</h4>
               </Col>
+            </Row>
+
+            </Col>
             </Row>
 
             <Modal show={this.state.showModalMale} onHide={this.modalClose}>
