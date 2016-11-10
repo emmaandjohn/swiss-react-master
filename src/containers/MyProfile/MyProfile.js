@@ -163,7 +163,7 @@ export default class MyProfile extends Component {
               <Row>
                 <Col xs={12}>
                   {this.state.show1a === true ?
-                    <h1><div className={styles.brandLogo}</div> {getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                    <h1><div className={styles.brandLogo}></div> {getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value, event)} />
