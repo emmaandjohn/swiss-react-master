@@ -160,8 +160,6 @@ export default class MyProfile extends Component {
                 </Col>
 
                 <Col xs={12} sm={6}>
-                  <Row>
-
                     <Col xs={12}>
                       <Row>
                         <Col xs={4}>
@@ -231,8 +229,6 @@ export default class MyProfile extends Component {
                         </div>
                       }
                     </Col>
-
-                </Row>
               </Col>
               <Col xs={12} sm={6}>
                 <h4>Beiträge</h4>
