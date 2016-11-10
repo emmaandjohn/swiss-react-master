@@ -9,17 +9,6 @@
 .avatarMain {
     margin-bottom: 3px;
 }
-.brandLogo {
-  $size: 40px;
-  display: inline-block;
-  background: url('../Home/logo.png') no-repeat center center;
-  width: $size;
-  height: $size;
-  background-size: 80%;
-  margin: 0 10px 0 0;
-  border-radius: $size / 2;
-}
-
 .btnAvatar {
   margin-right: 3px;
   margin-top: 12px;
@@ -61,6 +50,9 @@
 }
 .mb10 {
   margin-bottom: 9px !important;
+}
+.mb15 {
+  margin-bottom: 15px;
 }
 .m0p0{
   margin: 0 !important;

@@ -163,7 +163,7 @@ export default class MyProfile extends Component {
               <Row>
                 <Col xs={12}>
                   {this.state.show1a === true ?
-                    <h1><div className={styles.brandLogo}></div> {getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                    <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value, event)} />
@@ -173,7 +173,7 @@ export default class MyProfile extends Component {
                   <hr />
                 </Col>
 
-                <Col xs={12} sm={6}>
+                <Col className={styles.mb15} xs={12} sm={6}>
                     <Col xs={12}>
                       <Row>
                         <Col xs={4}>
@@ -247,22 +247,28 @@ export default class MyProfile extends Component {
                     </Col>
               </Col>
 
-              <Col xs={12} sm={6}>
+              <Col className={styles.mb15} xs={12} sm={6}>
                 <Col xs={12}>
                   <Row>
                     <Col xs={4}>
                       <div className={flagClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                     </Col>
                     <Col xs={8}>
-                      <Button bsSize="small" className={styles.btnEdit} onClick={() => this.modalOpen(3)}><i className="fa fa-pencil"/></Button>
+                      <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(3)}>
+                        <i className="fa fa-globe" />
+                      </Button>
                     </Col>
                   </Row>
                 </Col>
-                <Col xs={12}>
+                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Projekte</h4>
                   <p>Llorem ipsum, llorem ipsum ... </p>
+                </Col>
+                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Beiträge</h4>
                   <p>Llorem ipsum, llorem ipsum ... </p>
+                </Col>
+                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Kommentare</h4>
                   <p>Llorem ipsum, llorem ipsum ... </p>
                 </Col>
