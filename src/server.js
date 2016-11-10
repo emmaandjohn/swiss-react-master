@@ -106,7 +106,7 @@ app.post('/registrieren', function(req, res) {
       company: null,
       description: null,
       membersince: null,
-      kanton: null,
+      kanton: 0,
       socialFb: null,
       socialGithub: null,
       socialTwitter: null,

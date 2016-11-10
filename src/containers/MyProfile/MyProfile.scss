@@ -9,6 +9,17 @@
 .avatarMain {
     margin-bottom: 3px;
 }
+.brandLogo {
+  $size: 40px;
+  display: inline-block;
+  background: url('../Home/logo.png') no-repeat center center;
+  width: $size;
+  height: $size;
+  background-size: 80%;
+  margin: 0 10px 0 0;
+  border-radius: $size / 2;
+}
+
 .btnAvatar {
   margin-right: 3px;
   margin-top: 12px;
@@ -131,6 +142,36 @@
 .avatar48{background: #ffffff url('../MyProfile/img/f/avatar_f_23.jpg') no-repeat center center; background-size: cover; background-position: center;}
 .avatar49{background: #ffffff url('../MyProfile/img/f/avatar_f_24.jpg') no-repeat center center; background-size: cover; background-position: center;}
 .avatar50{background: #ffffff url('../MyProfile/img/f/avatar_f_25.jpg') no-repeat center center; background-size: cover; background-position: center;}
+
+.flag0{background: #ffffff url('../MyProfile/img/flags/flag0.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag1{background: #ffffff url('../MyProfile/img/flags/flag1.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag2{background: #ffffff url('../MyProfile/img/flags/flag2.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag3{background: #ffffff url('../MyProfile/img/flags/flag3.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag4{background: #ffffff url('../MyProfile/img/flags/flag4.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag5{background: #ffffff url('../MyProfile/img/flags/flag5.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag6{background: #ffffff url('../MyProfile/img/flags/flag6.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag7{background: #ffffff url('../MyProfile/img/flags/flag7.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag8{background: #ffffff url('../MyProfile/img/flags/flag8.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag9{background: #ffffff url('../MyProfile/img/flags/flag9.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag10{background: #ffffff url('../MyProfile/img/flags/flag10.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag11{background: #ffffff url('../MyProfile/img/flags/flag11.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag12{background: #ffffff url('../MyProfile/img/flags/flag12.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag13{background: #ffffff url('../MyProfile/img/flags/flag13.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag14{background: #ffffff url('../MyProfile/img/flags/flag14.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag15{background: #ffffff url('../MyProfile/img/flags/flag15.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag16{background: #ffffff url('../MyProfile/img/flags/flag16.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag17{background: #ffffff url('../MyProfile/img/flags/flag17.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag18{background: #ffffff url('../MyProfile/img/flags/flag18.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag19{background: #ffffff url('../MyProfile/img/flags/flag19.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag20{background: #ffffff url('../MyProfile/img/flags/flag20.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag21{background: #ffffff url('../MyProfile/img/flags/flag21.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag22{background: #ffffff url('../MyProfile/img/flags/flag22.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag23{background: #ffffff url('../MyProfile/img/flags/flag23.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag24{background: #ffffff url('../MyProfile/img/flags/flag24.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag25{background: #ffffff url('../MyProfile/img/flags/flag25.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag26{background: #ffffff url('../MyProfile/img/flags/flag26.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag27{background: #ffffff url('../MyProfile/img/flags/flag27.jpg') no-repeat center center; background-size: cover; background-position: center;}
+
 
 .dateStyle{
   font-size: 10px;

@@ -26,19 +26,25 @@ export default class MyProfile extends Component {
     formMsg: '',
     showModalMale: false,
     showModalFemale: false,
+    showModalFlags: false,
     show1a: true, show2a: true, show3a: true, show4a: true, show5a: true, show6a: true, show7a: true, show8a: true, show9a: true, show10a: true, show11a: true, show12a: true, show13a: true
   }
 
-  modalOpen = (gender) => {
-    if(gender === 1){
+  modalOpen = (mode) => {
+    if(mode === 1){
       this.setState({ showModalMale: true });
-    }else{
+    }
+    if(mode === 2){
       this.setState({ showModalFemale: true });
+    }
+    if(mode === 3){
+      this.setState({ showModalFlags: true });
     }
   }
   modalClose = () => {
     this.setState({ showModalMale: false });
     this.setState({ showModalFemale: false });
+    this.setState({ showModalFlags: false });
   }
   show1a = (status) => { this.setState({ show1a: status }); }
   show2a = (status) => { this.setState({ show2a: status }); }
@@ -102,7 +108,7 @@ export default class MyProfile extends Component {
 
   render() {
     const { getUserState, activateNewUserState, updateUserState } = this.props;
-    const { formStatus, formMsg, showModalMale, showModalFemale } = this.state;
+    const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
@@ -111,6 +117,14 @@ export default class MyProfile extends Component {
     if(updateUserState.avatar){
       let objectSelector = 'avatar'+updateUserState.avatar;
       avatarClass = styles[objectSelector];
+    }
+
+    /* Set KANTON-flag either from Cache or when ou change the flag -> from State */
+    let objectSelectorFlag = 'flag'+cookie.load('ck_kanton');
+    let flagClass = styles[objectSelectorFlag];
+    if(updateUserState.kanton){
+      let objectSelectorFlag = 'flag'+updateUserState.kanton;
+      flagClass = styles[objectSelectorFlag];
     }
 
     /* Set nickname */
@@ -149,7 +163,7 @@ export default class MyProfile extends Component {
               <Row>
                 <Col xs={12}>
                   {this.state.show1a === true ?
-                    <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                    <h1><div className={styles.brandLogo}</div> {getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value, event)} />
@@ -214,6 +228,8 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
+
+
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
                     <Col className={styles.m15} xs={12}>
                       {this.state.show4a === true ?
@@ -230,10 +246,26 @@ export default class MyProfile extends Component {
                       }
                     </Col>
               </Col>
+
               <Col xs={12} sm={6}>
-                <h4>Beiträge</h4>
-                <h4>Kommentare</h4>
-                <h4>Projekte</h4>
+                <Col xs={12}>
+                  <Row>
+                    <Col xs={4}>
+                      <div className={flagClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
+                    </Col>
+                    <Col xs={8}>
+                      <Button bsSize="small" className={styles.btnEdit} onClick={() => this.modalOpen(3)}><i className="fa fa-pencil"/></Button>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col xs={12}>
+                  <h4>Projekte</h4>
+                  <p>Llorem ipsum, llorem ipsum ... </p>
+                  <h4>Beiträge</h4>
+                  <p>Llorem ipsum, llorem ipsum ... </p>
+                  <h4>Kommentare</h4>
+                  <p>Llorem ipsum, llorem ipsum ... </p>
+                </Col>
               </Col>
             </Row>
 
@@ -312,6 +344,47 @@ export default class MyProfile extends Component {
                 <Button onClick={this.modalClose}>Schliessen</Button>
               </Modal.Footer>
             </Modal>
+
+            <Modal show={this.state.showModalFlags} onHide={this.modalClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Kanton auswählen</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                  <Row className="show-grid">
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '1')} className={styles.flag1 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '2')} className={styles.flag2 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '3')} className={styles.flag3 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '4')} className={styles.flag4 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '5')} className={styles.flag5 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '6')} className={styles.flag6 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '7')} className={styles.flag7 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '8')} className={styles.flag8 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '9')} className={styles.flag9 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '10')} className={styles.flag10 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '11')} className={styles.flag11 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '12')} className={styles.flag12 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '13')} className={styles.flag13 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '14')} className={styles.flag14 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '15')} className={styles.flag15 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '16')} className={styles.flag16 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '17')} className={styles.flag17 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '18')} className={styles.flag18 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '19')} className={styles.flag19 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '20')} className={styles.flag20 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '21')} className={styles.flag21 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '22')} className={styles.flag22 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '23')} className={styles.flag23 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '24')} className={styles.flag24 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '25')} className={styles.flag25 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '26')} className={styles.flag26 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                    <Col xs={4} sm={2}><div onClick={() => this.updateUserProfile('kanton', '27')} className={styles.flag27 + ' ' + styles.avatarRound + ' ' + styles.clickElement}></div></Col>
+                  </Row>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.modalClose}>Schliessen</Button>
+              </Modal.Footer>
+            </Modal>
+
             </div>
           :
             <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
