@@ -173,7 +173,7 @@ export default class MyProfile extends Component {
                   <hr />
                 </Col>
 
-                <Col className={styles.mb15} xs={12} sm={6}>
+                <Col className={styles.mb35} xs={12} sm={6}>
                     <Col xs={12}>
                       <Row>
                         <Col xs={4}>
@@ -247,7 +247,7 @@ export default class MyProfile extends Component {
                     </Col>
               </Col>
 
-              <Col className={styles.mb15} xs={12} sm={6}>
+              <Col className={styles.mb35} xs={12} sm={6}>
                 <Col xs={12}>
                   <Row>
                     <Col xs={4}>
