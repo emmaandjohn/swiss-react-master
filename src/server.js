@@ -69,7 +69,7 @@ var blogSchema = new mongoose.Schema({
   category: String,
   titel: String,
   markup: String,
-  technologies: Object,
+  technologies: Array,
   timeFormatted: String,
   unixtime: String
 });
@@ -261,7 +261,7 @@ app.post('/community', function(req, res) {
         category: 'project',
         titel: titelData,
         markup: markupData,
-        technologies: {"nodejs", "ES6", "Redux", "Superagent"},
+        technologies: ["nodejs", "ES6", "Redux", "Superagent"],
         timeFormatted: humanDate,
         unixtime: unixDateNow
       });
