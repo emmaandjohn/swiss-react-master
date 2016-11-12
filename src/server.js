@@ -234,15 +234,10 @@ app.post('/activation', function(req, res) {
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
-    var markupData = req.body.markupData;
-    var titelData = req.body.titelData;
-    var userUuid = req.body.userUuid;
-    var userAvatar = req.body.userAvatar;
-    var userNickname = req.body.userNickname;
 
     /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
     if(loadStatus === 1 || loadStatus === 2){
-      let l = loadStatus === 2 ? 3 : 10;
+      let l = loadStatus === 2 ? 10 : 20;
       BlogModel.find({}).sort({'unixtime': -1}).limit(l).exec(function(err, result) {
         if(err){
           res.json(err);
@@ -259,6 +254,12 @@ app.post('/community', function(req, res) {
 
     /* Save to Database and load data afterwards */
     if(loadStatus === 0){
+      var markupData = req.body.markupData;
+      var titelData = req.body.titelData;
+      var userUuid = req.body.userUuid;
+      var userAvatar = req.body.userAvatar;
+      var userNickname = req.body.userNickname;
+
       var unixDateNow = Date.now(); // e.g. 1299827226
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
@@ -313,6 +314,23 @@ app.post('/updateUserProfile', function(req, res) {
     var newValue = req.body.newvalue;
 
     if(newValue.length > 0){
+
+      if(getField === 'avatar' || getField === 'nickname'){
+        BlogModel.findOne({ userUuid: getUuid }, 'userUuid', function(error, result){
+          if(result !== null){
+            var query1 = {"userUuid": getUuid};
+            var update1 = {};
+            update1[getField] = newValue;
+            var options1 = {multi: true};
+            BlogModel.update(query1, update1, options1, function(err, result) {
+              if(result !== null){
+                  console.log("SUCCESS UNBELIEVABLE!!");
+              }
+            });
+          }
+        });
+      }
+
       var query = {"email": getEmail, "uuid": getUuid};
       var update = {};
       update[getField] = newValue;
