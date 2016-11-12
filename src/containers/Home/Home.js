@@ -48,7 +48,7 @@ export default class Home extends Component {
                         entry.userEmail + ' | ' +
                         entry.timeFormatted + '</span></div>';
                         */
-      blogContentDef += '<Row><Col xs={6}>Test</Col><Col xs={6}>Test</Col></Row>';
+      blogContentDef += '<div className="col-xs-6">sdsdds</div><div className="col-xs-6">sdsddssd2</div>';
     });
 
     return (
@@ -69,7 +69,7 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3>Neuste Blogeinträge</h3>
-            <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
+            <div className="row" dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
     );
