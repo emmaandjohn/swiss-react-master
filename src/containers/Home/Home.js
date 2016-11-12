@@ -33,6 +33,7 @@ export default class Home extends Component {
 
   render() {
     const styles = require('./Home.scss');
+    const stylesMyProfile = require('../MyProfile/MyProfile.scss');
     const { getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
@@ -48,7 +49,12 @@ export default class Home extends Component {
                         entry.userEmail + ' | ' +
                         entry.timeFormatted + '</span></div>';
                         */
-      blogContentDef += '<div class="col-xs-6">sdsdds</div><div class="col-xs-6">sdsddssd2</div>';
+      blogContentDef += '<div class="col-xs-1">'+ '<div class="avatar' + entry.userAvatar + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain+'"></div>' +
+                        '<div class="col-xs-3">'+ entry.userNickname + '</div>' +
+                        '<div class="col-xs-3">'+ entry.titel + '</div>' +
+                        '<div class="col-xs-1">'+ entry.category + '</div>' +
+                        '<div class="col-xs-3">'+ entry.technologies + '</div>' +
+                        '<div class="col-xs-1 dateStyle">'+ entry.timeFormatted + '</div>';
     });
 
     return (
@@ -68,8 +74,8 @@ export default class Home extends Component {
         </div>
 
         <div className='container'>
-          <h3>Neuste Blogeinträge</h3>
-            <div className="row" dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
+          <h3>React Activity Feed</h3>
+            <div className={styles.topLine + ' row'} dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
     );

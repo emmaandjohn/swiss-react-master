@@ -66,6 +66,8 @@ var UserModel = mongoose.model('User', userSchema);
 
 var blogSchema = new mongoose.Schema({
   userUuid: String,
+  userAvatar: String,
+  userNickname: String,
   category: String,
   titel: String,
   markup: String,
@@ -235,8 +237,11 @@ app.post('/community', function(req, res) {
     var markupData = req.body.markupData;
     var titelData = req.body.titelData;
     var userUuid = req.body.userUuid;
+    var userAvatar = req.body.userAvatar;
+    var userNickname = req.body.userNickname;
 
-    if(loadStatus === 1 || loadStatus === 2){ /* 1 = Community Initial - 2 = Home Initial*/
+    /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
+    if(loadStatus === 1 || loadStatus === 2){
       let l = loadStatus === 2 ? 3 : 10;
       BlogModel.find({}).sort({'unixtime': -1}).limit(l).exec(function(err, result) {
         if(err){
@@ -252,12 +257,15 @@ app.post('/community', function(req, res) {
       });
     }
 
+    /* Save to Database and load data afterwards */
     if(loadStatus === 0){
       var unixDateNow = Date.now(); // e.g. 1299827226
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
       var BlogData = new BlogModel({
         userUuid: userUuid,
+        userAvatar: userAvatar,
+        userNickname: userNickname,
         category: 'project',
         titel: titelData,
         markup: markupData,

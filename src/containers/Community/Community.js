@@ -127,13 +127,16 @@ export default class RichEditorExample extends Component {
     const titelData = this.refs.titel.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userUuid = cookie.load('ck_uuid');
+    const userAvatar = cookie.load('ck_avatar');
+    const userNickname = cookie.load('ck_nickname');
+    /* plus category and technologies */
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
         this.refs.titel.value = '';
         superagent
         .post('/community')
-        .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userUuid: userUuid })
+        .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
         .set('Accept', 'application/json')
         .end((error, res) => {
           if (res.body.status === 1) {
