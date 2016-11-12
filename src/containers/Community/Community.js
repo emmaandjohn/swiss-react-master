@@ -126,14 +126,14 @@ export default class RichEditorExample extends Component {
   saveDataToDatabase() {
     const titelData = this.refs.titel.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
-    const userEmail = cookie.load('ck_email');
+    const userUuid = cookie.load('ck_uuid');
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
         this.refs.titel.value = '';
         superagent
         .post('/community')
-        .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userEmail: userEmail })
+        .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userUuid: userUuid })
         .set('Accept', 'application/json')
         .end((error, res) => {
           if (res.body.status === 1) {
@@ -192,6 +192,7 @@ export default class RichEditorExample extends Component {
           <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
         : null
         }
+        <div>Beitrag oder Projekt</div>
         <div id="community-title-form">
           <form className="community-title-form form-inline">
             <div className="form-group">
@@ -224,6 +225,8 @@ export default class RichEditorExample extends Component {
               />
           </div>
         </div>
+        <br />
+        <div>Verwendete Technologien</div>
         <br />
         <button className="btn btn-primary" onClick={this.saveDataToDatabase.bind(this)}>Speichern</button>
         </div>

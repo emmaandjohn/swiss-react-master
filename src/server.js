@@ -20,8 +20,13 @@ import {Provider} from 'react-redux';
 import getRoutes from './routes';
 import cookieParser from 'cookie-parser';
 
+if(!process.env.MONGODB_URI){
+  process.env.MONGODB_URI = 'mongodb://heroku_r06n6jtm:5jf50mgg9941u4sd42f655q4kb@ds031915.mlab.com:31915/heroku_r06n6jtm';
+}
+
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport('smtps://'+config.app.settings.SenderEmail+':'+config.app.settings.SenderEmailPw+'@'+config.app.settings.SenderEmailSMTPHost);
+
 
 const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 const pretty = new PrettyError();
@@ -60,14 +65,15 @@ var userSchema = new mongoose.Schema({
 var UserModel = mongoose.model('User', userSchema);
 
 var blogSchema = new mongoose.Schema({
-  userEmail: String,
+  userUuid: String,
+  category: String,
   titel: String,
   markup: String,
+  technologies: Object,
   timeFormatted: String,
   unixtime: String
 });
 var BlogModel = mongoose.model('Blog', blogSchema);
-
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
 
@@ -228,7 +234,7 @@ app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
     var markupData = req.body.markupData;
     var titelData = req.body.titelData;
-    var userEmail = req.body.userEmail;
+    var userUuid = req.body.userUuid;
 
     if(loadStatus === 1 || loadStatus === 2){ /* 1 = Community Initial - 2 = Home Initial*/
       let l = loadStatus === 2 ? 3 : 10;
@@ -251,13 +257,15 @@ app.post('/community', function(req, res) {
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
       var BlogData = new BlogModel({
-        userEmail: userEmail,
+        userUuid: userUuid,
+        category: 'project',
         titel: titelData,
         markup: markupData,
+        technologies: {"nodejs", "ES6", "Redux", "Superagent"},
         timeFormatted: humanDate,
         unixtime: unixDateNow
       });
-      UserModel.findOne({ email: userEmail }, 'email', function(error, result){
+      UserModel.findOne({ uuid: userUuid }, 'uuid', function(error, result){
           if(error){
               res.json(error);
           }
