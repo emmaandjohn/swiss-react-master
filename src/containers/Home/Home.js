@@ -42,7 +42,13 @@ export default class Home extends Component {
         return b.unixtime-a.unixtime
     });*/
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' + entry.titel + '</h2><hr />' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
+      /*blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' +
+                        entry.titel + '</h2><hr />' +
+                        entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' +
+                        entry.userEmail + ' | ' +
+                        entry.timeFormatted + '</span></div>';
+                        */
+      blogContentDef += '<Row><Col xs={6}>Test</Col><Col xs={6}>Test</Col></Row>';
     });
 
     return (
@@ -63,13 +69,6 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3>Neuste Blogeinträge</h3>
-            <Row className="show-grid">
-              <Col xs={1}>{'Avatar'}</Col>
-              <Col xs={2}><Label bsStyle="primary">Project</Label></Col>
-              <Col xs={4}>{'Titel titel titel titel'}</Col>
-              <Col xs={3}><Label>ES6</Label> <Label>ReactJs</Label> <Label>Superagent</Label></Col>
-              <Col xs={2}><div className={styles.dateStyle}>{'12.12.2012 - 12:12'}</div></Col>
-            </Row>
             <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
