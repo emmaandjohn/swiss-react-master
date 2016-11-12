@@ -48,7 +48,7 @@ export default class Home extends Component {
                         entry.userEmail + ' | ' +
                         entry.timeFormatted + '</span></div>';
                         */
-      blogContentDef += '<div className="col-xs-6">sdsdds</div><div className="col-xs-6">sdsddssd2</div>';
+      blogContentDef += '<div class="col-xs-6">sdsdds</div><div class="col-xs-6">sdsddssd2</div>';
     });
 
     return (
