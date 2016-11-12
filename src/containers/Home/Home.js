@@ -49,7 +49,7 @@ export default class Home extends Component {
                         entry.userEmail + ' | ' +
                         entry.timeFormatted + '</span></div>';
                         */
-      blogContentDef += '<hr /><div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini'"></div></div>' +
+      blogContentDef += '<hr /><div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
                         '<div class="col-xs-3">'+ entry.userNickname + '</div>' +
                         '<div class="col-xs-3">'+ entry.titel + '</div>' +
                         '<div class="col-xs-1">'+ entry.category + '</div>' +
