@@ -1,2 +1,9 @@
+-) Bei Logout: Message erfolgreich ausgeloggt.
+-) onEnter bei Profil-Feldern geht nicht mehr?
+
+
 -) bild links zu AWS S3?
 -) sternenzeit nodejs mit darth vader icon
+
+-) Vervollständigen Profil (Birthday, Social etc.)
+-) Maximallänge Minimallänge (length) Profil

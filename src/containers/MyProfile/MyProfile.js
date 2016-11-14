@@ -100,8 +100,9 @@ export default class MyProfile extends Component {
     });
   }
 
-  handleKeyPress = (whichField, newValue, e) => {
-    if(e.key === 'Enter'){
+  handleKeyPress = (whichField, newValue, event) => {
+    event = event || window.event //For IE
+    if(event.keyCode  === 13){
         this.updateUserProfile(whichField, newValue);
     }
   }

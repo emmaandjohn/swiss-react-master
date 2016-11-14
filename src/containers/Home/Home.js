@@ -39,22 +39,13 @@ export default class Home extends Component {
     const logoImage = require('./logo.png');
 
     let blogContentDef = '';
-    /*getBlogEntriesState.articles.sort(function(a, b){
-        return b.unixtime-a.unixtime
-    });*/
     getBlogEntriesState.articles.forEach(function(entry){
-      /*blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' +
-                        entry.titel + '</h2><hr />' +
-                        entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' +
-                        entry.userEmail + ' | ' +
-                        entry.timeFormatted + '</span></div>';
-                        */
-      blogContentDef += '<hr /><div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
+      blogContentDef += '<div class="' + styles.topLine + '"><div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
                         '<div class="col-xs-3">'+ entry.userNickname + '</div>' +
-                        '<div class="col-xs-3">'+ entry.titel + '</div>' +
-                        '<div class="col-xs-1">'+ entry.category + '</div>' +
+                        '<div class="col-xs-2"><strong>'+ entry.titel + '</strong></div>' +
+                        '<div class="col-xs-1"><span class="label label-primary">'+ entry.category + '</span></div>' +
                         '<div class="col-xs-3">'+ entry.technologies + '</div>' +
-                        '<div class="col-xs-1 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div>';
+                        '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div></div>';
     });
 
     return (
