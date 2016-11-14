@@ -321,9 +321,10 @@ app.post('/updateUserProfile', function(req, res) {
             var query1 = {"userUuid": getUuid};
             var update1 = {};
             update1[getField] = newValue;
-            var options1 = {multi: true};
+            var options1 = {multi: true, new: true};
             BlogModel.update(query1, update1, options1, function(err, result) {
               if(result !== null){
+                  console.log("result: "+result);
                   console.log("SUCCESS UNBELIEVABLE!!");
               }
             });
