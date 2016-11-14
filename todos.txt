@@ -1,4 +1,6 @@
 -) Bei Logout: Message erfolgreich ausgeloggt.
+-) Bei Login: Willkommen zurück.. msg abändern zu Username
+
 -) onEnter bei Profil-Feldern geht nicht mehr?
 
 
