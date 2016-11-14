@@ -324,7 +324,7 @@ app.post('/updateUserProfile', function(req, res) {
             var options1 = {multi: true, new: true};
             BlogModel.update(query1, update1, options1, function(err, result) {
               if(result !== null){
-                  console.log("result: "+result);
+                  console.log("result: "+JSON.stringify(result));
                   console.log("SUCCESS UNBELIEVABLE!!");
               }
             });
