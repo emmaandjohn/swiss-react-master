@@ -40,12 +40,12 @@ export default class Home extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div class="' + styles.topLine + '"><div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
+      blogContentDef += '<div class="' + styles.topLine + '"></div><div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
                         '<div class="col-xs-3">'+ entry.userNickname + '</div>' +
                         '<div class="col-xs-2"><strong>'+ entry.titel + '</strong></div>' +
                         '<div class="col-xs-1"><span class="label label-primary">'+ entry.category + '</span></div>' +
                         '<div class="col-xs-3">'+ entry.technologies + '</div>' +
-                        '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div></div>';
+                        '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div>';
     });
 
     return (
