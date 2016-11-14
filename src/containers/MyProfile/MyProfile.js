@@ -100,11 +100,13 @@ export default class MyProfile extends Component {
     });
   }
 
-  handleKeyPress = (whichField, newValue, event) => {
-    if(!event){
-       event= window.event;
+  handleKeyPress = (whichField, newValue, e) => {
+    console.log("event1: "+e);
+    console.log("event keyCode: "+e.keyCode);
+    if(e.originalEvent){
+       console.log("event2: "+e);
     }
-    if(event.keyCode  === 13){
+    if(e.originalEvent.keyCode === 13){
         this.updateUserProfile(whichField, newValue);
     }
   }
