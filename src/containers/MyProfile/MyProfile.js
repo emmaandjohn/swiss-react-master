@@ -101,7 +101,9 @@ export default class MyProfile extends Component {
   }
 
   handleKeyPress = (whichField, newValue, event) => {
-    event = event || window.event //For IE
+    if(!event){
+       event= window.event;
+    }
     if(event.keyCode  === 13){
         this.updateUserProfile(whichField, newValue);
     }
