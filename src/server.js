@@ -316,6 +316,7 @@ app.post('/updateUserProfile', function(req, res) {
     if(newValue.length > 0){
 
       if(getField === 'avatar' || getField === 'nickname'){
+        var getField1 = '';
         if(getField === 'avatar'){getField1 = 'userAvatar';}else{getField1 = 'userNickname';}
         BlogModel.findOne({ userUuid: getUuid }, 'userUuid', function(error, result){
           if(result !== null){
