@@ -321,7 +321,7 @@ app.post('/updateUserProfile', function(req, res) {
             var query1 = {"userUuid": getUuid};
             var update1 = {};
             update1[getField] = newValue;
-            console.log("update1: "+update1 + " ||| " + JSON.stringify(update1));
+            console.log("update1: "+JSON.stringify(query1) + " ||| " + JSON.stringify(update1));
             var options1 = {multi: true};
             BlogModel.update(query1, update1, options1, function(err, result) {
               if (err) {
