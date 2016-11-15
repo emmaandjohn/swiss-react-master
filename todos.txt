@@ -1,7 +1,9 @@
 
+-) Link zu Artikel machen (Titel lowercase mit Strichen)?
+-) Community Beitrag oder Projekt auswählbar machen
+-) Verwendete Technologien Feld+ machen (Array)
 
--) Maximallänge Minimallänge (length) Profil
--) Vervollständigen Profil (Birthday, Social etc.)
+-) Vervollständigen Profil (Birthday, PW, Social etc.)
 -) Responsive Activity Feed
 
 low
@@ -12,6 +14,7 @@ low
 
 ------------------------------------------------------------------------
 
-T) bild links zu AWS S3?
+X) Maximallänge Minimallänge (length) Profil
+X) bild links zu AWS S3?
 X) onEnter bei Profil-Feldern geht nicht mehr? ff issue
 X) Bei Login: Willkommen zurück.. msg abändern zu Username

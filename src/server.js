@@ -84,6 +84,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+
+app.get('/community/:id', function(req , res){
+  res.render('community' + req.params.id);
+});
+
 /* **** Get POST Form data from Registration */
 app.post('/registrieren', function(req, res) {
     var email = req.body.email;

@@ -31,6 +31,29 @@ export default class Home extends Component {
     userLoggedIn: PropTypes.string
   }
 
+  loadArticle = (id) => {
+    //superagent request with /community/article-id-abc123545
+    // you get back here markupdata and all other data from specific article in -> res.
+
+    /* handle this in server.js - in saveto Mongo action:
+    function convertToSlug(Text)
+    {
+        return Text
+            .toLowerCase()
+            .replace(/[^\w ]+/g,'')
+            .replace(/ +/g,'-')
+            ;
+    }
+    save it to aditional field like: urlFriendlyTitel
+    also new field: articleId
+
+    then within res. you get urlFriendlyTitel -> add it here to dispatch.push:
+
+    this.props.dispatch.push -> /community/transformed-blog-titel from server.js
+
+    */
+  }
+
   render() {
     const styles = require('./Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
@@ -40,13 +63,13 @@ export default class Home extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div class="col-xs-12 ' + styles.topLine + '"></div>' +
+      blogContentDef += '<div onClick='+{() => this.loadArticle("abc")}+' class="col-xs-12 ' + styles.topLine + '">' +
                         '<div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
                         '<div class="col-xs-2">'+ entry.userNickname + '</div>' +
                         '<div class="col-xs-3"><strong>'+ entry.titel + '</strong></div>' +
                         '<div class="col-xs-1"><span class="label label-primary">'+ entry.category + '</span></div>' +
                         '<div class="col-xs-3 ' + styles.techStyle + '">'+ entry.technologies + '</div>' +
-                        '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div>';
+                        '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div></div>';
     });
 
     return (
