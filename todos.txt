@@ -1,15 +1,17 @@
--) Bei Logout: Message erfolgreich ausgeloggt.
--) onEnter bei Profil-Feldern geht nicht mehr? ff issue
 
 
--) bild links zu AWS S3?
--) sternenzeit nodejs mit darth vader icon
-
--) Vervollständigen Profil (Birthday, Social etc.)
 -) Maximallänge Minimallänge (length) Profil
+-) Vervollständigen Profil (Birthday, Social etc.)
 -) Responsive Activity Feed
 
+low
+------------
+-) sternenzeit nodejs mit darth vader icon
+-) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 
 
+------------------------------------------------------------------------
 
+T) bild links zu AWS S3?
+X) onEnter bei Profil-Feldern geht nicht mehr? ff issue
 X) Bei Login: Willkommen zurück.. msg abändern zu Username

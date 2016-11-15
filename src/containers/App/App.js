@@ -88,7 +88,6 @@ export default class App extends Component {
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
-      alert("Erfolgreich ausgeloggt");
     }
 
     onNavbarToggle = () => {
