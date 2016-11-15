@@ -66,38 +66,59 @@ export default class MyProfile extends Component {
     const whichFieldDef = whichField;
     const newValueDef = newValue;
 
-    superagent
-    .post('/updateUserProfile')
-    .send({ field: whichFieldDef, email: updatersEmailDef, uuid: updatersUuidDef, newvalue: newValueDef })
-    .set('Accept', 'application/json')
-    .end((error, res) => {
-      if (res.body.status === 1) {
-        cookie.save('ck_pw', res.body.userData.password, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_birthday', res.body.userData.birthday, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_avatar', res.body.userData.avatar, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_nickname', res.body.userData.nickname, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_job', res.body.userData.job, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_company', res.body.userData.company, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_description', res.body.userData.description, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_membersince', res.body.userData.membersince, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_kanton', res.body.userData.kanton, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-
-        cookie.save('ck_social_fb', res.body.userData.socialFb, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_social_github', res.body.userData.socialGithub, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_social_twitter', res.body.userData.socialTwitter, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_social_linkedin', res.body.userData.socialLinkedin, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-
-        this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
-        this.modalClose();
-        this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
+    let checkLength = 0;
+    if(whichFieldDef === 'description'){
+      if(newValueDef.length < 10 || newValueDef.length > 500){
+        checkLength = 1;
       }
-      if (res.body.status === 2) {
-        this.modalClose();
-        this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
+    }else{
+      if(newValueDef.length < 2 || newValueDef.length > 40){
+        checkLength = 2;
       }
-    });
+    }
+
+    if(checkLength === 0){
+      superagent
+      .post('/updateUserProfile')
+      .send({ field: whichFieldDef, email: updatersEmailDef, uuid: updatersUuidDef, newvalue: newValueDef })
+      .set('Accept', 'application/json')
+      .end((error, res) => {
+        if (res.body.status === 1) {
+          cookie.save('ck_pw', res.body.userData.password, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_birthday', res.body.userData.birthday, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_avatar', res.body.userData.avatar, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_nickname', res.body.userData.nickname, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_job', res.body.userData.job, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_company', res.body.userData.company, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_description', res.body.userData.description, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_membersince', res.body.userData.membersince, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_kanton', res.body.userData.kanton, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+          cookie.save('ck_social_fb', res.body.userData.socialFb, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_github', res.body.userData.socialGithub, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_twitter', res.body.userData.socialTwitter, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_linkedin', res.body.userData.socialLinkedin, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+          this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
+          this.modalClose();
+          this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
+        }
+        if (res.body.status === 2) {
+          this.modalClose();
+          this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
+        }
+      });
+    }
+    if(checkLength === 1){ /* description length error */
+      this.setState({formStatus: 1});
+      this.setState({formMsg: 'Fehler: Mindestens 10 Zeichen und maximal 500 Zeichen erlaubt.'});
+    }
+    if(checkLength === 2){ /* other fields length error */
+      this.setState({formStatus: 1});
+      this.setState({formMsg: 'Fehler: Mindestens 2 Zeichen und maximal 40 Zeichen erlaubt.'});
+    }
   }
 
   handleKeyPress = (event, whichField, newValue) => {
@@ -171,6 +192,10 @@ export default class MyProfile extends Component {
                     </div>
                   }
                   <hr />
+                  {formStatus === 1 ?
+                    <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
+                    : null
+                  }
                 </Col>
 
                 <Col className={styles.mb35} xs={12} sm={6}>
