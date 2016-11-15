@@ -100,15 +100,10 @@ export default class MyProfile extends Component {
     });
   }
 
-  handleKeyPress = (event) => {
-    console.log("event1: "+":ZZZ:"+event.key);
-    /*console.log("event keyCode: "+e.keyCode);
-    if(e.originalEvent){
-       console.log("event2: "+e);
-    }
-    if(e.originalEvent.keyCode === 13){
+  handleKeyPress = (event, whichField, newValue) => {
+    if(event.key === 'Enter'){
         this.updateUserProfile(whichField, newValue);
-    }*/
+    }
   }
 
   render() {
@@ -209,7 +204,7 @@ export default class MyProfile extends Component {
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={() => this.handleKeyPress('job', this.refs.job.value)} />
+                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={(event) => this.handleKeyPress(event, 'job', this.refs.job.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -225,7 +220,7 @@ export default class MyProfile extends Component {
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={() => this.handleKeyPress('company', this.refs.company.value)} />
+                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={(event) => this.handleKeyPress(event, 'company', this.refs.company.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>

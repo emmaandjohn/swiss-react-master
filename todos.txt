@@ -1,7 +1,7 @@
 -) Bei Logout: Message erfolgreich ausgeloggt.
--) Bei Login: Willkommen zurück.. msg abändern zu Username
+T) Bei Login: Willkommen zurück.. msg abändern zu Username
 
--) onEnter bei Profil-Feldern geht nicht mehr?
+-) onEnter bei Profil-Feldern geht nicht mehr? ff issue
 
 
 -) bild links zu AWS S3?

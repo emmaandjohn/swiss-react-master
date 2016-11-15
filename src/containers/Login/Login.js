@@ -34,7 +34,7 @@ export default class Login extends Component {
       .end((error, res) => {
         if (res.body.status === 1) {
           this.setState({formStatus: 2});
-          this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + inputEmail + '</strong>!'});
+          this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + res.body.userData.nickname + '</strong>!'});
 
           this.props.dispatch(activateNewUser(true, true));
 
