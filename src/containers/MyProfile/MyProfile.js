@@ -101,14 +101,14 @@ export default class MyProfile extends Component {
   }
 
   handleKeyPress = (whichField, newValue, e) => {
-    console.log("event1: "+e.originalEvent);
-    console.log("event keyCode: "+e.keyCode);
+    console.log("event1: "+e);
+    /*console.log("event keyCode: "+e.keyCode);
     if(e.originalEvent){
        console.log("event2: "+e);
     }
     if(e.originalEvent.keyCode === 13){
         this.updateUserProfile(whichField, newValue);
-    }
+    }*/
   }
 
   render() {
