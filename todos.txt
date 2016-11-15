@@ -1,6 +1,4 @@
 -) Bei Logout: Message erfolgreich ausgeloggt.
-T) Bei Login: Willkommen zurück.. msg abändern zu Username
-
 -) onEnter bei Profil-Feldern geht nicht mehr? ff issue
 
 
@@ -9,3 +7,9 @@ T) Bei Login: Willkommen zurück.. msg abändern zu Username
 
 -) Vervollständigen Profil (Birthday, Social etc.)
 -) Maximallänge Minimallänge (length) Profil
+-) Responsive Activity Feed
+
+
+
+
+X) Bei Login: Willkommen zurück.. msg abändern zu Username
