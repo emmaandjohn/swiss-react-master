@@ -78,6 +78,8 @@ export default class MyProfile extends Component {
     }
 
     if(checkLength === 0){
+      this.setState({formStatus: 0});
+      this.setState({formMsg: ''});
       superagent
       .post('/updateUserProfile')
       .send({ field: whichFieldDef, email: updatersEmailDef, uuid: updatersUuidDef, newvalue: newValueDef })
