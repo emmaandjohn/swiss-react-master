@@ -100,8 +100,8 @@ export default class MyProfile extends Component {
     });
   }
 
-  handleKeyPress = (whichField, newValue, e) => {
-    console.log("event1: "+e+e.keyCode+window.e);
+  handleKeyPress = (event) => {
+    console.log("event1: "+event+event.keyCode+window.event);
     /*console.log("event keyCode: "+e.keyCode);
     if(e.originalEvent){
        console.log("event2: "+e);
@@ -171,7 +171,7 @@ export default class MyProfile extends Component {
                     <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
-                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value, KeyboardEvent.key)} />
+                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value, event)} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                     </div>
                   }
