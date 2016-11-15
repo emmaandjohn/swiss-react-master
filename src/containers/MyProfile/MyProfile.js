@@ -171,7 +171,7 @@ export default class MyProfile extends Component {
                     <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
-                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={(event) => this.handleKeyPress('nickname', this.refs.nickname.value, event)} />
+                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={(event) => this.handleKeyPress(event, 'nickname', this.refs.nickname.value)} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                     </div>
                   }
