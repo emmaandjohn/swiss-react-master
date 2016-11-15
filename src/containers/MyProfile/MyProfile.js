@@ -101,7 +101,7 @@ export default class MyProfile extends Component {
   }
 
   handleKeyPress = (whichField, newValue, e) => {
-    console.log("event1: "+e);
+    console.log("event1: "+e+e.keyCode+window.e);
     /*console.log("event keyCode: "+e.keyCode);
     if(e.originalEvent){
        console.log("event2: "+e);
@@ -171,7 +171,7 @@ export default class MyProfile extends Component {
                     <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
-                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value, window.event)} />
+                        <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={() => this.handleKeyPress('nickname', this.refs.nickname.value)} />
                         <Button className={styles.btnSave} bsSize="small" onClick={() => this.updateUserProfile('nickname', this.refs.nickname.value)}><i className="fa fa-check"/></Button>
                     </div>
                   }
@@ -209,7 +209,7 @@ export default class MyProfile extends Component {
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={() => this.handleKeyPress('job', this.refs.job.value, window.event)} />
+                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={() => this.handleKeyPress('job', this.refs.job.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -225,7 +225,7 @@ export default class MyProfile extends Component {
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={() => this.handleKeyPress('company', this.refs.company.value, window.event)} />
+                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={() => this.handleKeyPress('company', this.refs.company.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
