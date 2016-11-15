@@ -101,7 +101,7 @@ export default class MyProfile extends Component {
   }
 
   handleKeyPress = (event) => {
-    console.log("event1: "+event+event.keyCode+window.event);
+    console.log("event1: "+JSON.stringify(event)+":ZZZ:"+event.key);
     /*console.log("event keyCode: "+e.keyCode);
     if(e.originalEvent){
        console.log("event2: "+e);
