@@ -78,7 +78,7 @@ export default class Home extends Component {
           <div className={'col-xs-2 ' + styles.dateStyle}>{entry.timeFormatted}</div>
         </div>
       );
-    }).bind(this));
+    }).bind(this);
 
     return (
       <div className={styles.home}>
