@@ -25,38 +25,38 @@ export default class Home extends Component {
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });
-
-
-    loadArticle = (id) => {
-      console.log(id);
-      //superagent request with /community/article-id-abc123545
-      // you get back here markupdata and all other data from specific article in -> res.
-
-      /* handle this in server.js - in saveto Mongo action:
-      function convertToSlug(Text)
-      {
-          return Text
-              .toLowerCase()
-              .replace(/[^\w ]+/g,'')
-              .replace(/ +/g,'-')
-              ;
-      }
-      save it to aditional field like: urlFriendlyTitel
-      also new field: articleId
-
-      then within res. you get urlFriendlyTitel -> add it here to dispatch.push:
-
-      this.props.dispatch.push -> /community/transformed-blog-titel from server.js
-
-      */
-    }
-
   }
 
   static propTypes = {
     userLoggedIn: PropTypes.string
   }
 
+
+  loadArticle = (id) => {
+    setTimeout(function(){
+    console.log(id);
+    }, 100);
+    //superagent request with /community/article-id-abc123545
+    // you get back here markupdata and all other data from specific article in -> res.
+
+    /* handle this in server.js - in saveto Mongo action:
+    function convertToSlug(Text)
+    {
+        return Text
+            .toLowerCase()
+            .replace(/[^\w ]+/g,'')
+            .replace(/ +/g,'-')
+            ;
+    }
+    save it to aditional field like: urlFriendlyTitel
+    also new field: articleId
+
+    then within res. you get urlFriendlyTitel -> add it here to dispatch.push:
+
+    this.props.dispatch.push -> /community/transformed-blog-titel from server.js
+
+    */
+  }
 
 
   render() {
