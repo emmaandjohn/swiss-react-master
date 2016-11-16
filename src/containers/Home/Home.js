@@ -25,35 +25,39 @@ export default class Home extends Component {
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });
+
+
+    loadArticle = (id) => {
+      console.log(id);
+      //superagent request with /community/article-id-abc123545
+      // you get back here markupdata and all other data from specific article in -> res.
+
+      /* handle this in server.js - in saveto Mongo action:
+      function convertToSlug(Text)
+      {
+          return Text
+              .toLowerCase()
+              .replace(/[^\w ]+/g,'')
+              .replace(/ +/g,'-')
+              ;
+      }
+      save it to aditional field like: urlFriendlyTitel
+      also new field: articleId
+
+      then within res. you get urlFriendlyTitel -> add it here to dispatch.push:
+
+      this.props.dispatch.push -> /community/transformed-blog-titel from server.js
+
+      */
+    }
+
   }
 
   static propTypes = {
     userLoggedIn: PropTypes.string
   }
 
-  loadArticle = (id) => {
-    console.log(id);
-    //superagent request with /community/article-id-abc123545
-    // you get back here markupdata and all other data from specific article in -> res.
 
-    /* handle this in server.js - in saveto Mongo action:
-    function convertToSlug(Text)
-    {
-        return Text
-            .toLowerCase()
-            .replace(/[^\w ]+/g,'')
-            .replace(/ +/g,'-')
-            ;
-    }
-    save it to aditional field like: urlFriendlyTitel
-    also new field: articleId
-
-    then within res. you get urlFriendlyTitel -> add it here to dispatch.push:
-
-    this.props.dispatch.push -> /community/transformed-blog-titel from server.js
-
-    */
-  }
 
   render() {
     const styles = require('./Home.scss');
@@ -62,11 +66,10 @@ export default class Home extends Component {
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
-setTimeout(function() {
     let blogContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef.push(
-        <div onClick={() => this.loadArticle('nickname')} className={styles.topLine + ' col-xs-12 ' + styles.hover}>
+        <div onClick={(1) => this.loadArticle(1)} className={styles.topLine + ' col-xs-12 ' + styles.hover}>
           <div className='col-xs-1'>
             <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
           </div>
@@ -78,7 +81,6 @@ setTimeout(function() {
         </div>
       );
     });
-}.bind(this), 0);
 
     return (
       <div className={styles.home}>
