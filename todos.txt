@@ -3,6 +3,10 @@
 -) Community Beitrag oder Projekt auswählbar machen
 -) Verwendete Technologien Feld+ machen (Array)
 
+-) Userprofil eines anderen anschauen können
+-) Eigene Blogeinträge bearbeiten können
+-) Simple Kommentare von anderen Usern unten eine Artikels?
+
 -) Vervollständigen Profil (Birthday, PW, Social etc.)
 -) Responsive Activity Feed
 
