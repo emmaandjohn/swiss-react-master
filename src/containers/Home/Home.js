@@ -62,16 +62,22 @@ export default class Home extends Component {
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
-    let blogContentDef = '';
+    let blogContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div onclick=' + this.loadArticle('nickname') + ' class="col-xs-12 ' + styles.topLine + styles.hover + '">' +
-                        '<div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
-                        '<div class="col-xs-2">'+ entry.userNickname + '</div>' +
-                        '<div class="col-xs-3"><strong>'+ entry.titel + '</strong></div>' +
-                        '<div class="col-xs-1"><span class="label label-primary">'+ entry.category + '</span></div>' +
-                        '<div class="col-xs-3 ' + styles.techStyle + '">'+ entry.technologies + '</div>' +
-                        '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div></div>';
-      });
+      blogContentDef.push(
+        <span className='indent' key={i}></span>
+        <div onClick={() => this.loadArticle('nickname')} className={styles.topLine + ' col-xs-12 ' + styles.hover}>
+          <div className='col-xs-1'>
+            <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+          </div>
+          <div className='col-xs-2'>{entry.userNickname}</div>
+          <div className='col-xs-3'><strong>{entry.titel}</strong></div>
+          <div className='col-xs-1'><span className="label label-primary">{entry.category}</span></div>
+          <div className={'col-xs-3' + styles.techStyle}>{entry.technologies}</div>
+          <div className={'col-xs-2 ' + styles.dateStyle}>{entry.timeFormatted}</div>
+        </div>
+      );
+    });
 
     return (
       <div className={styles.home}>
