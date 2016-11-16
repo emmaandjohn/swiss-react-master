@@ -31,7 +31,11 @@ export default class Home extends Component {
     userLoggedIn: PropTypes.string
   }
 
-  loadArticle = (id) => {
+  function loadArticle(id) {
+    console.log(id);
+  }
+
+  /*loadArticle = (id) => {
     console.log(id);
     //superagent request with /community/article-id-abc123545
     // you get back here markupdata and all other data from specific article in -> res.
@@ -53,7 +57,7 @@ export default class Home extends Component {
     this.props.dispatch.push -> /community/transformed-blog-titel from server.js
 
     */
-  }
+  //}
 
   render() {
     const styles = require('./Home.scss');
@@ -64,14 +68,14 @@ export default class Home extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div onclick="() => this.loadArticle(11)" class="hover col-xs-12 ' + styles.topLine + '">' +
+      blogContentDef += '<div onclick="loadArticle(11)" class="hover col-xs-12 ' + styles.topLine + '">' +
                         '<div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
                         '<div class="col-xs-2">'+ entry.userNickname + '</div>' +
                         '<div class="col-xs-3"><strong>'+ entry.titel + '</strong></div>' +
                         '<div class="col-xs-1"><span class="label label-primary">'+ entry.category + '</span></div>' +
                         '<div class="col-xs-3 ' + styles.techStyle + '">'+ entry.technologies + '</div>' +
                         '<div class="col-xs-2 ' + styles.dateStyle + '">'+ entry.timeFormatted + '</div></div>';
-    });
+      });
 
     return (
       <div className={styles.home}>
