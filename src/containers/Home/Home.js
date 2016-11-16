@@ -64,7 +64,7 @@ export default class Home extends Component {
 
     let blogContentDef = '';
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div ' + onClick={() => this.loadArticle('nickname')} + ' class="col-xs-12 ' + styles.topLine + styles.hover + '">' +
+      blogContentDef += '<div ' + onClick=() => this.loadArticle('nickname') + ' class="col-xs-12 ' + styles.topLine + styles.hover + '">' +
                         '<div class="col-xs-1"><div class="' + stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini + '"></div></div>' +
                         '<div class="col-xs-2">'+ entry.userNickname + '</div>' +
                         '<div class="col-xs-3"><strong>'+ entry.titel + '</strong></div>' +
