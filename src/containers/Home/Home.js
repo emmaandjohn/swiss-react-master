@@ -96,6 +96,9 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3 className={styles.mb20}>React Activity Feed</h3>
+          <div className='row'>
+            {blogContentDef}
+          </div>
           <div className='row' dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
