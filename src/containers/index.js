@@ -10,7 +10,7 @@ export NotFound from './NotFound/NotFound';
 export Register from './Register/Register';
 export Kontakt from './Kontakt/Kontakt';
 export Community from './Community/Community';
-export Community from './Article/Article';
+export Article from './Article/Article';
 export Activation from './Activation/Activation';
 export Forgot from './Forgot/Forgot';
 export MyProfile from './MyProfile/MyProfile';
