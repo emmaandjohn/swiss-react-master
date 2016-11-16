@@ -232,7 +232,7 @@ app.post('/activation', function(req, res) {
 
 
 
-/* **** Save new User-Post-Entry to database/mongoose */
+/* **** getSpecificArticle */
 app.post('/getSpecificArticle', function(req, res) {
     var artId = req.body.artId;
 
@@ -241,7 +241,7 @@ app.post('/getSpecificArticle', function(req, res) {
         res.json({ status: 1, specificArticleData: result });
       }
     });
-}
+});
 
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
