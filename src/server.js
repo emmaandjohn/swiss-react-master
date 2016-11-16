@@ -238,6 +238,7 @@ app.post('/getSpecificArticle', function(req, res) {
 
     BlogModel.findOne({ articleId: artId }, function(error, result){
       if(result !== null){
+        console.log(result + JSON.stringify(result));
         res.json({ status: 1, specificArticleData: result });
       }
     });
