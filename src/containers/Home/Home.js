@@ -62,6 +62,7 @@ export default class Home extends Component {
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
+setTimeout(function() {
     let blogContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef.push(
@@ -77,6 +78,7 @@ export default class Home extends Component {
         </div>
       );
     });
+}.bind(this), 0);
 
     return (
       <div className={styles.home}>
