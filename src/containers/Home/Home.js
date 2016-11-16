@@ -72,7 +72,7 @@ export default class Home extends Component {
           <div className='col-xs-2'>{entry.userNickname}</div>
           <div className='col-xs-3'><strong>{entry.titel}</strong></div>
           <div className='col-xs-1'><span className="label label-primary">{entry.category}</span></div>
-          <div className={'col-xs-3' + styles.techStyle}>{entry.technologies}</div>
+          <div className={'col-xs-3 ' + styles.techStyle}>{entry.technologies}</div>
           <div className={'col-xs-2 ' + styles.dateStyle}>{entry.timeFormatted}</div>
         </div>
       );
@@ -99,7 +99,6 @@ export default class Home extends Component {
           <div className='row'>
             {blogContentDef}
           </div>
-          <div className='row' dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
         </div>
       </div>
     );
