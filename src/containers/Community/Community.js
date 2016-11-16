@@ -163,6 +163,8 @@ export default class RichEditorExample extends Component {
   render() {
     const {formStatus, formMsg, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
+    const {name} = this.props.params;
+    console.log(name);
     //const styles = require('./Community.scss');
 
     let className = 'RichEditor-editor';
@@ -176,7 +178,7 @@ export default class RichEditorExample extends Component {
     let blogContentDef = '';
 
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' + entry.titel + '</h2><hr />' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userEmail + ' | ' + entry.timeFormatted + '</span></div>';
+      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' + entry.titel + '</h2><hr />' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userNickname + ' | ' + entry.timeFormatted + '</span></div>';
     });
 
     return (

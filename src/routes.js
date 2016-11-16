@@ -4,6 +4,7 @@ import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
     Activation,
+    Article,
     //Chat,
     Forgot,
     Home,
@@ -58,7 +59,9 @@ export default (store) => {
       <Route path="login" component={Login}/>
       <Route path="registrieren" component={Register}/>
       <Route path="kontakt" component={Kontakt}/>
-      <Route path="community" component={Community}/>
+      <Route path="community" component={Community}>
+        <Route path="community/:name" component={Article}/>
+      </Route>
       <Route path="meinprofil" component={MyProfile}/>
       { /*<Route path="survey" component={Survey}/>
         <Route path="widgets" component={Widgets}/> */ }

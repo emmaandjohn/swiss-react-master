@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
 import superagent from 'superagent';
+import { push } from 'react-router-redux';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -33,7 +34,18 @@ export default class Home extends Component {
 
 
   loadArticle = (id) => {
-    console.log(id);
+    superagent
+    .post('/getSpecificArticle')
+    .send({ artId: id })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        console.log(JSON.stringify(res.body.specificArticleData));
+        this.props.dispatch(push('community/'+res.body.specificArticleData.urlFriendlyTitel));
+        // Update the State here, that it is available in Article-Component!!!!!
+        //this.props.dispatch(getBlogEntries(res.body.specificArticleData));
+      }
+    });
     //superagent request with /community/article-id-abc123545
     // you get back here markupdata and all other data from specific article in -> res.
 

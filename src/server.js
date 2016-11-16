@@ -87,10 +87,6 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
-app.get('/community/:id', function(req , res){
-  res.render('community' + req.params.id);
-});
-
 /* **** Get POST Form data from Registration */
 app.post('/registrieren', function(req, res) {
     var email = req.body.email;
@@ -233,6 +229,19 @@ app.post('/activation', function(req, res) {
       }
     });
 });
+
+
+
+/* **** Save new User-Post-Entry to database/mongoose */
+app.post('/getSpecificArticle', function(req, res) {
+    var artId = req.body.artId;
+
+    BlogModel.findOne({ articleId: artId }, function(error, result){
+      if(result !== null){
+        res.json({ status: 1, specificArticleData: result });
+      }
+    });
+}
 
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
