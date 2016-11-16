@@ -31,7 +31,7 @@ export default class Home extends Component {
     userLoggedIn: PropTypes.string
   }
 
-  function loadArticle(id) {
+  loadArticle(id) {
     console.log(id);
   }
 
