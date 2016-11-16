@@ -8,8 +8,11 @@
 .mb20{
 	margin-bottom: 20px;
 }
+.hover{
+  cursor: pointer;
+}
 .hover:hover{
-  opacity: 0.8;
+  background-color: #eeeeee;
 }
 .topLine {
   border-top: 1px solid #ddd;

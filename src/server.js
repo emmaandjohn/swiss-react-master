@@ -73,7 +73,9 @@ var blogSchema = new mongoose.Schema({
   markup: String,
   technologies: Array,
   timeFormatted: String,
-  unixtime: String
+  unixtime: String,
+  articleId: String,
+  urlFriendlyTitel: String
 });
 var BlogModel = mongoose.model('Blog', blogSchema);
 
@@ -102,10 +104,6 @@ app.post('/registrieren', function(req, res) {
          dateObject.getTime();
 
     var uuid = uniqueId+Math.random()+"s";
-    /*uuid = uuid.replace(/\D/g,'');
-    uuid = uuid.substring(0,15);
-    uuid = uuid + "";
-    uuid = uuid.split("").reverse().join("");*/
 
     var UserData = new UserModel({
       uuid: uuid,
@@ -268,6 +266,18 @@ app.post('/community', function(req, res) {
       var unixDateNow = Date.now(); // e.g. 1299827226
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
+      var dateObjectArticle = new Date();
+      var uniqueIdArticle =
+           dateObjectArticle.getFullYear() + '' +
+           dateObjectArticle.getMonth() + '' +
+           dateObjectArticle.getDate() + '' +
+           dateObjectArticle.getTime();
+
+      var articleIdDef = uniqueIdArticle+Math.random()+"artid";
+
+      /* make url-friendly-title */
+      var urlFriendlyTitel = titelData.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+
       var BlogData = new BlogModel({
         userUuid: userUuid,
         userAvatar: userAvatar,
@@ -277,7 +287,9 @@ app.post('/community', function(req, res) {
         markup: markupData,
         technologies: ["nodejs", "ES6", "Redux", "Superagent"],
         timeFormatted: humanDate,
-        unixtime: unixDateNow
+        unixtime: unixDateNow,
+        articleId: articleIdDef,
+        urlFriendlyTitel: urlFriendlyTitel
       });
       UserModel.findOne({ uuid: userUuid }, 'uuid', function(error, result){
           if(error){
