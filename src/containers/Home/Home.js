@@ -33,9 +33,7 @@ export default class Home extends Component {
 
 
   loadArticle = (id) => {
-    setTimeout(function(){
     console.log(id);
-    }, 100);
     //superagent request with /community/article-id-abc123545
     // you get back here markupdata and all other data from specific article in -> res.
 
@@ -80,7 +78,7 @@ export default class Home extends Component {
           <div className={'col-xs-2 ' + styles.dateStyle}>{entry.timeFormatted}</div>
         </div>
       );
-    });
+    }).bind(this));
 
     return (
       <div className={styles.home}>
