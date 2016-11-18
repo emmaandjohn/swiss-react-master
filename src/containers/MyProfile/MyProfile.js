@@ -72,8 +72,12 @@ export default class MyProfile extends Component {
         checkLength = 1;
       }
     }else{
-      if(newValueDef.length < 2 || newValueDef.length > 40){
-        checkLength = 2;
+      if(whichFieldDef === 'avatar'){
+        checkLength = 0;
+      } else{
+        if(newValueDef.length < 2 || newValueDef.length > 40){
+          checkLength = 2;
+        }
       }
     }
 
