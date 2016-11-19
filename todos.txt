@@ -1,5 +1,5 @@
 
--) Link zu Artikel machen (Titel lowercase mit Strichen)?
+
 -) Community Beitrag oder Projekt auswählbar machen
 -) Verwendete Technologien Feld+ machen (Array)
 
@@ -18,6 +18,8 @@ low
 
 
 ------------------------------------------------------------------------
+
+X) Link zu Artikel machen (Titel lowercase mit Strichen)?
 
 X) Maximallänge Minimallänge (length) Profil
 X) bild links zu AWS S3?

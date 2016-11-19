@@ -43,7 +43,7 @@ export default class Home extends Component {
         console.log(JSON.stringify(res.body.specificArticleData));
         this.props.dispatch(push('community/'+res.body.specificArticleData.urlFriendlyTitel));
         // Update the State here, that it is available in Article-Component!!!!!
-        //this.props.dispatch(getBlogEntries(res.body.specificArticleData));
+        this.props.dispatch(getBlogEntries(res.body.specificArticleData));
       }
     });
     //superagent request with /community/article-id-abc123545
