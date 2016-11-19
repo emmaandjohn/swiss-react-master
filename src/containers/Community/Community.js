@@ -123,6 +123,7 @@ export default class RichEditorExample extends Component {
     );
   }
 
+
   saveDataToDatabase() {
     const titelData = this.refs.titel.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
@@ -133,23 +134,38 @@ export default class RichEditorExample extends Component {
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
-        this.refs.titel.value = '';
+
         superagent
-        .post('/community')
-        .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
+        .post('/checkUniqueTitle')
+        .send({ tryTitle: titelData })
         .set('Accept', 'application/json')
         .end((error, res) => {
-          if (res.body.status === 1) {
-            this.props.dispatch(getBlogEntries(res.body.blogArticles));
+          if(res.body.status === 1) {
 
-            /* Clear editor state */
-            const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
-            this.setState({ editorState });
+              this.refs.titel.value = '';
+              superagent
+              .post('/community')
+              .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
+              .set('Accept', 'application/json')
+              .end((error, res) => {
+                if (res.body.status === 1) {
+                  this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
-            this.setState({formStatus: 2});
-            this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
+                  /* Clear editor state */
+                  const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+                  this.setState({ editorState });
+
+                  this.setState({formStatus: 2});
+                  this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
+                }
+              });
+
+          } else{
+            this.setState({formStatus: 1});
+            this.setState({formMsg: 'Fehler: Es exisitiert bereits ein Beitrag mit dem genau gleichen Titel! Bitte verwende einen anderen Beitragstitel.'});
           }
         });
+
       } else{
         this.setState({formStatus: 1});
         this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
@@ -159,6 +175,7 @@ export default class RichEditorExample extends Component {
       this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 60 Zeichen nicht überschreiten!'});
     }
   }
+
 
   render() {
     const {formStatus, formMsg, editorState} = this.state;

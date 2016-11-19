@@ -40,8 +40,8 @@ export default class Home extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if(res.body.status === 1) {
-        console.log(JSON.stringify("specificArticleData: "+res.body.specificArticleData));
-        this.props.dispatch(getBlogEntries(res.body.specificArticleData));
+        //console.log("specificArticleData: "+JSON.stringify(res.body.specificArticleData));
+        //this.props.dispatch(getBlogEntries(res.body.specificArticleData));
         this.props.dispatch(push('community/'+res.body.specificArticleData.urlFriendlyTitel));
         // Update the State here, that it is available in Article-Component!!!!!
 

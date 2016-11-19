@@ -17,20 +17,39 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 export default class Article extends Component {
   state = {
     formStatus: 0,
-    formMsg: ''
+    formMsg: '',
+    specificArticleData: {}
+  }
+
+  componentDidMount() {
+    console.log("Artid1: "+this.props.params.id);
+    console.log("Artid2: "+this.props.location.query.id);
+    let getUrl = this.props.params.id;
+
+    superagent
+    .post('/getSpecificArticleWithUrl')
+    .send({ urlFriendly: getUrl })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        this.setState({specificArticleData: res.body.specificArticleData});
+      } else{
+        console.log("Error, Article url does not exist in DB");
+      }
+    });
   }
 
   render() {
     const styles = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    const {formStatus, formMsg} = this.state;
+    const {formStatus, formMsg, specificArticleData} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
-    console.log(JSON.stringify("getBlogEntriesState: "+getBlogEntriesState));
-    console.log(JSON.stringify("getBlogEntriesState: "+getBlogEntriesState.articles.userNickname));
+    console.log("specificArticleData: "+JSON.stringify(specificArticleData));
+    //console.log("getBlogEntriesState: "+JSON.stringify(getBlogEntriesState.articles.userNickname));
 
-    let blogContentDef = [];
+    /*let blogContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef.push(
         <div className={styles.topLine + ' col-xs-12'}>
@@ -45,7 +64,7 @@ export default class Article extends Component {
           <div className={'col-xs-12'}>{entry.markup}</div>
         </div>
       );
-    }.bind(this));
+    }.bind(this));*/
 
     //let blogContentDef = '';
     // Todo: make it JSX style not like this.. see Home.js for sample.
@@ -58,9 +77,9 @@ export default class Article extends Component {
       <div className="container" id="articlePage">
         <Helmet title="Article"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-          <div className='row'>
+          /*<div className='row'>
             {blogContentDef}
-          </div>
+          </div>*/
         : null
         }
       </div>

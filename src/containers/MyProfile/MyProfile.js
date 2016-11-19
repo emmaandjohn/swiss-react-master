@@ -72,7 +72,7 @@ export default class MyProfile extends Component {
         checkLength = 1;
       }
     }else{
-      if(whichFieldDef === 'avatar'){
+      if(whichFieldDef === 'avatar' || whichFieldDef === 'kanton'){
         checkLength = 0;
       } else{
         if(newValueDef.length < 2 || newValueDef.length > 40){

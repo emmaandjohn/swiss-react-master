@@ -1,5 +1,5 @@
 
-
+-) Titel muss unique sein!
 -) Community Beitrag oder Projekt auswählbar machen
 -) Verwendete Technologien Feld+ machen (Array)
 

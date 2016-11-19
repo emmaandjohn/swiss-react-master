@@ -231,6 +231,19 @@ app.post('/activation', function(req, res) {
 });
 
 
+/* **** checkUniqueTitle */
+app.post('/checkUniqueTitle', function(req, res) {
+    var tryTitel = req.body.tryTitle;
+    var tryTitelConvert = tryTitel.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+
+    BlogModel.findOne({ urlFriendlyTitel: tryTitelConvert }, function(error, result){
+      if(result === null){
+        res.json({ status: 1 });
+      } else{
+        res.json({ status: 0 });
+      }
+    });
+});
 
 /* **** getSpecificArticle */
 app.post('/getSpecificArticle', function(req, res) {
@@ -238,8 +251,20 @@ app.post('/getSpecificArticle', function(req, res) {
 
     BlogModel.findOne({ articleId: artId }, function(error, result){
       if(result !== null){
-        console.log(result + JSON.stringify(result));
         res.json({ status: 1, specificArticleData: result });
+      }
+    });
+});
+
+/* **** getSpecificArticleWithUrl */
+app.post('/getSpecificArticleWithUrl', function(req, res) {
+    var urlFriendlyBrowser = req.body.urlFriendly;
+
+    BlogModel.findOne({ urlFriendlyTitel: urlFriendlyBrowser }, function(error, result){
+      if(result !== null){
+        res.json({ status: 1, specificArticleData: result });
+      } else{
+        res.json({ status: 0 });
       }
     });
 });
