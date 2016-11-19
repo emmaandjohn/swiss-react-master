@@ -77,9 +77,9 @@ export default class Article extends Component {
       <div className="container" id="articlePage">
         <Helmet title="Article"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
-          /*<div className='row'>
-            {blogContentDef}
-          </div>*/
+          <div className='row'>
+          asd
+          </div>
         : null
         }
       </div>
