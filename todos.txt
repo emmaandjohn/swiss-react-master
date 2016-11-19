@@ -12,9 +12,12 @@
 
 low
 ------------
+-) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
 -) sternenzeit nodejs mit darth vader icon
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen
+
+-) Werbung, Social-Seiten
 
 
 ------------------------------------------------------------------------

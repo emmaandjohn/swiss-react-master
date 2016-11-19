@@ -27,7 +27,8 @@ export default class Article extends Component {
     const {formStatus, formMsg} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
-    console.log(JSON.stringify(getBlogEntriesState));
+    console.log(JSON.stringify("getBlogEntriesState: "+getBlogEntriesState));
+    console.log(JSON.stringify("getBlogEntriesState: "+getBlogEntriesState.articles.userNickname));
 
     let blogContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
