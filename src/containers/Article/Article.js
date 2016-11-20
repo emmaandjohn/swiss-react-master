@@ -51,16 +51,18 @@ export default class Article extends Component {
         <Helmet title="Article"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <div className='row'>
-            <div className={styles.topLine + ' col-xs-12'}>
-              <div className='col-xs-1'>
-                <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            <div className={'col-xs-12'}>
+              <div className='row'>
+                <div className='col-xs-12'><h3>{specificArticleData.titel}</h3></div>
+                <div className='col-xs-1'>
+                  <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
+                </div>
+                <div className='col-xs-11'>{specificArticleData.userNickname}</div>
+                <div className='col-xs-1'><span className="label label-primary">{specificArticleData.category}</span></div>
+                <div className={'col-xs-3 ' + styles.techStyle}>{specificArticleData.technologies}</div>
+                <div className={'col-xs-8 ' + styles.dateStyle}>{specificArticleData.timeFormatted}</div>
+                <div className={'col-xs-12'}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>
-              <div className='col-xs-2'>{specificArticleData.userNickname}</div>
-              <div className='col-xs-3'><strong>{specificArticleData.titel}</strong></div>
-              <div className='col-xs-1'><span className="label label-primary">{specificArticleData.category}</span></div>
-              <div className={'col-xs-3 ' + styles.techStyle}>{specificArticleData.technologies}</div>
-              <div className={'col-xs-2 ' + styles.dateStyle}>{specificArticleData.timeFormatted}</div>
-              <div className={'col-xs-12'}>{specificArticleData.markup}</div>
             </div>
           </div>
         : null

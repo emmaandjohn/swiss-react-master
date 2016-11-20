@@ -81,14 +81,16 @@ export default class Home extends Component {
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' col-xs-12 ' + styles.hover}>
-          <div className='col-xs-1'>
-            <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+          <div className='row'>
+            <div className='col-xs-1'>
+              <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            </div>
+            <div className='col-xs-2'>{entry.userNickname}</div>
+            <div className='col-xs-3'><strong>{entry.titel}</strong></div>
+            <div className='col-xs-1'><span className="label label-primary">{entry.category}</span></div>
+            <div className={'col-xs-3 ' + styles.techStyle}>{entry.technologies}</div>
+            <div className={'col-xs-2 ' + styles.dateStyle}>{entry.timeFormatted}</div>
           </div>
-          <div className='col-xs-2'>{entry.userNickname}</div>
-          <div className='col-xs-3'><strong>{entry.titel}</strong></div>
-          <div className='col-xs-1'><span className="label label-primary">{entry.category}</span></div>
-          <div className={'col-xs-3 ' + styles.techStyle}>{entry.technologies}</div>
-          <div className={'col-xs-2 ' + styles.dateStyle}>{entry.timeFormatted}</div>
         </div>
       );
     }.bind(this));
