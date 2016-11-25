@@ -1,5 +1,5 @@
 
--) Titel muss unique sein!
+
 -) Community Beitrag oder Projekt auswählbar machen
 -) Verwendete Technologien Feld+ machen (Array)
 
@@ -8,7 +8,7 @@
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 
 -) Vervollständigen Profil (Birthday, PW, Social etc.)
--) Responsive Activity Feed
+-) Responsive Activity Feed / Styling verbessern!
 
 low
 ------------
@@ -22,6 +22,8 @@ low
 
 ------------------------------------------------------------------------
 
+
+X) Titel muss unique sein!
 X) Link zu Artikel machen (Titel lowercase mit Strichen)?
 
 X) Maximallänge Minimallänge (length) Profil

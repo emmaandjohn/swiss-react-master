@@ -48,7 +48,7 @@ export default class Article extends Component {
 
     return (
       <div className="container" id="articlePage">
-        <Helmet title="Article"/>
+        <Helmet title={specificArticleData.titel}/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
           <div className='row'>
             <div className={'col-xs-12'}>
