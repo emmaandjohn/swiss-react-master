@@ -119,12 +119,12 @@ export default class RichEditorExample extends Component {
     console.log("main: "+tObj);
 
     if(event.target.checked === true){
-      tObj.push(st.tValue);
-      console.log(tObj);
+      tObj.push(tValue);
+      console.log("main2: "+tObj);
       this.setState({techObject: tObj});
     } else{
-      tObj = tObj.filter(e => e !== st.tValue);
-      console.log(tObj);
+      tObj = tObj.filter(e => e !== tValue);
+      console.log("main3: "+tObj);
       this.setState({techObject: tObj});
     }
   }
