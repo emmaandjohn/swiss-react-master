@@ -7,7 +7,7 @@ import { Draft, EditorState, ContentState, RichUtils, convertFromRaw, convertToR
 import Editor from 'draft-js-plugins-editor';
 // eslint-disable-next-line import/no-unresolved
 import createImagePlugin from 'draft-js-image-plugin';
-import 'draft-js-image-plugin/lib/plugin.css'; // eslint-disable-line import/no-unresolved
+//import 'draft-js-image-plugin/lib/plugin.css'; // eslint-disable-line import/no-unresolved
 
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
