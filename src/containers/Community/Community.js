@@ -26,8 +26,10 @@ export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
-    t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
-    t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
+    techObject: {
+      t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
+      t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
+    }
   }
 
   constructor(props) {
@@ -112,10 +114,10 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    this.setState({ [t]: event.target.checked });
-    console.log(this.state.t01);
-    console.log(this.state.t02);
-    console.log(this.state.t03);
+    this.setState({ techObject.[t]: event.target.checked });
+    console.log(this.state.techObject.t01);
+    console.log(this.state.techObject.t02);
+    console.log(this.state.techObject.t03);
   }
 
   saveDataToDatabase() {
@@ -125,7 +127,7 @@ export default class RichEditorExample extends Component {
     const userUuid = cookie.load('ck_uuid');
     const userAvatar = cookie.load('ck_avatar');
     const userNickname = cookie.load('ck_nickname');
-
+    const techObject = this.state.techObject;
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
@@ -140,7 +142,7 @@ export default class RichEditorExample extends Component {
               this.refs.titel.value = '';
               superagent
               .post('/community')
-              .send({ loadStatus: 0, markupData: markupData, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
+              .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if (res.body.status === 1) {

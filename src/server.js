@@ -298,6 +298,7 @@ app.post('/community', function(req, res) {
       var userAvatar = req.body.userAvatar;
       var userNickname = req.body.userNickname;
       var categoryData = req.body.categoryData;
+      var techObject = req.body.techObject;
 
       var unixDateNow = Date.now(); // e.g. 1299827226
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
@@ -321,7 +322,7 @@ app.post('/community', function(req, res) {
         category: categoryData,
         titel: titelData,
         markup: markupData,
-        technologies: ["nodejs", "ES6", "Redux", "Superagent"],
+        technologies: techObject,
         timeFormatted: humanDate,
         unixtime: unixDateNow,
         articleId: articleIdDef,
