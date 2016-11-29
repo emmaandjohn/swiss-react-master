@@ -3,11 +3,9 @@ import Well from 'react-bootstrap/lib/Well';
 import Alert from 'react-bootstrap/lib/Alert';
 import { Draft, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 
-// eslint-disable-next-line import/no-unresolved
 import Editor from 'draft-js-plugins-editor';
-// eslint-disable-next-line import/no-unresolved
 import createImagePlugin from 'draft-js-image-plugin';
-//import 'draft-js-image-plugin/lib/plugin.css'; // eslint-disable-line import/no-unresolved
+import ImageAdd from './ImageAdd';
 
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
@@ -251,7 +249,12 @@ export default class RichEditorExample extends Component {
               ref="editor"
               spellCheck={true}
               plugins={[imagePlugin]}
-              />
+            />
+            <ImageAdd
+              editorState={editorState}
+              onChange={this.onChange}
+              modifier={imagePlugin.addImage}
+            />
           </div>
         </div>
         <br />
