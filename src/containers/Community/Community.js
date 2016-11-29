@@ -43,10 +43,14 @@ export default class RichEditorExample extends Component {
 
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this._onTab(e);
-    this.handleReturn = (e) => this._handleReturn(e);d
+    this.handleReturn = (e) => this._handleReturn(e);
+    //this.keyBindingFn = (e) => this._keyBindingFn(e);
 
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+
+    this.addMedia = this._addMedia.bind(this);
+    this.addImage = this._addImage.bind(this);
   }
 
   componentDidMount() {
@@ -254,10 +258,11 @@ export default class RichEditorExample extends Component {
           </div>
         </div>
         <div>
-					<button className="btn btn-primary" onMouseDown={this._addImage.bind(this)}>
+					<button className="btn btn-primary" onMouseDown={this.addImage}>
 						Bild hinzufügen
 					</button>
         </div>
+
         <br />
         <div>Verwendete Technologien</div>
         <br />
