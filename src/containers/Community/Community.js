@@ -47,6 +47,9 @@ export default class RichEditorExample extends Component {
 
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+
+    this.addMedia = () => this._addMedia();
+    this.addImage = () => this._addImage();
   }
 
   componentDidMount() {
@@ -254,7 +257,7 @@ export default class RichEditorExample extends Component {
           </div>
         </div>
         <div>
-					<button className="btn btn-primary" onClick={this._addImage.bind(this)}>
+					<button className="btn btn-primary" onClick={this.addImage}>
 						Bild hinzufügen
 					</button>
         </div>
