@@ -190,6 +190,7 @@ export default class RichEditorExample extends Component {
     console.log("b: "+JSON.stringify(techObject));
     console.log("d: "+techObject['t01']);
     console.log("c: "+techObject.t01);
+    
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
