@@ -257,7 +257,7 @@ export default class RichEditorExample extends Component {
           </div>
         </div>
         <div>
-					<button className="btn btn-primary" onClick={this.addImage}>
+					<button className="btn btn-primary" onClick={this.addImage()}>
 						Bild hinzufügen
 					</button>
         </div>
