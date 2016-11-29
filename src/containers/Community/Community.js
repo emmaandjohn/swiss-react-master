@@ -35,7 +35,6 @@ export default class RichEditorExample extends Component {
   constructor(props) {
     super(props);
     var decorator = new PrismDecorator();
-    tObj = [];
     this.state = {editorState: EditorState.createEmpty(decorator)};
 
     this.focus = () => this.refs.editor.focus();
@@ -116,6 +115,7 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     const st = this.state;
+    if(typeof tObj === undefined){ let tObj = []; console.log("mainNEW NEW"); }
     console.log("main: "+tObj);
 
     if(event.target.checked === true){
