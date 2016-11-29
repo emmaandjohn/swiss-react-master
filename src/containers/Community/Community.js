@@ -128,9 +128,9 @@ export default class RichEditorExample extends Component {
     const st = this.state;
 
     let techObject = [];
-    st.t01 === true ? techObject.push(state.t01) : null;
-    st.t02 === true ? techObject.push(state.t02) : null;
-    st.t03 === true ? techObject.push(state.t03) : null;
+    st.t01 === true ? techObject.push(st.t01) : null;
+    st.t02 === true ? techObject.push(st.t02) : null;
+    st.t03 === true ? techObject.push(st.t03) : null;
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
