@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
 import Alert from 'react-bootstrap/lib/Alert';
-import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+import { Draft, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 
 // eslint-disable-next-line import/no-unresolved
 import Editor from 'draft-js-plugins-editor';
