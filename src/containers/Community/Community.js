@@ -25,7 +25,8 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
-    formMsg: ''
+    formMsg: '',
+    techFields: {}
   }
 
   constructor(props) {
@@ -66,20 +67,6 @@ export default class RichEditorExample extends Component {
     }
     return false;
 }
-
-  /*_keyBindingFn(e) {
-      var editorState = this.state.editorState;
-      var command;
-
-      if (CodeUtils.hasSelectionInBlock(editorState)) {
-          command = CodeUtils.getKeyBinding(e);
-      }
-      if (command) {
-          return command;
-      }
-
-      return Draft.getDefaultKeyBinding(e);
-  }*/
 
   _handleReturn(e) {
       var editorState = this.state.editorState;
@@ -123,9 +110,11 @@ export default class RichEditorExample extends Component {
     );
   }
 
-  onChangeCheckbox = (event) => {
-    console.log(event.target.checked);
-    console.log(event);
+  onChangeCheckbox = (event, t) => {
+    let fieldClicked = event.target.checked;
+    let techField = t;
+    this.setState({techFields: {t: fieldClicked}});
+    console.log(JSON.stringify(this.state));
   }
 
   saveDataToDatabase() {
