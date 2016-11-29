@@ -299,6 +299,7 @@ app.post('/community', function(req, res) {
       var userNickname = req.body.userNickname;
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
+      console.log("techobj: "+JSON.stringify(techObject));
 
       var unixDateNow = Date.now(); // e.g. 1299827226
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
@@ -322,7 +323,7 @@ app.post('/community', function(req, res) {
         category: categoryData,
         titel: titelData,
         markup: markupData,
-        technologies: techObject,
+        technologies: ["nodejs", "ES6", "Redux", "Superagent"],
         timeFormatted: humanDate,
         unixtime: unixDateNow,
         articleId: articleIdDef,

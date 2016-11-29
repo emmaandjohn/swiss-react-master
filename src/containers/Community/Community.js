@@ -26,10 +26,9 @@ export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
-    techObject: {
-      t01: 0
-    }
+    t01: false
   }
+
 
   constructor(props) {
     super(props);
@@ -49,12 +48,6 @@ export default class RichEditorExample extends Component {
   }
 
   componentDidMount() {
-    console.log("z: "+this.state.formStatus);
-    console.log("a: "+this.state.techObject);
-    console.log("b: "+JSON.stringify(this.state.techObject));
-    console.log("d: "+this.state.techObject['t01']);
-    console.log("c: "+this.state.techObject.t01);
-
     superagent
     .post('/community')
     .send({ loadStatus: 1 })
@@ -119,7 +112,7 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    this.setState({ [techObject.t01]: event.target.checked });
+    this.setState({ t01: event.target.checked });
   }
 
   saveDataToDatabase() {
@@ -129,7 +122,7 @@ export default class RichEditorExample extends Component {
     const userUuid = cookie.load('ck_uuid');
     const userAvatar = cookie.load('ck_avatar');
     const userNickname = cookie.load('ck_nickname');
-    const techObject = this.state.techObject;
+    const t01 = this.state.t01;
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
@@ -144,7 +137,7 @@ export default class RichEditorExample extends Component {
               this.refs.titel.value = '';
               superagent
               .post('/community')
-              .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
+              .send({ loadStatus: 0, markupData: markupData, t01: t01, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if (res.body.status === 1) {
@@ -177,7 +170,7 @@ export default class RichEditorExample extends Component {
 
 
   render() {
-    const {formStatus, formMsg, techObject, editorState} = this.state;
+    const {formStatus, formMsg, t01, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
     let className = 'RichEditor-editor';
@@ -253,6 +246,7 @@ export default class RichEditorExample extends Component {
         <br />
         <div>
           <label className="checkbox-inline">
+            aa: {t01}
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> React.js
           </label>
           <label className="checkbox-inline">
