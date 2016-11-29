@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
 import Alert from 'react-bootstrap/lib/Alert';
-import { Draft, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+import { AtomicBlockUtils, Draft, EditorState, Entity, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 
 import Editor from 'draft-js-plugins-editor';
 import createImagePlugin from 'draft-js-image-plugin';
-import ImageAdd from './ImageAdd';
 
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
@@ -49,6 +48,9 @@ export default class RichEditorExample extends Component {
 
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+
+    this.addMedia = this._addMedia.bind(this);
+    this.addImage = this._addImage.bind(this);
   }
 
   componentDidMount() {
@@ -71,21 +73,23 @@ export default class RichEditorExample extends Component {
       return true;
     }
     return false;
-}
+  }
 
-  /*_keyBindingFn(e) {
-      var editorState = this.state.editorState;
-      var command;
+  _addMedia(type) {
+    const src = window.prompt('Enter a URL');
+    if (!src) {
+      return;
+    }
+    const entityKey = Entity.create(type, 'IMMUTABLE', {src});
+    const {editorState} = this.state;
+    const newState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, '');
+    console.log(convertToRaw(editorState.getCurrentContent()), convertToRaw(newState.getCurrentContent()), Entity.get(entityKey));
+    return newState;
+  }
 
-      if (CodeUtils.hasSelectionInBlock(editorState)) {
-          command = CodeUtils.getKeyBinding(e);
-      }
-      if (command) {
-          return command;
-      }
-
-      return Draft.getDefaultKeyBinding(e);
-  }*/
+  _addImage() {
+    this.onChange(this._addMedia('image'));
+  }
 
   _handleReturn(e) {
       var editorState = this.state.editorState;
@@ -237,6 +241,7 @@ export default class RichEditorExample extends Component {
             />
           <div className={className} onClick={this.focus}>
             <Editor
+              blockRendererFn={mediaBlockRenderer}
               blockStyleFn={getBlockStyle}
               customStyleMap={styleMap}
               editorState={editorState}
@@ -250,12 +255,12 @@ export default class RichEditorExample extends Component {
               spellCheck={true}
               plugins={[imagePlugin]}
             />
-            <ImageAdd
-              editorState={editorState}
-              onChange={this.onChange}
-              modifier={imagePlugin.addImage}
-            />
           </div>
+        </div>
+        <div>
+					<button onMouseDown={this.addImage}>
+						Bild hinzufügen
+					</button>
         </div>
         <br />
         <div>Verwendete Technologien</div>
@@ -270,6 +275,38 @@ export default class RichEditorExample extends Component {
     );
   }
 }
+
+
+function mediaBlockRenderer(block) {
+	if (block.getType() === 'atomic') {
+		return {
+			component: Media,
+			editable: false
+		};
+	}
+	return null;
+}
+
+const Image = (props) => {
+	return <img src={props.src} />;
+};
+
+const Media = (props) => {
+
+	const entity = Entity.get(props.block.getEntityAt(0));
+
+	const {src} = entity.getData();
+	const type = entity.getType();
+
+	let media;
+	if (type === 'image') {
+		media = <Image src={src} />;
+	}
+
+	return media;
+};
+
+
 
  const styleMap = {
    CODE: {
