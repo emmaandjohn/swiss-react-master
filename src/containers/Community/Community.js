@@ -114,7 +114,7 @@ export default class RichEditorExample extends Component {
     let fieldClicked = event.target.checked;
     let techField = t;
     this.setState({techFields: {t: fieldClicked}});
-    console.log(JSON.stringify(this.state));
+    console.log(JSON.stringify(this.state.techFields));
   }
 
   saveDataToDatabase() {
