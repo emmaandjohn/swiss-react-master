@@ -124,10 +124,7 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = () => {
-    console.log(this.refs.complete.state.checked);
     console.log(this.refs);
-
-    console.log(JSON.stringify(this.refs.complete.state.checked));
     console.log(JSON.stringify(this.refs));
   }
 
