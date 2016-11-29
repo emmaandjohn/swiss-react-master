@@ -1,6 +1,4 @@
 
-
--) Community Beitrag oder Projekt auswählbar machen
 -) Verwendete Technologien Feld+ machen (Array)
 
 
@@ -24,6 +22,8 @@ low
 
 ------------------------------------------------------------------------
 
+
+X) Community Beitrag oder Projekt auswählbar machen
 
 X) Titel muss unique sein!
 X) Link zu Artikel machen (Titel lowercase mit Strichen)?

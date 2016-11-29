@@ -123,6 +123,11 @@ export default class RichEditorExample extends Component {
     );
   }
 
+  onChangeCheckbox(event){
+    console.log(event.target.checked);
+    console.log(event);
+    console.log(this.refs);
+  }
 
   saveDataToDatabase() {
     const titelData = this.refs.titel.value;
@@ -131,7 +136,7 @@ export default class RichEditorExample extends Component {
     const userUuid = cookie.load('ck_uuid');
     const userAvatar = cookie.load('ck_avatar');
     const userNickname = cookie.load('ck_nickname');
-    /* plus category and technologies */
+
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
@@ -216,7 +221,7 @@ export default class RichEditorExample extends Component {
         <div id="community-category-form">
           <form className="community-category-form form-inline">
             <div className="form-group">
-              <select ref="category" className="form-control">
+              <select ref="category" className="titleStyle form-control">
                 <option selected="selected" value="Artikel">Artikel - News / eigene Tutorials / Fragen</option>
                 <option value="Projekt">Projekt - Stelle ein von dir erstelltes Web/App-Projekt vor</option>
               </select>
@@ -256,7 +261,128 @@ export default class RichEditorExample extends Component {
           </div>
         </div>
         <br />
-        <div>Verwendete Technologien</div>
+        <div>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t01" value="React.js"> React.js
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t02" value="React Router"> React Router
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t03" value="Redux"> Redux
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t04" value="React Router Redux"> React Router Redux
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t05" value="Flux"> Flux
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t06" value="Relay"> Relay
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t07" value="GraphQL"> GraphQL
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t08" value="Node.js"> Node.js
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t09" value="MongoDB/Mongoose"> MongoDB/Mongoose
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t10" value="MySQL"> MySQL
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t11" value="Firebase"> Firebase
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t12" value="Docker"> Docker
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t13" value="AWS (EBS, S3, Lambda etc.)"> AWS (EBS, S3, Lambda etc.)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t14" value="Express/Koa/Hapi"> Express/Koa/Hapi
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t15" value="JSX"> JSX
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t16" value="Babel"> Babel
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t17" value="Webpack"> Webpack
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t18" value="Browserify"> Browserify
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t19" value="Gulp"> Gulp
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t20" value="Grunt"> Grunt
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t21" value="ES6"> ES6
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t22" value="ES7/ES8 (stage0)"> ES7/ES8 (stage0)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t23" value="React Native"> React Native
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t24" value="CSS"> CSS
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t25" value="Sass"> Sass
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t26" value="Less"> Less
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t27" value="Bootstrap/Foundation (oder ähnlich)"> Bootstrap/Foundation (oder ähnlich)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t28" value="Universal/Isomorphic (Serverside-Rendering)"> Universal/Isomorphic (Serverside-Rendering)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t29" value="Immutable.js"> Immutable.js
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t30" value="Omnicient/Om"> Omnicient/Om
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t31" value="Meteor"> Meteor
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t32" value="Vue.js"> Vue.js
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t33" value="ESLint/JSLint/JSHint (oder ähnlich)"> ESLint/JSLint/JSHint (oder ähnlich)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t34" value="Unit Tests - Mocha/Jasmine/Tape/Enzyme (oder ähnlich)"> Unit Tests - Mocha/Jasmine/Tape/Enzyme (oder ähnlich)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t35" value="Intergration Tests (e.g to a DB)"> Intergration Tests (e.g to a DB)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t36" value="Functional/E2E Tests (e.g. Selenium)"> Functional/E2E Tests (e.g. Selenium)
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t37" value="Sonarqube"> Sonarqube
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t38" value="iOS-App-Development"> iOS-App-Development
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t39" value="Android-App-Development"> Android-App-Development
+          </label>
+          <label className="checkbox-inline">
+            <input type="checkbox" onChange={() => this.onChangeCheckbox(event)} ref="t40" value="Cordova/Phonegap"> Cordova/Phonegap
+          </label>
+        </div>
         <br />
         <button className="btn btn-primary" onClick={this.saveDataToDatabase.bind(this)}>Speichern</button>
         </div>
