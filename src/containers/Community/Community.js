@@ -126,6 +126,7 @@ export default class RichEditorExample extends Component {
 
   saveDataToDatabase() {
     const titelData = this.refs.titel.value;
+    const categoryData = this.refs.category.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userUuid = cookie.load('ck_uuid');
     const userAvatar = cookie.load('ck_avatar');
@@ -145,7 +146,7 @@ export default class RichEditorExample extends Component {
               this.refs.titel.value = '';
               superagent
               .post('/community')
-              .send({ loadStatus: 0, markupData: markupData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
+              .send({ loadStatus: 0, markupData: markupData, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if (res.body.status === 1) {
@@ -212,7 +213,16 @@ export default class RichEditorExample extends Component {
           <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
         : null
         }
-        <div>Beitrag oder Projekt</div>
+        <div id="community-category-form">
+          <form className="community-category-form form-inline">
+            <div className="form-group">
+              <select ref="category" className="form-control">
+                <option selected="selected" value="Artikel">Artikel - News / eigene Tutorials / Fragen</option>
+                <option value="Projekt">Projekt - Stelle ein von dir erstelltes Web/App-Projekt vor</option>
+              </select>
+            </div>
+          </form>
+        </div>
         <div id="community-title-form">
           <form className="community-title-form form-inline">
             <div className="form-group">
