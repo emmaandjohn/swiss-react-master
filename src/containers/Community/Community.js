@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
 import Alert from 'react-bootstrap/lib/Alert';
-import { AtomicBlockUtils, Draft, EditorState, Entity, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
-
-import Editor from 'draft-js-plugins-editor';
-import createImagePlugin from 'draft-js-image-plugin';
-
+import { Editor, AtomicBlockUtils, Draft, EditorState, Entity, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
 import Helmet from 'react-helmet';
@@ -16,7 +12,6 @@ import { Link } from 'react-router';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
-const imagePlugin = createImagePlugin();
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -75,22 +70,6 @@ export default class RichEditorExample extends Component {
     return false;
   }
 
-  _addMedia(type) {
-    const src = window.prompt('Enter a URL');
-    if (!src) {
-      return;
-    }
-    const entityKey = Entity.create(type, 'IMMUTABLE', {src});
-    const {editorState} = this.state;
-    const newState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, '');
-    console.log(convertToRaw(editorState.getCurrentContent()), convertToRaw(newState.getCurrentContent()), Entity.get(entityKey));
-    return newState;
-  }
-
-  _addImage() {
-    this.onChange(this._addMedia('image'));
-  }
-
   _handleReturn(e) {
       var editorState = this.state.editorState;
 
@@ -133,6 +112,21 @@ export default class RichEditorExample extends Component {
     );
   }
 
+  _addMedia(type) {
+    const src = window.prompt('Enter a URL');
+    if (!src) {
+      return;
+    }
+    const entityKey = Entity.create(type, 'IMMUTABLE', {src});
+    const {editorState} = this.state;
+    const newState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, '');
+    //console.log(convertToRaw(editorState.getCurrentContent()), convertToRaw(newState.getCurrentContent()), Entity.get(entityKey));
+    return newState;
+  }
+
+  _addImage() {
+    this.onChange(this._addMedia('image'));
+  }
 
   saveDataToDatabase() {
     const titelData = this.refs.titel.value;
@@ -248,12 +242,10 @@ export default class RichEditorExample extends Component {
               handleKeyCommand={this.handleKeyCommand}
               handleReturn={this.handleReturn}
               onChange={this.onChange}
-              //keyBindingFn={this.keyBindingFn}
               onTab={this.onTab}
               placeholder=""
               ref="editor"
               spellCheck={true}
-              plugins={[imagePlugin]}
             />
           </div>
         </div>
@@ -262,7 +254,6 @@ export default class RichEditorExample extends Component {
 						Bild hinzufügen
 					</button>
         </div>
-
         <br />
         <div>Verwendete Technologien</div>
         <br />
