@@ -27,10 +27,14 @@ export default class RichEditorExample extends Component {
     formStatus: 0,
     formMsg: '',
     techObject: {
-      t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
-      t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
+      t01: 0
     }
   }
+
+  /*
+  t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
+  t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
+  */
 
   constructor(props) {
     super(props);
@@ -50,10 +54,11 @@ export default class RichEditorExample extends Component {
   }
 
   componentDidMount() {
+    console.log("z: "+this.state.formStatus);
     console.log("a: "+this.state.techObject);
     console.log("b: "+JSON.stringify(this.state.techObject));
-    console.log("c: "+this.state.techObject.t01);
     console.log("d: "+this.state.techObject['t01']);
+    console.log("c: "+this.state.techObject.t01);
 
     superagent
     .post('/community')
@@ -119,13 +124,13 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    let items = this.state.techObject;
-    console.log("1: "+JSON.stringify(items));
-    items['t01'] = event.target.checked;
-    console.log("2: "+JSON.stringify(items));
-    this.setState({items});
-    console.log("2.1: "+JSON.stringify(items));
-    console.log("3: "+JSON.stringify(this.state.techObject));
+    this.setState({ [techObject.t01]: event.target.checked });
+
+    console.log("z: "+this.state.formStatus);
+    console.log("a: "+this.state.techObject);
+    console.log("b: "+JSON.stringify(this.state.techObject));
+    console.log("d: "+this.state.techObject['t01']);
+    console.log("c: "+this.state.techObject.t01);
   }
 
   saveDataToDatabase() {
