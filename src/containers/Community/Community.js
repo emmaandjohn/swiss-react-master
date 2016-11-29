@@ -125,12 +125,6 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     this.setState({ [techObject.t01]: event.target.checked });
-
-    console.log("z: "+this.state.formStatus);
-    console.log("a: "+this.state.techObject);
-    console.log("b: "+JSON.stringify(this.state.techObject));
-    console.log("d: "+this.state.techObject['t01']);
-    console.log("c: "+this.state.techObject.t01);
   }
 
   saveDataToDatabase() {
@@ -188,11 +182,14 @@ export default class RichEditorExample extends Component {
 
 
   render() {
-    const {formStatus, formMsg, editorState} = this.state;
+    const {formStatus, formMsg, techObject, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
-    const {name} = this.props.params;
-    console.log(name);
-    //const styles = require('./Community.scss');
+
+    console.log("z: "+formStatus);
+    console.log("a: "+techObject);
+    console.log("b: "+JSON.stringify(techObject));
+    console.log("d: "+techObject['t01']);
+    console.log("c: "+techObject.t01);
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
