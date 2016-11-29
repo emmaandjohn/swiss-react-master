@@ -26,6 +26,7 @@ export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
+    techObject: [],
     t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
     t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
   }
@@ -113,9 +114,16 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    t === 't01' ? this.setState({ t01: event.target.checked }) : null;
-    t === 't02' ? this.setState({ t02: event.target.checked }) : null;
-    t === 't03' ? this.setState({ t03: event.target.checked }) : null;
+    const st = this.state;
+    let tObj = tObj || [];
+
+    if(event.target.checked === true){
+      tObj.push(st.tValue);
+      this.setState({techObject: tObj});
+    } else{
+      tObj = tObj.filter(e => e !== st.tValue);
+      this.setState({techObject: tObj});
+    }
   }
 
   saveDataToDatabase() {
@@ -125,12 +133,7 @@ export default class RichEditorExample extends Component {
     const userUuid = cookie.load('ck_uuid');
     const userAvatar = cookie.load('ck_avatar');
     const userNickname = cookie.load('ck_nickname');
-    const st = this.state;
-
-    let techObject = [];
-    st.t01 === true ? techObject.push(st.t01) : null;
-    st.t02 === true ? techObject.push(st.t02) : null;
-    st.t03 === true ? techObject.push(st.t03) : null;
+    const techObject = this.state.techObject;
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
