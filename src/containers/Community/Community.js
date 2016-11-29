@@ -50,6 +50,11 @@ export default class RichEditorExample extends Component {
   }
 
   componentDidMount() {
+    console.log("a: "+this.state.techObject);
+    console.log("b: "+JSON.stringify(this.state.techObject));
+    console.log("c: "+this.state.techObject.t01);
+    console.log("d: "+this.state.techObject['t01']);
+
     superagent
     .post('/community')
     .send({ loadStatus: 1 })
