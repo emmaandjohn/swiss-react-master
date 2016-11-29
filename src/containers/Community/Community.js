@@ -116,12 +116,15 @@ export default class RichEditorExample extends Component {
   onChangeCheckbox = (event, t, tValue) => {
     const st = this.state;
     let tObj = tObj || [];
+    console.log("main: "+tObj);
 
     if(event.target.checked === true){
       tObj.push(st.tValue);
+      console.log(tObj);
       this.setState({techObject: tObj});
     } else{
       tObj = tObj.filter(e => e !== st.tValue);
+      console.log(tObj);
       this.setState({techObject: tObj});
     }
   }
@@ -181,7 +184,7 @@ export default class RichEditorExample extends Component {
 
 
   render() {
-    const {formStatus, formMsg, t01, editorState} = this.state;
+    const {formStatus, formMsg, editorState} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
     let className = 'RichEditor-editor';

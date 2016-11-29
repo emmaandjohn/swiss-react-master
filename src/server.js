@@ -299,6 +299,7 @@ app.post('/community', function(req, res) {
       var userNickname = req.body.userNickname;
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
+      console.log("techob: "+JSON.stringify(techObject));
 
       var unixDateNow = Date.now(); // e.g. 1299827226
       var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
