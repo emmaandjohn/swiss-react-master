@@ -3,7 +3,7 @@
 -) Community Beitrag oder Projekt auswählbar machen
 -) Verwendete Technologien Feld+ machen (Array)
 
--) Userprofil eines anderen anschauen können
+
 -) Eigene Blogeinträge bearbeiten können
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 
@@ -12,10 +12,12 @@
 
 low
 ------------
+-) Userprofil eines anderen anschauen können
+
 -) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
 -) sternenzeit nodejs mit darth vader icon
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
--) loadAuth entfernen
+-) loadAuth entfernen?
 
 -) Werbung, Social-Seiten
 

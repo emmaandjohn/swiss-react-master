@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import Well from 'react-bootstrap/lib/Well';
 import Alert from 'react-bootstrap/lib/Alert';
 import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+
+// eslint-disable-next-line import/no-unresolved
+import Editor from 'draft-js-plugins-editor';
+// eslint-disable-next-line import/no-unresolved
+import createImagePlugin from 'draft-js-image-plugin';
+import 'draft-js-image-plugin/lib/plugin.css'; // eslint-disable-line import/no-unresolved
+
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
 import Helmet from 'react-helmet';
@@ -12,6 +19,7 @@ import { Link } from 'react-router';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
+const imagePlugin = createImagePlugin();
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -242,6 +250,7 @@ export default class RichEditorExample extends Component {
               placeholder=""
               ref="editor"
               spellCheck={true}
+              plugins={[imagePlugin]}
               />
           </div>
         </div>
