@@ -27,7 +27,6 @@ export default class RichEditorExample extends Component {
     formStatus: 0,
     formMsg: '',
     techObject: [],
-    techCounter: 0,
     t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
     t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
   }
@@ -115,18 +114,14 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    const st = this.state;
-    if(this.state.techCounter === 0){ let tObj = []; }
-    this.setState({techCounter: this.state.techCounter+1});
-
     if(event.target.checked === true){
-      tObj.push(tValue);
-      console.log("main2: "+tObj);
-      this.setState({techObject: tObj});
+        this.setState({
+            techObject: this.state.techObject.concat([tValue])
+        });
     } else{
-      tObj.filter(e => e !== tValue);
-      console.log("main3: "+tObj);
-      this.setState({techObject: tObj});
+        let arrayvar = this.state.techObject.slice();
+        arrayvar.filter(e => e !== tValue)
+        this.setState({ techObject: arrayvar });
     }
   }
 
