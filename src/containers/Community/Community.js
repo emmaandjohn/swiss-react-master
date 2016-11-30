@@ -114,20 +114,21 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
+    let {t01, t02, t03} = false;
     if(event.target.checked === true){
-        console.log("AHA: "+this.state.formStatus);
-        if(this.state.techObject.length > 0){
-          let arrayvar1 = this.state.techObject.slice();
-        }else{
-          let arrayvar1 = [];
-        }
-        arrayvar1.push(tValue);
-        this.setState({ techObject: arrayvar1 });
-    } else{
-        let arrayvar2 = this.state.techObject.slice();
-        arrayvar2.filter(e => e !== tValue);
-        this.setState({ techObject: arrayvar2 });
+      if(t === 't01'){ t01 = tValue; }
+      if(t === 't02'){ t02 = tValue; }
+      if(t === 't03'){ t03 = tValue; }
+    }else{
+      if(t === 't01'){ t01 = false; }
+      if(t === 't02'){ t02 = false; }
+      if(t === 't03'){ t03 = false; }
     }
+
+    const newItems = [t01, t02, t03];
+    let tObject = [];
+    tObject.push(...newItems);
+    this.setState({ techObject: tObject });
   }
 
   saveDataToDatabase() {
@@ -185,7 +186,7 @@ export default class RichEditorExample extends Component {
 
 
   render() {
-    const {formStatus, formMsg, editorState} = this.state;
+    const {formStatus, formMsg, editorState, techObject} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
     let className = 'RichEditor-editor';
@@ -233,6 +234,7 @@ export default class RichEditorExample extends Component {
             </div>
           </form>
         </div>
+        <div>{"AA: "+techObject}</div>
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
