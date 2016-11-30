@@ -115,6 +115,7 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     if(event.target.checked === true){
+        console.log("AHA: "+this.state.formStatus);
         if(this.state.techObject.length > 0){
           let arrayvar1 = this.state.techObject.slice();
         }else{
