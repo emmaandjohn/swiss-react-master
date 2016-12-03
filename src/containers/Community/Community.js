@@ -124,16 +124,9 @@ export default class RichEditorExample extends Component {
     }
     let chObject = {}
     chObject[t] = checkValue;
-    //this.setState({techObject: this.state.techObject.concat([chObject])});
+    console.log("chObj: ", chObject, JSON.stringify(chObject));
+    this.setState({techObject: this.state.techObject.concat([chObject])});
     //this.setState({ techObject: chObject });
-
-    let newState = React.addons.update(this.state, {
-        techObject : {
-          $push : [chObject]
-        }
-    });
-    this.setState(newState);
-
     /*
     const newItems = [t01, t02, t03];
     let tObject = [];
@@ -200,7 +193,7 @@ export default class RichEditorExample extends Component {
     const {formStatus, formMsg, editorState, techObject} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
-    console.log(techObject, JSON.stringify(techObject));
+    console.log(techObject);
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
@@ -247,7 +240,7 @@ export default class RichEditorExample extends Component {
             </div>
           </form>
         </div>
-        <div>{"AA: "+techObject}</div>
+        <div>{"AA: "+JSON.stringify(techObject)}</div>
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
