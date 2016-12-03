@@ -262,7 +262,7 @@ export default class RichEditorExample extends Component {
         <br />
         <div>
           <label className="checkbox-inline">
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref={checkboxState} value="React.js" /> React.js
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> React.js
           </label>
           <label className="checkbox-inline">
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't02', this.refs.t02.value)} ref="t02" value="React Router" /> React Router
