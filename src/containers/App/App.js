@@ -126,7 +126,7 @@ export default class App extends Component {
                     <LinkContainer to="/community">
                       <NavItem eventKey={1} onClick={ this.onNavItemClick }>Community</NavItem>
                     </LinkContainer>
-                    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
+                    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                     <LinkContainer to="/meinprofil">
                       <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mein Profil</NavItem>
                     </LinkContainer>
@@ -138,7 +138,7 @@ export default class App extends Component {
                     <LinkContainer to="/kontakt">
                       <NavItem eventKey={3} onClick={ this.onNavItemClick }>Kontakt</NavItem>
                     </LinkContainer>
-                    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
+                    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                       <NavItem eventKey={4} onClick={ this.onLogout }>Logout</NavItem>
                     :
                     <LinkContainer to="/login">

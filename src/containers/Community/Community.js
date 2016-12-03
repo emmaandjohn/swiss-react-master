@@ -207,7 +207,7 @@ export default class RichEditorExample extends Component {
       <div className="container" id="communityPage">
         <h1>Community</h1>
         <Helmet title="Community"/>
-        {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === true && cookie.load('ck_activation') === true) ?
+        {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
         {formStatus === 2 ?
           <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
