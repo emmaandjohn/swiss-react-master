@@ -9,7 +9,6 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import update from 'react-addons-update';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
@@ -27,10 +26,7 @@ export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
-    techObject: { t00: false },
-    /*t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
-    t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
-    */
+    techObject: {}
   }
 
   constructor(props) {
@@ -117,24 +113,13 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    //let {t01, t02, t03} = false;
     let checkValue = false;
     if(event.target.checked === true){
-      checkValue = true;
+      checkValue = tValue;
     }
     let chObject = {}
     chObject[t] = checkValue;
-
     this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
-
-    //this.setState({techObject: this.state.techObject.concat([chObject])});
-    //this.setState({ techObject: chObject });
-    /*
-    const newItems = [t01, t02, t03];
-    let tObject = [];
-    tObject.push(...newItems); */
-    //this.setState({ techObject: chObject });
-
   }
 
   saveDataToDatabase() {
@@ -195,8 +180,6 @@ export default class RichEditorExample extends Component {
     const {formStatus, formMsg, editorState, techObject} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
-    console.log(techObject);
-
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
@@ -242,7 +225,6 @@ export default class RichEditorExample extends Component {
             </div>
           </form>
         </div>
-        <div>{"AA: "+JSON.stringify(techObject)}</div>
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
