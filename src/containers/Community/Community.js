@@ -27,12 +27,11 @@ export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
-    techObject: [{ t00: false }],
+    techObject: { t00: false },
     /*t01: false, t02: false, t03: false, t04: false, t05: false, t06: false, t07: false, t08: false, t09: false, t10: false, t11: false, t12: false, t13: false, t14: false, t15: false, t16: false, t17: false, t18: false, t19: false, t20: false,
     t22: false, t23: false, t24: false, t25: false, t26: false, t27: false, t28: false, t29: false, t30: false, t31: false, t32: false, t33: false, t34: false, t35: false, t36: false, t37: false, t38: false, t39: false, t40: false
     */
   }
-
 
   constructor(props) {
     super(props);
@@ -52,6 +51,8 @@ export default class RichEditorExample extends Component {
   }
 
   componentDidMount() {
+    this.setState({ techObject: {t00: false} });
+
     superagent
     .post('/community')
     .send({ loadStatus: 1 })
