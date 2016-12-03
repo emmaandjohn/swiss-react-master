@@ -40,33 +40,9 @@ export default class Home extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if(res.body.status === 1) {
-        //console.log("specificArticleData: "+JSON.stringify(res.body.specificArticleData));
-        //this.props.dispatch(getBlogEntries(res.body.specificArticleData));
         this.props.dispatch(push('community/'+res.body.specificArticleData.urlFriendlyTitel));
-        // Update the State here, that it is available in Article-Component!!!!!
-
       }
     });
-    //superagent request with /community/article-id-abc123545
-    // you get back here markupdata and all other data from specific article in -> res.
-
-    /* handle this in server.js - in saveto Mongo action:
-    function convertToSlug(Text)
-    {
-        return Text
-            .toLowerCase()
-            .replace(/[^\w ]+/g,'')
-            .replace(/ +/g,'-')
-            ;
-    }
-    save it to aditional field like: urlFriendlyTitel
-    also new field: articleId
-
-    then within res. you get urlFriendlyTitel -> add it here to dispatch.push:
-
-    this.props.dispatch.push -> /community/transformed-blog-titel from server.js
-
-    */
   }
 
 
@@ -88,7 +64,7 @@ export default class Home extends Component {
             <div className='col-sm-2 col-xs-6'>{entry.userNickname}</div>
             <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
             <div className='col-sm-1 col-xs-12'><span className="label label-primary">{entry.category}</span></div>
-            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{Object.values(entry.technologies)}</div>
+            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>tech.</div>
             <div className={'col-sm-2 col-xs-12 ' + styles.dateStyle}>{entry.timeFormatted}</div>
           </div>
         </div>
