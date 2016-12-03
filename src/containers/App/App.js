@@ -62,6 +62,7 @@ export default class App extends Component {
       const ck_email = cookie.load('ck_email');
       const ck_pw = cookie.load('ck_pw');
       const ck_uuid = cookie.load('ck_uuid');
+      console.log('aha: ',cookie.load('tester'));
 
       this.props.dispatch(getUser(ck_activation, ck_email, ck_pw, ck_uuid));
     }
