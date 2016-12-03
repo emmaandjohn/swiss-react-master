@@ -101,6 +101,7 @@ export default class App extends Component {
     render() {
       const styles = require('./App.scss');
       const { getUserState, activateNewUserState } = this.props;
+      console.log(activateNewUserState.activatedUser, activateNewUserState.loggedInUser, cookie.load('ck_userLoggedIn'), cookie.load('ck_activation'));
 
       return (
         <div className={styles.app}>
