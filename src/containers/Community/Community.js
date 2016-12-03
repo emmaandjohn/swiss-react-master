@@ -114,21 +114,20 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    let {t01, t02, t03} = false;
+    //let {t01, t02, t03} = false;
+    let chObject = chObject || [];
     if(event.target.checked === true){
-      if(t === 't01'){ t01 = tValue; }
-      if(t === 't02'){ t02 = tValue; }
-      if(t === 't03'){ t03 = tValue; }
+      chObject.push([t] = true);
     }else{
-      if(t === 't01'){ t01 = false; }
-      if(t === 't02'){ t02 = false; }
-      if(t === 't03'){ t03 = false; }
+      chObject.push([t] = false);
     }
-
+    console.log(chObject);
+    /*
     const newItems = [t01, t02, t03];
     let tObject = [];
     tObject.push(...newItems);
     this.setState({ techObject: tObject });
+    */
   }
 
   saveDataToDatabase() {
@@ -263,7 +262,7 @@ export default class RichEditorExample extends Component {
         <br />
         <div>
           <label className="checkbox-inline">
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> React.js
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref={checkboxState} value="React.js" /> React.js
           </label>
           <label className="checkbox-inline">
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't02', this.refs.t02.value)} ref="t02" value="React Router" /> React Router
