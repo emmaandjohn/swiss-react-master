@@ -116,14 +116,15 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     //let {t01, t02, t03} = false;
-    let chObject = {};
+    let chObject = [{}];
     if(event.target.checked === true){
-      chObject[t] = true;
+      chObject[0][t] = true;
     }else{
-      chObject[t] = false;
+      chObject[0][t] = false;
     }
     console.log(chObject);
-    this.setState({techObject: this.state.techObject.concat([chObject])});
+    //this.setState({techObject: this.state.techObject.concat([chObject])});
+      techObject = (chObject) => { this.setState({ techObject: chObject.concat(chObject) }); }
 
     /*
     const newItems = [t01, t02, t03];
