@@ -60,8 +60,6 @@ export default class Login extends Component {
           cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
-          cookie.save('tester', 'aha', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-
         } else {
           this.setState({formStatus: 1});
           this.setState({formMsg: 'Fehler: Der Username oder das Passwort stimmen nicht überein (oder du hast dein Account noch nicht aktiviert)!'});

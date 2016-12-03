@@ -62,7 +62,6 @@ export default class App extends Component {
       const ck_email = cookie.load('ck_email');
       const ck_pw = cookie.load('ck_pw');
       const ck_uuid = cookie.load('ck_uuid');
-      console.log('aha: ',cookie.load('tester'));
 
       this.props.dispatch(getUser(ck_activation, ck_email, ck_pw, ck_uuid));
     }
@@ -102,7 +101,6 @@ export default class App extends Component {
     render() {
       const styles = require('./App.scss');
       const { getUserState, activateNewUserState } = this.props;
-      console.log(activateNewUserState.activatedUser, activateNewUserState.loggedInUser, cookie.load('ck_userLoggedIn'), cookie.load('ck_activation'));
 
       return (
         <div className={styles.app}>
