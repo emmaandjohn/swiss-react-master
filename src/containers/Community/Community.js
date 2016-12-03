@@ -115,11 +115,11 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     //let {t01, t02, t03} = false;
-    let chObject = chObject || [];
+    let chObject = chObject || {};
     if(event.target.checked === true){
-      chObject.push([t] = true);
+      chObject[t] = true;
     }else{
-      chObject.push([t] = false);
+      chObject[t] = false;
     }
     console.log(chObject);
     /*
