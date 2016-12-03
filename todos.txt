@@ -8,6 +8,7 @@
 -) Vervollständigen Profil (Birthday, PW, Social etc.)
 -) Responsive Activity Feed / Styling verbessern!
 
+
 low
 ------------
 -) Userprofil eines anderen anschauen können
