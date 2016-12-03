@@ -9,6 +9,7 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import update from 'react-addons-update';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
@@ -116,15 +117,21 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     //let {t01, t02, t03} = false;
-    let chObject = [{}];
+    let checkValue = false;
     if(event.target.checked === true){
-      chObject[0][t] = true;
-    }else{
-      chObject[0][t] = false;
+      checkValue = true;
     }
-    console.log(chObject);
+    let chObject = {}
+    chObject[t] = checkValue;
     //this.setState({techObject: this.state.techObject.concat([chObject])});
-    this.setState({ techObject: this.state.techObject.concat(chObject) });
+    //this.setState({ techObject: chObject });
+
+    let newState = React.addons.update(this.state, {
+        techObject : {
+          $push : [chObject]
+        }
+    });
+    this.setState(newState);
 
     /*
     const newItems = [t01, t02, t03];
