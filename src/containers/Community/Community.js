@@ -124,15 +124,8 @@ export default class RichEditorExample extends Component {
     }
     let chObject = {}
     chObject[t] = checkValue;
-    console.log("chObj: ", chObject, JSON.stringify(chObject), JSON.stringify(this.state.techObject));
 
-    let newState = React.addons.update(this.state, {
-        techObject : {
-          $push : [chObject]
-        }
-    });
-
-    this.setState(newState);
+    this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
 
     //this.setState({techObject: this.state.techObject.concat([chObject])});
     //this.setState({ techObject: chObject });
