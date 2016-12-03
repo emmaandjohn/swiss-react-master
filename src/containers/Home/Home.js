@@ -88,7 +88,7 @@ export default class Home extends Component {
             <div className='col-sm-2 col-xs-6'>{entry.userNickname}</div>
             <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
             <div className='col-sm-1 col-xs-12'><span className="label label-primary">{entry.category}</span></div>
-            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{entry.technologies}</div>
+            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{Object.values(entry.technologies)}</div>
             <div className={'col-sm-2 col-xs-12 ' + styles.dateStyle}>{entry.timeFormatted}</div>
           </div>
         </div>

@@ -47,7 +47,7 @@ export default class RichEditorExample extends Component {
   }
 
   componentDidMount() {
-    this.setState({ techObject: {t00: false} });
+    this.setState({ techObject: {} });
 
     superagent
     .post('/community')
@@ -113,7 +113,7 @@ export default class RichEditorExample extends Component {
   }
 
   onChangeCheckbox = (event, t, tValue) => {
-    let checkValue = false;
+    let checkValue = '';
     if(event.target.checked === true){
       checkValue = tValue;
     }
@@ -188,11 +188,11 @@ export default class RichEditorExample extends Component {
       }
     }
 
-    let blogContentDef = '';
+    /*let blogContentDef = '';
 
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' + entry.titel + '</h2><hr />' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userNickname + ' | ' + entry.timeFormatted + '</span></div>';
-    });
+    });*/
 
     return (
       <div className="container" id="communityPage">
@@ -379,7 +379,6 @@ export default class RichEditorExample extends Component {
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
         }
-        <div dangerouslySetInnerHTML={{__html: blogContentDef}}></div>
       </div>
     );
   }
