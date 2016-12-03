@@ -115,19 +115,21 @@ export default class RichEditorExample extends Component {
 
   onChangeCheckbox = (event, t, tValue) => {
     //let {t01, t02, t03} = false;
-    let chObject = chObject || {};
+
     if(event.target.checked === true){
       chObject[t] = true;
     }else{
       chObject[t] = false;
     }
     console.log(chObject);
+    this.setState((state) => ({ techObject: state.techObject.concat(chObject) }));
+
     /*
     const newItems = [t01, t02, t03];
     let tObject = [];
-    tObject.push(...newItems);
-    this.setState({ techObject: tObject });
-    */
+    tObject.push(...newItems); */
+    //this.setState({ techObject: chObject });
+
   }
 
   saveDataToDatabase() {
