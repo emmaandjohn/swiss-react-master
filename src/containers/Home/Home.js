@@ -57,7 +57,7 @@ export default class Home extends Component {
     getBlogEntriesState.articles.forEach(function(entry){
       console.log(JSON.stringify(entry));
       blogContentDef.push(
-        const techVals = Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]);
+        { let techVals = Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' col-xs-12 ' + styles.hover}>
           <div className='row'>
             <div className='col-sm-1 col-xs-6'>
