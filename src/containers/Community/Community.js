@@ -124,7 +124,7 @@ export default class RichEditorExample extends Component {
     }
     console.log(chObject);
     //this.setState({techObject: this.state.techObject.concat([chObject])});
-      techObject = (chObject) => { this.setState({ techObject: chObject.concat(chObject) }); }
+    this.setState({ techObject: this.state.techObject.concat(chObject) });
 
     /*
     const newItems = [t01, t02, t03];
