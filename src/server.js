@@ -67,6 +67,7 @@ var UserModel = mongoose.model('User', userSchema);
 var blogSchema = new mongoose.Schema({
   userUuid: String,
   userAvatar: String,
+  userKanton: String,
   userNickname: String,
   category: String,
   titel: String,
@@ -296,6 +297,7 @@ app.post('/community', function(req, res) {
       var titelData = req.body.titelData;
       var userUuid = req.body.userUuid;
       var userAvatar = req.body.userAvatar;
+      var userKanton = req.body.userKanton;
       var userNickname = req.body.userNickname;
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
@@ -319,6 +321,7 @@ app.post('/community', function(req, res) {
       var BlogData = new BlogModel({
         userUuid: userUuid,
         userAvatar: userAvatar,
+        userKanton: userKanton,
         userNickname: userNickname,
         category: categoryData,
         titel: titelData,
@@ -370,9 +373,12 @@ app.post('/updateUserProfile', function(req, res) {
 
     if(newValue.length > 0){
 
-      if(getField === 'avatar' || getField === 'nickname'){
+      if(getField === 'avatar' || getField === 'nickname' || getField === 'kanton'){
         var getField1 = '';
-        if(getField === 'avatar'){getField1 = 'userAvatar';}else{getField1 = 'userNickname';}
+        if(getField === 'avatar'){getField1 = 'userAvatar';}
+        if(getField === 'nickname'){getField1 = 'userNickname';}
+        if(getField === 'kanton'){getField1 = 'userKanton';}
+        //else{getField1 = 'userNickname';}
         BlogModel.findOne({ userUuid: getUuid }, 'userUuid', function(error, result){
           if(result !== null){
             var query1 = {"userUuid": getUuid};
@@ -399,7 +405,6 @@ app.post('/updateUserProfile', function(req, res) {
       var options = {new: true};
       UserModel.findOneAndUpdate(query, update, options, function(err, result) {
         if (err) {
-          console.log('activation: got an error');
           res.json({ status: 0 });
         }
         else if(result !== null){

@@ -61,6 +61,7 @@ export default class Home extends Component {
           <div className='row'>
             <div className='col-sm-1 col-xs-6'>
               <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
             <div className='col-sm-2 col-xs-6'>{entry.userNickname}</div>
             <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
