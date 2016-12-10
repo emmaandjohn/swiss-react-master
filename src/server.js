@@ -282,7 +282,7 @@ app.post('/syncUserData', function(req, res) {
         res.json({ status: 0 });
       }
     });
-}
+});
 
 
 /* **** Save new User-Post-Entry to database/mongoose */
