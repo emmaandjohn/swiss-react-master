@@ -173,10 +173,10 @@ export default class MyProfile extends Component {
       const syncSxing = entry.socialXing;
       const syncSwebsite = entry.socialWebsite;
       const syncActivation = entry.activation;
-    }
+    });
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
-    let objectSelector = 'avatar',syncAvatar;
+    let objectSelector = 'avatar'+syncAvatar;
     let avatarClass = styles[objectSelector];
     if(updateUserState.avatar){
       let objectSelector = 'avatar'+updateUserState.avatar;
@@ -184,7 +184,7 @@ export default class MyProfile extends Component {
     }
 
     /* Set KANTON-flag either from Cache or when ou change the flag -> from State */
-    let objectSelectorFlag = 'flag',syncKanton;
+    let objectSelectorFlag = 'flag'+syncKanton;
     let flagClass = styles[objectSelectorFlag];
     if(updateUserState.kanton){
       let objectSelectorFlag = 'flag'+updateUserState.kanton;
