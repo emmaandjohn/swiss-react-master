@@ -8,12 +8,14 @@ import { Link } from 'react-router';
 import Loader from 'react-loader-advanced';
 
 /* Import here only for Dispatchers */
+import { syncUserData } from '../../redux/actions/syncUserDataActions';
 import { getUser } from '../../redux/actions/getUserActions';
 import { updateUser } from '../../redux/actions/updateUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 
 @connect((store) => {
   return {
+    syncUserDataState: store.syncUserData.userList,
     getUserState: store.getUser.user,
     updateUserState: store.updateUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
@@ -21,6 +23,20 @@ import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 })
 
 export default class MyProfile extends Component {
+
+  componentDidMount() {
+    const syncUserUuid = cookie.load('ck_uuid');
+    superagent
+    .post('/syncUserData')
+    .send({ userUuid: syncUserUuid })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if (res.body.status === 1) {
+        this.props.dispatch(syncUserData(res.body.userDataSync));
+      }
+    });
+  }
+
   state = {
     formStatus: 0,
     formMsg: '',
@@ -134,9 +150,11 @@ export default class MyProfile extends Component {
   }
 
   render() {
-    const { getUserState, activateNewUserState, updateUserState } = this.props;
+    const { syncUserDataState, getUserState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
+
+    console.log(JSON.stringify(syncUserDataState));
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
     let objectSelector = 'avatar'+cookie.load('ck_avatar');

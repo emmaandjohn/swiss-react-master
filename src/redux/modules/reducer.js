@@ -13,6 +13,7 @@ import activateNewUser from './activateNewUserReducer';
 import getUser from './getUserReducer';
 import getBlogEntries from './getBlogEntriesReducer';
 import updateUser from './updateUserReducer';
+import syncUserData from './syncUserDataReducer';
 
 export default combineReducers({
   routing: routerReducer,
@@ -30,5 +31,6 @@ export default combineReducers({
   activateNewUser,
   getUser,
   getBlogEntries,
-  updateUser
+  updateUser,
+  syncUserData
 });

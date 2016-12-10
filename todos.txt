@@ -8,6 +8,7 @@
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
+-) Reset Checkboxen nach Speichern + nach oben scrollen?
 low
 ------------
 -) Userprofil eines anderen anschauen können

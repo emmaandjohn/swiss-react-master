@@ -270,6 +270,21 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
     });
 });
 
+
+/* **** Save new User-Post-Entry to database/mongoose */
+app.post('/syncUserData', function(req, res) {
+    var syncUserUuid = req.body.userUuid;
+
+    UserModel.findOne({ uuid: syncUserUuid }, function(error, result){
+      if(result !== null){
+        res.json({ status: 1, userDataSync: result });
+      } else{
+        res.json({ status: 0 });
+      }
+    });
+}
+
+
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
