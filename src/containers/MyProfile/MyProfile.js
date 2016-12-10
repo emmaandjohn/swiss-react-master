@@ -156,8 +156,27 @@ export default class MyProfile extends Component {
 
     console.log(JSON.stringify(syncUserDataState));
 
+    syncUserDataState.userdata.forEach(function(entry){
+      const syncEmail = entry.email;
+      const syncPw = entry.password;
+      const syncBirthday = entry.birthday;
+      const syncAvatar = entry.avatar;
+      const syncNickname = entry.nickname;
+      const syncJob = entry.job;
+      const syncCompany = entry.company;
+      const syncDescription = entry.description;
+      const syncMembersince = entry.membersince;
+      const syncKanton = entry.kanton;
+      const syncSfb = entry.socialFb;
+      const syncSgithub = entry.socialGithub;
+      const syncStwitter = entry.socialTwitter;
+      const syncSxing = entry.socialXing;
+      const syncSwebsite = entry.socialWebsite;
+      const syncActivation = entry.activation;
+    }
+
     /* Set avatar either from Cache or when ou change the avatar -> from State */
-    let objectSelector = 'avatar'+cookie.load('ck_avatar');
+    let objectSelector = 'avatar'+syncAvatar;
     let avatarClass = styles[objectSelector];
     if(updateUserState.avatar){
       let objectSelector = 'avatar'+updateUserState.avatar;
@@ -165,7 +184,7 @@ export default class MyProfile extends Component {
     }
 
     /* Set KANTON-flag either from Cache or when ou change the flag -> from State */
-    let objectSelectorFlag = 'flag'+cookie.load('ck_kanton');
+    let objectSelectorFlag = 'flag'+syncKanton;
     let flagClass = styles[objectSelectorFlag];
     if(updateUserState.kanton){
       let objectSelectorFlag = 'flag'+updateUserState.kanton;
@@ -173,28 +192,28 @@ export default class MyProfile extends Component {
     }
 
     /* Set nickname */
-    let getNickname = cookie.load('ck_nickname');
+    let getNickname = syncNickname;
     if(updateUserState.nickname){
       getNickname = updateUserState.nickname;
     }
     if(getNickname === null){getNickname = 'noob';}
 
     /* Set job */
-    let getJob = cookie.load('ck_job');
+    let getJob = syncJob;
     if(updateUserState.job){
       getJob = updateUserState.job;
     }
     if(getJob === null){getJob = 'Keine Angabe';}
 
     /* Set company */
-    let getCompany = cookie.load('ck_company');
+    let getCompany = syncCompany;
     if(updateUserState.company){
       getCompany = updateUserState.company;
     }
     if(getCompany === null){getCompany = 'Keine Angabe';}
 
     /* Set description */
-    let getDescription = cookie.load('ck_description');
+    let getDescription = syncDescription;
     if(updateUserState.description){
       getDescription = updateUserState.description;
     }
@@ -203,7 +222,7 @@ export default class MyProfile extends Component {
     return (
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
-          {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
+          {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && syncActivation === 'true') ?
             <div>
               <Row>
                 <Col xs={12}>
@@ -240,10 +259,10 @@ export default class MyProfile extends Component {
                     </Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Mitglied seit</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_membersince')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{syncMembersince}</Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Email</Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{cookie.load('ck_email')}</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{syncEmail}</Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Job</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
