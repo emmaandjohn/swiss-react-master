@@ -173,7 +173,7 @@ export default class MyProfile extends Component {
       const syncSxing = entry.socialXing;
       const syncSwebsite = entry.socialWebsite;
       const syncActivation = entry.activation;
-    });
+    }.bind(this));
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
     let objectSelector = 'avatar'+syncAvatar;
