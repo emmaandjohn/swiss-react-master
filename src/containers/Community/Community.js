@@ -129,6 +129,7 @@ export default class RichEditorExample extends Component {
     const userUuid = cookie.load('ck_uuid');
     const userAvatar = cookie.load('ck_avatar');
     const userNickname = cookie.load('ck_nickname');
+    const userKanton = cookie.load('ck_kanton');
     const techObject = this.state.techObject;
 
     if(titelData.length > 2 && titelData.length < 60){
@@ -144,7 +145,7 @@ export default class RichEditorExample extends Component {
               this.refs.titel.value = '';
               superagent
               .post('/community')
-              .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userNickname: userNickname })
+              .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname })
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if (res.body.status === 1) {
