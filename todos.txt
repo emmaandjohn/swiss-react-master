@@ -11,6 +11,8 @@
 
 -) Reset Checkboxen nach Speichern + nach oben scrollen? auch bei Fehlermeldungen..
 
+-) Community Toolbar soll absolute mitgehen wenn runterscrollen
+
 low
 ------------
 -) Userprofil eines anderen anschauen können
