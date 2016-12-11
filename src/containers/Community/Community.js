@@ -158,7 +158,7 @@ export default class RichEditorExample extends Component {
 
                     this.setState({formStatus: 2});
                     this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
-                    this.refs.t01.state.checked = false;
+                    this.refs.t01.checked = false;
                     scroll(0,0);
                   }
                 });
