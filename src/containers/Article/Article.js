@@ -41,8 +41,8 @@ export default class Article extends Component {
     const styles = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    const {formStatus, formMsg} = this.state;
-    const { activateNewUserState, getBlogEntriesState, specificArticleData} = this.props;
+    const {formStatus, formMsg, specificArticleData} = this.state;
+    const { activateNewUserState, getBlogEntriesState} = this.props;
 
     /*
     console.log(
@@ -53,14 +53,18 @@ export default class Article extends Component {
     */
     //console.log("specificArticleData.technologies[0]: "+specificArticleData.technologies[0]);
 
-    let techContentDef = [];
+
+    console.log(specificArticleData);
+
+
+    /*let techContentDef = [];
     specificArticleData.forEach(function(entry){
       techContentDef.push(
         { Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }
       );
     }.bind(this));
 
-    console.log("techContentDef: "+techContentDef);
+    console.log("techContentDef: "+techContentDef);*/
 
     return (
       <div className="container" id="articlePage">
