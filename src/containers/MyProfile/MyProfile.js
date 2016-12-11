@@ -156,24 +156,28 @@ export default class MyProfile extends Component {
 
     console.log(JSON.stringify(syncUserDataState));
 
+    let syncEmail = ''; let syncPw = ''; let syncBirthday = ''; let syncAvatar = ''; let syncNickname = ''; let syncJob = '';
+    let syncCompany = ''; let syncDescription = ''; let syncMembersince = ''; let syncKanton = ''; let syncSfb = ''; let syncSgithub = '';
+    let syncStwitter = ''; let syncSxing = ''; let syncSwebsite = ''; let syncActivation = '';
+
     syncUserDataState.userdata.forEach(function(entry){
-      /*const syncEmail = entry.email;
-      const syncPw = entry.password;
-      const syncBirthday = entry.birthday;
-      const syncAvatar = entry.avatar;
-      const syncNickname = entry.nickname;
-      const syncJob = entry.job;
-      const syncCompany = entry.company;
-      const syncDescription = entry.description;
-      const syncMembersince = entry.membersince;
-      const syncKanton = entry.kanton;
-      const syncSfb = entry.socialFb;
-      const syncSgithub = entry.socialGithub;
-      const syncStwitter = entry.socialTwitter;
-      const syncSxing = entry.socialXing;
-      const syncSwebsite = entry.socialWebsite;
-      const syncActivation = entry.activation;*/
-      console.log("aha: "+entry);
+      console.log("aha: "+entry+ "aha2"+entry.email);
+      syncEmail = entry.email;
+      syncPw = entry.password;
+      syncBirthday = entry.birthday;
+      syncAvatar = entry.avatar;
+      syncNickname = entry.nickname;
+      syncJob = entry.job;
+      syncCompany = entry.company;
+      syncDescription = entry.description;
+      syncMembersince = entry.membersince;
+      syncKanton = entry.kanton;
+      syncSfb = entry.socialFb;
+      syncSgithub = entry.socialGithub;
+      syncStwitter = entry.socialTwitter;
+      syncSxing = entry.socialXing;
+      syncSwebsite = entry.socialWebsite;
+      syncActivation = entry.activation;
     }.bind(this));
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
