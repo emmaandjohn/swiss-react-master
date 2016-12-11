@@ -53,14 +53,14 @@ export default class Article extends Component {
     */
     console.log("specificArticleData.technologies[0]: "+specificArticleData.technologies[0]);
 
-    let techContentDef = [];
+    /*let techContentDef = [];
     specificArticleData.technologies[0].forEach(function(entry){
       techContentDef.push(
         {entry}
       );
-    }.bind(this));
+    }.bind(this));*/
 
-    console.log("techContentDef: "+techContentDef);
+    //console.log("techContentDef: "+techContentDef);
 
     return (
       <div className="container" id="articlePage">
