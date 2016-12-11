@@ -154,31 +154,31 @@ export default class MyProfile extends Component {
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
 
-    console.log(JSON.stringify(syncUserDataState));
+    console.log("bbb: "+JSON.stringify(syncUserDataState));
 
     let syncEmail = ''; let syncPw = ''; let syncBirthday = ''; let syncAvatar = ''; let syncNickname = ''; let syncJob = '';
     let syncCompany = ''; let syncDescription = ''; let syncMembersince = ''; let syncKanton = ''; let syncSfb = ''; let syncSgithub = '';
     let syncStwitter = ''; let syncSxing = ''; let syncSwebsite = ''; let syncActivation = '';
 
-    syncUserDataState.userdata.forEach(function(entry){
-      console.log("aha: "+entry+ "aha2"+entry.email);
-      syncEmail = entry.email;
-      syncPw = entry.password;
-      syncBirthday = entry.birthday;
-      syncAvatar = entry.avatar;
-      syncNickname = entry.nickname;
-      syncJob = entry.job;
-      syncCompany = entry.company;
-      syncDescription = entry.description;
-      syncMembersince = entry.membersince;
-      syncKanton = entry.kanton;
-      syncSfb = entry.socialFb;
-      syncSgithub = entry.socialGithub;
-      syncStwitter = entry.socialTwitter;
-      syncSxing = entry.socialXing;
-      syncSwebsite = entry.socialWebsite;
-      syncActivation = entry.activation;
-    }.bind(this));
+    //syncUserDataState.userdata.forEach(function(entry){
+      //console.log("aha: "+entry+ "aha2"+entry.email);
+      syncEmail = syncUserDataState.userdata.email;
+      syncPw = syncUserDataState.userdata.password;
+      syncBirthday = syncUserDataState.userdata.birthday;
+      syncAvatar = syncUserDataState.userdata.avatar;
+      syncNickname = syncUserDataState.userdata.nickname;
+      syncJob = syncUserDataState.userdata.job;
+      syncCompany = syncUserDataState.userdata.company;
+      syncDescription = syncUserDataState.userdata.description;
+      syncMembersince = syncUserDataState.userdata.membersince;
+      syncKanton = syncUserDataState.userdata.kanton;
+      syncSfb = syncUserDataState.userdata.socialFb;
+      syncSgithub = syncUserDataState.userdata.socialGithub;
+      syncStwitter = syncUserDataState.userdata.socialTwitter;
+      syncSxing = syncUserDataState.userdata.socialXing;
+      syncSwebsite = syncUserDataState.userdata.socialWebsite;
+      syncActivation = syncUserDataState.userdata.activation;
+  //  }.bind(this));
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
     let objectSelector = 'avatar'+syncAvatar;
