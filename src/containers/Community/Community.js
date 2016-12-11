@@ -216,6 +216,7 @@ export default class RichEditorExample extends Component {
 
     return (
       <div className="container" id="communityPage">
+        <StickyContainer>
         <h1>Community</h1>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
@@ -246,8 +247,7 @@ export default class RichEditorExample extends Component {
           </form>
         </div>
         <div className="RichEditor-root">
-          <StickyContainer>
-            <Sticky topOffset={100}>
+            <Sticky topOffset={50}>
               <BlockStyleControls
                 editorState={editorState}
                 onToggle={this.toggleBlockType}
@@ -257,7 +257,6 @@ export default class RichEditorExample extends Component {
                 onToggle={this.toggleInlineStyle}
                 />
             </Sticky>
-          </StickyContainer>
           <div className={className} onClick={this.focus}>
             <Editor
               blockStyleFn={getBlockStyle}
@@ -403,6 +402,7 @@ export default class RichEditorExample extends Component {
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
         }
+      </StickyContainer>
       </div>
     );
   }
