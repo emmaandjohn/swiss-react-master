@@ -48,28 +48,6 @@ export default class Article extends Component {
     const {formStatus, formMsg, specificArticleData, specificArticleTechData} = this.state;
     const { activateNewUserState, getBlogEntriesState} = this.props;
 
-    /*
-    console.log(
-      Object.keys(specificArticleData.technologies[0]).map(
-        key => specificArticleData.technologies[0][key]
-      ).bind.(key);
-    );
-    */
-    //console.log("specificArticleData.technologies[0]: "+specificArticleData.technologies[0]);
-
-
-
-
-
-    /*let techContentDef = [];
-    specificArticleData.forEach(function(entry){
-      techContentDef.push(
-        { Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }
-      );
-    }.bind(this));
-
-    console.log("techContentDef: "+techContentDef);*/
-
     return (
       <div className="container" id="articlePage">
         <Helmet title={specificArticleData.titel}/>
