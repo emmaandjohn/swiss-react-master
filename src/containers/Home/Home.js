@@ -52,6 +52,7 @@ export default class Home extends Component {
     const { getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
+    const aha = "aha";
 
     let blogContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
@@ -90,7 +91,7 @@ export default class Home extends Component {
         </div>
 
         <div className='container'>
-          <h3 className={styles.mb20}>React Activity Feed</h3>
+          <h3 className={styles.mb20}>React Activity Feed {aha}</h3>
           <div className='row'>
             {blogContentDef}
           </div>

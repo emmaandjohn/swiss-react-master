@@ -157,7 +157,7 @@ export default class MyProfile extends Component {
     console.log(JSON.stringify(syncUserDataState));
 
     syncUserDataState.userdata.forEach(function(entry){
-      const syncEmail = entry.email;
+      /*const syncEmail = entry.email;
       const syncPw = entry.password;
       const syncBirthday = entry.birthday;
       const syncAvatar = entry.avatar;
@@ -172,7 +172,8 @@ export default class MyProfile extends Component {
       const syncStwitter = entry.socialTwitter;
       const syncSxing = entry.socialXing;
       const syncSwebsite = entry.socialWebsite;
-      const syncActivation = entry.activation;
+      const syncActivation = entry.activation;*/
+      console.log("aha: "+entry);
     }.bind(this));
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
