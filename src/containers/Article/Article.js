@@ -47,7 +47,7 @@ export default class Article extends Component {
     console.log(
       Object.keys(specificArticleData.technologies[0]).map(
         key => specificArticleData.technologies[0][key]
-      ).bind.(specificArticleData.technologies[0]);
+      ).bind.(key);
     );
 
     return (
