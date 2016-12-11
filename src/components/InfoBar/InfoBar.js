@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {load} from 'redux/modules/info';
+import AdSense from 'react-adsense';
 
 @connect(
     state => ({info: state.info.data}),
@@ -25,12 +26,7 @@ export default class InfoBar extends Component {
           <button className="btn btn-primary" onClick={load}>Reload vom Server</button>
         </div>
         <div className="container">
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px"
-               data-ad-client="ca-pub-4161847192982174"
-               data-ad-slot="2930197099">
-          </ins>
-          { (adsbygoogle = window.adsbygoogle || []).push({}) }
+          <AdSense.Google client='ca-pub-4161847192982174' slot='2930197099' />
         </div>
       </div>
     );
