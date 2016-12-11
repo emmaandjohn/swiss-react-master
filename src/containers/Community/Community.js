@@ -199,6 +199,7 @@ export default class RichEditorExample extends Component {
   render() {
     const {formStatus, formMsg, editorState, techObject} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
+    const styles = require('./Community.scss');
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
@@ -247,7 +248,7 @@ export default class RichEditorExample extends Component {
           </form>
         </div>
         <div className="RichEditor-root">
-            <Sticky style={{top: 60}} topOffset={10}>
+            <Sticky stickyClassName={styles.RichEditorControlPanel} topOffset={10}>
               <BlockStyleControls
                 editorState={editorState}
                 onToggle={this.toggleBlockType}
