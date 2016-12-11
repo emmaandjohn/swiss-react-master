@@ -131,11 +131,11 @@ export default class RichEditorExample extends Component {
     const userNickname = cookie.load('ck_nickname');
     const userKanton = cookie.load('ck_kanton');
     const techObject = this.state.techObject;
-    console.log("techObjectZ: "+techObject + "tlength: "+techObject.length);
+    console.log("techObjectZ: "+JSON.stringify(techObject) + "tlength: "+techObject.length);
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
-        if(techObject.length > 0){
+        if(techObject){
 
           superagent
           .post('/checkUniqueTitle')
