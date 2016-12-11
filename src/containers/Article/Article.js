@@ -44,7 +44,7 @@ export default class Article extends Component {
     const {formStatus, formMsg, specificArticleData} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
-    console.log( Object.keys(specificArticleData.technologies[0]).map(key => specificArticleData.technologies[0][key]) );
+    console.log( Object.keys(specificArticleData.technologies[0]).map(key => specificArticleData.technologies[0][key]).bind(this)); );
 
     return (
       <div className="container" id="articlePage">
