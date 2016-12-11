@@ -116,3 +116,9 @@ url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flag
 	width: $size;
 	height: $size;
 }
+
+@media (max-width: 728px) {
+  .adsbygoogle {
+		display: none !important;
+  }
+}

@@ -131,7 +131,6 @@ export default class RichEditorExample extends Component {
     const userNickname = cookie.load('ck_nickname');
     const userKanton = cookie.load('ck_kanton');
     const techObject = this.state.techObject;
-    console.log("techObjectZ: "+JSON.stringify(techObject) + "tlength: "+Object.keys(techObject).length);
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
@@ -159,26 +158,32 @@ export default class RichEditorExample extends Component {
 
                     this.setState({formStatus: 2});
                     this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
+                    this.refs.t01.state.checked = false;
+                    scroll(0,0);
                   }
                 });
 
             } else{
               this.setState({formStatus: 1});
               this.setState({formMsg: 'Fehler: Es exisitiert bereits ein Beitrag mit dem genau gleichen Titel! Bitte verwende einen anderen Beitragstitel.'});
+              scroll(0,0);
             }
           });
 
         } else{
           this.setState({formStatus: 1});
           this.setState({formMsg: 'Fehler: Bitte wähle mindestens eine Technologie aus!'});
+          scroll(0,0);
         }
       } else{
         this.setState({formStatus: 1});
         this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
+        scroll(0,0);
       }
     } else{
       this.setState({formStatus: 1});
       this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 60 Zeichen nicht überschreiten!'});
+      scroll(0,0);
     }
   }
 
