@@ -1,6 +1,4 @@
 
--) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
-
 -) Eigene Blogeinträge bearbeiten können
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 
@@ -9,6 +7,7 @@
 
 
 -) Reset Checkboxen nach Speichern + nach oben scrollen?
+
 low
 ------------
 -) Userprofil eines anderen anschauen können
@@ -22,6 +21,9 @@ low
 
 ------------------------------------------------------------------------
 
+
+
+X) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
 
 X) Verwendete Technologien Feld+ machen (object.assign)
 X) Community Beitrag oder Projekt auswählbar machen
