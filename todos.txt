@@ -14,6 +14,7 @@
 low
 ------------
 -) Userprofil eines anderen anschauen können
+-) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 
 -) sternenzeit nodejs mit darth vader icon
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
