@@ -158,7 +158,13 @@ export default class RichEditorExample extends Component {
 
                     this.setState({formStatus: 2});
                     this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
-                    this.refs.t01.checked = false;
+                    let counter = '';
+                    for(i=1; i++; i<41){
+                      if(i < 10){
+                        counter = "t0"+i;
+                      } else{counter = "t"+i;}
+                      this.refs[counter].checked = false;
+                    }
                     scroll(0,0);
                   }
                 });
