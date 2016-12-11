@@ -31,6 +31,7 @@ export default class Article extends Component {
     .end((error, res) => {
       if(res.body.status === 1) {
         this.setState({specificArticleData: res.body.specificArticleData});
+        console.log(this.state.specificArticleData.technologies[0]);
       } else{
         console.log("Error, Article url does not exist in DB");
       }
@@ -54,7 +55,7 @@ export default class Article extends Component {
     //console.log("specificArticleData.technologies[0]: "+specificArticleData.technologies[0]);
 
 
-    console.log(specificArticleData.technologies[0].bind.this());
+
 
 
     /*let techContentDef = [];
