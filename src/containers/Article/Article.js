@@ -44,6 +44,8 @@ export default class Article extends Component {
     const {formStatus, formMsg, specificArticleData} = this.state;
     const { activateNewUserState, getBlogEntriesState } = this.props;
 
+    console.log("tech: "+JSON.stringify(specificArticleData.technologies));
+
     return (
       <div className="container" id="articlePage">
         <Helmet title={specificArticleData.titel}/>
@@ -58,7 +60,7 @@ export default class Article extends Component {
                 </div>
                 <div className='col-sm-9 col-xs-6'>{specificArticleData.userNickname}</div>
                 <div className='col-sm-1 col-xs-12'><span className="label label-primary">{specificArticleData.category}</span></div>
-                <div className={'col-sm-3 col-xs-12' + styles.techStyle}>{ Object.keys(specificArticleData.technologies[0]).map(key => specificArticleData.technologies[0][key]) }</div>
+                <div className={'col-sm-3 col-xs-12' + styles.techStyle}>{ 'Object.keys(specificArticleData.technologies[0]).map(key => specificArticleData.technologies[0][key])' }</div>
                 <div className={'col-sm-8 col-xs-12' + styles.dateStyle}>{specificArticleData.timeFormatted}</div>
                 <div className={'col-sm-12 col-xs-12'}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>

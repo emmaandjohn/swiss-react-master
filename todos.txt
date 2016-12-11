@@ -1,12 +1,15 @@
 
+-) Erfasste Artikel/Projekte in Myprofile auflisten?
 -) Eigene Blogeinträge bearbeiten können
+
 -) Simple Kommentare von anderen Usern unten eine Artikels?
+-) Codeblock Keyboard handling?
 
 -) Vervollständigen Profil (Birthday, PW, Social etc.)
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
--) Reset Checkboxen nach Speichern + nach oben scrollen?
+-) Reset Checkboxen nach Speichern + nach oben scrollen? auch bei Fehlermeldungen..
 
 low
 ------------
