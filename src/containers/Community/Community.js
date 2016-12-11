@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
 import Well from 'react-bootstrap/lib/Well';
 import Alert from 'react-bootstrap/lib/Alert';
 import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
@@ -9,6 +10,7 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { StickyContainer, Sticky } from 'react-sticky';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
@@ -244,14 +246,18 @@ export default class RichEditorExample extends Component {
           </form>
         </div>
         <div className="RichEditor-root">
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={this.toggleBlockType}
-            />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={this.toggleInlineStyle}
-            />
+          <StickyContainer>
+            <Sticky topOffset={100}>
+              <BlockStyleControls
+                editorState={editorState}
+                onToggle={this.toggleBlockType}
+                />
+              <InlineStyleControls
+                editorState={editorState}
+                onToggle={this.toggleInlineStyle}
+                />
+            </Sticky>
+          </StickyContainer>
           <div className={className} onClick={this.focus}>
             <Editor
               blockStyleFn={getBlockStyle}
