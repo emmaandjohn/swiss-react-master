@@ -4,13 +4,20 @@
 .time {
   margin: 0 30px;
 }
-.adcontainer {
+.adcontainerDesktop {
+  display: none;
+  padding-top: 10px;
+}
+.adcontainerMobile{
   display: block;
   padding-top: 10px;
 }
 
-@media (max-width: 728px) {
-  .adcontainer {
-		display: none !important;
+@media (min-width: 735px) {
+  .adcontainerDesktop {
+		display: block;
+  }
+  .adcontainerMobile {
+		display: none;
   }
 }

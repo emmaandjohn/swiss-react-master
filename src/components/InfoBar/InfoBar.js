@@ -25,10 +25,16 @@ export default class InfoBar extends Component {
           <span className={styles.time}>{info && new Date(info.time).toString()}</span>
           <button className="btn btn-primary" onClick={load}>Reload vom Server</button>
         </div>
-        <div className={styles.adcontainer + ' container'}>
+        <div className={styles.adcontainerDesktop + ' container'}>
           <AdSense.Google client='ca-pub-4161847192982174'
                           slot='2930197099'
                           style={{width: 728, height: 90}}
+                          format='' />
+        </div>
+        <div className={styles.adcontainerMobile + ' container'}>
+          <AdSense.Google client='ca-pub-4161847192982174'
+                          slot='1115386697'
+                          style={{width: 320, height: 100}}
                           format='' />
         </div>
       </div>
