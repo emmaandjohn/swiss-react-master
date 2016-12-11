@@ -54,7 +54,7 @@ export default class Article extends Component {
     //console.log("specificArticleData.technologies[0]: "+specificArticleData.technologies[0]);
 
 
-    console.log(specificArticleData);
+    console.log(specificArticleData.technologies[0]);
 
 
     /*let techContentDef = [];
