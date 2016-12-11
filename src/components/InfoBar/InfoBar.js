@@ -24,15 +24,15 @@ export default class InfoBar extends Component {
           <span className={styles.time}>{info && new Date(info.time).toString()}</span>
           <button className="btn btn-primary" onClick={load}>Reload vom Server</button>
         </div>
+        <div className="container">
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-4161847192982174"
+               data-ad-slot="2930197099">
+          </ins>
+          { (adsbygoogle = window.adsbygoogle || []).push({}) }
+        </div>
       </div>
-      
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:728px;height:90px"
-           data-ad-client="ca-pub-4161847192982174"
-           data-ad-slot="2930197099">
-      </ins>
-      { (adsbygoogle = window.adsbygoogle || []).push({}) }
-
     );
   }
 }
