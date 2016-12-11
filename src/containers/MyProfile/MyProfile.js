@@ -154,31 +154,22 @@ export default class MyProfile extends Component {
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
 
-    console.log("bbb: "+JSON.stringify(syncUserDataState));
-
-    let syncEmail = ''; let syncPw = ''; let syncBirthday = ''; let syncAvatar = ''; let syncNickname = ''; let syncJob = '';
-    let syncCompany = ''; let syncDescription = ''; let syncMembersince = ''; let syncKanton = ''; let syncSfb = ''; let syncSgithub = '';
-    let syncStwitter = ''; let syncSxing = ''; let syncSwebsite = ''; let syncActivation = '';
-
-    //syncUserDataState.userdata.forEach(function(entry){
-      //console.log("aha: "+entry+ "aha2"+entry.email);
-      syncEmail = syncUserDataState.userdata.email;
-      syncPw = syncUserDataState.userdata.password;
-      syncBirthday = syncUserDataState.userdata.birthday;
-      syncAvatar = syncUserDataState.userdata.avatar;
-      syncNickname = syncUserDataState.userdata.nickname;
-      syncJob = syncUserDataState.userdata.job;
-      syncCompany = syncUserDataState.userdata.company;
-      syncDescription = syncUserDataState.userdata.description;
-      syncMembersince = syncUserDataState.userdata.membersince;
-      syncKanton = syncUserDataState.userdata.kanton;
-      syncSfb = syncUserDataState.userdata.socialFb;
-      syncSgithub = syncUserDataState.userdata.socialGithub;
-      syncStwitter = syncUserDataState.userdata.socialTwitter;
-      syncSxing = syncUserDataState.userdata.socialXing;
-      syncSwebsite = syncUserDataState.userdata.socialWebsite;
-      syncActivation = syncUserDataState.userdata.activation;
-  //  }.bind(this));
+    let syncEmail = syncUserDataState.userdata.email;
+    let syncPw = syncUserDataState.userdata.password;
+    let syncBirthday = syncUserDataState.userdata.birthday;
+    let syncAvatar = syncUserDataState.userdata.avatar;
+    let syncNickname = syncUserDataState.userdata.nickname;
+    let syncJob = syncUserDataState.userdata.job;
+    let syncCompany = syncUserDataState.userdata.company;
+    let syncDescription = syncUserDataState.userdata.description;
+    let syncMembersince = syncUserDataState.userdata.membersince;
+    let syncKanton = syncUserDataState.userdata.kanton;
+    let syncSfb = syncUserDataState.userdata.socialFb;
+    let syncSgithub = syncUserDataState.userdata.socialGithub;
+    let syncStwitter = syncUserDataState.userdata.socialTwitter;
+    let syncSxing = syncUserDataState.userdata.socialXing;
+    let syncSwebsite = syncUserDataState.userdata.socialWebsite;
+    let syncActivation = syncUserDataState.userdata.activation;
 
     /* Set avatar either from Cache or when ou change the avatar -> from State */
     let objectSelector = 'avatar'+syncAvatar;
@@ -227,7 +218,7 @@ export default class MyProfile extends Component {
     return (
         <div className={styles.myprofilePage + ' container'}>
           <Helmet title="Mein Profil"/>
-          {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && syncActivation === 'true') ?
+          {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && syncActivation === true) ?
             <div>
               <Row>
                 <Col xs={12}>
