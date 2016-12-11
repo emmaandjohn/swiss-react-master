@@ -41,8 +41,8 @@ export default class Article extends Component {
     const styles = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    const {formStatus, formMsg, specificArticleData} = this.state;
-    const { activateNewUserState, getBlogEntriesState } = this.props;
+    const {formStatus, formMsg} = this.state;
+    const { activateNewUserState, getBlogEntriesState, specificArticleData} = this.props;
 
     /*
     console.log(
@@ -54,9 +54,9 @@ export default class Article extends Component {
     //console.log("specificArticleData.technologies[0]: "+specificArticleData.technologies[0]);
 
     let techContentDef = [];
-    specificArticleData.technologies[0].forEach(function(entry){
+    specificArticleData.forEach(function(entry){
       techContentDef.push(
-        Object.keys(entry).map( key => entry[key] )
+        { Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }
       );
     }.bind(this));
 
