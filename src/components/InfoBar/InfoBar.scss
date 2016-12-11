@@ -1,7 +1,16 @@
 .infoBar {
   font-variant: italics;
 }
-
 .time {
   margin: 0 30px;
+}
+.adcontainer {
+  display: block;
+  padding-top: 10px;
+}
+
+@media (max-width: 728px) {
+  .adcontainer {
+		display: none !important;
+  }
 }

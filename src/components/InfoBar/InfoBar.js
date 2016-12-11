@@ -25,7 +25,7 @@ export default class InfoBar extends Component {
           <span className={styles.time}>{info && new Date(info.time).toString()}</span>
           <button className="btn btn-primary" onClick={load}>Reload vom Server</button>
         </div>
-        <div className="container">
+        <div className={styles.adcontainer + ' container'}>
           <AdSense.Google client='ca-pub-4161847192982174'
                           slot='2930197099'
                           style={{width: 728, height: 90}}
