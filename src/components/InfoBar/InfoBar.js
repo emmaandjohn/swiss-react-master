@@ -26,7 +26,7 @@ export default class InfoBar extends Component {
           <button className="btn btn-primary" onClick={load}>Reload vom Server</button>
         </div>
         <div className="container">
-          <AdSense.Google client='ca-pub-4161847192982174' slot='2930197099' />
+          <AdSense.Google client='ca-pub-4161847192982174' slot='6801993494' />
         </div>
       </div>
     );
