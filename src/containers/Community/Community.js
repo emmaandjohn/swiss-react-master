@@ -164,13 +164,13 @@ export default class RichEditorExample extends Component {
 
             } else{
               this.setState({formStatus: 1});
-              this.setState({formMsg: 'Fehler: Bitte wähle mindestens eine Technologie aus!'});
+              this.setState({formMsg: 'Fehler: Es exisitiert bereits ein Beitrag mit dem genau gleichen Titel! Bitte verwende einen anderen Beitragstitel.'});
             }
           });
 
         } else{
           this.setState({formStatus: 1});
-          this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
+          this.setState({formMsg: 'Fehler: Bitte wähle mindestens eine Technologie aus!'});
         }
       } else{
         this.setState({formStatus: 1});
