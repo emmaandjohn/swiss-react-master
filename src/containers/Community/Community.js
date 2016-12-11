@@ -135,7 +135,7 @@ export default class RichEditorExample extends Component {
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
-        if(techObject){
+        if(Object.keys(obj).length !== 0 && obj.constructor !== Object){
 
           superagent
           .post('/checkUniqueTitle')
