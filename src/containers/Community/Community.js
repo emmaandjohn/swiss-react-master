@@ -134,38 +134,43 @@ export default class RichEditorExample extends Component {
 
     if(titelData.length > 2 && titelData.length < 60){
       if (markupData.length > 40) {
+        if(typeof techObject !== null){
 
-        superagent
-        .post('/checkUniqueTitle')
-        .send({ tryTitle: titelData })
-        .set('Accept', 'application/json')
-        .end((error, res) => {
-          if(res.body.status === 1) {
+          superagent
+          .post('/checkUniqueTitle')
+          .send({ tryTitle: titelData })
+          .set('Accept', 'application/json')
+          .end((error, res) => {
+            if(res.body.status === 1) {
 
-              this.refs.titel.value = '';
-              superagent
-              .post('/community')
-              .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname })
-              .set('Accept', 'application/json')
-              .end((error, res) => {
-                if (res.body.status === 1) {
-                  this.props.dispatch(getBlogEntries(res.body.blogArticles));
+                this.refs.titel.value = '';
+                superagent
+                .post('/community')
+                .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname })
+                .set('Accept', 'application/json')
+                .end((error, res) => {
+                  if (res.body.status === 1) {
+                    this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
-                  /* Clear editor state */
-                  const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
-                  this.setState({ editorState });
+                    /* Clear editor state */
+                    const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+                    this.setState({ editorState });
 
-                  this.setState({formStatus: 2});
-                  this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
-                }
-              });
+                    this.setState({formStatus: 2});
+                    this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
+                  }
+                });
 
-          } else{
-            this.setState({formStatus: 1});
-            this.setState({formMsg: 'Fehler: Es exisitiert bereits ein Beitrag mit dem genau gleichen Titel! Bitte verwende einen anderen Beitragstitel.'});
-          }
-        });
+            } else{
+              this.setState({formStatus: 1});
+              this.setState({formMsg: 'Fehler: Bitte wähle mindestens eine Technologie aus!'});
+            }
+          });
 
+        } else{
+          this.setState({formStatus: 1});
+          this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
+        }
       } else{
         this.setState({formStatus: 1});
         this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
