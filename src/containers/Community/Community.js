@@ -248,7 +248,7 @@ export default class RichEditorExample extends Component {
           </form>
         </div>
         <div className="RichEditor-root">
-            <Sticky stickyClassName={styles.RichEditorControlPanel} topOffset={10}>
+            <Sticky stickyClassName={styles.RichEditorControlPanel} bottomOffset={0}>
               <BlockStyleControls
                 editorState={editorState}
                 onToggle={this.toggleBlockType}
