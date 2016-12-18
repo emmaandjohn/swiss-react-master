@@ -24,10 +24,10 @@ pre {
 
 .RichEditorControlPanel{
 	background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 7px;
-  bottom: 60px !important;
-	position: fixed;
+	border: 1px solid #ccc;
+	padding: 7px;
+	top: 400px !important;
+	z-index: 9999 !important;
 }
 
 	/* Code blocks
