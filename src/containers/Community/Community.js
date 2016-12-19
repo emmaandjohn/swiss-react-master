@@ -10,7 +10,6 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { StickyContainer, Sticky } from 'react-sticky';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
@@ -246,18 +245,15 @@ export default class RichEditorExample extends Component {
             </div>
           </form>
         </div>
-        <StickyContainer>
         <div className="RichEditor-root">
-            <Sticky stickyClassName={styles.RichEditorControlPanel} bottomOffset={0}>
-              <BlockStyleControls
-                editorState={editorState}
-                onToggle={this.toggleBlockType}
-                />
-              <InlineStyleControls
-                editorState={editorState}
-                onToggle={this.toggleInlineStyle}
-                />
-            </Sticky>
+            <BlockStyleControls
+              editorState={editorState}
+              onToggle={this.toggleBlockType}
+              />
+            <InlineStyleControls
+              editorState={editorState}
+              onToggle={this.toggleInlineStyle}
+              />
           <div className={className} onClick={this.focus}>
             <Editor
               blockStyleFn={getBlockStyle}
@@ -274,7 +270,6 @@ export default class RichEditorExample extends Component {
               />
           </div>
         </div>
-        </StickyContainer>
         <br />
         <div>
           <label className="checkbox-inline">
