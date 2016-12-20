@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Grid, Row, Col, Well, Label, Tooltip } from 'react-bootstrap/lib';
+import { Grid, Row, Col, Well, Label, Tooltip, OverlayTrigger } from 'react-bootstrap/lib';
 import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
@@ -71,7 +71,7 @@ export default class Home extends Component {
             <div className='col-sm-2 col-xs-6'>{entry.userNickname}</div>
             <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
             <div className='col-sm-1 col-xs-12'><span className={'label ' + whichCategory}>{entry.category}</span></div>
-            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <OverlayTrigger placement="top" overlay={<Tooltip>entry.technologies[0][key]</Tooltip>}> <span className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span></OverlayTrigger>) }</div>
+            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip">entry.technologies[0][key]</Tooltip>}> <span className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span></OverlayTrigger>) }</div>
             <div className={'col-sm-2 col-xs-12 ' + styles.dateStyle}>{entry.timeFormatted}</div>
           </div>
         </div>
