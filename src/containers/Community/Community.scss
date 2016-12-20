@@ -28,8 +28,9 @@ pre {
 	min-width: 360px;
 }
 .cbs00{
-	padding-left: 21px;
-	padding-right: 20px;
+	margin-bottom: 9px;
+	padding: 2px 24px;
+	background-color: #f6f6f6 !important;
 }
 .cbs01{ background: url("//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/community/t01.jpg") no-repeat left; background-size: 20px 20px; }
 .cbs02{ background: url("//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/community/t02.jpg") no-repeat left; background-size: 20px 20px; }
@@ -204,4 +205,10 @@ pre {
 		pre {
 			text-shadow: none;
 		}
+}
+
+@media (min-width: 770px) {
+	.cbs{
+		width: 100%;
+	}
 }

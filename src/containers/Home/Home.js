@@ -49,6 +49,7 @@ export default class Home extends Component {
   render() {
     const styles = require('./Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
+    const stylesCommunity = require('../Community/Community.scss');
     const { getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
