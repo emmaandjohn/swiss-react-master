@@ -182,6 +182,7 @@ export default class MyProfile extends Component {
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
     const stylesHome = require('../Home/Home.scss');
+    const stylesCommunity = require('../Community/Community.scss');
 
     let syncEmail = syncUserDataState.userdata.email;
     let syncPw = syncUserDataState.userdata.password;
@@ -251,7 +252,7 @@ export default class MyProfile extends Component {
         UserContentProjekte.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + stylesHome.hover}>
               <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
-              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }</div>
+              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
         );
@@ -259,7 +260,7 @@ export default class MyProfile extends Component {
         UserContentArtikel.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + stylesHome.hover}>
               <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
-              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }</div>
+              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
         );
@@ -377,15 +378,21 @@ export default class MyProfile extends Component {
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Projekte</h4>
-                  {UserContentProjekte}
+                  <Row>
+                    {UserContentProjekte}
+                  </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Artikel</h4>
-                  {UserContentArtikel}
+                  <Row>
+                    {UserContentArtikel}
+                  </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Kommentare</h4>
-                  <p>Llorem ipsum, llorem ipsum ... </p>
+                  <Row>
+                    <p>Llorem ipsum, llorem ipsum ... </p>
+                  </Row>
                 </Col>
               </Col>
             </Row>
