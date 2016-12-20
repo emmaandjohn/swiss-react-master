@@ -53,8 +53,13 @@ export default class Home extends Component {
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
-    let blogContentDef = [];
+    let blogContentDef = []; let whichCategory = [];
     getBlogEntriesState.articles.forEach(function(entry){
+      if(entry.category === 'Projekt'){
+        whichCategory.push( <span className="label label-primary">{entry.category}</span> );
+      }else{
+        whichCategory.push( <span className="label label-info">{entry.category}</span> );
+      }
       blogContentDef.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' col-xs-12 ' + styles.hover}>
           <div className='row'>
@@ -64,7 +69,7 @@ export default class Home extends Component {
             </div>
             <div className='col-sm-2 col-xs-6'>{entry.userNickname}</div>
             <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
-            <div className='col-sm-1 col-xs-12'><span className="label label-primary">{entry.category}</span></div>
+            <div className='col-sm-1 col-xs-12'>{whichCategory}</div>
             <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }</div>
             <div className={'col-sm-2 col-xs-12 ' + styles.dateStyle}>{entry.timeFormatted}</div>
           </div>
