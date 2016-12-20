@@ -6,6 +6,7 @@ import superagent from 'superagent';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
 import Loader from 'react-loader-advanced';
+import { push } from 'react-router-redux';
 
 /* Import here only for Dispatchers */
 import { syncUserData } from '../../redux/actions/syncUserDataActions';
@@ -174,7 +175,7 @@ export default class MyProfile extends Component {
       }
     });
   }
-  
+
 
   render() {
     const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
