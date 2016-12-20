@@ -133,7 +133,7 @@ export default class RichEditorExample extends Component {
     const userKanton = cookie.load('ck_kanton');
     const techObject = this.state.techObject;
 
-    if(titelData.length > 2 && titelData.length < 60){
+    if(titelData.length > 2 && titelData.length < 120){
       if (markupData.length > 40) {
         if(Object.keys(techObject).length > 0){
 
@@ -190,7 +190,7 @@ export default class RichEditorExample extends Component {
       }
     } else{
       this.setState({formStatus: 1});
-      this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 60 Zeichen nicht überschreiten!'});
+      this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 120 Zeichen nicht überschreiten!'});
       scroll(0,0);
     }
   }
