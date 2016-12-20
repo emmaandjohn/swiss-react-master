@@ -19,7 +19,7 @@ export default class InfoBar extends Component {
     return (
       <div className={styles.infoBar + ' well'}>
         <div className="container">
-          Node.js Sternenzeit:
+          <span className={styles.cylon}></span> Node.js Sternenzeit:
           {' '}
           <strong>{info ? info.message : 'no info!'}</strong>
           <span className={styles.time}>{info && new Date(info.time).toString()}</span>

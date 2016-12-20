@@ -163,6 +163,19 @@ export default class MyProfile extends Component {
     }
   }
 
+  loadArticle = (id) => {
+    superagent
+    .post('/getSpecificArticle')
+    .send({ artId: id })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        this.props.dispatch(push('community/'+res.body.specificArticleData.urlFriendlyTitel));
+      }
+    });
+  }
+  
+
   render() {
     const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
