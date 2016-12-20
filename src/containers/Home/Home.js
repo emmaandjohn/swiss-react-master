@@ -61,7 +61,7 @@ export default class Home extends Component {
         whichCategory = 'label-info';
       }
       blogContentDef.push(
-        <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated flipInX col-xs-12 ' + styles.hover}>
+        <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeInUp col-xs-12 ' + styles.hover}>
           <div className='row'>
             <div className='col-sm-1 col-xs-6'>
               <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
@@ -83,7 +83,7 @@ export default class Home extends Component {
         <div className={styles.masthead}>
           <div className="container">
             <div className={styles.logo}>
-              <p>
+              <p className="animated flip">
                 <img src={logoImage}/>
               </p>
             </div>

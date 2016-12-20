@@ -2,23 +2,20 @@
 X) Erfasste Artikel/Projekte in Myprofile auflisten?
 -) Eigene Blogeinträge bearbeiten können
 
--) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Codeblock Keyboard handling?
 
 -) Vervollständigen Profil (Birthday, PW, Social etc.)
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
--) Reset Checkboxen nach Speichern + nach oben scrollen? auch bei Fehlermeldungen..
-
--) Community Toolbar soll absolute mitgehen wenn runterscrollen
+-) Kontaktseite
 
 low
 ------------
+-) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
 -) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 
--) sternenzeit nodejs mit darth vader icon
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen?
 
