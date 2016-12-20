@@ -12,6 +12,7 @@ import { syncUserData } from '../../redux/actions/syncUserDataActions';
 import { getUser } from '../../redux/actions/getUserActions';
 import { updateUser } from '../../redux/actions/updateUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
+import { getUserContent } from '../../redux/actions/getUserContentActions';
 
 @connect((store) => {
   return {
@@ -19,6 +20,7 @@ import { activateNewUser } from '../../redux/actions/activateNewUserActions';
     getUserState: store.getUser.user,
     updateUserState: store.updateUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
+    getUserContentState: store.getUserContent.articleList,
   };
 })
 
@@ -26,6 +28,7 @@ export default class MyProfile extends Component {
 
   componentDidMount() {
     const syncUserUuid = cookie.load('ck_uuid');
+
     superagent
     .post('/syncUserData')
     .send({ userUuid: syncUserUuid })
@@ -33,6 +36,16 @@ export default class MyProfile extends Component {
     .end((error, res) => {
       if (res.body.status === 1) {
         this.props.dispatch(syncUserData(res.body.userDataSync));
+      }
+    });
+
+    superagent
+    .post('/getUserContent')
+    .send({ userUuid: syncUserUuid })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if (res.body.status === 1) {
+        this.props.dispatch(getUserContent(res.body.blogArticles));
       }
     });
   }
@@ -150,9 +163,11 @@ export default class MyProfile extends Component {
   }
 
   render() {
-    const { syncUserDataState, getUserState, activateNewUserState, updateUserState } = this.props;
+    const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
+
+    console.log("mumumu: "+JSON.stringify(getUserContentState));
 
     let syncEmail = syncUserDataState.userdata.email;
     let syncPw = syncUserDataState.userdata.password;

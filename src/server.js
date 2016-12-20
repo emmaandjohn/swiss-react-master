@@ -379,6 +379,31 @@ app.post('/community', function(req, res) {
 });
 
 
+
+/* **** get Users Projects and Articles for MyProfile.js */
+app.post('/getUserContent', function(req, res) {
+    var contentUserUuid = req.body.userUuid;
+
+    /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
+    BlogModel.find({userUuid: contentUserUuid}).sort({['category': 1], ['unixtime': -1]}).exec(function(err, result) {
+      if(err){
+        res.json(err);
+        res.json({ status: 0 });
+      }
+      else if(result === null){
+        res.json({ status: 0 });
+      }
+      else{
+        res.json({ status: 1, blogArticles: result });
+      }
+    });
+
+});
+
+
+
+
+
 /* **** Activation User */
 app.post('/updateUserProfile', function(req, res) {
     var getField = req.body.field;
