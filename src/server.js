@@ -385,7 +385,7 @@ app.post('/getUserContent', function(req, res) {
     var contentUserUuid = req.body.userUuid;
 
     /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
-    BlogModel.find({userUuid: contentUserUuid}).sort({['category': 1], ['unixtime': -1]}).exec(function(err, result) {
+    BlogModel.find({userUuid: contentUserUuid}).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
       if(err){
         res.json(err);
         res.json({ status: 0 });
