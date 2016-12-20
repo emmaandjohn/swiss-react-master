@@ -39,6 +39,7 @@ export default class MyProfile extends Component {
       }
     });
 
+    /* get Articles and Projects from the User */
     superagent
     .post('/getUserContent')
     .send({ userUuid: syncUserUuid })
@@ -166,8 +167,7 @@ export default class MyProfile extends Component {
     const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
     const styles = require('./MyProfile.scss');
-
-    console.log("mumumu: "+JSON.stringify(getUserContentState));
+    const stylesHome = require('../Home/Home.scss');
 
     let syncEmail = syncUserDataState.userdata.email;
     let syncPw = syncUserDataState.userdata.password;
@@ -229,6 +229,33 @@ export default class MyProfile extends Component {
       getDescription = updateUserState.description;
     }
     if(getDescription === null){getDescription = 'Keine Angabe';}
+
+    /* list Articles and Projects from the User */
+    let UserContentDef = [];
+    getUserContentState.articles.forEach(function(entry){
+      UserContentDef.push(
+        {entry.category === 'Projekt' ?
+        <div className='col-xs-12 ' + styles.m15 + ' ' + styles.topLine}>
+          <h4>Projekte</h4>
+          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + stylesHome.hover}>
+              <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
+              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }</div>
+              <div className={'col-sm-3 col-xs-12 ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+          </div>
+        </div>
+        :
+        <div className='col-xs-12 ' + styles.m15 + ' ' + styles.topLine}>
+          <h4>Beiträge</h4>
+          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + stylesHome.hover}>
+              <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
+              <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key]) }</div>
+              <div className={'col-sm-2 col-xs-12 ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+          </div>
+        </div>
+        }
+      );
+    }.bind(this));
+
 
     return (
         <div className={styles.myprofilePage + ' container'}>
@@ -339,14 +366,7 @@ export default class MyProfile extends Component {
                     </Col>
                   </Row>
                 </Col>
-                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h4>Projekte</h4>
-                  <p>Llorem ipsum, llorem ipsum ... </p>
-                </Col>
-                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h4>Beiträge</h4>
-                  <p>Llorem ipsum, llorem ipsum ... </p>
-                </Col>
+                { UserContentDef }
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Kommentare</h4>
                   <p>Llorem ipsum, llorem ipsum ... </p>
