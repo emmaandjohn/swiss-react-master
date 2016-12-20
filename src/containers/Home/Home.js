@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Grid, Row, Col, Well, Label, OverlayTrigger, Tooltip } from 'react-bootstrap/lib';
+import { Grid, Row, Col, Well, Label, Tooltip } from 'react-bootstrap/lib';
 import {connect} from 'react-redux';
 import config from '../../config';
 import Helmet from 'react-helmet';
