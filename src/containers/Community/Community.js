@@ -373,7 +373,7 @@ export default class RichEditorExample extends Component {
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't33', this.refs.t33.value)} ref="t33" value="ESLint/JSLint/JSHint (oder ähnlich)" /> <div className={styles.cbs00 + ' ' + styles.cbs33}> ESLint/JSLint/JSHint (oder ähnlich)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't34', this.refs.t34.value)} ref="t34" value="Unit Tests - Mocha/Jasmine/Tape/Enzyme (oder ähnlich)" /> <div className={styles.cbs00 + ' ' + styles.cbs34}> Unit Tests - Mocha/Jasmine/Tape/Enzyme (oder ähnlich)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't34', this.refs.t34.value)} ref="t34" value="Unit Tests - Mocha/Jasmine/Tape/Enzyme" /> <div className={styles.cbs00 + ' ' + styles.cbs34}> Unit Tests - Mocha/Jasmine/Tape/Enzyme
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't35', this.refs.t35.value)} ref="t35" value="Intergration Tests (e.g to a DB)" /> <div className={styles.cbs00 + ' ' + styles.cbs35}> Intergration Tests (e.g to a DB)
