@@ -1,5 +1,5 @@
 
--) Erfasste Artikel/Projekte in Myprofile auflisten?
+X) Erfasste Artikel/Projekte in Myprofile auflisten?
 -) Eigene Blogeinträge bearbeiten können
 
 -) Simple Kommentare von anderen Usern unten eine Artikels?

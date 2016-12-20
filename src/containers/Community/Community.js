@@ -160,7 +160,7 @@ export default class RichEditorExample extends Component {
                     this.setState({formStatus: 2});
                     this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
                     let counter = '';
-                    for(i=1; i++; i<41){
+                    for(let i=1; i++; i<41){
                       if(i < 10){
                         counter = "t0"+i;
                       } else{counter = "t"+i;}
