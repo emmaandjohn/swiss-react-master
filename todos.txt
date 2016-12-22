@@ -10,6 +10,7 @@ X) Erfasste Artikel/Projekte in Myprofile auflisten?
 
 -) Kontaktseite
 -) Kantonsnamen anzeigen - Myprofile und Tooltips
+-) Profil löschen?
 
 low
 ------------
