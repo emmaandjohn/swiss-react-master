@@ -63,9 +63,9 @@ export default class Article extends Component {
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
                 <div className='col-sm-9 col-xs-6'>Autor: {specificArticleData.userNickname}</div>
-                <div className={'col-xs-12 ' + styles.topLine}><span className="label label-primary">{specificArticleData.category}</span></div>
-                <div className={'col-xs-12 ' + styles.techStyle + ' ' + styles.topLine}>Technologien: {specificArticleTechData}</div>
-                <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.mb20}>Beitrag vom: {specificArticleData.timeFormatted}</div>
+                <div className={'col-sm-9 col-xs-12 ' + styles.topLine}><span className="label label-primary">{specificArticleData.category}</span></div>
+                <div className={'col-sm-9 col-xs-12 ' + styles.techStyle + ' ' + styles.topLine}>Technologien: {specificArticleTechData}</div>
+                <div className={'col-sm-9 col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb20}>Beitrag vom: {specificArticleData.timeFormatted}</div>
                 <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>
             </div>
