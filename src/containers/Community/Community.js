@@ -165,7 +165,6 @@ export default class RichEditorExample extends Component {
                       if(i < 10){
                         counter = "t0"+i;
                       } else{counter = "t"+i;}
-                      console.log(counter);
                       this.refs[counter].checked = false;
                     }
                   }
@@ -271,6 +270,8 @@ export default class RichEditorExample extends Component {
               />
           </div>
         </div>
+        <br />
+        <span className={styles.dateStyle}>* Drücke innerhalb eines Code Block CTRL+Enter um einen neuen Codeblock hinzuzufügen.</span>
         <br />
         <div>
           <label className={'checkbox-inline ' + styles.cbs}>
@@ -455,7 +456,7 @@ export default class RichEditorExample extends Component {
    {label: 'Blockquote', style: 'blockquote'},
    {label: 'UL', style: 'unordered-list-item'},
    {label: 'OL', style: 'ordered-list-item'},
-   {label: 'Code Block (+1 Codeblock press Ctrl+Enter)', style: 'code-block'},
+   {label: 'Code Block*', style: 'code-block'},
  ];
 
  const BlockStyleControls = (props) => {
