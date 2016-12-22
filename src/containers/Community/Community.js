@@ -272,7 +272,7 @@ export default class RichEditorExample extends Component {
         </div>
         <br />
         <span className={styles.dateStyle}>* Drücke innerhalb eines Code Block CTRL+Enter um einen neuen Codeblock hinzuzufügen.</span>
-        <br />
+        <br /><br />
         <div>
           <label className={'checkbox-inline ' + styles.cbs}>
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> <div className={styles.cbs00 + ' ' + styles.cbst01}> React.js
