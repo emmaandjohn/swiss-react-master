@@ -2,10 +2,20 @@ import React, {Component} from 'react';
 import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
+
+import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+
 import { Link } from 'react-router';
 
+import {load} from 'redux/modules/info';
+
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+
+@connect(
+    state => ({info: state.info.data}),
+    dispatch => bindActionCreators({load}, dispatch)
+)
 
 @connect((store) => {
   return {
