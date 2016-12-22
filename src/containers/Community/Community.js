@@ -274,124 +274,124 @@ export default class RichEditorExample extends Component {
         <br />
         <div>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> <div className={styles.cbs00 + ' ' + styles.cbst01}> React.js
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> <div className={styles.cbs00 + ' ' + styles.cbs01}> React.js
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't02', this.refs.t02.value)} ref="t02" value="React Router" /> <div className={styles.cbs00 + ' ' + styles.cbst02}> React Router
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't02', this.refs.t02.value)} ref="t02" value="React Router" /> <div className={styles.cbs00 + ' ' + styles.cbs02}> React Router
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't03', this.refs.t03.value)} ref="t03" value="Redux / Redux Saga" /> <div className={styles.cbs00 + ' ' + styles.cbst03}> Redux / Redux Saga
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't03', this.refs.t03.value)} ref="t03" value="Redux / Redux Saga" /> <div className={styles.cbs00 + ' ' + styles.cbs03}> Redux / Redux Saga
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't04', this.refs.t04.value)} ref="t04" value="React Router Redux" /> <div className={styles.cbs00 + ' ' + styles.cbst04}> React Router Redux
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't04', this.refs.t04.value)} ref="t04" value="React Router Redux" /> <div className={styles.cbs00 + ' ' + styles.cbs04}> React Router Redux
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't05', this.refs.t05.value)} ref="t05" value="Flux" /> <div className={styles.cbs00 + ' ' + styles.cbst05}> Flux
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't05', this.refs.t05.value)} ref="t05" value="Flux" /> <div className={styles.cbs00 + ' ' + styles.cbs05}> Flux
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't06', this.refs.t06.value)} ref="t06" value="Relay" /> <div className={styles.cbs00 + ' ' + styles.cbst06}> Relay
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't06', this.refs.t06.value)} ref="t06" value="Relay" /> <div className={styles.cbs00 + ' ' + styles.cbs06}> Relay
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't07', this.refs.t07.value)} ref="t07" value="GraphQL" /> <div className={styles.cbs00 + ' ' + styles.cbst07}> GraphQL
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't07', this.refs.t07.value)} ref="t07" value="GraphQL" /> <div className={styles.cbs00 + ' ' + styles.cbs07}> GraphQL
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't08', this.refs.t08.value)} ref="t08" value="Node.js" /> <div className={styles.cbs00 + ' ' + styles.cbst08}> Node.js
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't08', this.refs.t08.value)} ref="t08" value="Node.js" /> <div className={styles.cbs00 + ' ' + styles.cbs08}> Node.js
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't09', this.refs.t09.value)} ref="t09" value="MongoDB/Mongoose" /> <div className={styles.cbs00 + ' ' + styles.cbst09}> MongoDB/Mongoose
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't09', this.refs.t09.value)} ref="t09" value="MongoDB/Mongoose" /> <div className={styles.cbs00 + ' ' + styles.cbs09}> MongoDB/Mongoose
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't10', this.refs.t10.value)} ref="t10" value="MySQL" /> <div className={styles.cbs00 + ' ' + styles.cbst10}> MySQL
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't10', this.refs.t10.value)} ref="t10" value="MySQL" /> <div className={styles.cbs00 + ' ' + styles.cbs10}> MySQL
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't11', this.refs.t11.value)} ref="t11" value="Firebase" /> <div className={styles.cbs00 + ' ' + styles.cbst11}> Firebase
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't11', this.refs.t11.value)} ref="t11" value="Firebase" /> <div className={styles.cbs00 + ' ' + styles.cbs11}> Firebase
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't12', this.refs.t12.value)} ref="t12" value="Docker" /> <div className={styles.cbs00 + ' ' + styles.cbst12}> Docker
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't12', this.refs.t12.value)} ref="t12" value="Docker" /> <div className={styles.cbs00 + ' ' + styles.cbs12}> Docker
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't13', this.refs.t13.value)} ref="t13" value="AWS (EBS, S3, Lambda etc.)" /> <div className={styles.cbs00 + ' ' + styles.cbst13}> AWS (EBS, S3, Lambda etc.)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't13', this.refs.t13.value)} ref="t13" value="AWS (EBS, S3, Lambda etc.)" /> <div className={styles.cbs00 + ' ' + styles.cbs13}> AWS (EBS, S3, Lambda etc.)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't14', this.refs.t14.value)} ref="t14" value="Express/Koa/Hapi/Socket.io" /> <div className={styles.cbs00 + ' ' + styles.cbst14}> Express/Koa/Hapi/Socket.io
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't14', this.refs.t14.value)} ref="t14" value="Express/Koa/Hapi/Socket.io" /> <div className={styles.cbs00 + ' ' + styles.cbs14}> Express/Koa/Hapi/Socket.io
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't15', this.refs.t15.value)} ref="t15" value="JSX" /> <div className={styles.cbs00 + ' ' + styles.cbst15}> JSX
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't15', this.refs.t15.value)} ref="t15" value="JSX" /> <div className={styles.cbs00 + ' ' + styles.cbs15}> JSX
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't16', this.refs.t16.value)} ref="t16" value="Babel" /> <div className={styles.cbs00 + ' ' + styles.cbst16}> Babel
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't16', this.refs.t16.value)} ref="t16" value="Babel" /> <div className={styles.cbs00 + ' ' + styles.cbs16}> Babel
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't17', this.refs.t17.value)} ref="t17" value="Webpack" /> <div className={styles.cbs00 + ' ' + styles.cbst17}> Webpack
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't17', this.refs.t17.value)} ref="t17" value="Webpack" /> <div className={styles.cbs00 + ' ' + styles.cbs17}> Webpack
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't18', this.refs.t18.value)} ref="t18" value="Browserify" /> <div className={styles.cbs00 + ' ' + styles.cbst18}> Browserify
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't18', this.refs.t18.value)} ref="t18" value="Browserify" /> <div className={styles.cbs00 + ' ' + styles.cbs18}> Browserify
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't19', this.refs.t19.value)} ref="t19" value="Gulp" /> <div className={styles.cbs00 + ' ' + styles.cbst19}> Gulp
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't19', this.refs.t19.value)} ref="t19" value="Gulp" /> <div className={styles.cbs00 + ' ' + styles.cbs19}> Gulp
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't20', this.refs.t20.value)} ref="t20" value="Grunt" /> <div className={styles.cbs00 + ' ' + styles.cbst20}> Grunt
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't20', this.refs.t20.value)} ref="t20" value="Grunt" /> <div className={styles.cbs00 + ' ' + styles.cbs20}> Grunt
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't21', this.refs.t21.value)} ref="t21" value="ES6" /> <div className={styles.cbs00 + ' ' + styles.cbst21}> ES6
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't21', this.refs.t21.value)} ref="t21" value="ES6" /> <div className={styles.cbs00 + ' ' + styles.cbs21}> ES6
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't22', this.refs.t22.value)} ref="t22" value="ES7/ES8 (stage0)" /> <div className={styles.cbs00 + ' ' + styles.cbst22}> ES7/ES8 (stage0)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't22', this.refs.t22.value)} ref="t22" value="ES7/ES8 (stage0)" /> <div className={styles.cbs00 + ' ' + styles.cbs22}> ES7/ES8 (stage0)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't23', this.refs.t23.value)} ref="t23" value="React Native" /> <div className={styles.cbs00 + ' ' + styles.cbst23}> React Native
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't23', this.refs.t23.value)} ref="t23" value="React Native" /> <div className={styles.cbs00 + ' ' + styles.cbs23}> React Native
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't24', this.refs.t24.value)} ref="t24" value="CSS" /> <div className={styles.cbs00 + ' ' + styles.cbst24}> CSS
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't24', this.refs.t24.value)} ref="t24" value="CSS" /> <div className={styles.cbs00 + ' ' + styles.cbs24}> CSS
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't25', this.refs.t25.value)} ref="t25" value="Sass" /> <div className={styles.cbs00 + ' ' + styles.cbst25}> Sass
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't25', this.refs.t25.value)} ref="t25" value="Sass" /> <div className={styles.cbs00 + ' ' + styles.cbs25}> Sass
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't26', this.refs.t26.value)} ref="t26" value="Less" /> <div className={styles.cbs00 + ' ' + styles.cbst26}> Less
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't26', this.refs.t26.value)} ref="t26" value="Less" /> <div className={styles.cbs00 + ' ' + styles.cbs26}> Less
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't27', this.refs.t27.value)} ref="t27" value="Bootstrap/Foundation (oder ähnlich)" /> <div className={styles.cbs00 + ' ' + styles.cbst27}> Bootstrap/Foundation (oder ähnlich)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't27', this.refs.t27.value)} ref="t27" value="Bootstrap/Foundation (oder ähnlich)" /> <div className={styles.cbs00 + ' ' + styles.cbs27}> Bootstrap/Foundation (oder ähnlich)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't28', this.refs.t28.value)} ref="t28" value="Universal/Isomorphic (Serverside-Rendering)" /> <div className={styles.cbs00 + ' ' + styles.cbst28}> Universal/Isomorphic (Serverside-Rendering)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't28', this.refs.t28.value)} ref="t28" value="Universal/Isomorphic (Serverside-Rendering)" /> <div className={styles.cbs00 + ' ' + styles.cbs28}> Universal/Isomorphic (Serverside-Rendering)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't29', this.refs.t29.value)} ref="t29" value="Immutable.js" /> <div className={styles.cbs00 + ' ' + styles.cbst29}> Immutable.js
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't29', this.refs.t29.value)} ref="t29" value="Immutable.js" /> <div className={styles.cbs00 + ' ' + styles.cbs29}> Immutable.js
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't30', this.refs.t30.value)} ref="t30" value="Omnicient/Om" /> <div className={styles.cbs00 + ' ' + styles.cbst30}> Omnicient/Om
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't30', this.refs.t30.value)} ref="t30" value="Omnicient/Om" /> <div className={styles.cbs00 + ' ' + styles.cbs30}> Omnicient/Om
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't31', this.refs.t31.value)} ref="t31" value="Meteor" /> <div className={styles.cbs00 + ' ' + styles.cbst31}> Meteor
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't31', this.refs.t31.value)} ref="t31" value="Meteor" /> <div className={styles.cbs00 + ' ' + styles.cbs31}> Meteor
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't32', this.refs.t32.value)} ref="t32" value="Vue.js" /> <div className={styles.cbs00 + ' ' + styles.cbst32}> Vue.js
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't32', this.refs.t32.value)} ref="t32" value="Vue.js" /> <div className={styles.cbs00 + ' ' + styles.cbs32}> Vue.js
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't33', this.refs.t33.value)} ref="t33" value="ESLint/JSLint/JSHint (oder ähnlich)" /> <div className={styles.cbs00 + ' ' + styles.cbst33}> ESLint/JSLint/JSHint (oder ähnlich)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't33', this.refs.t33.value)} ref="t33" value="ESLint/JSLint/JSHint (oder ähnlich)" /> <div className={styles.cbs00 + ' ' + styles.cbs33}> ESLint/JSLint/JSHint (oder ähnlich)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't34', this.refs.t34.value)} ref="t34" value="Unit Tests - Mocha/Jasmine/Tape/Enzyme" /> <div className={styles.cbs00 + ' ' + styles.cbst34}> Unit Tests - Mocha/Jasmine/Tape/Enzyme
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't34', this.refs.t34.value)} ref="t34" value="Unit Tests - Mocha/Jasmine/Tape/Enzyme" /> <div className={styles.cbs00 + ' ' + styles.cbs34}> Unit Tests - Mocha/Jasmine/Tape/Enzyme
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't35', this.refs.t35.value)} ref="t35" value="Intergration Tests (e.g to a DB)" /> <div className={styles.cbs00 + ' ' + styles.cbst35}> Intergration Tests (e.g to a DB)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't35', this.refs.t35.value)} ref="t35" value="Intergration Tests (e.g to a DB)" /> <div className={styles.cbs00 + ' ' + styles.cbs35}> Intergration Tests (e.g to a DB)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't36', this.refs.t36.value)} ref="t36" value="Functional/E2E Tests (e.g. Selenium)" /> <div className={styles.cbs00 + ' ' + styles.cbst36}> Functional/E2E Tests (e.g. Selenium)
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't36', this.refs.t36.value)} ref="t36" value="Functional/E2E Tests (e.g. Selenium)" /> <div className={styles.cbs00 + ' ' + styles.cbs36}> Functional/E2E Tests (e.g. Selenium)
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't37', this.refs.t37.value)} ref="t37" value="Sonarqube" /> <div className={styles.cbs00 + ' ' + styles.cbst37}> Sonarqube
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't37', this.refs.t37.value)} ref="t37" value="Sonarqube" /> <div className={styles.cbs00 + ' ' + styles.cbs37}> Sonarqube
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't38', this.refs.t38.value)} ref="t38" value="iOS-App-Development" /> <div className={styles.cbs00 + ' ' + styles.cbst38}> iOS-App-Development
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't38', this.refs.t38.value)} ref="t38" value="iOS-App-Development" /> <div className={styles.cbs00 + ' ' + styles.cbs38}> iOS-App-Development
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't39', this.refs.t39.value)} ref="t39" value="Android-App-Development" /> <div className={styles.cbs00 + ' ' + styles.cbst39}> Android-App-Development
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't39', this.refs.t39.value)} ref="t39" value="Android-App-Development" /> <div className={styles.cbs00 + ' ' + styles.cbs39}> Android-App-Development
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't40', this.refs.t40.value)} ref="t40" value="Cordova/Phonegap" /> <div className={styles.cbs00 + ' ' + styles.cbst40}> Cordova/Phonegap
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't40', this.refs.t40.value)} ref="t40" value="Cordova/Phonegap" /> <div className={styles.cbs00 + ' ' + styles.cbs40}> Cordova/Phonegap
           </div></label>
         </div>
         <br />
