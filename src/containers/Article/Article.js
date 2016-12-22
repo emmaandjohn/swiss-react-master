@@ -24,6 +24,7 @@ export default class Article extends Component {
 
   componentDidMount() {
     let getUrl = this.props.params.id;
+    const stylesCommunity = require('../Community/Community.scss');
 
     superagent
     .post('/getSpecificArticleWithUrl')
@@ -32,9 +33,10 @@ export default class Article extends Component {
     .end((error, res) => {
       if(res.body.status === 1) {
         this.setState({specificArticleData: res.body.specificArticleData});
-        this.setState({ specificArticleTechData: Object.keys(this.state.specificArticleData.technologies[0]).map(
+        /*this.setState({ specificArticleTechData: Object.keys(this.state.specificArticleData.technologies[0]).map(
           key => this.state.specificArticleData.technologies[0][key]
-        ) });
+        ) });*/
+        this.setState({ specificArticleTechData: Object.keys(this.state.specificArticleData.technologies[0]).map(key => <span title={this.state.specificArticleData.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) });
       } else{
         console.log("Error, Article url does not exist in DB");
       }

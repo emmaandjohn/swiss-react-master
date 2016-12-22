@@ -15,7 +15,7 @@ low
 ------------
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
--) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
+X) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen?
