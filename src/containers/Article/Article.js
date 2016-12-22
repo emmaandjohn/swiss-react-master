@@ -54,6 +54,7 @@ export default class Article extends Component {
   }
 
   render() {
+    const stylesArticle = require('./Article.scss');
     const styles = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
@@ -79,8 +80,8 @@ export default class Article extends Component {
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
-                <div className='col-sm-9 col-xs-6'>Autor: <strong>{specificArticleData.userNickname}</strong></div>
-                <div className={'col-sm-9 col-xs-6 ' + styles.topLine}><span className={'label ' + whichCategory}>{specificArticleData.category}</span> {specificArticleTechData}</div>
+                <div className={'col-sm-9 col-xs-6 ' + stylesArticle.pb7}>Autor: <strong>{specificArticleData.userNickname}</strong></div>
+                <div className={'col-sm-9 col-xs-6 ' + styles.topLine + ' ' + stylesArticle.pb7}><span className={'label ' + whichCategory + ' ' + stylesArticle.labelGeneralStyle}>{specificArticleData.category}</span> {specificArticleTechData}</div>
                 <div className={'col-sm-9 col-xs-6 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb20}>Beitrag vom: {specificArticleData.timeFormatted}</div>
                 <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>
