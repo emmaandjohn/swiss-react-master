@@ -50,6 +50,13 @@ export default class Article extends Component {
     const {formStatus, formMsg, specificArticleData, specificArticleTechData} = this.state;
     const { activateNewUserState, getBlogEntriesState} = this.props;
 
+    let whichCategory = '';
+    if(specificArticleData.category === 'Projekt'){
+      whichCategory = 'label-primary';
+    }else{
+      whichCategory = 'label-info';
+    }
+
     return (
       <div className="container" id="articlePage">
         <Helmet title={specificArticleData.titel}/>
@@ -57,15 +64,14 @@ export default class Article extends Component {
           <div className='row'>
             <div className={'col-xs-12'}>
               <div className='row'>
-                <div className='col-xs-12'><h1>{specificArticleData.titel}</h1></div>
+                <div className={'col-xs-12 ' + styles.pb20}><h1>{specificArticleData.titel}</h1></div>
                 <div className='col-sm-3 col-xs-6'>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
-                <div className='col-sm-9 col-xs-6'>Autor: {specificArticleData.userNickname}</div>
-                <div className={'col-sm-9 col-xs-12 ' + styles.topLine}><span className="label label-primary">{specificArticleData.category}</span></div>
-                <div className={'col-sm-9 col-xs-12 ' + styles.techStyle + ' ' + styles.topLine}>Technologien: {specificArticleTechData}</div>
-                <div className={'col-sm-9 col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb20}>Beitrag vom: {specificArticleData.timeFormatted}</div>
+                <div className='col-sm-9 col-xs-6'>Autor: <strong>{specificArticleData.userNickname}</strong></div>
+                <div className={'col-sm-9 col-xs-6 ' + styles.topLine}><span className={'label ' + whichCategory}>{specificArticleData.category}</span> {specificArticleTechData}</div>
+                <div className={'col-sm-9 col-xs-6 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb20}>Beitrag vom: {specificArticleData.timeFormatted}</div>
                 <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>
             </div>
