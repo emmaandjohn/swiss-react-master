@@ -250,7 +250,7 @@ export default class MyProfile extends Component {
     getUserContentState.articles.forEach(function(entry){
       if(entry.category === 'Projekt'){
         UserContentProjekte.push(
-          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' ' + stylesHome.hover}>
+          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 col-00 ' + stylesHome.hover}>
               <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 text-right' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
@@ -258,7 +258,7 @@ export default class MyProfile extends Component {
         );
       } else{
         UserContentArtikel.push(
-          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' ' + stylesHome.hover}>
+          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 col-00 ' + stylesHome.hover}>
               <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 text-right' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
