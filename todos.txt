@@ -1,5 +1,5 @@
 
-X) Erfasste Artikel/Projekte in Myprofile auflisten?
+
 -) Eigene Blogeinträge bearbeiten können
 
 -) Codeblock Keyboard handling?
@@ -28,7 +28,7 @@ X) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 ------------------------------------------------------------------------
 
 
-
+X) Erfasste Artikel/Projekte in Myprofile auflisten?
 X) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
 
 X) Verwendete Technologien Feld+ machen (object.assign)
