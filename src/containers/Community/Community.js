@@ -15,11 +15,13 @@ require('./Community.scss');
 var PrismDecorator = require('draft-js-prism');
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+import { syncUserData } from '../../redux/actions/syncUserDataActions';
 
 @connect((store) => {
   return {
     activateNewUserState: store.activateNewUser.userStatus,
     getBlogEntriesState: store.getBlogEntries.articleList,
+    syncUserDataState: store.syncUserData.userList,
   };
 })
 
@@ -128,71 +130,86 @@ export default class RichEditorExample extends Component {
     const categoryData = this.refs.category.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userUuid = cookie.load('ck_uuid');
-    const userAvatar = cookie.load('ck_avatar');
-    const userNickname = cookie.load('ck_nickname');
-    const userKanton = cookie.load('ck_kanton');
-    const techObject = this.state.techObject;
 
-    if(titelData.length > 2 && titelData.length < 120){
-      if (markupData.length > 40) {
-        if(Object.keys(techObject).length > 0){
+    superagent
+    .post('/syncUserData')
+    .send({ userUuid: userUuid })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if (res.body.status === 1) {
+        console.log(JSON.stringify(res.body.userDataSync));
 
-          superagent
-          .post('/checkUniqueTitle')
-          .send({ tryTitle: titelData })
-          .set('Accept', 'application/json')
-          .end((error, res) => {
-            if(res.body.status === 1) {
+        const userAvatar = res.body.userDataSync.avatar;
+        const userNickname = res.body.userDataSync.nickname;
+        const userKanton = res.body.userDataSync.kanton;
 
-                this.refs.titel.value = '';
-                superagent
-                .post('/community')
-                .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname })
-                .set('Accept', 'application/json')
-                .end((error, res) => {
-                  if (res.body.status === 1) {
-                    this.props.dispatch(getBlogEntries(res.body.blogArticles));
+        const techObject = this.state.techObject;
 
-                    /* Clear editor state */
-                    const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
-                    this.setState({ editorState });
+        //this.props.dispatch(syncUserData(res.body.userDataSync));
 
-                    this.setState({formStatus: 2});
-                    this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
-                    scroll(0,0);
-                    let counter = '';
-                    for(let i=1; i<41; i++){
-                      if(i < 10){
-                        counter = "t0"+i;
-                      } else{counter = "t"+i;}
-                      this.refs[counter].checked = false;
-                    }
-                  }
-                });
+        if(titelData.length > 2 && titelData.length < 120){
+          if (markupData.length > 40) {
+            if(Object.keys(techObject).length > 0){
+
+              superagent
+              .post('/checkUniqueTitle')
+              .send({ tryTitle: titelData })
+              .set('Accept', 'application/json')
+              .end((error, res) => {
+                if(res.body.status === 1) {
+
+                    this.refs.titel.value = '';
+                    superagent
+                    .post('/community')
+                    .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname })
+                    .set('Accept', 'application/json')
+                    .end((error, res) => {
+                      if (res.body.status === 1) {
+                        this.props.dispatch(getBlogEntries(res.body.blogArticles));
+
+                        /* Clear editor state */
+                        const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+                        this.setState({ editorState });
+
+                        this.setState({formStatus: 2});
+                        this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
+                        scroll(0,0);
+                        let counter = '';
+                        for(let i=1; i<41; i++){
+                          if(i < 10){
+                            counter = "t0"+i;
+                          } else{counter = "t"+i;}
+                          this.refs[counter].checked = false;
+                        }
+                      }
+                    });
+
+                } else{
+                  this.setState({formStatus: 1});
+                  this.setState({formMsg: 'Fehler: Es exisitiert bereits ein Beitrag mit dem genau gleichen Titel! Bitte verwende einen anderen Beitragstitel.'});
+                  scroll(0,0);
+                }
+              });
 
             } else{
               this.setState({formStatus: 1});
-              this.setState({formMsg: 'Fehler: Es exisitiert bereits ein Beitrag mit dem genau gleichen Titel! Bitte verwende einen anderen Beitragstitel.'});
+              this.setState({formMsg: 'Fehler: Bitte wähle mindestens eine Technologie aus!'});
               scroll(0,0);
             }
-          });
-
+          } else{
+            this.setState({formStatus: 1});
+            this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
+            scroll(0,0);
+          }
         } else{
           this.setState({formStatus: 1});
-          this.setState({formMsg: 'Fehler: Bitte wähle mindestens eine Technologie aus!'});
+          this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 120 Zeichen nicht überschreiten!'});
           scroll(0,0);
         }
-      } else{
-        this.setState({formStatus: 1});
-        this.setState({formMsg: 'Fehler: Ein Beitrag benötigt mindestens 40 Zeichen!'});
-        scroll(0,0);
       }
-    } else{
-      this.setState({formStatus: 1});
-      this.setState({formMsg: 'Fehler: Der Titel des Beitrages benötigt mindestens 3 Zeichen und darf 120 Zeichen nicht überschreiten!'});
-      scroll(0,0);
-    }
-  }
+
+      }
+    });
 
 
   render() {
