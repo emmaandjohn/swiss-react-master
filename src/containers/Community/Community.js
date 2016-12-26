@@ -213,7 +213,6 @@ export default class RichEditorExample extends Component {
                 if(res.body.status === 1) {
 
                     this.refs.titel.value = '';
-                    console.log("tempEditArt state: "+this.state.tempEditArt);
                     superagent
                     .post('/community')
                     .send({ loadStatus: loadStatus, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname, editModeArtId: this.state.tempEditArt })
@@ -223,8 +222,8 @@ export default class RichEditorExample extends Component {
                         //this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
                         /* Clear editor state */
-                        const editorState2 = EditorState.push(this.state.editorState, ContentState.createFromText(''));
-                        this.setState({ editorState2 });
+                        let editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+                        this.setState({ editorState });
 
                         this.setState({formStatus: 2});
                         this.setState({formMsg: successMsg});

@@ -50,7 +50,6 @@ export default class Article extends Component {
   }
 
   editArticle = (id) => {
-    console.log("id: "+id);
     cookie.save('ck_tempEditArt', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
     this.props.dispatch(push('/community'));
   }
@@ -79,11 +78,12 @@ export default class Article extends Component {
             <div className={'col-xs-12'}>
               <div className='row'>
                 <div className={'col-xs-12 ' + styles.pb20}>
-                  <h1>{specificArticleData.titel}</h1>
-                  { specificArticleData.userUuid === cookie.load('ck_uuid') ?
-                    <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
-                  : null
-                  }
+                  <h1>{specificArticleData.titel + ' '} 
+                    { specificArticleData.userUuid === cookie.load('ck_uuid') ?
+                      <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
+                    : null
+                    }
+                  </h1>
                 </div>
                 <div className='col-sm-3 col-xs-12'>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
