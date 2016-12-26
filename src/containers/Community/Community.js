@@ -208,7 +208,7 @@ export default class RichEditorExample extends Component {
         }
       }
 
-      }
+      });
     }
 
 
