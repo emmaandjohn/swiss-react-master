@@ -15,13 +15,13 @@ require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
 
-import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+//import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 import { syncUserData } from '../../redux/actions/syncUserDataActions';
 
 @connect((store) => {
   return {
     activateNewUserState: store.activateNewUser.userStatus,
-    getBlogEntriesState: store.getBlogEntries.articleList,
+    //getBlogEntriesState: store.getBlogEntries.articleList,
     syncUserDataState: store.syncUserData.userList,
   };
 })
@@ -178,17 +178,16 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase = (editModeOn) => {
-    console.log("sad");
-
-    let loadStatus = 0;
-    let titelExtra = 0;
-    let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
-    if(editModeOn === 1){loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelExtra = titelData;}
 
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userUuid = cookie.load('ck_uuid');
+
+    let loadStatus = 0;
+    let titelExtra = 0;
+    let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
+    if(editModeOn === 1){loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelExtra = titelData;}
 
     superagent
     .post('/syncUserData')
@@ -220,7 +219,7 @@ export default class RichEditorExample extends Component {
                     .set('Accept', 'application/json')
                     .end((error, res) => {
                       if (res.body.status === 1) {
-                        this.props.dispatch(getBlogEntries(res.body.blogArticles));
+                        //this.props.dispatch(getBlogEntries(res.body.blogArticles));
 
                         /* Clear editor state */
                         const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
@@ -269,7 +268,7 @@ export default class RichEditorExample extends Component {
 
   render() {
     const {formStatus, formMsg, editorState, techObject} = this.state;
-    const { activateNewUserState, getBlogEntriesState } = this.props;
+    const { activateNewUserState } = this.props;
     const styles = require('./Community.scss');
 
     let className = 'RichEditor-editor';
