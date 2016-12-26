@@ -179,7 +179,7 @@ export default class RichEditorExample extends Component {
   }
 
 
-  saveDataToDatabase(editModeOn) {
+  saveDataToDatabase = (editModeOn) => {
     console.log("sad");
 
     let loadStatus = 0;
