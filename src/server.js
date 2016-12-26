@@ -320,8 +320,9 @@ app.post('/community', function(req, res) {
       });
     }
 
-    /* Save to Database and load data afterwards */
-    if(loadStatus === 0){
+    /* Save to Database and load data afterwards (0) OR editMode on (9) */
+    if(loadStatus === 0 || loadStatus === 9){
+      var editModeArtId = req.body.editModeArtId; /* only editmode = 9 */
       var markupData = req.body.markupData;
       var titelData = req.body.titelData;
       var userUuid = req.body.userUuid;
@@ -331,63 +332,87 @@ app.post('/community', function(req, res) {
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
 
-      var unixDateNow = Date.now(); // e.g. 1299827226
-      var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
+      if(loadStatus === 0){
+        var unixDateNow = Date.now(); // e.g. 1299827226
+        var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
-      var dateObjectArticle = new Date();
-      var uniqueIdArticle =
-           dateObjectArticle.getFullYear() + '' +
-           dateObjectArticle.getMonth() + '' +
-           dateObjectArticle.getDate() + '' +
-           dateObjectArticle.getTime();
+        var dateObjectArticle = new Date();
+        var uniqueIdArticle =
+             dateObjectArticle.getFullYear() + '' +
+             dateObjectArticle.getMonth() + '' +
+             dateObjectArticle.getDate() + '' +
+             dateObjectArticle.getTime();
 
-      var articleIdDef = uniqueIdArticle+Math.random()+"artid";
+        var articleIdDef = uniqueIdArticle+Math.random()+"artid";
+      }
 
       /* make url-friendly-title */
       var urlFriendlyTitel = titelData.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
-      var BlogData = new BlogModel({
-        userUuid: userUuid,
-        userAvatar: userAvatar,
-        userKanton: userKanton,
-        userNickname: userNickname,
-        category: categoryData,
-        titel: titelData,
-        markup: markupData,
-        technologies: techObject,
-        timeFormatted: humanDate,
-        unixtime: unixDateNow,
-        articleId: articleIdDef,
-        urlFriendlyTitel: urlFriendlyTitel
-      });
-      UserModel.findOne({ uuid: userUuid }, 'uuid', function(error, result){
-          if(error){
-              res.json(error);
-          }
-          else if(result == null){
-          }
-          else{ /* Success: Save data to mongoose */
-            BlogData.save(function (err) {
+      /* 0 = NEW Article to Database */
+      if(loadStatus === 0){
+        var BlogData = new BlogModel({
+          userUuid: userUuid,
+          userAvatar: userAvatar,
+          userKanton: userKanton,
+          userNickname: userNickname,
+          category: categoryData,
+          titel: titelData,
+          markup: markupData,
+          technologies: techObject,
+          timeFormatted: humanDate,
+          unixtime: unixDateNow,
+          articleId: articleIdDef,
+          urlFriendlyTitel: urlFriendlyTitel
+        });
+        UserModel.findOne({ uuid: userUuid }, 'uuid', function(error, result){
+            if(error){
+                res.json(error);
+            }
+            else if(result == null){
+            }
+            else{ /* Success: Save data to mongoose */
+              BlogData.save(function (err) {
+                if (err) {
+                  return console.log(err);
+                } else{
+                  /* NOT ANYMORE IN USE!!   Success: After that, show new State with new Data */
+                  /*BlogModel.find({}).sort({'unixtime': -1}).limit(10).exec(function(err, result) {
+                    if(err){
+                      res.json(err);
+                      res.json({ status: 0 });
+                    }
+                    else if(result === null){
+                      res.json({ status: 0 });
+                    }
+                    else{
+                      res.json({ status: 1, blogArticles: result });
+                    }
+                  });*/
+                }
+              });
+            }
+        });
+      } else{
+        /* 9 = Edit existing article and save to Database */
+        BlogModel.findOne({ articleId: editModeArtId }, 'articleId', function(error, result){
+          if(result !== null){
+            var query2 = {"articleId": editModeArtId};
+            var update2 = {'titel': titelData, 'markup': markupData, 'category': categoryData, 'technologies': techObject};
+            /*update2['titel'] = titelData;
+            update2['markup'] = markupData;
+            update2['category'] = categoryData;
+            update2['technologies'] = techObject;*/
+            var options2 = {multi: true};
+            BlogModel.update(query2, update2, options2, function(err, result) {
               if (err) {
-                return console.log(err);
-              } else{
-                /* Success: After that, show new State with new Data */
-                BlogModel.find({}).sort({'unixtime': -1}).limit(10).exec(function(err, result) {
-                  if(err){
-                    res.json(err);
-                    res.json({ status: 0 });
-                  }
-                  else if(result === null){
-                    res.json({ status: 0 });
-                  }
-                  else{
-                    res.json({ status: 1, blogArticles: result });
-                  }
-                });
+                console.log(err);
               }
             });
           }
-      });
+        });
+      }
+
     }
 });
 
@@ -431,7 +456,7 @@ app.post('/updateUserProfile', function(req, res) {
         if(getField === 'avatar'){getField1 = 'userAvatar';}
         if(getField === 'nickname'){getField1 = 'userNickname';}
         if(getField === 'kanton'){getField1 = 'userKanton';}
-        //else{getField1 = 'userNickname';}
+
         BlogModel.findOne({ userUuid: getUuid }, 'userUuid', function(error, result){
           if(result !== null){
             var query1 = {"userUuid": getUuid};

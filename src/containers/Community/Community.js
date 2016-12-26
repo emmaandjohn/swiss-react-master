@@ -31,7 +31,10 @@ export default class RichEditorExample extends Component {
     formStatus: 0,
     formMsg: '',
     techObject: {},
-    editArticleData: {}
+    editArticleData: {},
+    optionsState: 'Artikel',
+    editModeOnSwitchBtn: 0,
+    tempEditArt: 'none'
   }
 
   constructor(props) {
@@ -52,9 +55,56 @@ export default class RichEditorExample extends Component {
   }
 
   componentDidMount() {
-    this.setState({ techObject: {} });
+    /* EDIT ARTICLE MODE */
+    if(cookie.load('ck_tempEditArt') !== 'none'){
 
-    superagent
+      this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
+      this.setState({editModeOnSwitchBtn: 1})
+
+      superagent
+      .post('/editModeOn')
+      .send({ thisArtId: cookie.load('ck_tempEditArt') })
+      .set('Accept', 'application/json')
+      .end((error, res) => {
+        if(res.body.status === 1) {
+
+          cookie.save('ck_tempEditArt', 'none', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
+          /* set markup */
+          const newContentState = stateFromHTML(res.body.editArticleData.markup)
+          const editorState = EditorState.push(this.state.editorState, newContentState)
+          this.setState({editorState})
+
+          /* set titel */
+          this.refs.titel.value = res.body.titel;
+
+          /* set category */
+          this.setState({optionsState: res.body.category})
+
+          /* set technologies */
+          let counterE = '';
+          for (var key in res.body.technologies[0]) {
+						document.write(key);
+            if(res.body.technologies[0][key].length > 1){
+              for(let i=1; i<41; i++){
+                if(i < 10){
+                  counterE = "t0"+i;
+                } else{counterE = "t"+i;}
+                if(counterE === key){
+                  this.refs[counterE].checked = true;
+                }else{this.refs[counterE].checked = false;}
+              }
+            }
+          }
+
+        } else{
+          console.log("Error, Article url does not exist in DB");
+        }
+      });
+    }
+
+    this.setState({ techObject: {} });
+    /*superagent
     .post('/community')
     .send({ loadStatus: 1 })
     .set('Accept', 'application/json')
@@ -62,7 +112,7 @@ export default class RichEditorExample extends Component {
       if (res.body.status === 1) {
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
-    });
+    });*/
   }
 
   _handleKeyCommand(command) {
@@ -127,32 +177,13 @@ export default class RichEditorExample extends Component {
     this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
   }
 
-  editArticleA = (id) => {
-    superagent
-    .post('/editModeOn')
-    .send({ thisArtId: id })
-    .set('Accept', 'application/json')
-    .end((error, res) => {
-      if(res.body.status === 1) {
-        //this.setState({editArticleData: res.body.editArticleData});
-        //console.log(JSON.stringify(res.body.editArticleData));
-        const newContentState = stateFromHTML(res.body.editArticleData.markup)
-        const editorState = EditorState.push(this.state.editorState, newContentState)
-        this.setState({editorState})
 
-        /*
-        let contentStateEdit = stateFromHTML(res.body.editArticleData.markup);
-        const editorStateEdit = EditorState.push(this.state.editorState, ContentState.createWithContent(contentStateEdit));
-        this.setState({ editorStateEdit });
-        */
+  saveDataToDatabase(editModeOn) {
 
-      } else{
-        console.log("Error, Article url does not exist in DB");
-      }
-    });
-  }
+    let loadStatus = 0;
+    let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
+    if(editModeOn === 1){loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'}
 
-  saveDataToDatabase() {
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
@@ -164,15 +195,11 @@ export default class RichEditorExample extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        console.log(JSON.stringify(res.body.userDataSync));
-
         const userAvatar = res.body.userDataSync.avatar;
         const userNickname = res.body.userDataSync.nickname;
         const userKanton = res.body.userDataSync.kanton;
 
         const techObject = this.state.techObject;
-
-        //this.props.dispatch(syncUserData(res.body.userDataSync));
 
         if(titelData.length > 2 && titelData.length < 120){
           if (markupData.length > 40) {
@@ -188,7 +215,7 @@ export default class RichEditorExample extends Component {
                     this.refs.titel.value = '';
                     superagent
                     .post('/community')
-                    .send({ loadStatus: 0, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname })
+                    .send({ loadStatus: loadStatus, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname, editModeArtId: this.state.tempEditArt })
                     .set('Accept', 'application/json')
                     .end((error, res) => {
                       if (res.body.status === 1) {
@@ -199,7 +226,7 @@ export default class RichEditorExample extends Component {
                         this.setState({ editorState });
 
                         this.setState({formStatus: 2});
-                        this.setState({formMsg: 'Du hast erfolgreich einen Beitrag erstellt!'});
+                        this.setState({formMsg: successMsg});
                         scroll(0,0);
                         let counter = '';
                         for(let i=1; i<41; i++){
@@ -256,7 +283,6 @@ export default class RichEditorExample extends Component {
     return (
       <div className="container" id="communityPage">
         <h1>Community</h1>
-        <button className="btn btn-primary" onClick={() => this.editArticleA('2016112614827645256620.15617924951948225artid')}>Deinen Beitrag bearbeiten</button>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
@@ -272,8 +298,8 @@ export default class RichEditorExample extends Component {
           <form className="community-category-form form-inline">
             <div className="form-group">
               <select ref="category" className="titleStyle form-control">
-                <option selected="selected" value="Artikel">Artikel - News / eigene Tutorials / Fragen</option>
-                <option value="Projekt">Projekt - Stelle ein von dir erstelltes Web/App-Projekt vor</option>
+                <option selected={this.state.optionsState === 'Artikel'} value="Artikel">Artikel - News / eigene Tutorials / Fragen</option>
+                <option selected={this.state.optionsState === 'Projekt'} value="Projekt">Projekt - Stelle ein von dir erstelltes Web/App-Projekt vor</option>
               </select>
             </div>
           </form>
@@ -436,7 +462,7 @@ export default class RichEditorExample extends Component {
           </div></label>
         </div>
         <br />
-        <button className="btn btn-primary" onClick={this.saveDataToDatabase.bind(this)}>Speichern</button>
+        <button className="btn btn-primary" onClick={this.state.editModeOnSwitchBtn === 0 ? this.saveDataToDatabase(0).bind(this) : this.saveDataToDatabase(1).bind(this)}>Speichern</button>
         </div>
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>

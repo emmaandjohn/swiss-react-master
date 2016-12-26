@@ -5,6 +5,7 @@ import superagent from 'superagent';
 
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { Link } from 'react-router';
 
@@ -48,7 +49,8 @@ export default class Article extends Component {
   }
 
   editArticle = (id) => {
-    console.log(id);
+    cookie.save('ck_tempEditArt', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+    this.props.dispatch(push('community'));
   }
 
 
@@ -74,11 +76,13 @@ export default class Article extends Component {
           <div className='row'>
             <div className={'col-xs-12'}>
               <div className='row'>
-               { specificArticleData.userUuid === cookie.load('ck_uuid') ?
-                 <div className={'col-xs-12 ' + styles.pb20}><button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button></div>
-               : null
-               }
-                <div className={'col-xs-12 ' + styles.pb20}><h1>{specificArticleData.titel}</h1></div>
+                <div className={'col-xs-12 ' + styles.pb20}>
+                  <h1>{specificArticleData.titel}</h1>
+                  { specificArticleData.userUuid === cookie.load('ck_uuid') ?
+                    <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
+                  : null
+                  }
+                </div>
                 <div className='col-sm-3 col-xs-12'>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
