@@ -56,6 +56,7 @@ export default class RichEditorExample extends Component {
 
   componentDidMount() {
     /* EDIT ARTICLE MODE */
+    console.log(cookie.load('ck_tempEditArt') + this.refs.titel.value);
     if(cookie.load('ck_tempEditArt') !== 'false'){
 
       this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
@@ -77,7 +78,6 @@ export default class RichEditorExample extends Component {
 
           /* set titel */
           //this.refs.titel.value = res.body.titel;
-          console.log(this.refs.titel.value);
 
           /* set category */
           this.setState({optionsState: res.body.category})
