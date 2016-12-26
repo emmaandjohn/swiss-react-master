@@ -178,6 +178,7 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase = (editModeOn) => {
+    console.log(editModeOn);
 
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;

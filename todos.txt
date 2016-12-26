@@ -1,8 +1,5 @@
 
-
--) Eigene Blogeinträge bearbeiten können
-
--) Codeblock Keyboard handling?
+-) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 
 -) Vervollständigen Profil (Birthday, PW, Social etc.)
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
@@ -17,7 +14,6 @@ low
 ------------
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
-X) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen?
@@ -28,7 +24,8 @@ X) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 ------------------------------------------------------------------------
 
 
-X) Erfasste Artikel/Projekte in Myprofile auflisten?
+X) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
+X) Eigene Blogeinträge bearbeiten könnenX) Erfasste Artikel/Projekte in Myprofile auflisten?
 X) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
 
 X) Verwendete Technologien Feld+ machen (object.assign)

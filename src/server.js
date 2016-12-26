@@ -305,6 +305,7 @@ app.post('/syncUserData', function(req, res) {
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
+    console.log("loadStatus: "+loadStatus);
 
     /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
     if(loadStatus === 1 || loadStatus === 2){
@@ -380,6 +381,7 @@ app.post('/community', function(req, res) {
                   return console.log(err);
                   res.json({ status: 0 });
                 } else{
+                  console.log("sssss: ");
                   res.json({ status: 1 });
                   /* NOT ANYMORE IN USE!!   Success: After that, show new State with new Data */
                   /*BlogModel.find({}).sort({'unixtime': -1}).limit(10).exec(function(err, result) {
