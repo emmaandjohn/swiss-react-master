@@ -305,7 +305,6 @@ app.post('/syncUserData', function(req, res) {
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
     var loadStatus = req.body.loadStatus;
-    console.log("loadStatus: "+loadStatus);
 
     /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
     if(loadStatus === 1 || loadStatus === 2){
@@ -335,8 +334,6 @@ app.post('/community', function(req, res) {
       var userNickname = req.body.userNickname === null ? 'noob' : req.body.userNickname;
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
-
-      console.log("loadStatus2: "+loadStatus);
 
       if(loadStatus === 0){
         var unixDateNow = Date.now(); // e.g. 1299827226
@@ -383,21 +380,7 @@ app.post('/community', function(req, res) {
                   return console.log(err);
                   res.json({ status: 0 });
                 } else{
-                  console.log("sssss: ");
                   res.json({ status: 1 });
-                  /* NOT ANYMORE IN USE!!   Success: After that, show new State with new Data */
-                  /*BlogModel.find({}).sort({'unixtime': -1}).limit(10).exec(function(err, result) {
-                    if(err){
-                      res.json(err);
-                      res.json({ status: 0 });
-                    }
-                    else if(result === null){
-                      res.json({ status: 0 });
-                    }
-                    else{
-                      res.json({ status: 1, blogArticles: result });
-                    }
-                  });*/
                 }
               });
             }
@@ -408,10 +391,6 @@ app.post('/community', function(req, res) {
           if(result !== null){
             var query2 = {"articleId": editModeArtId};
             var update2 = {'titel': titelData, 'markup': markupData, 'category': categoryData, 'technologies': techObject};
-            /*update2['titel'] = titelData;
-            update2['markup'] = markupData;
-            update2['category'] = categoryData;
-            update2['technologies'] = techObject;*/
             var options2 = {multi: true};
             BlogModel.update(query2, update2, options2, function(err, result) {
               if (err) {

@@ -58,11 +58,7 @@ export default class RichEditorExample extends Component {
     /* EDIT ARTICLE MODE */
     this.setState({editModeOnSwitchBtn: 0})
     if(cookie.load('ck_tempEditArt') !== 'false'){
-
-      //this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
       this.setState({editModeOnSwitchBtn: 1})
-
-      console.log("cookie.load('ck_tempEditArt'): "+cookie.load('ck_tempEditArt')+", editModeOnSwitchBtn State: "+this.state.editModeOnSwitchBtn)
 
       superagent
       .post('/editModeOn')
@@ -98,15 +94,6 @@ export default class RichEditorExample extends Component {
     }
 
     this.setState({ techObject: {} });
-    /*superagent
-    .post('/community')
-    .send({ loadStatus: 1 })
-    .set('Accept', 'application/json')
-    .end((error, res) => {
-      if (res.body.status === 1) {
-        this.props.dispatch(getBlogEntries(res.body.blogArticles));
-      }
-    });*/
   }
 
   _handleKeyCommand(command) {
@@ -179,8 +166,6 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase = (editModeOn) => {
-    console.log("editmodeOn: "+editModeOn);
-
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
@@ -471,7 +456,6 @@ export default class RichEditorExample extends Component {
           :
           <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
           }
-          {this.state.editModeOnSwitchBtn}
         </div>
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
