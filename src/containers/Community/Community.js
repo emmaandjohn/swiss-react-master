@@ -81,18 +81,19 @@ export default class RichEditorExample extends Component {
 
           /* set titel */
           console.log("res.body.titel: "+res.body.editArticleData.titel);
-          this.refs.titel.value = res.body.titel;
+          this.refs.titel.value = res.body.editArticleData.titel;
 
           /* set category */
           this.setState({optionsState: res.body.editArticleData.category})
 
-          console.log("res.body.technologies[0]: "+res.body.editArticleData.technologies[0]);
+          console.log("res.body.technologies[0]: "+JSON.stringify(res.body.editArticleData.technologies[0]));
 
           /* set technologies */
           let counterE = '';
-          for (var key in res.body.editArticleData.technologies[0]) {
+          for (let key in res.body.editArticleData.technologies[0]) {
             if(res.body.editArticleData.technologies[0][key].length > 1){
               for(let i=1; i<41; i++){
+                console.log("key: "+key);
                 if(i < 10){
                   counterE = "t0"+i;
                 } else{counterE = "t"+i;}
