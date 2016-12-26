@@ -85,7 +85,7 @@ export default class RichEditorExample extends Component {
           for (let key in res.body.editArticleData.technologies[0]) {
                 if(res.body.editArticleData.technologies[0][key].length > 1){
                   this.refs[key].checked = true;
-                  onChangeCheckbox(null, key, res.body.editArticleData.technologies[0][key], true);
+                  this.onChangeCheckbox(null, key, res.body.editArticleData.technologies[0][key], true);
                 }
           }
 
