@@ -313,7 +313,7 @@ app.post('/community', function(req, res) {
       var userUuid = req.body.userUuid;
       var userAvatar = req.body.userAvatar;
       var userKanton = req.body.userKanton;
-      var userNickname = req.body.userNickname;
+      var userNickname = req.body.userNickname === null ? 'noob' : req.body.userNickname;
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
 
