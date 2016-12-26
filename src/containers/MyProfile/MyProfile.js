@@ -138,6 +138,8 @@ export default class MyProfile extends Component {
           cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
+          cookie.save('ck_tempEditArt', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
           this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
           this.modalClose();
           this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);

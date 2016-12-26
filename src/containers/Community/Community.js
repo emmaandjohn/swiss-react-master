@@ -56,7 +56,7 @@ export default class RichEditorExample extends Component {
 
   componentDidMount() {
     /* EDIT ARTICLE MODE */
-    if(cookie.load('ck_tempEditArt') !== 'none'){
+    if(cookie.load('ck_tempEditArt') !== 'false'){
 
       this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
       this.setState({editModeOnSwitchBtn: 1})
