@@ -33,6 +33,13 @@
 .techStyle{
   font-size: 10px;
 }
+.lwidth{
+  float: left !important;
+  min-width: 67px !important;
+  border-radius: 1.25em !important;
+  padding: 0.4em .6em .4em !important;
+  margin-top: 2px !important;
+}
 .masthead {
   background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/home/bg.jpg') no-repeat center top;
   padding: 10px 20px 113px 20px;

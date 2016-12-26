@@ -78,7 +78,7 @@ export default class Article extends Component {
             <div className={'col-xs-12'}>
               <div className='row'>
                 <div className={'col-xs-12 ' + styles.pb20}>
-                  <h1>{specificArticleData.titel + ' '} 
+                  <h1>{specificArticleData.titel + ' '}
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
                       <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
                     : null
@@ -91,7 +91,7 @@ export default class Article extends Component {
                 </div>
                 <div className='col-sm-9 col-xs-12'>
                   <div className={'col-xs-12 ' + stylesArticle.pb7}>Autor: <strong>{specificArticleData.userNickname}</strong></div>
-                  <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}><span className={'label ' + whichCategory + ' ' + stylesArticle.labelGeneralStyle}>{specificArticleData.category}</span> {specificArticleTechData}</div>
+                  <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}><span className={'label ' + whichCategory + ' ' + stylesArticle.labelGeneralStyle + ' ' + styles.lwidth}>{specificArticleData.category}</span> {specificArticleTechData}</div>
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted}</div>
                 </div>
                 <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
