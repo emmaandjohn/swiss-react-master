@@ -56,6 +56,7 @@ export default class RichEditorExample extends Component {
 
   componentDidMount() {
     /* EDIT ARTICLE MODE */
+    this.setState({editModeOnSwitchBtn: 0})
     if(cookie.load('ck_tempEditArt') !== 'false'){
 
       //this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
@@ -470,6 +471,7 @@ export default class RichEditorExample extends Component {
           :
           <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
           }
+          {this.state.editModeOnSwitchBtn}
         </div>
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
