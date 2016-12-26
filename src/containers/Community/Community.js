@@ -89,20 +89,12 @@ export default class RichEditorExample extends Component {
           console.log("res.body.technologies[0]: "+JSON.stringify(res.body.editArticleData.technologies[0]));
 
           /* set technologies */
-          let counterE = '';
           for (let key in res.body.editArticleData.technologies[0]) {
-            if(res.body.editArticleData.technologies[0][key].length > 1){
-              for(let i=1; i<41; i++){
-                console.log("key: "+key);
-                if(i < 10){
-                  counterE = "t0"+i;
-                } else{counterE = "t"+i;}
-                if(counterE === key){
-                  this.refs[counterE].checked = true;
-                }else{this.refs[counterE].checked = false;}
-              }
-            }
+                if(res.body.editArticleData.technologies[0][key].length > 1){
+                  this.refs[key].checked = true;
+                }
           }
+
 
         } else{
           console.log("Error, Article url does not exist in DB");
