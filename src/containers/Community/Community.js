@@ -256,7 +256,7 @@ export default class RichEditorExample extends Component {
     return (
       <div className="container" id="communityPage">
         <h1>Community</h1>
-        <button className="btn btn-primary" onClick={() => this.editArticleA('2016112614827572714630.34045230760239065artid')}>Deinen Beitrag bearbeiten</button>
+        <button className="btn btn-primary" onClick={() => this.editArticleA('2016112614827645256620.15617924951948225artid')}>Deinen Beitrag bearbeiten</button>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
