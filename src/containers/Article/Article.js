@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router';
 
-import {load} from 'redux/modules/info';
-
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
 @connect(
@@ -53,6 +51,11 @@ export default class Article extends Component {
     });
   }
 
+  editArticle = (id) => {
+    console.log(id);
+  }
+
+
   render() {
     const stylesArticle = require('./Article.scss');
     const styles = require('../Home/Home.scss');
@@ -75,6 +78,10 @@ export default class Article extends Component {
           <div className='row'>
             <div className={'col-xs-12'}>
               <div className='row'>
+               { specificArticleData.userUuid === cookie.load('ck_uuid') ?
+                 <div className={'col-xs-12 ' + styles.pb20}><button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button></div>
+               : null
+               }
                 <div className={'col-xs-12 ' + styles.pb20}><h1>{specificArticleData.titel}</h1></div>
                 <div className='col-sm-3 col-xs-12'>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>

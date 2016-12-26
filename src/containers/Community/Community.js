@@ -5,6 +5,7 @@ import Alert from 'react-bootstrap/lib/Alert';
 import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
+import { stateFromHTML } from 'draft-js-import-html';
 import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
@@ -29,7 +30,9 @@ export default class RichEditorExample extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
-    techObject: {}
+    techObject: {},
+    editArticleData: {},
+    editArticleTechData: ''
   }
 
   constructor(props) {
@@ -123,6 +126,26 @@ export default class RichEditorExample extends Component {
     let chObject = {}
     chObject[t] = checkValue;
     this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
+  }
+
+  editArticleA = (id) => {
+    superagent
+    .post('/editModeOn')
+    .send({ thisArtId: id })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        this.setState({editArticleData: res.body.editArticleData});
+        console.log(JSON.stringify(editArticleData));
+
+        let contentStateEdit = stateFromHTML(editArticleData.markup);
+        const editorStateEdit = EditorState.push(this.state.editorState, ContentState.createWithContent(contentStateEdit));
+        this.setState({ editorStateEdit });
+
+      } else{
+        console.log("Error, Article url does not exist in DB");
+      }
+    });
   }
 
   saveDataToDatabase() {
@@ -225,15 +248,11 @@ export default class RichEditorExample extends Component {
       }
     }
 
-    /*let blogContentDef = '';
-
-    getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef += '<div style="background-color: #FDFDFD; border: 1px dotted #C8C8C8; padding: 12px; margin: 30px auto;"><h2 style="color: #d52b1e;">' + entry.titel + '</h2><hr />' + entry.markup + '<br><span style="font-size: 10px; font-style: italic; color: grey;">Author: ' + entry.userNickname + ' | ' + entry.timeFormatted + '</span></div>';
-    });*/
 
     return (
       <div className="container" id="communityPage">
         <h1>Community</h1>
+        <button className="btn btn-primary" onClick={() => this.editArticleA('2016112614827572714630.34045230760239065artid')}>Deinen Beitrag bearbeiten</button>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
@@ -289,7 +308,7 @@ export default class RichEditorExample extends Component {
         </div>
         <br />
         <span className={styles.dateStyle}>* Drücke innerhalb eines Code Block CTRL+Enter um einen neuen Codeblock hinzuzufügen.</span>
-        <br /><br />
+        <br /><br /><br />
         <div>
           <label className={'checkbox-inline ' + styles.cbs}>
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> <div className={styles.cbs00 + ' ' + styles.cbst01}> React.js

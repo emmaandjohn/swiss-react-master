@@ -251,7 +251,7 @@ export default class MyProfile extends Component {
       if(entry.category === 'Projekt'){
         UserContentProjekte.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
+              <i className="fa fa-sticky-note" /> <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
@@ -259,7 +259,7 @@ export default class MyProfile extends Component {
       } else{
         UserContentArtikel.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
+              <i className="fa fa-sticky-note-o" /> <div className='col-sm-5 col-xs-12'><strong>{entry.titel}</strong></div>
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
@@ -388,12 +388,12 @@ export default class MyProfile extends Component {
                     {UserContentArtikel}
                   </Row>
                 </Col>
-                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
+                /*<Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
                   <h4>Kommentare</h4>
                   <Row>
                     <p>Llorem ipsum, llorem ipsum ... </p>
                   </Row>
-                </Col>
+                </Col>*/
               </Col>
             </Row>
 

@@ -271,6 +271,20 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
 });
 
 
+/* **** Edit Article */
+app.post('/editModeOn', function(req, res) {
+    var artIdEdit = req.body.thisArtId;
+
+    BlogModel.findOne({ articleId: artIdEdit }, function(error, result){
+      if(result !== null){
+        res.json({ status: 1, editArticleData: result });
+      } else{
+        res.json({ status: 0 });
+      }
+    });
+});
+
+
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/syncUserData', function(req, res) {
     var syncUserUuid = req.body.userUuid;

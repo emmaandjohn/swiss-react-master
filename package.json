@@ -110,6 +110,7 @@
     "draft-js-code": "^0.2.0",
     "draft-js-editor": "^1.7.2",
     "draft-js-export-html": "^0.5.0",
+    "draft-js-import-html": "^0.3.2",
     "draft-js-prism": "^1.0.3",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
