@@ -251,7 +251,7 @@ export default class MyProfile extends Component {
       if(entry.category === 'Projekt'){
         UserContentProjekte.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-sm-5 col-xs-12'><i className="fa fa-sticky-note" /> <strong>{entry.titel}</strong></div>
+              <div className='col-sm-5 col-xs-12'><i className="fa fa-star-o" /> <strong>{entry.titel}</strong></div>
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
@@ -259,7 +259,7 @@ export default class MyProfile extends Component {
       } else{
         UserContentArtikel.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-sm-5 col-xs-12'><i className="fa fa-sticky-note-o" /> <strong>{entry.titel}</strong></div>
+              <div className='col-sm-5 col-xs-12'><i className="fa fa-star-o" /> <strong>{entry.titel}</strong></div>
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               <div className={'col-sm-3 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>

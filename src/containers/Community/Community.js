@@ -31,8 +31,7 @@ export default class RichEditorExample extends Component {
     formStatus: 0,
     formMsg: '',
     techObject: {},
-    editArticleData: {},
-    editArticleTechData: ''
+    editArticleData: {}
   }
 
   constructor(props) {
@@ -136,7 +135,7 @@ export default class RichEditorExample extends Component {
     .end((error, res) => {
       if(res.body.status === 1) {
         this.setState({editArticleData: res.body.editArticleData});
-        console.log(JSON.stringify(editArticleData));
+        console.log(JSON.stringify(res.body.editArticleData));
         let contentStateEdit = stateFromHTML(editArticleData.markup);
         const editorStateEdit = EditorState.push(this.state.editorState, ContentState.createWithContent(contentStateEdit));
         this.setState({ editorStateEdit });
