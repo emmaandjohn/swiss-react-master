@@ -136,7 +136,7 @@ export default class RichEditorExample extends Component {
       if(res.body.status === 1) {
         this.setState({editArticleData: res.body.editArticleData});
         console.log(JSON.stringify(res.body.editArticleData));
-        let contentStateEdit = stateFromHTML(editArticleData.markup);
+        let contentStateEdit = stateFromHTML(res.body.editArticleData.markup);
         const editorStateEdit = EditorState.push(this.state.editorState, ContentState.createWithContent(contentStateEdit));
         this.setState({ editorStateEdit });
 
