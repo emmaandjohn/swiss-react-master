@@ -276,7 +276,9 @@ app.post('/editModeOn', function(req, res) {
     var artIdEdit = req.body.thisArtId;
 
     BlogModel.findOne({ articleId: artIdEdit }, function(error, result){
+      console.log("1 artIdEdit: "+artIdEdit);
       if(result !== null){
+        console.log("2 artIdEdit: "+artIdEdit);
         res.json({ status: 1, editArticleData: result });
       } else{
         res.json({ status: 0 });

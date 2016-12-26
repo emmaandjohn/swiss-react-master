@@ -56,7 +56,9 @@ export default class RichEditorExample extends Component {
 
   componentDidMount() {
     /* EDIT ARTICLE MODE */
+    console.log("cookie.load('ck_tempEditArt'): "+cookie.load('ck_tempEditArt'));
     if(cookie.load('ck_tempEditArt') !== 'false'){
+      console.log("ungleich false yepyep "+cookie.load('ck_tempEditArt'));
 
       this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
       this.setState({editModeOnSwitchBtn: 1})
@@ -69,6 +71,8 @@ export default class RichEditorExample extends Component {
         if(res.body.status === 1) {
 
           cookie.save('ck_tempEditArt', 'none', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          console.log("JSON.stringify(res.body.editArticleData.markup)");
+          console.log(JSON.stringify(res.body.editArticleData));
 
           /* set markup */
           const newContentState = stateFromHTML(res.body.editArticleData.markup)
@@ -76,16 +80,18 @@ export default class RichEditorExample extends Component {
           this.setState({editorState})
 
           /* set titel */
+          console.log("res.body.titel: "+res.body.editArticleData.titel);
           this.refs.titel.value = res.body.titel;
 
           /* set category */
-          this.setState({optionsState: res.body.category})
+          this.setState({optionsState: res.body.editArticleData.category})
+
+          console.log("res.body.technologies[0]: "+res.body.editArticleData.technologies[0]);
 
           /* set technologies */
           let counterE = '';
-          for (var key in res.body.technologies[0]) {
-						document.write(key);
-            if(res.body.technologies[0][key].length > 1){
+          for (var key in res.body.editArticleData.technologies[0]) {
+            if(res.body.editArticleData.technologies[0][key].length > 1){
               for(let i=1; i<41; i++){
                 if(i < 10){
                   counterE = "t0"+i;

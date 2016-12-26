@@ -49,8 +49,9 @@ export default class Article extends Component {
   }
 
   editArticle = (id) => {
+    console.log("id: "+id);
     cookie.save('ck_tempEditArt', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-    this.props.dispatch(push('community'));
+    this.props.dispatch(push('/community'));
   }
 
 
