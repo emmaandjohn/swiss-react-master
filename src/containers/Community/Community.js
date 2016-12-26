@@ -56,9 +56,7 @@ export default class RichEditorExample extends Component {
 
   componentDidMount() {
     /* EDIT ARTICLE MODE */
-    console.log("cookie.load('ck_tempEditArt'): "+cookie.load('ck_tempEditArt'));
     if(cookie.load('ck_tempEditArt') !== 'false'){
-      console.log("ungleich false yepyep "+cookie.load('ck_tempEditArt'));
 
       this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
       this.setState({editModeOnSwitchBtn: 1})
@@ -71,8 +69,6 @@ export default class RichEditorExample extends Component {
         if(res.body.status === 1) {
 
           cookie.save('ck_tempEditArt', 'none', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-          console.log("JSON.stringify(res.body.editArticleData.markup)");
-          console.log(JSON.stringify(res.body.editArticleData));
 
           /* set markup */
           const newContentState = stateFromHTML(res.body.editArticleData.markup)
@@ -80,18 +76,16 @@ export default class RichEditorExample extends Component {
           this.setState({editorState})
 
           /* set titel */
-          console.log("res.body.titel: "+res.body.editArticleData.titel);
           this.refs.titel.value = res.body.editArticleData.titel;
 
           /* set category */
           this.setState({optionsState: res.body.editArticleData.category})
 
-          console.log("res.body.technologies[0]: "+JSON.stringify(res.body.editArticleData.technologies[0]));
-
           /* set technologies */
           for (let key in res.body.editArticleData.technologies[0]) {
                 if(res.body.editArticleData.technologies[0][key].length > 1){
                   this.refs[key].checked = true;
+                  onChangeCheckbox(null, key, res.body.editArticleData.technologies[0][key], true);
                 }
           }
 
@@ -166,14 +160,20 @@ export default class RichEditorExample extends Component {
     );
   }
 
-  onChangeCheckbox = (event, t, tValue) => {
-    let checkValue = '';
-    if(event.target.checked === true){
-      checkValue = tValue;
+  onChangeCheckbox = (event, t, tValue, editMode) => {
+    if(editMode === true){
+      let chObjectEdit = {}
+      chObjectEdit[t] = tValue;
+      this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
+    } else {
+      let checkValue = '';
+      if(event.target.checked === true){
+        checkValue = tValue;
+      }
+      let chObject = {}
+      chObject[t] = checkValue;
+      this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
     }
-    let chObject = {}
-    chObject[t] = checkValue;
-    this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
   }
 
 
