@@ -164,7 +164,7 @@ export default class RichEditorExample extends Component {
     if(editMode === true){
       let chObjectEdit = {}
       chObjectEdit[t] = tValue;
-      this.setState({ techObject: Object.assign(this.state.techObject, chObject) });
+      this.setState({ techObject: Object.assign(this.state.techObject, chObjectEdit) });
     } else {
       let checkValue = '';
       if(event.target.checked === true){
