@@ -10,10 +10,6 @@ import { Link } from 'react-router';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
-@connect(
-    state => ({info: state.info.data}),
-    dispatch => bindActionCreators({load}, dispatch)
-)
 
 @connect((store) => {
   return {
