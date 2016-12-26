@@ -76,13 +76,14 @@ export default class RichEditorExample extends Component {
           this.setState({editorState})
 
           /* set titel */
-          this.refs.titel.value = res.body.titel;
+          //this.refs.titel.value = res.body.titel;
+          console.log(this.refs.titel.value);
 
           /* set category */
           this.setState({optionsState: res.body.category})
 
           /* set technologies */
-          let counterE = '';
+          /*let counterE = '';
           for (var key in res.body.technologies[0]) {
 						document.write(key);
             if(res.body.technologies[0][key].length > 1){
@@ -95,7 +96,7 @@ export default class RichEditorExample extends Component {
                 }else{this.refs[counterE].checked = false;}
               }
             }
-          }
+          }*/
 
         } else{
           console.log("Error, Article url does not exist in DB");
