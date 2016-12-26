@@ -325,7 +325,7 @@ app.post('/community', function(req, res) {
 
     /* Save to Database and load data afterwards (0) OR editMode on (9) */
     if(loadStatus === 0 || loadStatus === 9){
-      var editModeArtId = req.body.editModeArtId; /* only editmode = 9 */
+      var editModeArtId = req.body.editModeArtId; /* only editmode = 9 - 'false' or ArticleID */
       var markupData = req.body.markupData;
       var titelData = req.body.titelData;
       var userUuid = req.body.userUuid;
@@ -378,7 +378,9 @@ app.post('/community', function(req, res) {
               BlogData.save(function (err) {
                 if (err) {
                   return console.log(err);
+                  res.json({ status: 0 });
                 } else{
+                  res.json({ status: 1 });
                   /* NOT ANYMORE IN USE!!   Success: After that, show new State with new Data */
                   /*BlogModel.find({}).sort({'unixtime': -1}).limit(10).exec(function(err, result) {
                     if(err){
@@ -410,6 +412,10 @@ app.post('/community', function(req, res) {
             BlogModel.update(query2, update2, options2, function(err, result) {
               if (err) {
                 console.log(err);
+                res.json({ status: 0 });
+              }
+              else{
+                res.json({ status: 1 });
               }
             });
           }
