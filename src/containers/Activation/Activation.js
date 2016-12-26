@@ -38,7 +38,7 @@ export default class Activation extends Component {
         cookie.save('ck_membersince', res.body.membersince, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3700)) });
         cookie.save('ck_avatar', '1', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
         cookie.save('ck_kanton', '0', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-        cookie.save('ck_tempEditArt', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+        cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
       } else {
         this.setState({responseStatus: 2});
         this.setState({responseMsg: 'Es liegt ein Fehler mit der Bestätigung deines Accounts vor, bitte versuche es später nochmals! '});

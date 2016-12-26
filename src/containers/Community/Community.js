@@ -58,10 +58,10 @@ export default class RichEditorExample extends Component {
     /* EDIT ARTICLE MODE */
     if(cookie.load('ck_tempEditArt') !== 'false'){
 
-      this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
+      //this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
       this.setState({editModeOnSwitchBtn: 1})
 
-      console.log("cookie.load('ck_tempEditArt'): "+cookie.load('ck_tempEditArt')+", editModeOnSwitchBtn State: "+this.state.editModeOnSwitchBtn + ", tempEditArt State: " + this.state.tempEditArt)
+      console.log("cookie.load('ck_tempEditArt'): "+cookie.load('ck_tempEditArt')+", editModeOnSwitchBtn State: "+this.state.editModeOnSwitchBtn)
 
       superagent
       .post('/editModeOn')
@@ -69,8 +69,6 @@ export default class RichEditorExample extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if(res.body.status === 1) {
-
-          cookie.save('ck_tempEditArt', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
           /* set markup */
           const newContentState = stateFromHTML(res.body.editArticleData.markup)
@@ -180,7 +178,7 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase = (editModeOn) => {
-    console.log("editmodeOn: "+editModeOn + ", aha tempEditArt.state: "+this.state.tempEditArt);
+    console.log("editmodeOn: "+editModeOn);
 
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
@@ -220,12 +218,12 @@ export default class RichEditorExample extends Component {
                     this.refs.titel.value = '';
                     superagent
                     .post('/community')
-                    .send({ loadStatus: loadStatus, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname, editModeArtId: this.state.tempEditArt })
+                    .send({ loadStatus: loadStatus, markupData: markupData, techObject: techObject, categoryData: categoryData, titelData: titelData, userUuid: userUuid, userAvatar: userAvatar, userKanton: userKanton, userNickname: userNickname, editModeArtId: cookie.load('ck_tempEditArt') })
                     .set('Accept', 'application/json')
                     .end((error, res) => {
                       if (res.body.status === 1) {
                         //this.props.dispatch(getBlogEntries(res.body.blogArticles));
-
+                        cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
                         /* Clear editor state */
                         let editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
                         this.setState({ editorState });
