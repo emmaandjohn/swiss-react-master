@@ -234,6 +234,8 @@ app.post('/activation', function(req, res) {
 
 /* **** checkUniqueTitle */
 app.post('/checkUniqueTitle', function(req, res) {
+    var titelExtra = req.body.titelExtra;
+
     var tryTitel = req.body.tryTitle;
     var tryTitelConvert = tryTitel.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
@@ -241,7 +243,7 @@ app.post('/checkUniqueTitle', function(req, res) {
       if(result === null){
         res.json({ status: 1 });
       } else{
-        res.json({ status: 0 });
+        if(titelExtra !== 0){ res.json({ status: 0 }); } else{ res.json({ status: 1 }); } /* todo: do that better, check also existing titles! */
       }
     });
 });

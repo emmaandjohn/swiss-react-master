@@ -181,8 +181,9 @@ export default class RichEditorExample extends Component {
     console.log("sad");
 
     let loadStatus = 0;
+    let titelExtra = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
-    if(editModeOn === 1){loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'}
+    if(editModeOn === 1){loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelExtra = titelData;}
 
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
@@ -207,7 +208,7 @@ export default class RichEditorExample extends Component {
 
               superagent
               .post('/checkUniqueTitle')
-              .send({ tryTitle: titelData })
+              .send({ tryTitle: titelData, titelExtra: titelExtra })
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if(res.body.status === 1) {
