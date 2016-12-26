@@ -70,7 +70,7 @@ export default class RichEditorExample extends Component {
       .end((error, res) => {
         if(res.body.status === 1) {
 
-          cookie.save('ck_tempEditArt', 'none', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_tempEditArt', false, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
           /* set markup */
           const newContentState = stateFromHTML(res.body.editArticleData.markup)
