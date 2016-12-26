@@ -134,11 +134,17 @@ export default class RichEditorExample extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if(res.body.status === 1) {
-        this.setState({editArticleData: res.body.editArticleData});
-        console.log(JSON.stringify(res.body.editArticleData));
+        //this.setState({editArticleData: res.body.editArticleData});
+        //console.log(JSON.stringify(res.body.editArticleData));
+        const newContentState = convertFromRaw(res.body.editArticleData.markup)
+        const editorState = EditorState.push(this.state.editorState, newContentState)
+        this.setState({editorState})
+
+        /*
         let contentStateEdit = stateFromHTML(res.body.editArticleData.markup);
         const editorStateEdit = EditorState.push(this.state.editorState, ContentState.createWithContent(contentStateEdit));
         this.setState({ editorStateEdit });
+        */
 
       } else{
         console.log("Error, Article url does not exist in DB");
