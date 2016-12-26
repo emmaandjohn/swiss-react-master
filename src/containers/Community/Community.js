@@ -61,6 +61,8 @@ export default class RichEditorExample extends Component {
       this.setState({tempEditArt: cookie.load('ck_tempEditArt')})
       this.setState({editModeOnSwitchBtn: 1})
 
+      console.log("cookie.load('ck_tempEditArt'): "+cookie.load('ck_tempEditArt')+", editModeOnSwitchBtn State: "+this.state.editModeOnSwitchBtn + ", tempEditArt State: " + this.state.tempEditArt)
+
       superagent
       .post('/editModeOn')
       .send({ thisArtId: cookie.load('ck_tempEditArt') })
@@ -178,7 +180,7 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase = (editModeOn) => {
-    console.log(editModeOn);
+    console.log("editmodeOn: "+editModeOn + ", aha tempEditArt.state: "+this.state.tempEditArt);
 
     const titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
@@ -188,7 +190,9 @@ export default class RichEditorExample extends Component {
     let loadStatus = 0;
     let titelExtra = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
-    if(editModeOn === 1){loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelExtra = titelData;}
+    if(editModeOn === 1){
+      loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelExtra = titelData;
+    }
 
     superagent
     .post('/syncUserData')
