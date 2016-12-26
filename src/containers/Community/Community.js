@@ -180,6 +180,7 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase(editModeOn) {
+    console.log("sad");
 
     let loadStatus = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
@@ -463,7 +464,11 @@ export default class RichEditorExample extends Component {
           </div></label>
         </div>
         <br />
-        <button className="btn btn-primary" onClick={this.state.editModeOnSwitchBtn === 0 ? this.saveDataToDatabase(0).bind(this) : this.saveDataToDatabase(1).bind(this)}>Speichern</button>
+          {this.state.editModeOnSwitchBtn === 0 ?
+          <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(0)}>Speichern</button>
+          :
+          <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
+          }
         </div>
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
