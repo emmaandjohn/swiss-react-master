@@ -88,3 +88,20 @@
 hr{
   border-top: 1px solid #ddd;
 }
+
+.label-info{
+  background-color: #ea724d;
+}
+.label-primary{
+  background-color: #c66741;
+}
+.btn-primary {
+	color: #fff;
+	background-color: #d52b1e;
+	border-color: #a31409;
+}
+.btn-primary.active, .btn-primary:active, .btn-primary:hover, .open > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #c4180b;
+	border-color: #a31409;
+}
