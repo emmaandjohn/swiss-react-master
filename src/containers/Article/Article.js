@@ -9,9 +9,21 @@ import { push } from 'react-router-redux';
 
 import { Link } from 'react-router';
 
+import {isLoaded, load as loadWidgets} from 'redux/modules/widgets';
+import {initializeWithKey} from 'redux-form';
+import { WidgetForm } from 'components';
+import { asyncConnect } from 'redux-async-connect';
+
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
-
+@asyncConnect([{
+  deferred: true,
+  promise: ({store: {dispatch, getState}}) => {
+    if (!isLoaded(getState())) {
+      return dispatch(loadWidgets());
+    }
+  }
+}])
 @connect((store) => {
   return {
     activateNewUserState: store.activateNewUser.userStatus,
