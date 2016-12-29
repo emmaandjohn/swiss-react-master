@@ -130,7 +130,6 @@
     "net": "^1.0.2",
     "nodemailer": "2.6.0",
     "piping": "^0.3.0",
-    "prerender-node": "^2.6.0",
     "pretty-error": "^1.2.0",
     "react": "^15.0.1",
     "react-adsense": "0.0.1",

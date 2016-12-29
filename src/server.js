@@ -80,8 +80,6 @@ var blogSchema = new mongoose.Schema({
 });
 var BlogModel = mongoose.model('Blog', blogSchema);
 
-var prerenderNode = require('prerender-node');
-app.use(prerenderNode);
 app.use(cookieParser()); // use cookieParser for User-Cookies
 
 /* **** Body Parser */
