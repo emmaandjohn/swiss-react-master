@@ -22,8 +22,6 @@ export default class InfoBar extends Component {
           <div className={styles.cylon}></div> Node.js Sternenzeit:
           {' '}
           <strong>{info ? info.message : 'no info!'}</strong>
-          <span className={styles.time}>{info && new Date(info.time).toString()}</span>
-          <button className="btn btn-primary" onClick={load}>Reload vom Server</button>
         </div>
         <div className={styles.adcontainerDesktop + ' container'}>
           <AdSense.Google client='ca-pub-4161847192982174'

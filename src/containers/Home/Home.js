@@ -88,7 +88,7 @@ export default class Home extends Component {
                 <img src={logoImage}/>
               </p>
             </div>
-            <h1 className="animated fadeInDown">{config.app.title}</h1>
+            <h1 className="animated fadeIn">{config.app.title}</h1>
             <h2>{config.app.description}</h2>
             <h2>{config.app.subdescription}</h2>
           </div>
