@@ -5,14 +5,12 @@ import config from '../../config';
 import Helmet from 'react-helmet';
 import superagent from 'superagent';
 import { push } from 'react-router-redux';
-import Loader from 'react-loader-advanced';
 
 import { getUser } from '../../redux/actions/getUserActions';
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
 @connect((store) => {
   return {
-    getUserState: store.getUser.user,
     getBlogEntriesState: store.getBlogEntries.articleList,
   };
 })
@@ -53,7 +51,7 @@ export default class Home extends Component {
     const styles = require('./Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
     const stylesCommunity = require('../Community/Community.scss');
-    const { getUserState, getBlogEntriesState } = this.props;
+    const { getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
@@ -91,11 +89,9 @@ export default class Home extends Component {
                 <img src={logoImage}/>
               </p>
             </div>
-            <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
               <h1 className="animated fadeIn">{config.app.title}</h1>
               <h2>{config.app.description}</h2>
               <h2>{config.app.subdescription}</h2>
-            </Loader>
           </div>
         </div>
 

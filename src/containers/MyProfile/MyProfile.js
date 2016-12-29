@@ -253,17 +253,27 @@ export default class MyProfile extends Component {
       if(entry.category === 'Projekt'){
         UserContentProjekte.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-xs-12'>{entry.titel}</div>
-              <div className={'col-sm-6 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
-              <div className={'col-sm-6 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+              <div className='col-xs-1'>
+                <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMini}></div>
+              </div>
+              <div className='col-xs-11'>
+                <div className='col-xs-12'>{entry.titel}</div>
+                <div className={'col-sm-6 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
+                <div className={'col-sm-6 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+              </div>
           </div>
         );
       } else{
         UserContentArtikel.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-xs-12'>{entry.titel}</div>
-              <div className={'col-sm-6 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
-              <div className={'col-sm-6 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+              <div className='col-xs-1'>
+                <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMini}></div>
+              </div>
+              <div className='col-xs-11'>
+                <div className='col-xs-12'>{entry.titel}</div>
+                <div className={'col-sm-6 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
+                <div className={'col-sm-6 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+              </div>
           </div>
         );
       }
