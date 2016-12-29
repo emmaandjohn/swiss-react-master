@@ -20,6 +20,8 @@ import {Provider} from 'react-redux';
 import getRoutes from './routes';
 import cookieParser from 'cookie-parser';
 
+app.use(require('prerender-node'));
+
 if(!process.env.MONGODB_URI){
   process.env.MONGODB_URI = 'mongodb://heroku_r06n6jtm:5jf50mgg9941u4sd42f655q4kb@ds031915.mlab.com:31915/heroku_r06n6jtm';
 }
