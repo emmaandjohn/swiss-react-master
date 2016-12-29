@@ -253,17 +253,17 @@ export default class MyProfile extends Component {
       if(entry.category === 'Projekt'){
         UserContentProjekte.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-sm-5 col-xs-12'><i className="fa fa-star-o" /> <strong>{entry.titel}</strong></div>
-              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
-              <div className={'col-sm-3 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+              <div className='col-xs-12'>{entry.titel}</div>
+              <div className={'col-sm-6 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
+              <div className={'col-sm-6 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
         );
       } else{
         UserContentArtikel.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' col-xs-12 ' + styles.col00 + ' ' + stylesHome.hover}>
-              <div className='col-sm-5 col-xs-12'><i className="fa fa-star-o" /> <strong>{entry.titel}</strong></div>
-              <div className={'col-sm-4 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
-              <div className={'col-sm-3 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
+              <div className='col-xs-12'>{entry.titel}</div>
+              <div className={'col-sm-6 col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
+              <div className={'col-sm-6 col-xs-12 text-right ' + stylesHome.dateStyle}>{entry.timeFormatted}</div>
           </div>
         );
       }
@@ -379,13 +379,13 @@ export default class MyProfile extends Component {
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h4 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}>Projekte</h4>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}>Projekte</h3>
                   <Row>
                     {UserContentProjekte}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h4 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}>Artikel</h4>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}>Artikel</h3>
                   <Row>
                     {UserContentArtikel}
                   </Row>

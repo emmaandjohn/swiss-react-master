@@ -5,11 +5,14 @@ import config from '../../config';
 import Helmet from 'react-helmet';
 import superagent from 'superagent';
 import { push } from 'react-router-redux';
+import Loader from 'react-loader-advanced';
 
+import { getUser } from '../../redux/actions/getUserActions';
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
 @connect((store) => {
   return {
+    getUserState: store.getUser.user,
     getBlogEntriesState: store.getBlogEntries.articleList,
   };
 })
@@ -50,7 +53,7 @@ export default class Home extends Component {
     const styles = require('./Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
     const stylesCommunity = require('../Community/Community.scss');
-    const { getBlogEntriesState } = this.props;
+    const { getUserState, getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
@@ -72,7 +75,7 @@ export default class Home extends Component {
             <div className='col-sm-3 col-xs-12'><strong>{entry.titel}</strong></div>
             <div className='col-sm-1 col-xs-12'><span className={'label ' + whichCategory + ' ' + styles.lwidth}>{entry.category}</span></div>
             <div className={'col-sm-3 col-xs-12 ' + styles.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
-            <div className={'col-sm-2 col-xs-12 ' + styles.dateStyle}>{entry.timeFormatted}</div>
+            <div className={'col-sm-2 col-xs-12 text-right' + styles.dateStyle}>{entry.timeFormatted}</div>
           </div>
         </div>
       );
@@ -88,9 +91,11 @@ export default class Home extends Component {
                 <img src={logoImage}/>
               </p>
             </div>
-            <h1 className="animated fadeIn">{config.app.title}</h1>
-            <h2>{config.app.description}</h2>
-            <h2>{config.app.subdescription}</h2>
+            <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
+              <h1 className="animated fadeIn">{config.app.title}</h1>
+              <h2>{config.app.description}</h2>
+              <h2>{config.app.subdescription}</h2>
+            </Loader>
           </div>
         </div>
 
