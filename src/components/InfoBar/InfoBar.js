@@ -19,9 +19,8 @@ export default class InfoBar extends Component {
     return (
       <div className={styles.infoBar + ' well'}>
         <div className="container">
-          <div className={styles.cylon}></div> Node.js Sternenzeit:
-          {' '}
-          <strong>{info ? info.message : 'no info!'}</strong>
+          <div className={styles.cylon}></div>
+          <div className={styles.mt5}>Node.js Sternenzeit:{' '}<strong>{info ? info.message : 'no info!'}</strong></div>
         </div>
         <div className={styles.adcontainerDesktop + ' container'}>
           <AdSense.Google client='ca-pub-4161847192982174'
