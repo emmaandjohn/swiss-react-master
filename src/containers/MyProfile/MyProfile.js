@@ -550,13 +550,13 @@ export default class MyProfile extends Component {
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}>Deine Projekte</h3>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> Deine Projekte</h3>
                   <Row>
                     {UserContentProjekte}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}>Deine Artikel</h3>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}><span className={styles.logoBrand}/> Deine Artikel</h3>
                   <Row>
                     {UserContentArtikel}
                   </Row>

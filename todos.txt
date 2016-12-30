@@ -1,19 +1,6 @@
 
 -) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 
--) Vervollständigen Profil (
-birthday,  6
-password (änderbar),   5
-socialGithub: String,   7 
-socialFb: String,
-    8
-socialTwitter: String,
-   9 
-socialXing: String,
-    10
-socialWebsite: String,   11
-)
-
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
@@ -35,6 +22,19 @@ low
 ------------------------------------------------------------------------
 
 
+
+X) Vervollständigen Profil (
+birthday,  6
+password (änderbar),   5
+socialGithub: String,   7 
+socialFb: String,
+    8
+socialTwitter: String,
+   9 
+socialXing: String,
+    10
+socialWebsite: String,   11
+)
 X) was wenn keine techn. angekreuzt? min. 1 ankreuzen?
 X) Eigene Blogeinträge bearbeiten könnenX) Erfasste Artikel/Projekte in Myprofile auflisten?
 X) User in verschiedenen Browsern/Devices - Userdaten ändern nicht?
