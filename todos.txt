@@ -1,14 +1,25 @@
 
 -) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 
--) Vervollständigen Profil (Birthday, PW, Social etc.)
+-) Vervollständigen Profil (
+birthday,  6
+password (änderbar),   5
+socialGithub: String,   7 
+socialFb: String,
+    8
+socialTwitter: String,
+   9 
+socialXing: String,
+    10
+socialWebsite: String,   11
+)
+
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
--) Kontaktseite
+-) Kontaktseite löschen - Privacy policy, agb etc. dafür
 -) Kantonsnamen anzeigen - Myprofile und Tooltips
 -) Profil löschen?
--) SEO`?
 
 low
 ------------

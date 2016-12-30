@@ -58,7 +58,7 @@ export default class MyProfile extends Component {
     showModalMale: false,
     showModalFemale: false,
     showModalFlags: false,
-    show1a: true, show2a: true, show3a: true, show4a: true, show5a: true, show6a: true, show7a: true, show8a: true, show9a: true, show10a: true, show11a: true, show12a: true, show13a: true
+    show1a: true, show2a: true, show3a: true, show4a: true, show5a: true, show6a: true, show7a: true, show8a: true, show9a: true, show10a: true, show11a: true
   }
 
   modalOpen = (mode) => {
@@ -88,8 +88,6 @@ export default class MyProfile extends Component {
   show9a = (status) => { this.setState({ show9a: status }); }
   show10a = (status) => { this.setState({ show10a: status }); }
   show11a = (status) => { this.setState({ show11a: status }); }
-  show12a = (status) => { this.setState({ show12a: status }); }
-  show13a = (status) => { this.setState({ show13a: status }); }
 
   updateUserProfile = (whichField, newValue) => {
     const updatersEmailDef = cookie.load('ck_email');
@@ -142,11 +140,11 @@ export default class MyProfile extends Component {
 
           this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
           this.modalClose();
-          this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
+          this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true); this.show5a(true); this.show6a(true); this.show7a(true); this.show8a(true); this.show9a(true); this.show10a(true); this.show11a(true);
         }
         if (res.body.status === 2) {
           this.modalClose();
-          this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true);
+          this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true); this.show5a(true); this.show6a(true); this.show7a(true); this.show8a(true); this.show9a(true); this.show10a(true); this.show11a(true);
         }
       });
     }
@@ -219,33 +217,84 @@ export default class MyProfile extends Component {
       flagClass = styles[objectSelectorFlag];
     }
 
-    /* Set nickname */
+    /* Set nickname (1) */
     let getNickname = syncNickname;
     if(updateUserState.nickname){
       getNickname = updateUserState.nickname;
     }
     if(getNickname === null){getNickname = 'noob';}
 
-    /* Set job */
+    /* Set password (5) */
+    let getPassword = syncPw;
+    if(updateUserState.password){
+      getPassword = updateUserState.password;
+    }
+    if(getPassword === null){getPassword = 'Keine Angabe';}
+
+    /* Set job (2) */
     let getJob = syncJob;
     if(updateUserState.job){
       getJob = updateUserState.job;
     }
     if(getJob === null){getJob = 'Keine Angabe';}
 
-    /* Set company */
+    /* Set company (3) */
     let getCompany = syncCompany;
     if(updateUserState.company){
       getCompany = updateUserState.company;
     }
     if(getCompany === null){getCompany = 'Keine Angabe';}
 
-    /* Set description */
+    /* Set birthday (6) */
+    let getBirthday = syncBirthday;
+    if(updateUserState.birthday){
+      getBirthday = updateUserState.birthday;
+    }
+    if(getBirthday === null){getBirthday = 'Keine Angabe';}
+
+    /* Set description (4) */
     let getDescription = syncDescription;
     if(updateUserState.description){
       getDescription = updateUserState.description;
     }
     if(getDescription === null){getDescription = 'Keine Angabe';}
+
+
+    /* Set socialGithub (7) */
+    let getSocialGithub = syncSgithub;
+    if(updateUserState.socialGithub){
+      getSocialGithub = updateUserState.socialGithub;
+    }
+    if(getSocialGithub === null){getSocialGithub = 'Keine Angabe';}
+
+    /* Set socialFb (8) */
+    let getSocialFb = syncSfb;
+    if(updateUserState.socialFb){
+      getSocialFb = updateUserState.socialFb;
+    }
+    if(getSocialFb === null){getSocialFb = 'Keine Angabe';}
+
+    /* Set socialTwitter (9) */
+    let getSocialTwitter = syncStwitter;
+    if(updateUserState.socialTwitter){
+      getSocialTwitter = updateUserState.socialTwitter;
+    }
+    if(getSocialTwitter === null){getSocialTwitter = 'Keine Angabe';}
+
+    /* Set socialXing (10) */
+    let getSocialXing = syncSxing;
+    if(updateUserState.socialXing){
+      getSocialXing = updateUserState.socialXing;
+    }
+    if(getSocialXing === null){getSocialXing = 'Keine Angabe';}
+
+    /* Set socialWebsite (11) */
+    let getSocialWebsite = syncSwebsite;
+    if(updateUserState.socialWebsite){
+      getSocialWebsite = updateUserState.socialWebsite;
+    }
+    if(getSocialWebsite === null){getSocialWebsite = 'Keine Angabe';}
+
 
     /* list Articles and Projects from the User */
     let UserContentProjekte = []; let UserContentArtikel = [];
@@ -324,6 +373,24 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Email</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>{syncEmail}</Col>
 
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Passwort</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show5a === true ?
+                        <div>{getPassword} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show5a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="pw" name="pw" id="pw" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getPassword} onKeyPress={(event) => this.handleKeyPress(event, 'password', this.refs.pw.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('password', this.refs.password.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
+
+
+
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Job</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show2a === true ?
@@ -356,7 +423,101 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Geburtstag</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show6a === true ?
+                        <div>{getBirthday} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show6a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="birthday" name="birthday" id="birthday" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getBirthday} onKeyPress={(event) => this.handleKeyPress(event, 'birthday', this.refs.birthday.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('birthday', this.refs.birthday.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
 
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Github</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show7a === true ?
+                        <div>{getSocialGithub} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show7a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="socialGithub" name="socialGithub" id="socialGithub" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialGithub} onKeyPress={(event) => this.handleKeyPress(event, 'socialGithub', this.refs.socialGithub.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialGithub', this.refs.socialGithub.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Facebook</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show8a === true ?
+                        <div>{getSocialFb} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show8a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="socialFb" name="socialFb" id="socialFb" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialFb} onKeyPress={(event) => this.handleKeyPress(event, 'socialFb', this.refs.socialFb.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialFb', this.refs.socialFb.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Twitter</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show9a === true ?
+                        <div>{getSocialTwitter} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show9a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="socialTwitter" name="socialTwitter" id="socialTwitter" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialTwitter} onKeyPress={(event) => this.handleKeyPress(event, 'socialTwitter', this.refs.socialTwitter.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialTwitter', this.refs.socialTwitter.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Xing</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show10a === true ?
+                        <div>{getSocialXing} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show10a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="socialXing" name="socialXing" id="socialXing" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialXing} onKeyPress={(event) => this.handleKeyPress(event, 'socialXing', this.refs.socialXing.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialXing', this.refs.socialXing.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
+
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Website (Firma/Persönlich)</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
+                      {this.state.show11a === true ?
+                        <div>{getSocialWebsite} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show11a(false)}><i className="fa fa-pencil"/></Button></div>
+                      :
+                        <div>
+                          <div className={styles.m15 + ' ' + styles.m0p0}>
+                            <div>
+                              <input type="text" ref="socialWebsite" name="socialWebsite" id="socialWebsite" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialWebsite} onKeyPress={(event) => this.handleKeyPress(event, 'socialWebsite', this.refs.socialWebsite.value)} />
+                              <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialWebsite', this.refs.socialWebsite.value)}><i className="fa fa-check"/></Button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
                     <Col className={styles.m15} xs={12}>
@@ -383,19 +544,19 @@ export default class MyProfile extends Component {
                     </Col>
                     <Col xs={8}>
                       <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(3)}>
-                        <i className="fa fa-globe" />
+                        <span><i className="fa fa-globe" /> Kanton auswählen</span>
                       </Button>
                     </Col>
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}>Projekte</h3>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}>Deine Projekte</h3>
                   <Row>
                     {UserContentProjekte}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' ' + styles.topLine} xs={12}>
-                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}>Artikel</h3>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}>Deine Artikel</h3>
                   <Row>
                     {UserContentArtikel}
                   </Row>
