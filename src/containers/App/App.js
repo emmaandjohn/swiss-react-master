@@ -154,7 +154,7 @@ export default class App extends Component {
             <InfoBar/>
           </Loader>
           <div className="well text-center">
-            Copyright { new Date().getFullYear() } | Swiss React Community | React, Redux, Flux, React Native | Swiss-react.ch
+            Copyright { new Date().getFullYear() } | Swiss React Community | React, Redux, Flux, React Native | swiss-react.ch
           </div>
         </div>
       );
