@@ -553,7 +553,7 @@ export default class MyProfile extends Component {
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
                   <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> Deine Projekte</h3>
                   <Row>
-                    {UserContentProjekte}
+                    {JSON.stringify(UserContentProjekte)}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
