@@ -151,10 +151,12 @@ export default class MyProfile extends Component {
     if(checkLength === 1){ /* description length error */
       this.setState({formStatus: 1});
       this.setState({formMsg: 'Fehler: Mindestens 10 Zeichen und maximal 500 Zeichen erlaubt.'});
+      scroll(0,0);
     }
     if(checkLength === 2){ /* other fields length error */
       this.setState({formStatus: 1});
       this.setState({formMsg: 'Fehler: Mindestens 2 Zeichen und maximal 40 Zeichen erlaubt.'});
+      scroll(0,0);
     }
   }
 
@@ -553,13 +555,13 @@ export default class MyProfile extends Component {
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
                   <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> Deine Projekte</h3>
                   <Row>
-                    {JSON.stringify(UserContentProjekte)}
+                    {UserContentProjekte.length < 1 ? 'Noch keine Projekte' : UserContentProjekte}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
                   <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}><span className={styles.logoBrand}/> Deine Artikel</h3>
                   <Row>
-                    {UserContentArtikel}
+                    {UserContentArtikel.length < 1 ? 'Noch keine Artikel' : UserContentArtikel}
                   </Row>
                 </Col>
               </Col>
