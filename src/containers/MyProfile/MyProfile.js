@@ -544,7 +544,7 @@ export default class MyProfile extends Component {
                     </Col>
                     <Col xs={8}>
                       <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(3)}>
-                        <span><i className="fa fa-search " + styles.famr4 /> Kanton auswählen</span>
+                        <span><i className={"fa fa-search " + styles.famr4} /> Kanton auswählen</span>
                       </Button>
                     </Col>
                   </Row>
