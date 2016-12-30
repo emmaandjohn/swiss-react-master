@@ -439,7 +439,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className="fa fa-github" aria-hidden="true"></i> Github</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-github " + styles.famr4} aria-hidden="true"></i> Github</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show7a === true ?
                         <div>{getSocialGithub} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show7a(false)}><i className="fa fa-pencil"/></Button></div>
@@ -455,7 +455,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className="fa fa-facebook" aria-hidden="true"></i> Facebook</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-facebook " + styles.famr4} aria-hidden="true"></i> Facebook</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show8a === true ?
                         <div>{getSocialFb} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show8a(false)}><i className="fa fa-pencil"/></Button></div>
@@ -471,7 +471,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className="fa fa-twitter" aria-hidden="true"></i> Twitter</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-twitter " + styles.famr4} aria-hidden="true"></i> Twitter</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show9a === true ?
                         <div>{getSocialTwitter} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show9a(false)}><i className="fa fa-pencil"/></Button></div>
@@ -487,7 +487,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className="fa fa-xing" aria-hidden="true"></i> Xing</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-xing " + styles.famr4} aria-hidden="true"></i> Xing</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show10a === true ?
                         <div>{getSocialXing} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show10a(false)}><i className="fa fa-pencil"/></Button></div>
@@ -503,7 +503,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className="fa fa-globe" aria-hidden="true"></i> Website</Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-globe " + styles.famr4} aria-hidden="true"></i> Website</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show11a === true ?
                         <div>{getSocialWebsite} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show11a(false)}><i className="fa fa-pencil"/></Button></div>

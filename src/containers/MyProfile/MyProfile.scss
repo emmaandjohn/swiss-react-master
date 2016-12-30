@@ -10,29 +10,22 @@
   margin-top: 14px;
   color: #fff;
 }
-.categoryTitlePro{
-  color: #c66741;
-  font-weight: 700;
-}
-.categoryTitleArt{
-  color: #ea724d;
+.categoryTitlePro, .categoryTitleArt{
+  color: #d52b1e;
   font-weight: 700;
 }
 .famr4{
   margin-right: 4px;
 }
 .logoBrand {
-  position: absolute;
-  $size: 40px;
-  top: 5px;
-  left: 5px;
-  display: inline-block;
-  background: url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/home/logo.png') no-repeat center center;
-  width: $size;
-  height: $size;
-  background-size: 80%;
-  margin: 0 10px 0 0;
-  border-radius: $size / 2;
+  	background: url("//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/home/logo.png") no-repeat 50%;
+  	width: 40px;
+  	height: 40px;
+  	background-size: 80%;
+  	border-radius: 20px;
+  	float: left;
+  	margin-top: -7px;
+  	margin-right: 6px;
 }
 .avatarRound {
     width: 75px;
