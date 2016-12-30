@@ -229,28 +229,28 @@ export default class MyProfile extends Component {
     if(updateUserState.password){
       getPassword = updateUserState.password;
     }
-    if(getPassword === null){getPassword = 'Keine Angabe';}
+    //if(getPassword === null){getPassword = 'Keine Angabe';}
 
     /* Set job (2) */
     let getJob = syncJob;
     if(updateUserState.job){
       getJob = updateUserState.job;
     }
-    if(getJob === null){getJob = 'Keine Angabe';}
+    //if(getJob === null){getJob = 'Keine Angabe';}
 
     /* Set company (3) */
     let getCompany = syncCompany;
     if(updateUserState.company){
       getCompany = updateUserState.company;
     }
-    if(getCompany === null){getCompany = 'Keine Angabe';}
+    //if(getCompany === null){getCompany = 'Keine Angabe';}
 
     /* Set birthday (6) */
     let getBirthday = syncBirthday;
     if(updateUserState.birthday){
       getBirthday = updateUserState.birthday;
     }
-    if(getBirthday === null){getBirthday = 'Keine Angabe';}
+    //if(getBirthday === null){getBirthday = 'Keine Angabe';}
 
     /* Set description (4) */
     let getDescription = syncDescription;
@@ -265,35 +265,35 @@ export default class MyProfile extends Component {
     if(updateUserState.socialGithub){
       getSocialGithub = updateUserState.socialGithub;
     }
-    if(getSocialGithub === null){getSocialGithub = 'Keine Angabe';}
+    //if(getSocialGithub === null){getSocialGithub = 'Keine Angabe';}
 
     /* Set socialFb (8) */
     let getSocialFb = syncSfb;
     if(updateUserState.socialFb){
       getSocialFb = updateUserState.socialFb;
     }
-    if(getSocialFb === null){getSocialFb = 'Keine Angabe';}
+    //if(getSocialFb === null){getSocialFb = 'Keine Angabe';}
 
     /* Set socialTwitter (9) */
     let getSocialTwitter = syncStwitter;
     if(updateUserState.socialTwitter){
       getSocialTwitter = updateUserState.socialTwitter;
     }
-    if(getSocialTwitter === null){getSocialTwitter = 'Keine Angabe';}
+    //if(getSocialTwitter === null){getSocialTwitter = 'Keine Angabe';}
 
     /* Set socialXing (10) */
     let getSocialXing = syncSxing;
     if(updateUserState.socialXing){
       getSocialXing = updateUserState.socialXing;
     }
-    if(getSocialXing === null){getSocialXing = 'Keine Angabe';}
+    //if(getSocialXing === null){getSocialXing = 'Keine Angabe';}
 
     /* Set socialWebsite (11) */
     let getSocialWebsite = syncSwebsite;
     if(updateUserState.socialWebsite){
       getSocialWebsite = updateUserState.socialWebsite;
     }
-    if(getSocialWebsite === null){getSocialWebsite = 'Keine Angabe';}
+    //if(getSocialWebsite === null){getSocialWebsite = 'Keine Angabe';}
 
 
     /* list Articles and Projects from the User */
@@ -376,12 +376,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Passwort</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show5a === true ?
-                        <div>{getPassword} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show5a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getPassword === null ? 'Keine Angabe' : getPassword} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show5a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="pw" name="pw" id="pw" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getPassword} onKeyPress={(event) => this.handleKeyPress(event, 'password', this.refs.pw.value)} />
+                              <input type="text" ref="pw" name="pw" id="pw" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getPassword !== null ? getPassword : null} placeholder={getPassword === null ? 'Keine Angabe' : getPassword} onKeyPress={(event) => this.handleKeyPress(event, 'password', this.refs.pw.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('password', this.refs.password.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -394,12 +394,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Job</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show2a === true ?
-                        <div>{getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getJob === null ? 'Keine Angabe' : getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob} onKeyPress={(event) => this.handleKeyPress(event, 'job', this.refs.job.value)} />
+                              <input type="text" ref="job" name="job" id="job" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getJob !== null ? getJob : null} placeholder={getJob === null ? 'Keine Angabe' : getJob} onKeyPress={(event) => this.handleKeyPress(event, 'job', this.refs.job.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('job', this.refs.job.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -410,12 +410,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Firma</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show3a === true ?
-                        <div>{getCompany} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getCompany === null ? 'Keine Angabe' : getCompany} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany} onKeyPress={(event) => this.handleKeyPress(event, 'company', this.refs.company.value)} />
+                              <input type="text" ref="company" name="company" id="company" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getCompany !== null ? getCompany : null} placeholder={getCompany === null ? 'Keine Angabe' : getCompany} onKeyPress={(event) => this.handleKeyPress(event, 'company', this.refs.company.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('company', this.refs.company.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -426,12 +426,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}>Geburtstag</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show6a === true ?
-                        <div>{getBirthday} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show6a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getBirthday === null ? 'Keine Angabe' : getBirthday} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show6a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="birthday" name="birthday" id="birthday" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getBirthday} onKeyPress={(event) => this.handleKeyPress(event, 'birthday', this.refs.birthday.value)} />
+                              <input type="text" ref="birthday" name="birthday" id="birthday" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getBirthday !== null ? getBirthday : null} placeholder={getBirthday === null ? 'Keine Angabe' : getBirthday} onKeyPress={(event) => this.handleKeyPress(event, 'birthday', this.refs.birthday.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('birthday', this.refs.birthday.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -442,12 +442,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-github " + styles.famr4} aria-hidden="true"></i> Github</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show7a === true ?
-                        <div>{getSocialGithub} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show7a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialGithub === null ? 'Keine Angabe' : getSocialGithub} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show7a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="socialGithub" name="socialGithub" id="socialGithub" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialGithub} onKeyPress={(event) => this.handleKeyPress(event, 'socialGithub', this.refs.socialGithub.value)} />
+                              <input type="text" ref="socialGithub" name="socialGithub" id="socialGithub" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialGithub !== null ? getSocialGithub : null} placeholder={getSocialGithub === null ? 'Keine Angabe' : getSocialGithub} onKeyPress={(event) => this.handleKeyPress(event, 'socialGithub', this.refs.socialGithub.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialGithub', this.refs.socialGithub.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -458,12 +458,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-facebook " + styles.famr4} aria-hidden="true"></i> Facebook</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show8a === true ?
-                        <div>{getSocialFb} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show8a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialFb === null ? 'Keine Angabe' : getSocialFb} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show8a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="socialFb" name="socialFb" id="socialFb" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialFb} onKeyPress={(event) => this.handleKeyPress(event, 'socialFb', this.refs.socialFb.value)} />
+                              <input type="text" ref="socialFb" name="socialFb" id="socialFb" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialFb !== null ? getSocialFb : null} placeholder={getSocialFb === null ? 'Keine Angabe' : getSocialFb} onKeyPress={(event) => this.handleKeyPress(event, 'socialFb', this.refs.socialFb.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialFb', this.refs.socialFb.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -474,12 +474,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-twitter " + styles.famr4} aria-hidden="true"></i> Twitter</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show9a === true ?
-                        <div>{getSocialTwitter} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show9a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialTwitter === null ? 'Keine Angabe' : getSocialTwitter} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show9a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="socialTwitter" name="socialTwitter" id="socialTwitter" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialTwitter} onKeyPress={(event) => this.handleKeyPress(event, 'socialTwitter', this.refs.socialTwitter.value)} />
+                              <input type="text" ref="socialTwitter" name="socialTwitter" id="socialTwitter" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialTwitter !== null ? getSocialTwitter : null} placeholder={getSocialTwitter === null ? 'Keine Angabe' : getSocialTwitter} onKeyPress={(event) => this.handleKeyPress(event, 'socialTwitter', this.refs.socialTwitter.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialTwitter', this.refs.socialTwitter.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -490,12 +490,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-xing " + styles.famr4} aria-hidden="true"></i> Xing</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show10a === true ?
-                        <div>{getSocialXing} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show10a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialXing === null ? 'Keine Angabe' : getSocialXing} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show10a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="socialXing" name="socialXing" id="socialXing" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialXing} onKeyPress={(event) => this.handleKeyPress(event, 'socialXing', this.refs.socialXing.value)} />
+                              <input type="text" ref="socialXing" name="socialXing" id="socialXing" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialXing !== null ? getSocialXing : null} placeholder={getSocialXing === null ? 'Keine Angabe' : getSocialXing} onKeyPress={(event) => this.handleKeyPress(event, 'socialXing', this.refs.socialXing.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialXing', this.refs.socialXing.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
@@ -506,12 +506,12 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={4}><i className={"fa fa-globe " + styles.famr4} aria-hidden="true"></i> Website</Col>
                     <Col className={styles.m15 + ' ' + styles.topLine} xs={8}>
                       {this.state.show11a === true ?
-                        <div>{getSocialWebsite} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show11a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialWebsite === null ? 'Keine Angabe' : getSocialWebsite} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show11a(false)}><i className="fa fa-pencil"/></Button></div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
                             <div>
-                              <input type="text" ref="socialWebsite" name="socialWebsite" id="socialWebsite" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialWebsite} onKeyPress={(event) => this.handleKeyPress(event, 'socialWebsite', this.refs.socialWebsite.value)} />
+                              <input type="text" ref="socialWebsite" name="socialWebsite" id="socialWebsite" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getSocialWebsite !== null ? getSocialWebsite : null} placeholder={getSocialWebsite === null ? 'Keine Angabe' : getSocialWebsite} onKeyPress={(event) => this.handleKeyPress(event, 'socialWebsite', this.refs.socialWebsite.value)} />
                               <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('socialWebsite', this.refs.socialWebsite.value)}><i className="fa fa-check"/></Button>
                             </div>
                           </div>
