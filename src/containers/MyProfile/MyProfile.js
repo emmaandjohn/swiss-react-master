@@ -555,13 +555,13 @@ export default class MyProfile extends Component {
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
                   <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> Deine Projekte</h3>
                   <Row>
-                    {UserContentProjekte.length < 1 ? 'Noch keine Projekte' : UserContentProjekte}
+                    {UserContentProjekte.length < 1 ? <Col xs={12} className={styles.makeItalic}>'Noch keine Projekte'</Col> : UserContentProjekte}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
                   <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}><span className={styles.logoBrand}/> Deine Artikel</h3>
                   <Row>
-                    {UserContentArtikel.length < 1 ? 'Noch keine Artikel' : UserContentArtikel}
+                    {UserContentArtikel.length < 1 ? <Col xs={12} className={styles.makeItalic}>'Noch keine Artikel'</Col> : UserContentArtikel}
                   </Row>
                 </Col>
               </Col>
