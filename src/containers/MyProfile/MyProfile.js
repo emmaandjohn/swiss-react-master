@@ -178,6 +178,10 @@ export default class MyProfile extends Component {
     });
   }
 
+  goToCommunity = () => {
+    this.props.dispatch(push('community/'));
+  }
+
 
   render() {
     const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
@@ -551,7 +555,7 @@ export default class MyProfile extends Component {
                     </Col>
                   </Row>
                 </Col>
-                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}></Col>
+                <Col className={styles.m15 + ' ' + styles.topLine} xs={12}><button className="btn btn-primary" onClick={() => this.goToCommunity()}><i className="fa fa-plus" aria-hidden="true"></i> Projekt/Artikel</button></Col>
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
                   <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> Deine Projekte</h3>
                   <Row>
