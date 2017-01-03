@@ -235,16 +235,25 @@ app.post('/activation', function(req, res) {
 /* **** checkUniqueTitle */
 app.post('/checkUniqueTitle', function(req, res) {
     var titelExtra = req.body.titelExtra;
-    console.log(titelExtra);
-
     var tryTitel = req.body.tryTitle;
+
+    if(titelExtra === 0){ // EditTitle not changed
+      console.log("titelExtra === 0");
+    }
+    if(titelExtra.length > 1){ // EditTitle has changed
+      console.log("titelExtra.length > 1");
+      tryTitel = titelExtra;
+    }
+    console.log("titleExtra here: "+titelExtra);
     var tryTitelConvert = tryTitel.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
     BlogModel.findOne({ urlFriendlyTitel: tryTitelConvert }, function(error, result){
       if(result === null){
-        res.json({ status: 1 });
+        console.log("titelExtra or titleNew success!");
+        res.json({ status: 1 }); /* success */
       } else{
-        if(titelExtra === 0){ res.json({ status: 0 }); } else{ res.json({ status: 1 }); } /* todo: do that better, check also existing titles! */
+        console.log("error, title already exists in DB!");
+        res.json({ status: 0 }); /* title already exists */
       }
     });
 });
@@ -390,7 +399,7 @@ app.post('/community', function(req, res) {
         BlogModel.findOne({ articleId: editModeArtId }, 'articleId', function(error, result){
           if(result !== null){
             var query2 = {"articleId": editModeArtId};
-            var update2 = {'titel': titelData, 'markup': markupData, 'category': categoryData, 'technologies': techObject};
+            var update2 = {'titel': titelData, 'urlFriendlyTitel': urlFriendlyTitel, 'markup': markupData, 'category': categoryData, 'technologies': techObject};
             var options2 = {multi: true};
             BlogModel.update(query2, update2, options2, function(err, result) {
               if (err) {

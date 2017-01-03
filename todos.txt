@@ -1,4 +1,15 @@
 
+-) artikel url ändert nicht nachdem artikel geändert
+fb) Artikel und Projekt badges (rot und black)
+-) Mobile zoom unterbinden
+-) Mobile UI verbessern
+-) Datum UI mein Profil
+-) Lange titel handeln - UI zerstört
+-) Kontakt löschen / agb etc in footer
+-) Social icons nicht gradlinig
+-) Technologien ordnen nach titel (comm.)
+
+
 -) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!

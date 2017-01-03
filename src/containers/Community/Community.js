@@ -166,7 +166,7 @@ export default class RichEditorExample extends Component {
 
 
   saveDataToDatabase = (editModeOn) => {
-    const titelData = this.refs.titel.value;
+    let titelData = this.refs.titel.value;
     const categoryData = this.refs.category.value;
     const markupData = stateToHTML(this.state.editorState.getCurrentContent());
     const userUuid = cookie.load('ck_uuid');
@@ -200,6 +200,9 @@ export default class RichEditorExample extends Component {
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if(res.body.status === 1) {
+                    if(editModeOn === 1){
+                       titelData = titelExtra;
+                    }
 
                     this.refs.titel.value = '';
                     superagent
