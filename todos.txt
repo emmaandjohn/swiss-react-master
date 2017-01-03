@@ -1,12 +1,12 @@
 
--) artikel url ändert nicht nachdem artikel geändert
-fb) Artikel und Projekt badges (rot und black)
--) Mobile zoom unterbinden
+X) artikel url ändert nicht nachdem artikel geändert
+X) Artikel und Projekt badges (rot und black)
+^) Mobile zoom unterbinden - ios10 issue!
 -) Mobile UI verbessern
 -) Datum UI mein Profil
 -) Lange titel handeln - UI zerstört
 -) Kontakt löschen / agb etc in footer
--) Social icons nicht gradlinig
+fb) Social icons nicht gradlinig
 -) Technologien ordnen nach titel (comm.)
 
 
@@ -17,7 +17,7 @@ fb) Artikel und Projekt badges (rot und black)
 
 -) Kontaktseite löschen - Privacy policy, agb etc. dafür
 -) Kantonsnamen anzeigen - Myprofile und Tooltips
--) Profil löschen?
+-) Profil löschen funktionalität?
 
 low
 ------------
