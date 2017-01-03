@@ -96,6 +96,10 @@ export default class RichEditorExample extends Component {
     this.setState({ techObject: {} });
   }
 
+  componentWillUnmount() {
+    cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+  }
+
   _handleKeyCommand(command) {
     const {editorState} = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -211,7 +215,6 @@ export default class RichEditorExample extends Component {
                     .set('Accept', 'application/json')
                     .end((error, res) => {
                       if (res.body.status === 1) {
-                        //this.props.dispatch(getBlogEntries(res.body.blogArticles));
                         cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
                         /* Clear editor state */
                         let editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
