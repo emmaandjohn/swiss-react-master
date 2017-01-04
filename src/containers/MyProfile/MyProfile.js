@@ -312,7 +312,7 @@ export default class MyProfile extends Component {
                 <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMiniProfile}></div>
               </div>
               <div className='col-xs-10 col-sm-11'>
-                <div className='col-xs-12'>{entry.titel}</div>
+                <div className='col-xs-12'>{entry.titel + ' ' + styles.m5}</div>
                 <div className={'col-xs-12 ' + stylesHome.dateStyle + ' ' + styles.m5}>{entry.timeFormatted}</div>
                 <div className={'col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
               </div>
@@ -325,7 +325,7 @@ export default class MyProfile extends Component {
                 <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMiniProfile}></div>
               </div>
               <div className='col-xs-10 col-sm-11'>
-                <div className='col-xs-12'>{entry.titel}</div>
+                <div className='col-xs-12'>{entry.titel + ' ' + styles.m5}</div>
                 <div className={'col-xs-12 ' + stylesHome.dateStyle + ' ' + styles.m5}>{entry.timeFormatted}</div>
                 <div className={'col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               </div>
