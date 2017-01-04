@@ -4,7 +4,7 @@ X) Artikel und Projekt badges (rot und black)
 ^) Mobile zoom unterbinden - ios10 issue!
 -) Mobile UI verbessern
 -) Datum UI mein Profil
--) Lange titel handeln - UI zerstört
+fb) Lange titel handeln - UI zerstört --> hyphens!
 -) Kontakt löschen / agb etc in footer
 fb) Social icons nicht gradlinig
 -) Technologien ordnen nach titel (comm.)
