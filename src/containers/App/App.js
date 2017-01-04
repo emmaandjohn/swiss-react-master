@@ -133,9 +133,6 @@ export default class App extends Component {
                       <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mitmachen</NavItem>
                     </LinkContainer>
                     }
-                    <LinkContainer to="/kontakt">
-                      <NavItem eventKey={3} onClick={ this.onNavItemClick }>Kontakt</NavItem>
-                    </LinkContainer>
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                       <NavItem eventKey={4} onClick={ this.onLogout }>Logout</NavItem>
                     :

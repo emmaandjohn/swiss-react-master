@@ -1,13 +1,14 @@
 
 X) artikel url ändert nicht nachdem artikel geändert
 X) Artikel und Projekt badges (rot und black)
-^) Mobile zoom unterbinden - ios10 issue!
+^X) Mobile zoom unterbinden - ios10 issue!
 -) Mobile UI verbessern
 -) Datum UI mein Profil
 fb) Lange titel handeln - UI zerstört --> hyphens!
--) Kontakt löschen / agb etc in footer
-fb) Social icons nicht gradlinig
+X) Kontakt löschen 
+X) Social icons nicht gradlinig
 -) Technologien ordnen nach titel (comm.)
+
 
 
 -) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
@@ -24,6 +25,7 @@ low
 ------------
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
+-) agb etc in footer
 
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen?

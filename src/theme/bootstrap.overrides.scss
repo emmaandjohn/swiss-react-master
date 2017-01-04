@@ -7,6 +7,10 @@ body{
   -ms-hyphens: auto;
   hyphens: auto;
 }
+h1{
+  font-size: 30px;
+}
+
 .navbar-brand {
   position: relative;
   padding-left: 50px;
@@ -143,4 +147,5 @@ fieldset[disabled] .btn-primary.focus {
 
 .well{
   background-color: #fdfdfd;
+  overflow: hidden;
 }
