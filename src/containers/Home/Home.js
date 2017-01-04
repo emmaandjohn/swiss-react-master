@@ -55,7 +55,7 @@ export default class Home extends Component {
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
-    let blogContentDef = []; let whichCategory = '';
+    let blogContentDef = []; let whichCategory = ''; let whichCategoryFa = '';
     getBlogEntriesState.articles.forEach(function(entry){
       if(entry.category === 'Projekt'){
         whichCategory = 'label-primary';
