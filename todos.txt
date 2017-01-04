@@ -11,6 +11,7 @@ fb) Social icons nicht gradlinig
 
 
 -) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
+-) Suche oder Suche innerhalb von Categories?
 
 -) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
