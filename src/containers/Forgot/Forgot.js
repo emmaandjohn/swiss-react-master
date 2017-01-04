@@ -64,7 +64,7 @@ export default class Forgot extends Component {
           <div id="login-form">
             <form className="login-form form-inline" onSubmit={this.handleSubmit.bind(this)}>
               <div className="form-group">
-                <input type="text" ref="email" name="email" id="email" placeholder="Email" className="form-control"/>
+                <input type="text" ref="email" name="email" id="email" placeholder="Email" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Passwort zustellen</button>
             </form>
