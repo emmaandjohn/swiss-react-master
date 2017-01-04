@@ -278,6 +278,7 @@ export default class RichEditorExample extends Component {
     return (
       <div className="container" id="communityPage">
         <h1>Community</h1>
+        <p>Erstelle oder bearbeite hier dein eigener Artikel/Tutorial oder dein eigenes Projekt.</p><br>
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
