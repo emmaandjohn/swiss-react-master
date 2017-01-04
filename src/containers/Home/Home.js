@@ -59,8 +59,10 @@ export default class Home extends Component {
     getBlogEntriesState.articles.forEach(function(entry){
       if(entry.category === 'Projekt'){
         whichCategory = 'label-primary';
+        whichCategoryFa = 'fa fa-cube';
       }else{
         whichCategory = 'label-info';
+        whichCategoryFa = 'fa fa-book';
       }
       blogContentDef.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeIn col-xs-12 ' + styles.hover}>
@@ -71,7 +73,7 @@ export default class Home extends Component {
             </div>
             <div className={'col-sm-2 col-xs-12 ' + styles.mt5}>{entry.userNickname}</div>
             <div className={'col-sm-3 col-xs-12 ' + styles.mt5}><strong>{entry.titel}</strong></div>
-            <div className={'col-sm-1 col-xs-12 ' + styles.mt5}><span className={'label ' + whichCategory + ' ' + styles.lwidth}>{entry.category}</span></div>
+            <div className={'col-sm-1 col-xs-12 ' + styles.mt5}><span title={entry.category} className={'label ' + whichCategory + ' ' + styles.lwidth}><i className={whichCategoryFa} /></span></div>
             <div className={'col-sm-3 col-xs-12 ' + styles.techStyle + ' ' + styles.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
             <div className={'col-sm-2 col-xs-12 text-right ' + styles.dateStyle + ' ' + styles.mt5}>{entry.timeFormatted}</div>
           </div>
