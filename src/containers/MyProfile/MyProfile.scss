@@ -225,7 +225,7 @@
 .flag26{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag26.jpg') no-repeat center center; background-size: cover; background-position: center;}
 .flag27{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag27.jpg') no-repeat center center; background-size: cover; background-position: center;}
 
-
+.wellLayouting{}
 .dateStyle{
   font-size: 10px;
   font-style: italic;
@@ -250,8 +250,21 @@
   }
 }
 
+@media (max-width: 982px) {
+  .myprofilePage {
+    .wellLayouting{
+      right: 15px;
+      top: 7px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .myprofilePage {
+    .wellLayouting{
+      right: 47px;
+      top: 5px;
+    }
     .topLine2 {
       border-top: none;
     }
