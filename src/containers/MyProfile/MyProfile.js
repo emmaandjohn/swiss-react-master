@@ -324,7 +324,7 @@ export default class MyProfile extends Component {
               <div className='col-xs-2 col-sm-1'>
                 <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMiniProfile}></div>
               </div>
-              <div className='col-xs-10 col-sm-11'>
+              <div className={'col-xs-10 col-sm-11' + ' ' + styles.wellLayouting}>
                 <div className='col-xs-12'>{entry.titel + ' ' + styles.m5}</div>
                 <div className={'col-xs-12 ' + stylesHome.dateStyle + ' ' + styles.m5}>{entry.timeFormatted}</div>
                 <div className={'col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>

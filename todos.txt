@@ -9,23 +9,21 @@ X) Kontakt löschen
 X) Social icons nicht gradlinig
 -??) Technologien ordnen nach titel (comm.)
 
-
-
--) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
--) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
-
+X) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
--) Privacy policy, agb etc. in footer
+
+-) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
 -) Profil löschen funktionalität?
+-) Simple Kommentare von anderen Usern unten eine Artikels?
+-) Userprofil eines anderen anschauen können
+
 
 low
 ------------
 -) Kantonsnamen anzeigen - Myprofile und Tooltips
--) Simple Kommentare von anderen Usern unten eine Artikels?
--) Userprofil eines anderen anschauen können
--) agb etc in footer
+-) Privacy policy, agb etc. in footer
 
 -) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen?
