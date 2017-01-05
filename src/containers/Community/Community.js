@@ -47,7 +47,7 @@ export default class RichEditorExample extends Component {
 
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this._onTab(e);
-    //this.handleReturn = (e) => this._handleReturn(e);
+    this.handleReturn = (e) => this._handleReturn(e);
     //this.keyBindingFn = (e) => this._keyBindingFn(e);
 
     this.toggleBlockType = (type) => this._toggleBlockType(type);
@@ -111,7 +111,7 @@ export default class RichEditorExample extends Component {
     return false;
 }
 
-  /*_handleReturn(e) {
+  _handleReturn(e) {
       var editorState = this.state.editorState;
 
       if (!CodeUtils.hasSelectionInBlock(editorState)) {
@@ -121,7 +121,7 @@ export default class RichEditorExample extends Component {
           CodeUtils.handleReturn(e, editorState)
       );
       return true;
-  }*/
+  }
 
   _onTab(e) {
     /*const maxDepth = 4;
@@ -180,7 +180,7 @@ export default class RichEditorExample extends Component {
     let titelOld = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
     if(editModeOn === 1){
-      loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelOld = this.state.editorState;;
+      loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelOld = this.state.oldTitleState;
     }
 
     superagent
@@ -323,7 +323,7 @@ export default class RichEditorExample extends Component {
               //customStyleMap={styleMap}
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
-              //handleReturn={this.handleReturn}
+              handleReturn={this.handleReturn}
               onChange={this.onChange}
               //keyBindingFn={this.keyBindingFn}
               onTab={this.onTab}
