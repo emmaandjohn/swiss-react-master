@@ -60,14 +60,14 @@ export default class Home extends Component {
       blogContentDef.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeIn col-xs-12 ' + styles.hover}>
           <div className='row'>
-            <div className='col-sm-1 col-xs-12'>
+            <div className={'col-sm-1 col-xs-2 ' + styles.mt5}>
               <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
-            <div className={'col-sm-2 col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{entry.userNickname}</div>
+            <div className={'col-sm-2 col-xs-10 ' + styles.mt5 + ' ' + styles.oh + ' ' styles.fs18}>{entry.userNickname}</div>
             <div className={'col-sm-4 col-xs-12 ' + styles.mt5 + ' ' + styles.oh}><strong>{entry.titel}</strong></div>
             <div className={'col-sm-3 col-xs-12 ' + styles.techStyle + ' ' + styles.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
-            <div className={'col-sm-2 col-xs-12 text-right ' + styles.dateStyle + ' ' + styles.mt5}>{entry.timeFormatted} <br /> <strong>{entry.category}</strong></div>
+            <div className={'col-sm-2 col-xs-12 text-right ' + styles.dateStyle + ' ' + styles.mt5}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
           </div>
         </div>
       );
