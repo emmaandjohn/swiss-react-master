@@ -117,6 +117,9 @@
 .topLine {
   border-top: 1px solid #ddd;
 }
+.topLine2 {
+  border-top: 1px solid #ddd;
+}
 .fixFormStyle{
   max-height: 27px;
   margin-right: -5px !important;
@@ -249,6 +252,9 @@
 
 @media (max-width: 768px) {
   .myprofilePage {
+    .topLine2 {
+      border-top: none;
+    }
     .pb20border{
       padding-bottom: 20px;
       border-bottom: 1px solid #ddd;
