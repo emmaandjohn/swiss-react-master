@@ -83,7 +83,7 @@ export default class Article extends Component {
                 <div className='col-sm-9 col-xs-12'>
                   <div className={'col-xs-12 ' + stylesArticle.pb7 + ' ' + stylesArticle.mt10m}>Autor: <strong>{specificArticleData.userNickname}</strong></div>
                   <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}>{specificArticleTechData}</div>
-                  <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{entry.category}</strong></div>
+                  <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
                 <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>
