@@ -9,11 +9,15 @@
 	overflow: hidden;
 }
 .fs18{}
+.mr35minus{}
 .mt5{
 	margin-top: 5px;
 }
 .mb20{
 	margin-bottom: 20px;
+}
+.mb10{
+	margin-bottom: 10px;
 }
 .pb20{
 	padding-bottom: 20px;
@@ -101,6 +105,9 @@
 @media (max-width: 768px) {
   .fs18{
   	font-size: 18px;
+  }
+  .mr35minus{
+    margin-right: -35px;
   }
   .home {
     h1 {
