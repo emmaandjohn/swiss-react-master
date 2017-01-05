@@ -343,7 +343,7 @@ app.post('/community', function(req, res) {
       var categoryData = req.body.categoryData;
       var techObject = req.body.techObject;
 
-      markupData = markupData.replace(/<br\s*\/?>/mg,"\n");
+      markupData = markupData.replace(new RegExp('\n','g'), '');
 
       if(loadStatus === 0){
         var unixDateNow = Date.now(); // e.g. 1299827226
