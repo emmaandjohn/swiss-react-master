@@ -62,13 +62,6 @@ export default class Article extends Component {
     const {formStatus, formMsg, specificArticleData, specificArticleTechData} = this.state;
     const { activateNewUserState, getBlogEntriesState} = this.props;
 
-    let whichCategory = '';
-    if(specificArticleData.category === 'Projekt'){
-      whichCategory = 'label-primary';
-    }else{
-      whichCategory = 'label-info';
-    }
-
     return (
       <div className="container" id="articlePage">
         <Helmet title={specificArticleData.titel}/>
@@ -76,7 +69,7 @@ export default class Article extends Component {
             <div className={'col-xs-12'}>
               <div className='row'>
                 <div className={'col-xs-12 ' + styles.pb20}>
-                  <h1 className={stylesArticle.hyphens}>{specificArticleData.titel + ' '}
+                  <h1 className={stylesArticle.hyphens}><span className={stylesArticle.h1BtnStyle}>{specificArticleData.titel + ' '}</span>
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
                       <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
                     : null
@@ -88,9 +81,9 @@ export default class Article extends Component {
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
                 <div className='col-sm-9 col-xs-12'>
-                  <div className={'col-xs-12 ' + stylesArticle.pb7}>Autor: <strong>{specificArticleData.userNickname}</strong></div>
-                  <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}><span className={'label ' + whichCategory + ' ' + stylesArticle.labelGeneralStyle + ' ' + styles.lwidth}>{specificArticleData.category}</span> {specificArticleTechData}</div>
-                  <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted}</div>
+                  <div className={'col-xs-12 ' + stylesArticle.pb7 + ' ' + stylesArticle.mt10m}>Autor: <strong>{specificArticleData.userNickname}</strong></div>
+                  <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}>{specificArticleTechData}</div>
+                  <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{entry.category}</strong></div>
                 </div>
                 <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
               </div>

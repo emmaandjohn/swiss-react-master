@@ -12,3 +12,15 @@
   -ms-hyphens: auto;
   hyphens: auto;
 }
+.h1BtnStyle{
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 12px;
+}
+.mt20m{}
+
+@media (max-width: 768px) {
+  .mt20m{
+    margin-top: 20px;
+  }
+}
