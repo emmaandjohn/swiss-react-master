@@ -74,6 +74,7 @@ export default class RichEditorExample extends Component {
 
           /* set titel */
           this.refs.titel.value = res.body.editArticleData.titel;
+          this.setState({oldTitleState: res.body.editArticleData.titel})
 
           /* set category */
           this.setState({optionsState: res.body.editArticleData.category})
@@ -176,10 +177,10 @@ export default class RichEditorExample extends Component {
     const userUuid = cookie.load('ck_uuid');
 
     let loadStatus = 0;
-    let titelExtra = 0;
+    let titelOld = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
     if(editModeOn === 1){
-      loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelExtra = titelData;
+      loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelOld = this.state.editorState;;
     }
 
     superagent
@@ -200,12 +201,12 @@ export default class RichEditorExample extends Component {
 
               superagent
               .post('/checkUniqueTitle')
-              .send({ tryTitle: titelData, titelExtra: titelExtra })
+              .send({ tryTitle: titelData, titelOld: titelOld })
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if(res.body.status === 1) {
                     if(editModeOn === 1){
-                       titelData = titelExtra;
+                       titelData = titelOld;
                     }
 
                     this.refs.titel.value = '';
@@ -319,7 +320,7 @@ export default class RichEditorExample extends Component {
           <div className={className} onClick={this.focus}>
             <Editor
               blockStyleFn={getBlockStyle}
-              customStyleMap={styleMap}
+              //customStyleMap={styleMap}
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
               handleReturn={this.handleReturn}
@@ -471,15 +472,6 @@ export default class RichEditorExample extends Component {
     );
   }
 }
-
- const styleMap = {
-   CODE: {
-     backgroundColor: 'rgba(0, 0, 0, 0.05)',
-     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-     fontSize: 16,
-     padding: 2,
-   },
- };
 
  function getBlockStyle(block) {
    switch (block.getType()) {

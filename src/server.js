@@ -234,28 +234,27 @@ app.post('/activation', function(req, res) {
 
 /* **** checkUniqueTitle */
 app.post('/checkUniqueTitle', function(req, res) {
-    var titelExtra = req.body.titelExtra;
+    var titelOld = req.body.titelOld;
     var tryTitel = req.body.tryTitle;
 
-    if(titelExtra === 0){ // EditTitle not changed
-      console.log("titelExtra === 0");
+    if(titelOld === tryTitel){ // EditTitle is same as before
+      console.log("titelOld === tryTitel EQUAL");
+      res.json({ status: 1 }); // title stays the same, all good...
     }
-    if(titelExtra.length > 1){ // EditTitle has changed
-      console.log("titelExtra.length > 1");
-      tryTitel = titelExtra;
-    }
-    console.log("titleExtra here: "+titelExtra);
-    var tryTitelConvert = tryTitel.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+    else{
+      console.log("logger titles: "+titelOld + " ZZ " + tryTitel);
+      var tryTitelConvert = tryTitel.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
-    BlogModel.findOne({ urlFriendlyTitel: tryTitelConvert }, function(error, result){
-      if(result === null){
-        console.log("titelExtra or titleNew success!");
-        res.json({ status: 1 }); /* success */
-      } else{
-        console.log("error, title already exists in DB!");
-        res.json({ status: 0 }); /* title already exists */
-      }
-    });
+      BlogModel.findOne({ urlFriendlyTitel: tryTitelConvert }, function(error, result){
+        if(result === null){
+          console.log("titelExtra or titleNew success!");
+          res.json({ status: 1 }); /* success */
+        } else{
+          console.log("error, title already exists in DB!");
+          res.json({ status: 0 }); /* title already exists */
+        }
+      });
+    }
 });
 
 /* **** getSpecificArticle */
