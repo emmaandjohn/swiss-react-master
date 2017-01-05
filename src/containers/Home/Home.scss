@@ -8,9 +8,7 @@
 .oh{
 	overflow: hidden;
 }
-.fs18{
-	font-size: 18px;
-}
+.fs18{}
 .mt5{
 	margin-top: 5px;
 }
@@ -101,6 +99,9 @@
 }
 
 @media (max-width: 768px) {
+  .fs18{
+  	font-size: 18px;
+  }
   .home {
     h1 {
       font-size: 2em !important;

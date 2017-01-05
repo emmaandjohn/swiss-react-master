@@ -100,6 +100,7 @@
   padding-top: 9px;
   min-height: 35px;
 }
+.pb20border{}
 .mb10 {
   margin-bottom: 9px !important;
 }
@@ -248,6 +249,10 @@
 
 @media (max-width: 768px) {
   .myprofilePage {
+    .pb20border{
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
     .m15v2 {
       margin-top: 0;
       padding-top: 0;

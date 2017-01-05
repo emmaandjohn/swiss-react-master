@@ -526,7 +526,7 @@ export default class MyProfile extends Component {
                     </Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
-                    <Col className={styles.m15} xs={12}>
+                    <Col className={styles.m15 + ' ' + styles.pb20border} xs={12}>
                       {this.state.show4a === true ?
                         <div className={styles.makeItalic + ' ' + styles.whiteSpacePreWrap}>{getDescription}</div>
                       :
