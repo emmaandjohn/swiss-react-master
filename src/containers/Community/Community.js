@@ -205,10 +205,6 @@ export default class RichEditorExample extends Component {
               .set('Accept', 'application/json')
               .end((error, res) => {
                 if(res.body.status === 1) {
-                    if(editModeOn === 1){
-                       titelData = titelOld;
-                    }
-
                     this.refs.titel.value = '';
                     superagent
                     .post('/community')
