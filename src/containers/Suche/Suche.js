@@ -76,6 +76,7 @@ export default class Suche extends Component {
 
 
   render() {
+    const styles = require('./Search.scss');
     const stylesCommunity = require('../Community/Community.scss');
     const stylesHome = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
@@ -124,8 +125,8 @@ export default class Suche extends Component {
               <div className="col-xs-12 col-sm-10 col-md-10 col-lg-11">
                 <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
-              <div className="search2 col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right">
-                <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
+              <div className={"col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right " + styles.search2}>
+                <button className={"btn btn-primary " + styles.search2button} onClick={() => this.searchDB()}>Suchen</button>
               </div>
             </div>
           </div>

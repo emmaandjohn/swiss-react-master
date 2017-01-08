@@ -570,7 +570,7 @@ export default class MyProfile extends Component {
                         </Alert>
                       </Col>
                     :
-                      <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
+                      <Col className={styles.m15 + ' ' + styles.topLine2 + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
                     }
               </Col>
 
