@@ -188,7 +188,17 @@ export default class MyProfile extends Component {
   }
   deleteProfileFinal = (really, uuid) => {
     if(really === 1){
-      console.log("DELETE REALLY NOW! "+ uuid);
+
+      superagent
+      .post('/deleteProfile')
+      .send({ uuid: uuid })
+      .set('Accept', 'application/json')
+      .end((error, res) => {
+        if(res.body.status === 1) {
+          console.log("ok all deleted! push to Home and Logout + Message....");
+        }
+      });
+
     } else{
       this.setState({deleteState: false});
     }

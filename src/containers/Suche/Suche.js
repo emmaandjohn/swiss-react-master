@@ -29,12 +29,9 @@ export default class Suche extends Component {
       let chObject = {}
       chObject[t] = checkValue;
       this.setState({ techObjectSearch: Object.assign(this.state.techObjectSearch, chObject) });
-
-      console.log("techObjectSearch: "+JSON.stringify(this.state.techObjectSearch));
   }
 
   searchDB = () => {
-      console.log("ohohohohoohoohohohoohohoho +++++++");
       const searchQuery = this.refs.searchquery.value;
       const searchCategory = this.refs.categorySearch.value;
       const techObject = this.state.techObjectSearch;
@@ -48,12 +45,9 @@ export default class Suche extends Component {
           this.props.dispatch(getSearchEntries(res.body.searchArticles));
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
         } else{
-          //this.props.dispatch(getSearchEntries({articleList: "Keine Suchresultate"}));
-          console.log("no search results");
+          this.props.dispatch(getSearchEntries({articleList: "Keine Suchergebnisse"}));
         }
       })
-
-      console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + ", techObject: " + JSON.stringify(techObject) );
   }
 
   loadArticle = (id) => {
@@ -99,9 +93,8 @@ export default class Suche extends Component {
         <div className="container searchPage">
           <h1>Suche</h1>
           <Helmet title="Suche"/>
-          <div className="well">
-            {searchResults}
-          </div>
+
+          {searchResults}
 
           <div className="form-group">
             <div className="row">

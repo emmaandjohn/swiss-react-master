@@ -234,6 +234,28 @@ app.post('/activation', function(req, res) {
 });
 
 
+/* **** deleteProfile */
+app.post('/deleteProfile', function(req, res) {
+    var deleteUuid = req.body.uuid;
+
+    UserModel.findOneAndRemove({ userUuid: deleteUuid }, function(error, result){
+      console.log("delete result: "+JSON.stringify(result));
+      if(result !== null){
+        var query11 = {"userUuid": deleteUuid};
+        var options11 = {multi: true};
+        BlogModel.remove(query11, options11, function(err, result) {
+          if (err) {
+            console.log(err);
+            res.json({ status: 0 });
+          } else{
+            res.json({ status: 1 });
+          }
+        });
+      }
+    });
+  }
+});
+
 /* **** searchQuery - Suche */
 app.post('/searchQuery', function(req, res) {
     var searchQuery = req.body.searchQuery;
