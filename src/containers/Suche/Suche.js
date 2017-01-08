@@ -108,7 +108,7 @@ export default class Suche extends Component {
                 <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <div className="search2 col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right">
-                <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
+                <button className="btn btn-primary" onClick={this.searchDB.bind(this)}>Suchen</button>
               </div>
             </div>
           </div>
@@ -248,7 +248,7 @@ export default class Suche extends Component {
             </div></label>
           </div>
           <br />
-          <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
+          <button className="btn btn-primary" onClick={this.searchDB.bind(this)}>Suchen</button>
 
 
         </div>
