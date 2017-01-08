@@ -21,7 +21,9 @@ export default class Suche extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getSearchEntries( [{}] ));
+    this.props.dispatch(getSearchEntries());
+    this.setState({formStatus: 0});
+    this.setState({formMsg: ''});
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
@@ -46,10 +48,13 @@ export default class Suche extends Component {
       .end((error, res) => {
         if(res.body.status === 1) {
           if(res.body.searchArticles.length > 0){
+            this.setState({formStatus: 0});
+            this.setState({formMsg: ''});
             this.props.dispatch(getSearchEntries(res.body.searchArticles));
           } else{
             this.setState({formStatus: 1});
             this.setState({formMsg: 'Leider ergab deine Suche keine Treffer.'});
+            this.props.dispatch(getSearchEntries());
           }
           scroll(0,0);
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
@@ -78,11 +83,11 @@ export default class Suche extends Component {
     const { getSearchEntriesState } = this.props;
     const { formStatus, formMsg } = this.state;
 
-    console.log("getSearchEntriesState.articles: "+JSON.stringify(getSearchEntriesState.articles));
-    console.log("length"+Object.keys(getSearchEntriesState.articles).length);
+    console.log("11111111 getSearchEntriesState: "+JSON.stringify(getSearchEntriesState));
+
     let searchResults = [];
-    if(Object.keys(getSearchEntriesState.articles).length > 0){
-      getSearchEntriesState.articles.forEach(function(entry){
+    if(getSearchEntriesState){
+    getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
           <div>
           <h3>Suchergebnisse</h3>
@@ -100,7 +105,7 @@ export default class Suche extends Component {
           </div>
           </div>
         );
-      }.bind(this));
+    }.bind(this));
     }
 
     return (
