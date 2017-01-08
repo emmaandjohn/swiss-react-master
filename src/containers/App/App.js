@@ -122,7 +122,7 @@ export default class App extends Component {
               <Navbar.Collapse>
                 <Nav navbar>
                     <LinkContainer to="/community">
-                      <NavItem eventKey={1} className={"fa fa-comments " + styles.faNav} onClick={ this.onNavItemClick }>Community</NavItem>
+                      <NavItem eventKey={1} onClick={ this.onNavItemClick }><i className={"fa fa-comments " + styles.faNav} aria-hidden="true"></i> Community</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/suche">
                       <NavItem eventKey={2} onClick={ this.onNavItemClick }><i className={"fa fa-search " + styles.faNav} aria-hidden="true"></i> Suche</NavItem>
