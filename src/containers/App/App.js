@@ -150,11 +150,13 @@ export default class App extends Component {
           <div className={styles.appContent}>
             {this.props.children}
           </div>
-          <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
-            <InfoBar/>
-          </Loader>
-          <div className="well text-center">
-            Copyright { new Date().getFullYear() } | Swiss React Community | React, Redux, Flux, React Native | swiss-react.ch
+          <div className="col-xs-12">
+            <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
+              <InfoBar/>
+            </Loader>
+            <div className="well text-center">
+              Copyright { new Date().getFullYear() } | Swiss React Community | React, Redux, Flux, React Native | swiss-react.ch
+            </div>
           </div>
         </div>
       );
