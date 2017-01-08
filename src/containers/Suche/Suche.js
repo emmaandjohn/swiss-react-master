@@ -76,7 +76,7 @@ export default class Suche extends Component {
 
 
   render() {
-    const styles = require('./Search.scss');
+    const styles = require('./Suche.scss');
     const stylesCommunity = require('../Community/Community.scss');
     const stylesHome = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
@@ -266,7 +266,7 @@ export default class Suche extends Component {
             </div></label>
           </div>
           <br />
-          <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
+          <button className={"btn btn-primary " + styles.search2button} onClick={() => this.searchDB()}>Suchen</button>
 
 
         </div>
