@@ -42,7 +42,7 @@ var Moment = require('moment-timezone');
 
 /* **** Mongoose */
 var mongoose = require('mongoose');
-var textSearch = require('mongoose-text-search');
+//var textSearch = require('mongoose-text-search');
 mongoose.connect(process.env.MONGODB_URI);
 var userSchema = new mongoose.Schema({
   uuid: String,
@@ -79,8 +79,7 @@ var blogSchema = new mongoose.Schema({
   articleId: String,
   urlFriendlyTitel: String
 });
-blogSchema.plugin(textSearch);
-blogSchema.index({ titel: 'text' });
+blogSchema.index({titel: 'text', markup: 'text'});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -243,23 +242,19 @@ app.post('/searchQuery', function(req, res) {
 
     console.log("searchQuery: "+searchQuery+"searchCategory: "+searchCategory+"techObject: "+techObject);
 
-    /*var optionsS = {
-      filter: { category: searchCategory, } // casts queries based on schema
-    }*/
-
-    BlogModel.textSearch(searchQuery, function (err, output) {
+    BlogModel.find({$text: {$search: searchQuery}}).sort({'unixtime': -1}).exec(function(err, result) {
       if(err){
-        console.log("error!!!");
+        console.log("err");
         res.json(err);
         res.json({ status: 0 });
       }
-      else if(output === null){
-        console.log("null!!!");
+      else if(result === null){
+        console.log("null");
         res.json({ status: 0 });
       }
       else{
-        console.log("success!!!");
-        res.json({ status: 1, searchArticles: output });
+        console.log("success");
+        res.json({ status: 1, searchArticles: result });
       }
     });
 });
