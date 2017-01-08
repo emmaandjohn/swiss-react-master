@@ -42,6 +42,7 @@ var Moment = require('moment-timezone');
 
 /* **** Mongoose */
 var mongoose = require('mongoose');
+var textSearch = require('mongoose-text-search');
 mongoose.connect(process.env.MONGODB_URI);
 var userSchema = new mongoose.Schema({
   uuid: String,
@@ -78,6 +79,8 @@ var blogSchema = new mongoose.Schema({
   articleId: String,
   urlFriendlyTitel: String
 });
+blogSchema.plugin(textSearch);
+blogSchema.index({ titel: 'text', markup: 'text' });
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -231,6 +234,30 @@ app.post('/activation', function(req, res) {
     });
 });
 
+
+/* **** searchQuery - Suche */
+app.post('/searchQuery', function(req, res) {
+    var searchQuery = req.body.searchQuery;
+    var searchCategory = req.body.searchCategory;
+    var techObject = req.body.techObject;
+
+    /*var optionsS = {
+      filter: { category: searchCategory, } // casts queries based on schema
+    }*/
+
+    BlogModel.textSearch(searchQuery, function (err, output) {
+      if(err){
+        res.json(err);
+        res.json({ status: 0 });
+      }
+      else if(output === null){
+        res.json({ status: 0 });
+      }
+      else{
+        res.json({ status: 1, searchArticles: output });
+      }
+    });
+});
 
 /* **** checkUniqueTitle */
 app.post('/checkUniqueTitle', function(req, res) {

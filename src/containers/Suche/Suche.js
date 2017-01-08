@@ -29,6 +29,18 @@ export default class Suche extends Component {
     const searchCategory = this.refs.categorySearch.value;
     const techObject = this.state.techObjectSearch;
 
+    superagent
+    .post('/searchQuery')
+    .send({ searchQuery: searchQuery, searchCategory: searchCategory, techObject: techObject })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
+      } else{
+        console.log("no search results");
+      }
+    )};
+
     console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + " , techObject: " + JSON.stringify(techObject) );
   }
 

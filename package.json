@@ -126,6 +126,7 @@
     "module": "^1.2.5",
     "moment-timezone": "^0.5.7",
     "mongoose": "^4.5.8",
+    "mongoose-text-search": "0.0.2",
     "multireducer": "^2.0.0",
     "net": "^1.0.2",
     "nodemailer": "2.6.0",
