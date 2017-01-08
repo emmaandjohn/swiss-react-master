@@ -124,20 +124,23 @@ export default class App extends Component {
                     <LinkContainer to="/community">
                       <NavItem eventKey={1} onClick={ this.onNavItemClick }>Community</NavItem>
                     </LinkContainer>
+                    <LinkContainer to="/suche">
+                      <NavItem eventKey={2} onClick={ this.onNavItemClick }><i className="fa fa-search" aria-hidden="true"></i> Suche</NavItem>
+                    </LinkContainer>
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                     <LinkContainer to="/meinprofil">
-                      <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mein Profil</NavItem>
+                      <NavItem eventKey={3} onClick={ this.onNavItemClick }><i className="fa fa-user" aria-hidden="true"></i> Mein Profil</NavItem>
                     </LinkContainer>
                     :
                     <LinkContainer to="/registrieren">
-                      <NavItem eventKey={2} onClick={ this.onNavItemClick }>Mitmachen</NavItem>
+                      <NavItem eventKey={3} onClick={ this.onNavItemClick }>Mitmachen</NavItem>
                     </LinkContainer>
                     }
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
-                      <NavItem eventKey={4} onClick={ this.onLogout }>Logout</NavItem>
+                      <NavItem eventKey={4} onClick={ this.onLogout }><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</NavItem>
                     :
                     <LinkContainer to="/login">
-                      <NavItem eventKey={5} onClick={ this.onNavItemClick }>Login</NavItem>
+                      <NavItem eventKey={5} onClick={ this.onNavItemClick }><i className="fa fa-sign-in" aria-hidden="true"></i> Login</NavItem>
                     </LinkContainer>
                     }
                 </Nav>

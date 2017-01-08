@@ -18,6 +18,7 @@ import {
     MyProfile,
     //Survey,
     NotFound,
+    Suche,
   } from 'containers';
 
 
@@ -62,6 +63,7 @@ export default (store) => {
       <Route path="community" component={Community}/>
       <Route path="community/:id" component={Article}/>
       <Route path="meinprofil" component={MyProfile}/>
+      <Route path="suche" component={Suche}/>
       { /*<Route path="survey" component={Survey}/>
         <Route path="widgets" component={Widgets}/> */ }
       <Route path="activation" component={Activation}/>

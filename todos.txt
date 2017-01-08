@@ -15,6 +15,11 @@ X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
 -) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
+.Schlagwort-Suche
+.Artikel / Projekt Filter
+.Tech. Filter
+
+
 -) Profil löschen funktionalität?
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
