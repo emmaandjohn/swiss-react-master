@@ -289,8 +289,8 @@ app.post('/searchQuery', function(req, res) {
           for (const key of Object.keys(result[i].technologies[0])) {
             console.log("result[i].technologies[0][key]: "+result[i].technologies[0][key] + ", result[i].technologies[0][key]-LENGHT: "+result[i].technologies[0][key].length);
             if(result[i].technologies[0][key].length > 1){
-              if(newarr.indexOf(result[i].technologies[0][key]) > -1){
-                console.log('Walking east one step: ' + JSON.stringify(result[i]));
+              if(newarr.indexOf(key) > -1){
+                console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result[i]));
               }
             }
           }
