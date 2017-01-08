@@ -19,7 +19,9 @@ export default class Suche extends Component {
   }
 
   componentDidMount() {
+    console.log("CDM1 "+ JSON.stringify(getSearchEntries.articleList))
     this.props.dispatch(getSearchEntries(null));
+    console.log("CDM2 "+ JSON.stringify(getSearchEntries.articleList))
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
@@ -73,7 +75,7 @@ export default class Suche extends Component {
 
     console.log("length"+getSearchEntriesState.articles.length);
     let searchResults = [];
-    if(getSearchEntriesState.articles !== null && getSearchEntriesState.articles.length > 0){
+    if(getSearchEntriesState.articles.length > 0){
       getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
