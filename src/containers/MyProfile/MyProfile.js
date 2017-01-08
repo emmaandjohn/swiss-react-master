@@ -58,6 +58,7 @@ export default class MyProfile extends Component {
     showModalMale: false,
     showModalFemale: false,
     showModalFlags: false,
+    deleteState: false,
     show1a: true, show2a: true, show3a: true, show4a: true, show5a: true, show6a: true, show7a: true, show8a: true, show9a: true, show10a: true, show11a: true
   }
 
@@ -182,8 +183,15 @@ export default class MyProfile extends Component {
     this.props.dispatch(push('community/'));
   }
 
-  deleteProfile = (uuid) => {
-    console.log("delete Profile");
+  deleteProfile = () => {
+    this.setState({deleteState: true});
+  }
+  deleteProfileFinal = (really, uuid) => {
+    if(really === 1){
+      console.log("DELETE REALLY NOW! "+ uuid);
+    } else{
+      this.setState({deleteState: false});
+    }
   }
 
 
@@ -544,7 +552,15 @@ export default class MyProfile extends Component {
                         </div>
                       }
                     </Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className="btn btn-default" onClick={() => this.deleteProfile(cookie.load('ck_uuid'))}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
+                    {this.state.deleteState === true ?
+                      <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}>
+                        <Alert bsStyle="danger">
+                          Möchtest du deinen Account wirklich löschen? Alle Beiträge welche du erstellt hast werden ebenfalls gelöscht.
+                          <button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfileFinal(1, cookie.load('ck_uuid'))}><i className="fa fa-user-times" aria-hidden="true"></i> Ja wirklich löschen </button> <button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfileFinal(2)}>Abbrechen</button>
+                        </Alert>
+                      </Col>
+                    : null }
               </Col>
 
               <Col className={styles.mb35} xs={12} sm={6}>
