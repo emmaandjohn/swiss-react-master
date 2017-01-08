@@ -34,7 +34,6 @@ export default class Suche extends Component {
   }
 
   searchDB = () => {
-    if(activationOnClick === 1){
       console.log("ohohohohoohoohohohoohohoho +++++++");
       const searchQuery = this.refs.searchquery.value;
       const searchCategory = this.refs.categorySearch.value;
@@ -55,7 +54,6 @@ export default class Suche extends Component {
       })
 
       console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + ", techObject: " + JSON.stringify(techObject) );
-    }
   }
 
   loadArticle = (id) => {

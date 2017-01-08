@@ -552,15 +552,16 @@ export default class MyProfile extends Component {
                         </div>
                       }
                     </Col>
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
                     {this.state.deleteState === true ?
                       <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}>
                         <Alert bsStyle="danger">
-                          Möchtest du deinen Account wirklich löschen? Alle Beiträge welche du erstellt hast werden ebenfalls gelöscht.
+                          Möchtest du deinen Account wirklich löschen? Alle Beiträge welche du erstellt hast werden ebenfalls gelöscht.<br />
                           <button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfileFinal(1, cookie.load('ck_uuid'))}><i className="fa fa-user-times" aria-hidden="true"></i> Ja wirklich löschen </button> <button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfileFinal(2)}>Abbrechen</button>
                         </Alert>
                       </Col>
-                    : null }
+                    :
+                      <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
+                    }
               </Col>
 
               <Col className={styles.mb35} xs={12} sm={6}>
