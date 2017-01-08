@@ -262,10 +262,9 @@ app.post('/searchQuery', function(req, res) {
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
 
-    console.log("1: "+techObject);
     console.log("2: "+JSON.stringify(techObject));
 
-    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? techObject[key] : null);
+    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? key : null);
     console.log("3: "+JSON.stringify(techObjectArray));
 
     if(searchCategory === 'Alles'){ searchCategory=['Artikel', 'Projekt']; }
