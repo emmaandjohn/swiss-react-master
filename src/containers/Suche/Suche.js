@@ -15,13 +15,13 @@ import { getSearchEntries } from '../../redux/actions/getSearchEntriesActions';
 
 export default class Suche extends Component {
   state = {
-    techObjectSearch: {}
+    techObjectSearch: {},
+    formStatus: 0,
+    formMsg: ''
   }
 
   componentDidMount() {
-    console.log("CDM1 "+ JSON.stringify(getSearchEntries.articleList))
-    this.props.dispatch(getSearchEntries(null));
-    console.log("CDM2 "+ JSON.stringify(getSearchEntries.articleList))
+    this.props.dispatch(getSearchEntries({articleList: []}));
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
@@ -45,10 +45,14 @@ export default class Suche extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if(res.body.status === 1) {
-          this.props.dispatch(getSearchEntries(res.body.searchArticles));
+          if(res.body.searchArticles.length > 0){
+            this.props.dispatch(getSearchEntries(res.body.searchArticles));
+          } else{
+            this.setState({formStatus: 1});
+            this.setState({formMsg: 'Leider ergab deine Suche keine Treffer.'});
+          }
+          scroll(0,0);
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
-        } else{
-          this.props.dispatch(getSearchEntries('Keine Suchresultate'));
         }
       })
   }
@@ -72,12 +76,14 @@ export default class Suche extends Component {
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
     const { getSearchEntriesState } = this.props;
+    const { formStatus, formMsg } = this.state;
 
     console.log("length"+getSearchEntriesState.articles.length);
     let searchResults = [];
     if(getSearchEntriesState.articles.length > 0){
       getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
+          <h3>Suchergebnisse</h3>
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
             <div className='row'>
               <div className={'col-sm-1 col-xs-4 ' + stylesHome.mt5 + ' ' + stylesHome.mr35minus}>
@@ -98,7 +104,10 @@ export default class Suche extends Component {
         <div className="container searchPage">
           <h1>Suche</h1>
           <Helmet title="Suche"/>
-
+          {formStatus === 1 ?
+            <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
+            : null
+          }
           {searchResults}
 
           <div className="form-group">
