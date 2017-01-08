@@ -287,8 +287,9 @@ app.post('/searchQuery', function(req, res) {
         var techFilteredObject;
         for (var i = 0; i < result.length; i++) {
           for (const key of Object.keys(result[i].technologies[0])) {
-            if(result[i].technologies[0].key.length > 1){
-              if(newarr.indexOf(result[i].technologies[0].key) > -1){
+            console.log("result[i].technologies[0][key]: "+result[i].technologies[0][key] + ", result[i].technologies[0][key]-LENGHT: "+result[i].technologies[0][key].length);
+            if(result[i].technologies[0][key].length > 1){
+              if(newarr.indexOf(result[i].technologies[0][key]) > -1){
                 console.log('Walking east one step: ' + JSON.stringify(result[i]));
               }
             }
