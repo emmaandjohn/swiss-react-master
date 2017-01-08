@@ -114,7 +114,7 @@ export default class Suche extends Component {
             <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
             : null
           }
-          {searchResults.length > 1
+          {searchResults.length > 1 ?
             searchResults
           : null
           }
