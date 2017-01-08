@@ -182,6 +182,10 @@ export default class MyProfile extends Component {
     this.props.dispatch(push('community/'));
   }
 
+  deleteProfile = (uuid) => {
+    console.log("delete Profile");
+  }
+
 
   render() {
     const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
@@ -540,6 +544,7 @@ export default class MyProfile extends Component {
                         </div>
                       }
                     </Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className="btn btn-default" onClick={() => this.deleteProfile(cookie.load('ck_uuid'))}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
               </Col>
 
               <Col className={styles.mb35} xs={12} sm={6}>

@@ -33,26 +33,29 @@ export default class Suche extends Component {
       console.log("techObjectSearch: "+JSON.stringify(this.state.techObjectSearch));
   }
 
-  searchDB = () => {
-    const searchQuery = this.refs.searchquery.value;
-    const searchCategory = this.refs.categorySearch.value;
-    const techObject = this.state.techObjectSearch;
+  searchDB = (activationOnClick) => {
+    if(activationOnClick === 1){
+      console.log("ohohohohoohoohohohoohohoho +++++++");
+      const searchQuery = this.refs.searchquery.value;
+      const searchCategory = this.refs.categorySearch.value;
+      const techObject = this.state.techObjectSearch;
 
-    superagent
-    .post('/searchQuery')
-    .send({ searchQuery: searchQuery, searchCategory: searchCategory, techObject: techObject })
-    .set('Accept', 'application/json')
-    .end((error, res) => {
-      if(res.body.status === 1) {
-        this.props.dispatch(getBlogEntries(res.body.searchArticles));
-        console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
-      } else{
-        //this.props.dispatch(getBlogEntries({articleList: "Keine Suchresultate"}));
-        console.log("no search results");
-      }
-    })
+      superagent
+      .post('/searchQuery')
+      .send({ searchQuery: searchQuery, searchCategory: searchCategory, techObject: techObject })
+      .set('Accept', 'application/json')
+      .end((error, res) => {
+        if(res.body.status === 1) {
+          this.props.dispatch(getBlogEntries(res.body.searchArticles));
+          console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
+        } else{
+          //this.props.dispatch(getBlogEntries({articleList: "Keine Suchresultate"}));
+          console.log("no search results");
+        }
+      })
 
-    console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + ", techObject: " + JSON.stringify(techObject) );
+      console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + ", techObject: " + JSON.stringify(techObject) );
+    }
   }
 
   loadArticle = (id) => {
@@ -108,7 +111,7 @@ export default class Suche extends Component {
                 <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <div className="search2 col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right">
-                <button className="btn btn-primary" onClick={this.searchDB.bind(this)}>Suchen</button>
+                <button className="btn btn-primary" onClick={() => this.searchDB(1)}>Suchen</button>
               </div>
             </div>
           </div>
@@ -248,7 +251,7 @@ export default class Suche extends Component {
             </div></label>
           </div>
           <br />
-          <button className="btn btn-primary" onClick={this.searchDB.bind(this)}>Suchen</button>
+          <button className="btn btn-primary" onClick={() => this.searchDB(1)}>Suchen</button>
 
 
         </div>
