@@ -46,7 +46,7 @@ export default class Suche extends Component {
         this.props.dispatch(getBlogEntries(res.body.searchArticles));
         console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
       } else{
-        this.props.dispatch(getBlogEntries({articleList: "Keine Suchresultate"}));
+        //this.props.dispatch(getBlogEntries({articleList: "Keine Suchresultate"}));
         console.log("no search results");
       }
     })
@@ -54,24 +54,40 @@ export default class Suche extends Component {
     console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + ", techObject: " + JSON.stringify(techObject) );
   }
 
+  loadArticle = (id) => {
+    superagent
+    .post('/getSpecificArticle')
+    .send({ artId: id })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        this.props.dispatch(push('community/'+res.body.specificArticleData.urlFriendlyTitel));
+      }
+    });
+  }
+
 
   render() {
     const stylesCommunity = require('../Community/Community.scss');
-    const { getBlogEntriesState } = this.props;
+    const stylesHome = require('../Home/Home.scss');
+    const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    let blogContentDef = [];
+    const { getBlogEntriesState } = this.props;
+    console.log("length"+getBlogEntriesState.articles.length);
+
+    let searchResults = [];
     getBlogEntriesState.articles.forEach(function(entry){
-      blogContentDef.push(
-        <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeIn col-xs-12 ' + styles.hover}>
+      searchResults.push(
+        <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
           <div className='row'>
-            <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+            <div className={'col-sm-1 col-xs-4 ' + stylesHome.mt5 + ' ' + stylesHome.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
-            <div className={'col-sm-2 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.userNickname}</div>
-            <div className={'col-sm-4 col-xs-12 ' + styles.mt5 + ' ' + styles.oh + ' ' + styles.fs18}><strong>{entry.titel}</strong></div>
-            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle + ' ' + styles.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
-            <div className={'col-sm-2 col-xs-12 text-right ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
+            <div className={'col-sm-2 col-xs-8 ' + stylesHome.mt5 + ' ' + stylesHome.oh}>{entry.userNickname}</div>
+            <div className={'col-sm-4 col-xs-12 ' + stylesHome.mt5 + ' ' + stylesHome.oh + ' ' + stylesHome.fs18}><strong>{entry.titel}</strong></div>
+            <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
+            <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
           </div>
         </div>
       );
