@@ -72,8 +72,8 @@ export default class Suche extends Component {
     const { getSearchEntriesState } = this.props;
 
     console.log("length"+getSearchEntriesState.articles.length);
+    let searchResults = [];
     if(getSearchEntriesState.articles !== null && getSearchEntriesState.articles.length > 0){
-      let searchResults = [];
       getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
