@@ -240,20 +240,17 @@ app.post('/searchQuery', function(req, res) {
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
 
-    console.log("searchQuery: "+searchQuery+"searchCategory: "+searchCategory+"techObject: "+techObject);
+    if(searchCategory === 'Alles'){searchCategory = ''}
 
-    BlogModel.find({$text: {$search: searchQuery}}).sort({'unixtime': -1}).exec(function(err, result) {
+    BlogModel.find({ $text:{$search:searchQuery},category: searchCategory }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
       if(err){
-        console.log("err");
         res.json(err);
         res.json({ status: 0 });
       }
       else if(result === null){
-        console.log("null");
         res.json({ status: 0 });
       }
       else{
-        console.log("success");
         res.json({ status: 1, searchArticles: result });
       }
     });

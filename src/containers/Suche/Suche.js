@@ -4,6 +4,14 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
 
+import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+
+@connect((store) => {
+  return {
+    getBlogEntriesState: store.getBlogEntries.articleList,
+  };
+})
+
 export default class Suche extends Component {
   state = {
     formStatus: 0,
@@ -35,8 +43,10 @@ export default class Suche extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if(res.body.status === 1) {
+        this.props.dispatch(getBlogEntries(res.body.searchArticles));
         console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
       } else{
+        this.props.dispatch(getBlogEntries({articleList: "Keine Suchresultate"}));
         console.log("no search results");
       }
     })
@@ -47,11 +57,34 @@ export default class Suche extends Component {
 
   render() {
     const stylesCommunity = require('../Community/Community.scss');
+    const { getBlogEntriesState } = this.props;
+
+    let blogContentDef = [];
+    getBlogEntriesState.articles.forEach(function(entry){
+      blogContentDef.push(
+        <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeIn col-xs-12 ' + styles.hover}>
+          <div className='row'>
+            <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+              <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            </div>
+            <div className={'col-sm-2 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.userNickname}</div>
+            <div className={'col-sm-4 col-xs-12 ' + styles.mt5 + ' ' + styles.oh + ' ' + styles.fs18}><strong>{entry.titel}</strong></div>
+            <div className={'col-sm-3 col-xs-12 ' + styles.techStyle + ' ' + styles.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
+            <div className={'col-sm-2 col-xs-12 text-right ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
+          </div>
+        </div>
+      );
+    }.bind(this));
 
     return (
         <div className="container">
           <h1>Suche</h1>
           <Helmet title="Suche"/>
+          <div className="well">
+            {searchResults}
+          </div>
+
           <div className="form-group">
             <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
           </div>
@@ -60,7 +93,7 @@ export default class Suche extends Component {
             <form className="search-category-form form-inline">
               <div className="form-group">
                 <select ref="categorySearch" className="titleStyle form-control">
-                  <option value="All">Artikel + Projekte</option>
+                  <option value="Alles">Artikel + Projekte</option>
                   <option value="Artikel">Nur Artikel</option>
                   <option value="Projekt">Nur Projekte</option>
                 </select>
