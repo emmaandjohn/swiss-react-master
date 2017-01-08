@@ -278,14 +278,16 @@ app.post('/searchQuery', function(req, res) {
     if(newarr.length > 0){
       BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
 
-        console.log("result");
+        console.log("????????? result1");
         console.log(result);
-        console.log("err");
-        console.log(err);
+        console.log("????????? result2");
+        console.log(result[0]);
+        console.log("????????? json stringify");
+        console.log(JSON.stringify(result[0].technologies));
 
-        for (const key of Object.keys(result[0])) {
-            console.log(key, result[key]);
-            console.log("---------");
+        for (const key of Object.keys(result[0].technologies)) {
+            console.log(key);
+            console.log(result[0].technologies[key]);
         }
 
         /*if(err){
