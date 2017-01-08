@@ -276,8 +276,11 @@ app.post('/searchQuery', function(req, res) {
     if(searchCategory === 'Artikel'){ searchCategory=['Artikel']; }
 
     if(newarr.length > 0){
-      BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory}, {$in: technologies} : {$in: newarr} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
-        if(err){
+      for(){
+      BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+
+        console.log("got it: "+JSON.stringify(result));
+        /*if(err){
           res.json(err);
           res.json({ status: 0 });
         }
@@ -286,7 +289,7 @@ app.post('/searchQuery', function(req, res) {
         }
         else{
           res.json({ status: 1, searchArticles: result });
-        }
+        }*/
       });
     } else{
       BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
