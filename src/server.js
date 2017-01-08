@@ -280,15 +280,18 @@ app.post('/searchQuery', function(req, res) {
 
         /*console.log("????????? result1");
         console.log(result);
-        console.log("????????? result2");
-        console.log(result[0]);
-        console.log("????????? json stringify");*/
+        console.log("????????? result2");*/
+        console.log("ressssasasasasa 111: "+JSON.stringify(result[0]));
+        /*console.log("????????? json stringify");*/
         console.log(JSON.stringify(result[0].technologies[0]));
-
+        var techFilteredObject;
         for (const key of Object.keys(result[0].technologies[0])) {
-            console.log("KEY: "+key);
-            console.log("VALUE: "+result[0].technologies[0][key]);
+          if(result[0].technologies[0][key].length > 1){
+            console.log("result0 LOOP: "+JSON.stringify(result[0]));
+            techFilteredObject = Object.assign({}, result[0]);
+          }
         }
+        console.log("techFilteredObject: "+JSON.stringify(techFilteredObject));
 
         /*if(err){
           res.json(err);
