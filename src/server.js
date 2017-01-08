@@ -240,7 +240,7 @@ app.post('/searchQuery', function(req, res) {
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
 
-    if(searchCategory === 'Alles'){ searchCategory={}; }
+    if(searchCategory === 'Alles'){ searchCategory=null; }
 
     BlogModel.find({ $text:{$search:searchQuery}, 'category': searchCategory }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
       if(err){
