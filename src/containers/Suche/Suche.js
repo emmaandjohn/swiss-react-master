@@ -19,7 +19,7 @@ export default class Suche extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getSearchEntries({articleList: ""}));
+    this.props.dispatch(getSearchEntries({articleList.articles: []}));
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
@@ -46,7 +46,7 @@ export default class Suche extends Component {
           this.props.dispatch(getSearchEntries(res.body.searchArticles));
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
         } else{
-          this.props.dispatch(getSearchEntries({articleList: "Keine Suchergebnisse"}));
+          this.props.dispatch(getSearchEntries({articleList.articles: "Keine Suchergebnisse"}));
         }
       })
   }
@@ -70,25 +70,27 @@ export default class Suche extends Component {
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
     const { getSearchEntriesState } = this.props;
+    
     console.log("length"+getSearchEntriesState.articles.length);
-
-    let searchResults = [];
-    getSearchEntriesState.articles.forEach(function(entry){
-      searchResults.push(
-        <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
-          <div className='row'>
-            <div className={'col-sm-1 col-xs-4 ' + stylesHome.mt5 + ' ' + stylesHome.mr35minus}>
-              <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
-              <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+    if(getSearchEntriesState.articles.length > 0){
+      let searchResults = [];
+      getSearchEntriesState.articles.forEach(function(entry){
+        searchResults.push(
+          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
+            <div className='row'>
+              <div className={'col-sm-1 col-xs-4 ' + stylesHome.mt5 + ' ' + stylesHome.mr35minus}>
+                <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+                <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              </div>
+              <div className={'col-sm-2 col-xs-8 ' + stylesHome.mt5 + ' ' + stylesHome.oh}>{entry.userNickname}</div>
+              <div className={'col-sm-4 col-xs-12 ' + stylesHome.mt5 + ' ' + stylesHome.oh + ' ' + stylesHome.fs18}><strong>{entry.titel}</strong></div>
+              <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
+              <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
             </div>
-            <div className={'col-sm-2 col-xs-8 ' + stylesHome.mt5 + ' ' + stylesHome.oh}>{entry.userNickname}</div>
-            <div className={'col-sm-4 col-xs-12 ' + stylesHome.mt5 + ' ' + stylesHome.oh + ' ' + stylesHome.fs18}><strong>{entry.titel}</strong></div>
-            <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
-            <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
           </div>
-        </div>
-      );
-    }.bind(this));
+        );
+      }.bind(this));
+    }
 
     return (
         <div className="container searchPage">
