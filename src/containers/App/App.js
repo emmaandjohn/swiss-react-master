@@ -122,14 +122,14 @@ export default class App extends Component {
               <Navbar.Collapse>
                 <Nav navbar>
                     <LinkContainer to="/community">
-                      <NavItem eventKey={1} onClick={ this.onNavItemClick }>Community</NavItem>
+                      <NavItem eventKey={1} className={"fa fa-comments " + styles.faNav} onClick={ this.onNavItemClick }>Community</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/suche">
-                      <NavItem eventKey={2} onClick={ this.onNavItemClick }><i className="fa fa-search" aria-hidden="true"></i> Suche</NavItem>
+                      <NavItem eventKey={2} onClick={ this.onNavItemClick }><i className={"fa fa-search " + styles.faNav} aria-hidden="true"></i> Suche</NavItem>
                     </LinkContainer>
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                     <LinkContainer to="/meinprofil">
-                      <NavItem eventKey={3} onClick={ this.onNavItemClick }><i className="fa fa-user" aria-hidden="true"></i> Mein Profil</NavItem>
+                      <NavItem eventKey={3} onClick={ this.onNavItemClick }><i className={"fa fa-user" + styles.faNav} aria-hidden="true"></i> Mein Profil</NavItem>
                     </LinkContainer>
                     :
                     <LinkContainer to="/registrieren">
@@ -137,10 +137,10 @@ export default class App extends Component {
                     </LinkContainer>
                     }
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
-                      <NavItem eventKey={4} onClick={ this.onLogout }><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</NavItem>
+                      <NavItem eventKey={4} onClick={ this.onLogout }><i className={"fa fa-sign-out" + styles.faNav} aria-hidden="true"></i> Logout</NavItem>
                     :
                     <LinkContainer to="/login">
-                      <NavItem eventKey={5} onClick={ this.onNavItemClick }><i className="fa fa-sign-in" aria-hidden="true"></i> Login</NavItem>
+                      <NavItem eventKey={5} onClick={ this.onNavItemClick }><i className={"fa fa-sign-in" + styles.faNav} aria-hidden="true"></i> Login</NavItem>
                     </LinkContainer>
                     }
                 </Nav>

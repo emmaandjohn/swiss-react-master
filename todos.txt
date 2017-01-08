@@ -13,6 +13,7 @@ X) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
+fb) check alerts register!
 
 -) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
 .Schlagwort-Suche

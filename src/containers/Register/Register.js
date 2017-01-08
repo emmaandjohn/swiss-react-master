@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Alert from 'react-bootstrap/lib/Alert';
 import Well from 'react-bootstrap/lib/Well';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
@@ -80,14 +81,14 @@ export default class Register extends Component {
         {formStatus === 2 ?
           <Well>
             <h3>Erfolgreich registriert</h3>
-            <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
+            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
           </Well>
           : null
         }
         {formStatus === 1 ?
           <Well>
             <h3>Fehler</h3>
-            <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
+            <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
           </Well>
           : null
         }
