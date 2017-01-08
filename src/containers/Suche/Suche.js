@@ -21,7 +21,7 @@ export default class Suche extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getSearchEntries({articleList: []}));
+    this.props.dispatch(getSearchEntries( [{}] ));
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
@@ -83,6 +83,7 @@ export default class Suche extends Component {
     if(getSearchEntriesState.articles.length > 0){
       getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
+          <div>
           <h3>Suchergebnisse</h3>
           <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
             <div className='row'>
@@ -95,6 +96,7 @@ export default class Suche extends Component {
               <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
               <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
             </div>
+          </div>
           </div>
         );
       }.bind(this));
