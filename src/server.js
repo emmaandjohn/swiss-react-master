@@ -264,8 +264,8 @@ app.post('/searchQuery', function(req, res) {
 
     console.log("2: "+JSON.stringify(techObject));
 
-    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? key : null);
-    console.log("3: "+JSON.stringify(techObjectArray));
+    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? key : '');
+    console.log("3: "+JSON.stringify(techObjectArray.length));
 
     if(searchCategory === 'Alles'){ searchCategory=['Artikel', 'Projekt']; }
     if(searchCategory === 'Projekt'){ searchCategory=['Projekt']; }
