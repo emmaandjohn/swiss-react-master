@@ -39,9 +39,9 @@ export default class Suche extends Component {
       } else{
         console.log("no search results");
       }
-    )};
+    })
 
-    console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + " , techObject: " + JSON.stringify(techObject) );
+    console.log("SEARCH!! searchQuery: " + searchQuery + " , searchCategory" + searchCategory + ", techObject: " + JSON.stringify(techObject) );
   }
 
 
