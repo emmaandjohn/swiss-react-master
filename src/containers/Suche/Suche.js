@@ -5,11 +5,11 @@ import cookie from 'react-cookie';
 import superagent from 'superagent';
 import { push } from 'react-router-redux';
 
-import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+import { getSearchEntries } from '../../redux/actions/getSearchEntriesActions';
 
 @connect((store) => {
   return {
-    getBlogEntriesState: store.getBlogEntries.articleList,
+    getSearchEntriesState: store.getSearchEntries.articleList,
   };
 })
 
@@ -33,7 +33,7 @@ export default class Suche extends Component {
       console.log("techObjectSearch: "+JSON.stringify(this.state.techObjectSearch));
   }
 
-  searchDB = (activationOnClick) => {
+  searchDB = () => {
     if(activationOnClick === 1){
       console.log("ohohohohoohoohohohoohohoho +++++++");
       const searchQuery = this.refs.searchquery.value;
@@ -46,10 +46,10 @@ export default class Suche extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if(res.body.status === 1) {
-          this.props.dispatch(getBlogEntries(res.body.searchArticles));
+          this.props.dispatch(getSearchEntries(res.body.searchArticles));
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
         } else{
-          //this.props.dispatch(getBlogEntries({articleList: "Keine Suchresultate"}));
+          //this.props.dispatch(getSearchEntries({articleList: "Keine Suchresultate"}));
           console.log("no search results");
         }
       })
@@ -76,11 +76,11 @@ export default class Suche extends Component {
     const stylesHome = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    const { getBlogEntriesState } = this.props;
-    console.log("length"+getBlogEntriesState.articles.length);
+    const { getSearchEntriesState } = this.props;
+    console.log("length"+getSearchEntriesState.articles.length);
 
     let searchResults = [];
-    getBlogEntriesState.articles.forEach(function(entry){
+    getSearchEntriesState.articles.forEach(function(entry){
       searchResults.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
           <div className='row'>
@@ -111,7 +111,7 @@ export default class Suche extends Component {
                 <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <div className="search2 col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right">
-                <button className="btn btn-primary" onClick={() => this.searchDB(1)}>Suchen</button>
+                <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
               </div>
             </div>
           </div>
@@ -251,7 +251,7 @@ export default class Suche extends Component {
             </div></label>
           </div>
           <br />
-          <button className="btn btn-primary" onClick={() => this.searchDB(1)}>Suchen</button>
+          <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
 
 
         </div>
