@@ -80,7 +80,7 @@ var blogSchema = new mongoose.Schema({
   urlFriendlyTitel: String
 });
 blogSchema.plugin(textSearch);
-blogSchema.index({ titel: 'text', markup: 'text' });
+blogSchema.index({ titel: 'text' });
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -241,19 +241,24 @@ app.post('/searchQuery', function(req, res) {
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
 
+    console.log("searchQuery: "+searchQuery+"searchCategory: "+searchCategory+"techObject: "+techObject);
+
     /*var optionsS = {
       filter: { category: searchCategory, } // casts queries based on schema
     }*/
 
     BlogModel.textSearch(searchQuery, function (err, output) {
       if(err){
+        console.log("error!!!");
         res.json(err);
         res.json({ status: 0 });
       }
       else if(output === null){
+        console.log("null!!!");
         res.json({ status: 0 });
       }
       else{
+        console.log("success!!!");
         res.json({ status: 1, searchArticles: output });
       }
     });
