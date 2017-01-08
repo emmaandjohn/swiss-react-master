@@ -264,25 +264,44 @@ app.post('/searchQuery', function(req, res) {
 
     console.log("2: "+JSON.stringify(techObject));
 
-    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? key : '');
-    console.log("3: "+JSON.stringify(techObjectArray.length));
+    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? key : '??');
+    console.log("3: "+JSON.stringify(techObjectArray));
+
+    var newarr = techObjectArray.filter(function(a){return a !== '??'})
+    console.log("4: "+JSON.stringify(newarr));
+    console.log("5: "+newarr.length);
 
     if(searchCategory === 'Alles'){ searchCategory=['Artikel', 'Projekt']; }
     if(searchCategory === 'Projekt'){ searchCategory=['Projekt']; }
     if(searchCategory === 'Artikel'){ searchCategory=['Artikel']; }
 
-    BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory}, 'technologies': {$in: techObjectArray} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
-      if(err){
-        res.json(err);
-        res.json({ status: 0 });
-      }
-      else if(result === null){
-        res.json({ status: 0 });
-      }
-      else{
-        res.json({ status: 1, searchArticles: result });
-      }
-    });
+    if(newarr.length > 0){
+      BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory}, 'technologies': {$in: newarr} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+        if(err){
+          res.json(err);
+          res.json({ status: 0 });
+        }
+        else if(result === null){
+          res.json({ status: 0 });
+        }
+        else{
+          res.json({ status: 1, searchArticles: result });
+        }
+      });
+    } else{
+      BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+        if(err){
+          res.json(err);
+          res.json({ status: 0 });
+        }
+        else if(result === null){
+          res.json({ status: 0 });
+        }
+        else{
+          res.json({ status: 1, searchArticles: result });
+        }
+      });
+    }
 });
 
 /* **** checkUniqueTitle */
