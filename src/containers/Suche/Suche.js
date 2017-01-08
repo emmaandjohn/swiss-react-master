@@ -53,11 +53,10 @@ export default class Suche extends Component {
             this.props.dispatch(getSearchEntries(res.body.searchArticles));
           } else{
             this.setState({formStatus: 1});
-            this.setState({formMsg: 'Leider ergab deine Suche keine Treffer.'});
+            this.setState({formMsg: 'Leider ergab deine Suche keine Treffer.<br />'});
             this.props.dispatch(getSearchEntries([]));
           }
           scroll(0,0);
-          console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
         }
       })
   }
@@ -83,8 +82,6 @@ export default class Suche extends Component {
 
     const { getSearchEntriesState } = this.props;
     const { formStatus, formMsg } = this.state;
-
-    console.log("11111111 getSearchEntriesState: "+JSON.stringify(getSearchEntriesState));
 
     let searchResults = [];
     if(getSearchEntriesState.articles){

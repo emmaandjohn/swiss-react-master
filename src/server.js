@@ -253,7 +253,7 @@ app.post('/deleteProfile', function(req, res) {
         });
       }
     });
-    
+
 });
 
 /* **** searchQuery - Suche */
@@ -262,12 +262,17 @@ app.post('/searchQuery', function(req, res) {
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
 
+    console.log("1: "+techObject);
+    console.log("2: "+JSON.stringify(techObject));
+
+    var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? techObject[key] : null);
+    console.log("3: "+JSON.stringify(techObjectArray));
+
     if(searchCategory === 'Alles'){ searchCategory=['Artikel', 'Projekt']; }
     if(searchCategory === 'Projekt'){ searchCategory=['Projekt']; }
     if(searchCategory === 'Artikel'){ searchCategory=['Artikel']; }
 
-
-    BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+    BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory}, 'technologies': {$in: techObjectArray} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
       if(err){
         res.json(err);
         res.json({ status: 0 });
