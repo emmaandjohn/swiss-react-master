@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
+import { push } from 'react-router-redux';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 
@@ -94,7 +95,7 @@ export default class Suche extends Component {
     }.bind(this));
 
     return (
-        <div className="container">
+        <div className="container searchPage">
           <h1>Suche</h1>
           <Helmet title="Suche"/>
           <div className="well">
@@ -102,7 +103,14 @@ export default class Suche extends Component {
           </div>
 
           <div className="form-group">
-            <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
+            <div className="row">
+              <div className="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+                <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
+              </div>
+              <div className="search2 col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right">
+                <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
+              </div>
+            </div>
           </div>
 
           <div id="search-category-form">
@@ -240,7 +248,7 @@ export default class Suche extends Component {
             </div></label>
           </div>
           <br />
-          <button className="btn btn-primary" onClick={() => this.searchDB()}>Suche</button>
+          <button className="btn btn-primary" onClick={() => this.searchDB()}>Suchen</button>
 
 
         </div>

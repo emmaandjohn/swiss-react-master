@@ -239,10 +239,11 @@ app.post('/searchQuery', function(req, res) {
     var searchQuery = req.body.searchQuery;
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
+    var optionalFilters = {category: searchCategory}
 
-    if(searchCategory === 'Alles'){searchCategory = ''}
+    if(searchCategory === 'Alles'){optionalFilters = {} }
 
-    BlogModel.find({ $text:{$search:searchQuery},category: searchCategory }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+    BlogModel.find({ $text:{$search:searchQuery}, optionalFilters }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
       if(err){
         res.json(err);
         res.json({ status: 0 });
