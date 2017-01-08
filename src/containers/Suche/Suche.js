@@ -19,7 +19,7 @@ export default class Suche extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getSearchEntries({articleList.articles: []}));
+    this.props.dispatch(getSearchEntries(null));
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
@@ -46,7 +46,7 @@ export default class Suche extends Component {
           this.props.dispatch(getSearchEntries(res.body.searchArticles));
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
         } else{
-          this.props.dispatch(getSearchEntries({articleList.articles: "Keine Suchergebnisse"}));
+          this.props.dispatch(getSearchEntries('Keine Suchresultate'));
         }
       })
   }
@@ -70,9 +70,9 @@ export default class Suche extends Component {
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
     const { getSearchEntriesState } = this.props;
-    
+
     console.log("length"+getSearchEntriesState.articles.length);
-    if(getSearchEntriesState.articles.length > 0){
+    if(getSearchEntriesState.articles !== null && getSearchEntriesState.articles.length > 0){
       let searchResults = [];
       getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
