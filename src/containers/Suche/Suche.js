@@ -78,7 +78,7 @@ export default class Suche extends Component {
     const { getSearchEntriesState } = this.props;
     const { formStatus, formMsg } = this.state;
 
-    console.log("getSearchEntriesState.articles: "+JSON.stringify(getSearchEntriesState.articles)):
+    console.log("getSearchEntriesState.articles: "+JSON.stringify(getSearchEntriesState.articles));
     console.log("length"+Object.keys(getSearchEntriesState.articles).length);
     let searchResults = [];
     if(Object.keys(getSearchEntriesState.articles).length > 0){
