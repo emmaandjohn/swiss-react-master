@@ -101,7 +101,7 @@ export default class Suche extends Component {
               <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
               <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
             </div>
-          </div>
+          </div><br /><br />
         );
     }.bind(this));
     }
@@ -114,8 +114,10 @@ export default class Suche extends Component {
             <div dangerouslySetInnerHTML={{__html: formMsg}}></div>
             : null
           }
-          {searchResults.length}
-          {searchResults}
+          {searchResults.length > 1
+            searchResults
+          : null
+          }
 
           <div className="form-group">
             <div className="row">
