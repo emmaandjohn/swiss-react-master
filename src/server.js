@@ -278,7 +278,16 @@ app.post('/searchQuery', function(req, res) {
     if(newarr.length > 0){
       BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
 
-        console.log("got it: "+JSON.stringify(result));
+        console.log("result");
+        console.log(result);
+        console.log("err");
+        console.log(err);
+
+        for (const key of Object.keys(result[0])) {
+            console.log(key, result[key]);
+            console.log("---------");
+        }
+
         /*if(err){
           res.json(err);
           res.json({ status: 0 });
