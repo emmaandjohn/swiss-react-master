@@ -21,7 +21,7 @@ export default class Suche extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getSearchEntries());
+    this.props.dispatch(getSearchEntries('articles': []));
     this.setState({formStatus: 0});
     this.setState({formMsg: ''});
   }
@@ -54,7 +54,7 @@ export default class Suche extends Component {
           } else{
             this.setState({formStatus: 1});
             this.setState({formMsg: 'Leider ergab deine Suche keine Treffer.'});
-            this.props.dispatch(getSearchEntries());
+            this.props.dispatch(getSearchEntries('articles': []));
           }
           scroll(0,0);
           console.log("yep search results: " + JSON.stringify(res.body.searchArticles));
@@ -86,7 +86,7 @@ export default class Suche extends Component {
     console.log("11111111 getSearchEntriesState: "+JSON.stringify(getSearchEntriesState));
 
     let searchResults = [];
-    if(getSearchEntriesState){
+    if(getSearchEntriesState.articles){
     getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
           <div>
