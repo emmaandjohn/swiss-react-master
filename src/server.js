@@ -253,7 +253,7 @@ app.post('/deleteProfile', function(req, res) {
         });
       }
     });
-  }
+    
 });
 
 /* **** searchQuery - Suche */

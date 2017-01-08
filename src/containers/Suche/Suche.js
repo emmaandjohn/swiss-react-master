@@ -15,10 +15,11 @@ import { getSearchEntries } from '../../redux/actions/getSearchEntriesActions';
 
 export default class Suche extends Component {
   state = {
-    formStatus: 0,
-    formMsg: '',
-    techObjectSearch: {},
-    optionsState: 'Artikel'
+    techObjectSearch: {}
+  }
+
+  componentDidMount() {
+    this.props.dispatch(getSearchEntries({articleList: ""}));
   }
 
   onChangeCheckboxSearch = (event, t, tValue) => {
