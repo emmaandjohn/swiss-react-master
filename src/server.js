@@ -276,7 +276,6 @@ app.post('/searchQuery', function(req, res) {
     if(searchCategory === 'Artikel'){ searchCategory=['Artikel']; }
 
     if(newarr.length > 0){
-      for(){
       BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
 
         console.log("got it: "+JSON.stringify(result));
