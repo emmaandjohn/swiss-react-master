@@ -79,8 +79,8 @@ export default class Home extends Component {
     }.bind(this));
 
     blogContentDef.push(
-      <div className={styles.pt45 + ' text-center animated fadeIn'}>
-        <button className={"btn btn-primary " + stylesSuche.search2button} onClick={() => this.goToSearch()}>Mehr Beiträge / Suche</button>
+      <div className={'text-center animated fadeIn'}>
+        <button className={"btn btn-primary " + stylesSuche.search2button + ' ' + styles.pt45} onClick={() => this.goToSearch()}>Mehr Beiträge / Suche</button>
       </div>
     );
 
@@ -102,7 +102,7 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3 className={styles.mb20}>React Activity Feed</h3>
-          <div className='row'>
+          <div className={'row ' + styles.minHeightCont}>
             {blogContentDef}
           </div>
         </div>
