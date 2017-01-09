@@ -89,7 +89,7 @@ export default class Suche extends Component {
     searchResults.push(<h3>Suchergebnisse</h3>);
     getSearchEntriesState.articles.forEach(function(entry){
         searchResults.push(
-          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover}>
+          <div onClick={() => this.loadArticle(entry.articleId)} className={stylesHome.topLine + ' animated fadeIn col-xs-12 ' + stylesHome.hover + ' ' + styles.searchPaddings}>
             <div className='row'>
               <div className={'col-sm-1 col-xs-4 ' + stylesHome.mt5 + ' ' + stylesHome.mr35minus}>
                 <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
@@ -99,7 +99,7 @@ export default class Suche extends Component {
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.mt5 + ' ' + stylesHome.oh + ' ' + stylesHome.fs18}><strong>{entry.titel}</strong></div>
               <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
               <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
-            </div><br /><br /><br /><br />
+            </div>
           </div>
         );
     }.bind(this));

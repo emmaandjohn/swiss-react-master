@@ -292,15 +292,27 @@ app.post('/searchQuery', function(req, res) {
               counter=0;
               console.log("KEY: "+key); // 1. Durchlauf: t15, t17 vom Such-Beitrag1 // 2. Durchlauf: t15 von Such-Beitrag2
               if(newarr.indexOf(key) > -1){ // newarr: Angekreuzte Techn. Checkboxen, Beispiel: ["t15", "t17"]
+                // t15, t17 -- B1-t15 - YES
+                // t15, t17 -- B1-t17 - YES
+                // t15, t17 -- B1-t19 - NO
                 counter++;
+                console.log("COUNTER: "+counter+", NEWARRAY length: "+newarr.length);
                 if(counter === newarr.length){
                   result2.push(result[i]);
+                  counter=999;
                 }
                 // 1. Durchl B1: t15 JA
                 // 2. Durchl B1: t17 JA
 
                 // 1. Durchl B2: t15 JA
+              }else{
+                console.log("COUNTER: "+counter+", NEWARRAY length: "+newarr.length);
+                if(counter === newarr.length){
+                  result2.push(result[i]);
+                  counter=999;
+                }
               }
+
             }
           }
         }
