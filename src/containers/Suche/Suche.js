@@ -47,6 +47,7 @@ export default class Suche extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if(res.body.status === 1) {
+          console.log("res: "+JSON.stringify(res.body.searchArticles));
           if(res.body.searchArticles.length > 0){
             this.setState({formStatus: 0});
             this.setState({formMsg: ''});
