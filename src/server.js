@@ -285,13 +285,15 @@ app.post('/searchQuery', function(req, res) {
         /*console.log("????????? json stringify");*/
         //console.log(JSON.stringify(result[0].technologies[0]));
         var techFilteredObject;
+        var result2 = [];
         for (var i = 0; i < result.length; i++) {
           for (const key of Object.keys(result[i].technologies[0])) {
             console.log("result[i].technologies[0][key]: "+result[i].technologies[0][key] + ", result[i].technologies[0][key]-LENGHT: "+result[i].technologies[0][key].length);
             if(result[i].technologies[0][key].length > 1){
               if(newarr.indexOf(key) > -1){
                 console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result[i]));
-                res.json({ status: 1, searchArticles: result });
+                result2.push(result);
+                res.json({ status: 1, searchArticles: result2 });
               }
             }
           }
