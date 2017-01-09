@@ -46,11 +46,16 @@ export default class Home extends Component {
     });
   }
 
+  goToSearch = () => {
+    this.props.dispatch(push('suche/'));
+  }
+
 
   render() {
     const styles = require('./Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
     const stylesCommunity = require('../Community/Community.scss');
+    const stylesSuche = require('../Suche/Suche.scss');
     const { getBlogEntriesState } = this.props;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
@@ -94,6 +99,7 @@ export default class Home extends Component {
           <div className='row'>
             {blogContentDef}
           </div>
+          <button className={"btn btn-primary " + stylesSuche.search2button} onClick={() => this.goToSearch()}>Mehr Beiträge / Suche</button>
         </div>
       </div>
     );

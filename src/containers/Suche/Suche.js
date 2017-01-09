@@ -115,7 +115,7 @@ export default class Suche extends Component {
           <h1>Suche</h1>
           <Helmet title="Suche"/>
           {formStatus === 1 ?
-            <div className={styles.searchPaddingsLight} dangerouslySetInnerHTML={{__html: formMsg}}></div>
+            <div className={styles.searchPaddingsLight + ' animated fadeIn'} dangerouslySetInnerHTML={{__html: formMsg}}></div>
             : null
           }
           {searchResults.length > 1 ?

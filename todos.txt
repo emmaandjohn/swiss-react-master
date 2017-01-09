@@ -1,4 +1,5 @@
 
+-) userNickname Search geht nicht
 X) artikel url ändert nicht nachdem artikel geändert
 X) Artikel und Projekt badges (rot und black)
 ^X) Mobile zoom unterbinden - ios10 issue!
