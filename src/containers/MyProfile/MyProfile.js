@@ -195,6 +195,30 @@ export default class MyProfile extends Component {
       .end((error, res) => {
         if(res.body.status === 1) {
           console.log("ok all deleted! push to Home + cookie delete ALL and Logout + Message....");
+          cookie.remove('ck_activation', { path: '/' });
+          cookie.remove('ck_avatar', { path: '/' });
+          cookie.remove('ck_birthday', { path: '/' });
+          cookie.remove('ck_company', { path: '/' });
+          cookie.remove('ck_description', { path: '/' });
+          cookie.remove('ck_email', { path: '/' });
+          cookie.remove('ck_job', { path: '/' });
+          cookie.remove('ck_kanton', { path: '/' });
+          cookie.remove('ck_membersince', { path: '/' });
+          cookie.remove('ck_nickname', { path: '/' });
+          cookie.remove('ck_pw', { path: '/' });
+          cookie.remove('ck_social_fb', { path: '/' });
+          cookie.remove('ck_social_github', { path: '/' });
+          cookie.remove('ck_social_linkedin', { path: '/' });
+          cookie.remove('ck_social_twitter', { path: '/' });
+          cookie.remove('ck_social_website', { path: '/' });
+          cookie.remove('ck_social_xing', { path: '/' });
+          cookie.remove('ck_tempEditArt', { path: '/' });
+          cookie.remove('ck_userLoggedIn', { path: '/' });
+          cookie.remove('ck_uuid', { path: '/' });
+
+          /* Reload State with LoggedOut User-State */
+          this.props.dispatch(activateNewUser(true, false));
+          this.props.dispatch(push('/'));
         }
       });
 
