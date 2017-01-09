@@ -291,7 +291,7 @@ app.post('/searchQuery', function(req, res) {
             if(result[i].technologies[0][key].length > 1){
               if(newarr.indexOf(key) > -1){
                 console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result[i]));
-                res.json({ status: 1, searchArticles: result[i] });
+                res.json({ status: 1, searchArticles: result });
               }
             }
           }
