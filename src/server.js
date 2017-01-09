@@ -291,8 +291,8 @@ app.post('/searchQuery', function(req, res) {
             console.log("result[i].technologies[0][key]: "+result[i].technologies[0][key] + ", result[i].technologies[0][key]-LENGHT: "+result[i].technologies[0][key].length);
             if(result[i].technologies[0][key].length > 1){
               if(newarr.indexOf(key) > -1){
-                console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result[i]));
                 result2.push(result[i]);
+                console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result2));
                 res.json({ status: 1, searchArticles: result2 });
               }
             }
