@@ -79,7 +79,7 @@ var blogSchema = new mongoose.Schema({
   articleId: String,
   urlFriendlyTitel: String
 });
-blogSchema.index({titel: 'text', markup: 'text'});
+blogSchema.index({titel: 'text', markup: 'text', userNickname: 'text'});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -284,41 +284,26 @@ app.post('/searchQuery', function(req, res) {
         console.log("ressssasasasasa 111: "+JSON.stringify(result.length));
         /*console.log("????????? json stringify");*/
         //console.log(JSON.stringify(result[0].technologies[0]));
-        var techFilteredObject;
-        var result2 = [];
+        var techFilteredObject; var counter=0;
+        var result2 = []; var techArray = [];
         for (var i = 0; i < result.length; i++) {
           for (const key of Object.keys(result[i].technologies[0])) {
             if(result[i].technologies[0][key].length > 1){
-              console.log("Von Result die Technologien: "+result[i].technologies[0][key] + ", Plus den Key (newarr.indexOf(key) folgt..): "+key);
-              if(newarr.indexOf(key) > -1){
-                console.log("indexOf KEY: "+key);
-                result2.push(result[i]);
-                console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result2));
+              console.log("KEY: "+key); // 1. Durchlauf: t15, t17 vom Such-Beitrag1 // 2. Durchlauf: t15 von Such-Beitrag2
+              if(newarr.indexOf(key) > -1){ // newarr: Angekreuzte Techn. Checkboxen, Beispiel: ["t15", "t17"]
+                counter++;
+                if(counter === newarr.length){
+                  result2.push(result[i]);
+                }
+                // 1. Durchl B1: t15 JA
+                // 2. Durchl B1: t17 JA
+
+                // 1. Durchl B2: t15 JA
               }
             }
           }
         }
         res.json({ status: 1, searchArticles: result2 });
-
-
-        /*for (const key of Object.keys(result[0].technologies[0])) {
-          if(result[0].technologies[0][key].length > 1){
-            console.log("result0 LOOP: "+JSON.stringify(result[0]));
-            techFilteredObject = Object.assign({}, result[0]);
-          }
-        }
-        console.log("techFilteredObject: "+JSON.stringify(techFilteredObject));*/
-
-        /*if(err){
-          res.json(err);
-          res.json({ status: 0 });
-        }
-        else if(result === null){
-          res.json({ status: 0 });
-        }
-        else{
-          res.json({ status: 1, searchArticles: result });
-        }*/
       });
     } else{
       BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
