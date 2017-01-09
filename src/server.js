@@ -262,62 +262,68 @@ app.post('/searchQuery', function(req, res) {
     var searchCategory = req.body.searchCategory;
     var techObject = req.body.techObject;
 
-    console.log("2: "+JSON.stringify(techObject));
-
     var techObjectArray = Object.keys(techObject).map(key => techObject[key].length > 1 ? key : '??');
-    console.log("3: "+JSON.stringify(techObjectArray));
 
     var newarr = techObjectArray.filter(function(a){return a !== '??'})
-    console.log("4: "+JSON.stringify(newarr));
-    console.log("5: "+newarr.length);
 
     if(searchCategory === 'Alles'){ searchCategory=['Artikel', 'Projekt']; }
     if(searchCategory === 'Projekt'){ searchCategory=['Projekt']; }
     if(searchCategory === 'Artikel'){ searchCategory=['Artikel']; }
 
     if(newarr.length > 0){
-      BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
-
-        /*console.log("????????? result1");
-        console.log(result);
-        console.log("????????? result2");*/
-        console.log("ressssasasasasa 111: "+JSON.stringify(result.length));
-        /*console.log("????????? json stringify");*/
-        //console.log(JSON.stringify(result[0].technologies[0]));
-        var techFilteredObject; var counter=0;
-        var result2 = []; var techArray = [];
-        for (var i = 0; i < result.length; i++) {
-          counter=0;
-          for (const key of Object.keys(result[i].technologies[0])) {
-            if(result[i].technologies[0][key].length > 1){
-              console.log("KEY: "+key); // 1. Durchlauf: t15, t17 vom Such-Beitrag1 // 2. Durchlauf: t15 von Such-Beitrag2
-              if(newarr.indexOf(key) > -1){ // newarr: Angekreuzte Techn. Checkboxen, Beispiel: ["t15", "t17"]
-                // t15, t17 -- B1-t15 - YES
-                // t15, t17 -- B1-t17 - YES
-                // t15, t17 -- B1-t19 - NO
-                counter++;
-                console.log("COUNTER: "+counter+", NEWARRAY length: "+newarr.length);
-                if(counter === newarr.length){
-                  result2.push(result[i]);
-                  counter=999;
-                }
-                // 1. Durchl B1: t15 JA
-                // 2. Durchl B1: t17 JA
-
-                // 1. Durchl B2: t15 JA
-              }else{
-                console.log("COUNTER: "+counter+", NEWARRAY length: "+newarr.length);
-                if(counter === newarr.length){
-                  result2.push(result[i]);
-                  counter=999;
+      if(searchQuery.length > 0){
+        BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+          var techFilteredObject; var counter=0;
+          var result2 = [];
+          for (var i = 0; i < result.length; i++) {
+            counter=0;
+            for (const key of Object.keys(result[i].technologies[0])) {
+              if(result[i].technologies[0][key].length > 1){
+                // 1. Durchlauf: t15, t17 vom Such-Beitrag1 // 2. Durchlauf: t15 von Such-Beitrag2
+                if(newarr.indexOf(key) > -1){ // newarr: Angekreuzte Techn. Checkboxen, Beispiel: ["t15", "t17"]
+                  counter++;
+                  if(counter === newarr.length){
+                    result2.push(result[i]);
+                    counter=999;
+                  }
+                } else{
+                  if(counter === newarr.length){
+                    result2.push(result[i]);
+                    counter=999;
+                  }
                 }
               }
-
             }
           }
-        }
-        res.json({ status: 1, searchArticles: result2 });
-      });
+          res.json({ status: 1, searchArticles: result2 });
+        });
+      } else{
+        BlogModel.find({ 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+          var techFilteredObject; var counter=0;
+          var result2 = [];
+          for (var i = 0; i < result.length; i++) {
+            counter=0;
+            for (const key of Object.keys(result[i].technologies[0])) {
+              if(result[i].technologies[0][key].length > 1){
+                // 1. Durchlauf: t15, t17 vom Such-Beitrag1 // 2. Durchlauf: t15 von Such-Beitrag2
+                if(newarr.indexOf(key) > -1){ // newarr: Angekreuzte Techn. Checkboxen, Beispiel: ["t15", "t17"]
+                  counter++;
+                  if(counter === newarr.length){
+                    result2.push(result[i]);
+                    counter=999;
+                  }
+                } else{
+                  if(counter === newarr.length){
+                    result2.push(result[i]);
+                    counter=999;
+                  }
+                }
+              }
+            }
+          }
+          res.json({ status: 1, searchArticles: result2 });
+        });
+      }
     } else{
       BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
         if(err){
