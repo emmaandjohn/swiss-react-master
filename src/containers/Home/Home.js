@@ -79,7 +79,7 @@ export default class Home extends Component {
     }.bind(this));
 
     blogContentDef.push(
-      <div className={'text-center animated fadeIn'}>
+      <div className={'text-center col-xs-12'}>
         <button className={"btn btn-primary " + stylesSuche.search2button + ' ' + styles.mt45} onClick={() => this.goToSearch()}>Mehr Beiträge / Suche</button>
       </div>
     );

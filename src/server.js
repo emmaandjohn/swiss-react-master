@@ -244,15 +244,10 @@ app.post('/deleteProfile', function(req, res) {
         var query11 = {"userUuid": deleteUuid};
         var options11 = {multi: true};
         BlogModel.remove(query11, options11, function(err, result) {
-          if (err) {
-            console.log(err);
-            res.json({ status: 0 });
-          } else{
-            res.json({ status: 1 });
-          }
         });
       }
     });
+    res.json({ status: 1 });
 
 });
 
