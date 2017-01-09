@@ -99,7 +99,7 @@ export default class Suche extends Component {
               <div className={'col-sm-4 col-xs-12 ' + stylesHome.mt5 + ' ' + stylesHome.oh + ' ' + stylesHome.fs18}><strong>{entry.titel}</strong></div>
               <div className={'col-sm-3 col-xs-12 ' + stylesHome.techStyle + ' ' + stylesHome.mt5}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
               <div className={'col-sm-2 col-xs-12 text-right ' + stylesHome.dateStyle + ' ' + stylesHome.mt5 + ' ' + stylesHome.mb10}>{entry.timeFormatted} | <strong>{entry.category}</strong></div>
-            </div><br /><br />
+            </div><br /><br /><br /><br />
           </div>
         );
     }.bind(this));
