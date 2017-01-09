@@ -346,19 +346,15 @@ app.post('/checkUniqueTitle', function(req, res) {
     var tryTitel = req.body.tryTitle;
 
     if(titelOld === tryTitel){ // EditTitle is same as before
-      console.log("titelOld === tryTitel EQUAL");
       res.json({ status: 1 }); // title stays the same, all good...
     }
     else{
-      console.log("logger titles: "+titelOld + " ZZ " + tryTitel);
       var tryTitelConvert = tryTitel.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
       BlogModel.findOne({ urlFriendlyTitel: tryTitelConvert }, function(error, result){
         if(result === null){
-          console.log("titelExtra or titleNew success!");
           res.json({ status: 1 }); /* success */
         } else{
-          console.log("error, title already exists in DB!");
           res.json({ status: 0 }); /* title already exists */
         }
       });

@@ -74,6 +74,11 @@ export default class Suche extends Component {
     });
   }
 
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+        this.searchDB();
+    }
+  }
 
   render() {
     const styles = require('./Suche.scss');
@@ -121,7 +126,7 @@ export default class Suche extends Component {
           <div className="form-group">
             <div className="row">
               <div className="col-xs-12 col-sm-10 col-md-10 col-lg-11">
-                <input type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
+                <input onKeyPress={(event) => this.handleKeyPress(event)} type="text" ref="searchquery" name="searchquery" id="searchquery" placeholder="Suche nach Schlagwörtern" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
               <div className={"col-xs-12 col-sm-2 col-md-2 col-lg-1 text-right " + styles.search2}>
                 <button className={"btn btn-primary " + styles.search2button} onClick={() => this.searchDB()}>Suchen</button>
