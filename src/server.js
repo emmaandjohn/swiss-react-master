@@ -237,18 +237,15 @@ app.post('/activation', function(req, res) {
 /* **** deleteProfile */
 app.post('/deleteProfile', function(req, res) {
     var deleteUuid = req.body.uuid;
-
-    UserModel.remove({ uuid: deleteUuid }, function(error, result){
-      console.log("delete result: "+JSON.stringify(result));
-      if(result !== null){
-        var query11 = {"userUuid": deleteUuid};
-        var options11 = {multi: true};
-        BlogModel.remove(query11, options11, function(err, result) {
-        });
-      }
+    UserModel.remove({ uuid: deleteUuid }, function(err){
+      if (err) return console.log(err);
+      var query11 = {"userUuid": deleteUuid};
+      var options11 = {multi: true};
+      BlogModel.remove(query11, options11, function(err) {
+        if (err) return console.log(err);
+        res.json({ status: 1 });
+      });
     });
-    res.json({ status: 1 });
-
 });
 
 /* **** searchQuery - Suche */
