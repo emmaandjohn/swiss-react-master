@@ -288,16 +288,17 @@ app.post('/searchQuery', function(req, res) {
         var result2 = [];
         for (var i = 0; i < result.length; i++) {
           for (const key of Object.keys(result[i].technologies[0])) {
-            console.log("result[i].technologies[0][key]: "+result[i].technologies[0][key] + ", result[i].technologies[0][key]-LENGHT: "+result[i].technologies[0][key].length);
             if(result[i].technologies[0][key].length > 1){
+              console.log("Von Result die Technologien: "+result[i].technologies[0][key] + ", Plus den Key (newarr.indexOf(key) folgt..): "+key);
               if(newarr.indexOf(key) > -1){
+                console.log("indexOf KEY: "+key);
                 result2.push(result[i]);
                 console.log(key+' ZZZ, Walking east one step: ' + JSON.stringify(result2));
-                res.json({ status: 1, searchArticles: result2 });
               }
             }
           }
         }
+        res.json({ status: 1, searchArticles: result2 });
 
 
         /*for (const key of Object.keys(result[0].technologies[0])) {
