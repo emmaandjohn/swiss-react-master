@@ -287,8 +287,8 @@ app.post('/searchQuery', function(req, res) {
         var techFilteredObject; var counter=0;
         var result2 = []; var techArray = [];
         for (var i = 0; i < result.length; i++) {
+          counter=0;
           for (const key of Object.keys(result[i].technologies[0])) {
-            counter=0;
             if(result[i].technologies[0][key].length > 1){
               console.log("KEY: "+key); // 1. Durchlauf: t15, t17 vom Such-Beitrag1 // 2. Durchlauf: t15 von Such-Beitrag2
               if(newarr.indexOf(key) > -1){ // newarr: Angekreuzte Techn. Checkboxen, Beispiel: ["t15", "t17"]
