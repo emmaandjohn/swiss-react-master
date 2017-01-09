@@ -238,7 +238,7 @@ app.post('/activation', function(req, res) {
 app.post('/deleteProfile', function(req, res) {
     var deleteUuid = req.body.uuid;
 
-    UserModel.findOneAndRemove({ userUuid: deleteUuid }, function(error, result){
+    UserModel.remove({ userUuid: deleteUuid }, function(error, result){
       console.log("delete result: "+JSON.stringify(result));
       if(result !== null){
         var query11 = {"userUuid": deleteUuid};
