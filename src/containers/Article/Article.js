@@ -82,8 +82,10 @@ export default class Article extends Component {
                 <div className={'col-xs-12 ' + styles.pb20}>
                   <h1 className={stylesArticle.hyphens}><span className={stylesArticle.h1BtnStyle}>{specificArticleData.titel + ' '}</span>
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
-                      <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
-                      <button className="btn btn-primary" onClick={() => this.deleteArticle(specificArticleData.articleId)}>Beitrag löschen</button>
+                      <span>
+                        <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
+                        <button className="btn btn-primary" onClick={() => this.deleteArticle(specificArticleData.articleId)}>Beitrag löschen</button>
+                      </span>
                     : null
                     }
                   </h1>

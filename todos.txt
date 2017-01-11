@@ -18,6 +18,8 @@ X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 fb) check alerts register!
 X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
 
+-) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
+
 -) artikel löschen?
 X) Profil löschen funktionalität?
 -) Simple Kommentare von anderen Usern unten eine Artikels?
