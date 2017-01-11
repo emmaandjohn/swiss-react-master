@@ -588,7 +588,7 @@ export default class MyProfile extends Component {
                     {this.state.deleteState === true ?
                       <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}>
                         <Alert bsStyle="danger">
-                          Möchtest du deinen Account wirklich löschen? Alle Beiträge welche du erstellt hast werden ebenfalls gelöscht.<br /><br />
+                          <strong>ACHTUNG!</strong> Dein Account und alle deine Beiträge welche du erstellt hast werden ebenfalls gelöscht! Ganz sicher löschen?<br /><br />
                           <button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfileFinal(1, cookie.load('ck_uuid'))}><i className="fa fa-user-times" aria-hidden="true"></i> Ja wirklich löschen </button> <button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfileFinal(2)}>Abbrechen</button>
                         </Alert>
                       </Col>
