@@ -242,13 +242,17 @@ app.post('/deleteProfile', function(req, res) {
         if (err) return console.log(err);
       });
     });
+
     var query11 = {"userUuid": deleteUuid};
     var options11 = {multi: true};
-    BlogModel.find(query11, options11, function(error, result){
+    var query = BlogModel.find().remove({ query11, options11 });
+    query.exec();
+
+    /*BlogModel.find(query11, options11, function(error, result){
       result.remove(function (err) {
         if (err) return console.log(err);
       });
-    });
+    });*/
 });
 
 /* **** searchQuery - Suche */
