@@ -243,7 +243,6 @@ app.post('/deleteProfile', function(req, res) {
       });
     });
 
-
     var query11 = {"userUuid": deleteUuid};
     var options11 = {multi: true};
 
@@ -255,12 +254,20 @@ app.post('/deleteProfile', function(req, res) {
         doc.remove();
       });
     });
+    res.json({ status: 1 });
+});
 
-    /*BlogModel.find(query11, options11, function(error, result){
+
+/* **** deleteArticles */
+app.post('/deleteArticle', function(req, res) {
+    var deleteArticleID = req.body.deleteArticleID;
+
+    BlogModel.findOne({ "articleId": deleteArticleID }, function(err, result){
       result.remove(function (err) {
         if (err) return console.log(err);
       });
-    });*/
+    });
+    res.json({ status: 1 });
 });
 
 /* **** searchQuery - Suche */

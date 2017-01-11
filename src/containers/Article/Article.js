@@ -53,6 +53,17 @@ export default class Article extends Component {
     this.props.dispatch(push('/community'));
   }
 
+  deleteArticle = (deleteArticleID) => {
+    superagent
+    .post('/deleteArticle')
+    .send({ deleteArticleID: deleteArticleID })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        this.props.dispatch(push('/meinprofil'));
+      }
+    });
+  }
 
   render() {
     const stylesArticle = require('./Article.scss');
@@ -72,6 +83,7 @@ export default class Article extends Component {
                   <h1 className={stylesArticle.hyphens}><span className={stylesArticle.h1BtnStyle}>{specificArticleData.titel + ' '}</span>
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
                       <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
+                      <button className="btn btn-primary" onClick={() => this.deleteArticle(specificArticleData.articleId)}>Beitrag löschen</button>
                     : null
                     }
                   </h1>
