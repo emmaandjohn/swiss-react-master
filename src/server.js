@@ -243,10 +243,18 @@ app.post('/deleteProfile', function(req, res) {
       });
     });
 
+
     var query11 = {"userUuid": deleteUuid};
     var options11 = {multi: true};
-    var query = BlogModel.find().remove({ query11, options11 });
-    query.exec();
+
+    BlogModel.find( query11, options11, function(err,docs){
+      if (err) return console.log(err);
+      if (!docs || !Array.isArray(docs) || docs.length === 0)
+        return console.log('no docs found');
+      docs.forEach( function (doc) {
+        doc.remove();
+      });
+    });
 
     /*BlogModel.find(query11, options11, function(error, result){
       result.remove(function (err) {
