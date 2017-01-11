@@ -20,8 +20,6 @@ X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei t
 
 -) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
 
--) artikel löschen?
-X) Profil löschen funktionalität?
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
 
@@ -40,6 +38,8 @@ low
 ------------------------------------------------------------------------
 
 
+X) artikel löschen?
+X) Profil löschen funktionalität?
 
 X) Vervollständigen Profil (
 birthday,  6

@@ -83,7 +83,7 @@ export default class Article extends Component {
                   <h1 className={stylesArticle.hyphens}><span className={stylesArticle.h1BtnStyle}>{specificArticleData.titel + ' '}</span>
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
                       <span>
-                        <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
+                        <button className="btn btn-primary" onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button> 
                         <button className="btn btn-primary" onClick={() => this.deleteArticle(specificArticleData.articleId)}>Beitrag löschen</button>
                       </span>
                     : null
