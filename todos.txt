@@ -29,7 +29,6 @@ low
 -) Kantonsnamen anzeigen - Myprofile und Tooltips
 -) Privacy policy, agb etc. in footer
 
--) Bei Logout: Message erfolgreich ausgeloggt. (nach dispatch.push machbar)
 -) loadAuth entfernen?
 
 -) Werbung, Social-Seiten
