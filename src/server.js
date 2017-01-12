@@ -79,7 +79,7 @@ var blogSchema = new mongoose.Schema({
   articleId: String,
   urlFriendlyTitel: String
 });
-blogSchema.index({category: 'text', titel: 'text', markup: 'text'});
+blogSchema.index({titel: 'text', markup: 'text', userNickname: 'text'});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -286,7 +286,7 @@ app.post('/searchQuery', function(req, res) {
 
     if(newarr.length > 0){
       if(searchQuery.length > 0){
-        BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+        BlogModel.find({ $text:{$search:searchQuery}, { score : { $meta: "textScore" } }, 'category': {$in: searchCategory} }).sort({ score : { $meta : 'textScore' } }).exec(function(err, result) {
           var techFilteredObject; var counter=0;
           var result2 = [];
           for (var i = 0; i < result.length; i++) {
