@@ -79,7 +79,7 @@ var blogSchema = new mongoose.Schema({
   articleId: String,
   urlFriendlyTitel: String
 });
-blogSchema.index({titel: 'text', markup: 'text', userNickname: 'text'});
+blogSchema.index({userNickname: 'text', titel: 'text', markup: 'text'});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
