@@ -286,7 +286,7 @@ app.post('/searchQuery', function(req, res) {
 
     if(newarr.length > 0){
       if(searchQuery.length > 0){
-        BlogModel.find({ $text:{$search:searchQuery}, { score : { $meta: "textScore" } }, 'category': {$in: searchCategory} }).sort({ score : { $meta : 'textScore' } }).exec(function(err, result) {
+        BlogModel.find({ $text:{$search:searchQuery}, 'category': {$in: searchCategory} }).sort({ score : { $meta : 'textScore' } }).exec(function(err, result) {
           var techFilteredObject; var counter=0;
           var result2 = [];
           for (var i = 0; i < result.length; i++) {
