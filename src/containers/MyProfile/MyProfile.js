@@ -31,7 +31,7 @@ export default class MyProfile extends Component {
   componentDidMount() {
     let syncUserUuid = cookie.load('ck_uuid');
 
-    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
+    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) }); }
 
     superagent
     .post('/syncUserData')
