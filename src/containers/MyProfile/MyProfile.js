@@ -428,7 +428,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Passwort</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                         {this.state.show5a === true ?
-                          <div>{getPassword === null ? 'Keine Angabe' : getPassword.replace(/./g, '*') } <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show5a(false)}><i className="fa fa-pencil"/></Button></div>
+                          <div>{getPassword === null ? 'Keine Angabe' : getPassword } <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show5a(false)}><i className="fa fa-pencil"/></Button></div>
                         :
                           <div>
                             <div className={styles.m15 + ' ' + styles.m0p0}>
