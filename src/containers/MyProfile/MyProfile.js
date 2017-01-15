@@ -53,6 +53,10 @@ export default class MyProfile extends Component {
     });
   }
 
+  componentWillUnmount() {
+    cookie.save('ck_tempUserID', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+  }
+
   state = {
     formStatus: 0,
     formMsg: '',
