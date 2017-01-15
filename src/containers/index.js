@@ -14,4 +14,5 @@ export Article from './Article/Article';
 export Activation from './Activation/Activation';
 export Forgot from './Forgot/Forgot';
 export MyProfile from './MyProfile/MyProfile';
+export User from './User/User';
 export Suche from './Suche/Suche';

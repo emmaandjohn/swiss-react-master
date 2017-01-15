@@ -26,10 +26,12 @@ import { msgBox } from '../../redux/actions/msgBoxActions';
   };
 })
 
-export default class MyProfile extends Component {
+export default class User extends Component {
 
   componentDidMount() {
     let syncUserUuid = cookie.load('ck_uuid');
+
+    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
 
     superagent
     .post('/syncUserData')
@@ -138,6 +140,8 @@ export default class MyProfile extends Component {
           cookie.save('ck_social_xing', res.body.userData.socialXing, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
           cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
+          cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+
           this.props.dispatch(updateUser(whichFieldDef, newValueDef, res.body.userData));
           this.modalClose();
           this.show1a(true); this.show2a(true); this.show3a(true); this.show4a(true); this.show5a(true); this.show6a(true); this.show7a(true); this.show8a(true); this.show9a(true); this.show10a(true); this.show11a(true);
@@ -213,7 +217,6 @@ export default class MyProfile extends Component {
           cookie.remove('ck_tempEditArt', { path: '/' });
           cookie.remove('ck_userLoggedIn', { path: '/' });
           cookie.remove('ck_uuid', { path: '/' });
-          cookie.remove('ck_tempUserID', { path: '/' });
 
           /* Reload State with LoggedOut User-State */
           this.props.dispatch(activateNewUser(true, false));
@@ -232,7 +235,7 @@ export default class MyProfile extends Component {
   render() {
     const { syncUserDataState, getUserState, getUserContentState, activateNewUserState, updateUserState } = this.props;
     const { formStatus, formMsg, showModalMale, showModalFemale, showModalFlags } = this.state;
-    const styles = require('./MyProfile.scss');
+    const styles = require('./User.scss');
     const stylesHome = require('../Home/Home.scss');
     const stylesCommunity = require('../Community/Community.scss');
 
@@ -388,7 +391,7 @@ export default class MyProfile extends Component {
               <Row>
                 <Col xs={12}>
                   {this.state.show1a === true ?
-                    <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button> </h1>
+                    <h1>{getNickname} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button> : null }</h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={(event) => this.handleKeyPress(event, 'nickname', this.refs.nickname.value)} />
@@ -408,6 +411,7 @@ export default class MyProfile extends Component {
                         <Col xs={4}>
                           <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                         </Col>
+                        { cookie.load('ck_tempUserID') === 'false' ?
                         <Col xs={8}>
                           <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
                             <i className="fa fa-male" />
@@ -416,17 +420,24 @@ export default class MyProfile extends Component {
                             <i className="fa fa-female" />
                           </Button>
                         </Col>
+                        : null }
                       </Row>
                     </Col>
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Mitglied seit</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>{syncMembersince}</Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Email</Col>
-                    <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>{syncEmail}</Col>
+                    { cookie.load('ck_tempUserID') === 'false' ?
+                    <span>
+                      <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Email</Col>
+                      <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>{syncEmail}</Col>
+                    </span>
+                    : null }
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Passwort</Col>
-                    <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
+                    { cookie.load('ck_tempUserID') === 'false' ?
+                    <span>
+                      <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Passwort</Col>
+                      <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                         {this.state.show5a === true ?
                           <div>{getPassword === null ? 'Keine Angabe' : getPassword} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show5a(false)}><i className="fa fa-pencil"/></Button></div>
                         :
@@ -439,12 +450,16 @@ export default class MyProfile extends Component {
                             </div>
                           </div>
                         }
-                    </Col>
+                      </Col>
+                    </span>
+                    : null }
+
+
 
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Job</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show2a === true ?
-                        <div>{getJob === null ? 'Keine Angabe' : getJob} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getJob === null ? 'Keine Angabe' : getJob} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show2a(false)}><i className="fa fa-pencil"/></Button> : null }</div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -460,7 +475,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Firma</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show3a === true ?
-                        <div>{getCompany === null ? 'Keine Angabe' : getCompany} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getCompany === null ? 'Keine Angabe' : getCompany} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show3a(false)}><i className="fa fa-pencil"/></Button> : null }</div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -476,7 +491,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}>Geburtstag</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show6a === true ?
-                        <div>{getBirthday === null ? 'Keine Angabe' : getBirthday} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show6a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getBirthday === null ? 'Keine Angabe' : getBirthday} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show6a(false)}><i className="fa fa-pencil"/></Button> : null }</div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -492,7 +507,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}><i className={"fa fa-github " + styles.famr16} aria-hidden="true"></i> Github</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show7a === true ?
-                        <div>{getSocialGithub === null ? 'Keine Angabe' : getSocialGithub} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show7a(false)}><i className="fa fa-pencil"/></Button> </div>
+                        <div>{getSocialGithub === null ? 'Keine Angabe' : getSocialGithub} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show7a(false)}><i className="fa fa-pencil"/></Button> : null } </div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -508,7 +523,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}><i className={"fa fa-facebook " + styles.famr16} aria-hidden="true"></i> Facebook</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show8a === true ?
-                        <div>{getSocialFb === null ? 'Keine Angabe' : getSocialFb} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show8a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialFb === null ? 'Keine Angabe' : getSocialFb} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show8a(false)}><i className="fa fa-pencil"/></Button> : null }</div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -524,7 +539,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}><i className={"fa fa-twitter " + styles.famr16} aria-hidden="true"></i> Twitter</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show9a === true ?
-                        <div>{getSocialTwitter === null ? 'Keine Angabe' : getSocialTwitter} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show9a(false)}><i className="fa fa-pencil"/></Button> </div>
+                        <div>{getSocialTwitter === null ? 'Keine Angabe' : getSocialTwitter} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show9a(false)}><i className="fa fa-pencil"/></Button> : null } </div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -540,7 +555,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}><i className={"fa fa-xing " + styles.famr16} aria-hidden="true"></i> Xing</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show10a === true ?
-                        <div>{getSocialXing === null ? 'Keine Angabe' : getSocialXing} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show10a(false)}><i className="fa fa-pencil"/></Button> </div>
+                        <div>{getSocialXing === null ? 'Keine Angabe' : getSocialXing} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show10a(false)}><i className="fa fa-pencil"/></Button> : null } </div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -556,7 +571,7 @@ export default class MyProfile extends Component {
                     <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} sm={4} xs={12}><i className={"fa fa-globe " + styles.famr16} aria-hidden="true"></i> Website</Col>
                     <Col className={styles.m15v2 + ' ' + styles.topLine2} sm={8} xs={12}>
                       {this.state.show11a === true ?
-                        <div>{getSocialWebsite === null ? 'Keine Angabe' : getSocialWebsite} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show11a(false)}><i className="fa fa-pencil"/></Button></div>
+                        <div>{getSocialWebsite === null ? 'Keine Angabe' : getSocialWebsite} { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show11a(false)}><i className="fa fa-pencil"/></Button> : null }</div>
                       :
                         <div>
                           <div className={styles.m15 + ' ' + styles.m0p0}>
@@ -569,7 +584,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
 
-                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button></Col>
+                    <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.font999} xs={12}>Über dich { cookie.load('ck_tempUserID') === 'false' ? <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show4a(false)}><i className="fa fa-pencil"/></Button> : null }</Col>
                     <Col className={styles.m15 + ' ' + styles.pb20border} xs={12}>
                       {this.state.show4a === true ?
                         <div className={styles.makeItalic + ' ' + styles.whiteSpacePreWrap}>{getDescription}</div>
@@ -584,7 +599,8 @@ export default class MyProfile extends Component {
                         </div>
                       }
                     </Col>
-                    { this.state.deleteState === true ?
+                    { cookie.load('ck_tempUserID') === 'false' ?
+                    this.state.deleteState === true ?
                       <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}>
                         <Alert bsStyle="danger">
                           <strong>ACHTUNG!</strong> Dein Account und alle deine Beiträge welche du erstellt hast werden ebenfalls gelöscht! Ganz sicher löschen?<br /><br />
@@ -593,7 +609,8 @@ export default class MyProfile extends Component {
                       </Col>
                     :
                       <Col className={styles.m15 + ' ' + styles.topLine2 + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
-                    }
+
+                    : null }
               </Col>
 
               <Col className={styles.mb35} xs={12} sm={6}>
@@ -602,22 +619,26 @@ export default class MyProfile extends Component {
                     <Col xs={4}>
                       <div className={flagClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                     </Col>
+                    { cookie.load('ck_tempUserID') === 'false' ?
                     <Col xs={8}>
                       <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(3)}>
                         <span><i className={"fa fa-search " + styles.famr4} /> Kanton auswählen</span>
                       </Button>
                     </Col>
+                    : null }
                   </Row>
                 </Col>
+                { cookie.load('ck_tempUserID') === 'false' ?
                   <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}><button className="btn btn-primary" onClick={() => this.goToCommunity()}><i className="fa fa-plus" aria-hidden="true"></i> Projekt/Artikel</button></Col>
+                : null }
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
-                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> 'Deine Projekte' : 'Projekte' }</h3>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitlePro}><span className={styles.logoBrand}/> { cookie.load('ck_tempUserID') === 'false' ? 'Deine Projekte' : 'Projekte' }</h3>
                   <Row>
                     {UserContentProjekte.length < 1 ? <Col xs={12} className={styles.makeItalic}>Noch keine Projekte</Col> : UserContentProjekte}
                   </Row>
                 </Col>
                 <Col className={styles.m15 + ' well ' + styles.topLine} xs={12}>
-                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}><span className={styles.logoBrand}/> 'Deine Artikel' : 'Artikel' }</h3>
+                  <h3 className={styles.categoryTitle + ' ' + styles.categoryTitleArt}><span className={styles.logoBrand}/> { cookie.load('ck_tempUserID') === 'false' ? 'Deine Artikel' : 'Artikel' }</h3>
                   <Row>
                     {UserContentArtikel.length < 1 ? <Col xs={12} className={styles.makeItalic}>Noch keine Artikel</Col> : UserContentArtikel}
                   </Row>

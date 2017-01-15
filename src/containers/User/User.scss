@@ -1,0 +1,318 @@
+.col00{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.categoryTitle{
+  padding: 12px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: -2px;
+  margin-top: 14px;
+  color: #fff;
+}
+.categoryTitlePro, .categoryTitleArt{
+  color: #d52b1e;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.famr4{
+  margin-right: 4px;
+}
+.famr16{
+  width: 16px;
+}
+.logoBrand {
+  	background: url("//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/home/logo.png") no-repeat 50%;
+  	width: 40px;
+  	height: 40px;
+  	background-size: 80%;
+  	border-radius: 20px;
+  	float: left;
+  	margin-top: -7px;
+  	margin-right: 6px;
+}
+.avatarRound {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    box-shadow: 2px 3px 7px #ccc;
+    margin-bottom: 20px;
+    float: left;
+}
+.avatarMini {
+    width: 30px;
+    height: 30px;
+    box-shadow: 1px 1px 2px #ccc;
+    float: left;
+}
+.avatarMain {
+    margin-bottom: 3px;
+}
+.avatarMiniProfile {
+    width: 35px;
+    height: 35px;
+    box-shadow: 1px 1px 2px #ccc;
+    float: left;
+    margin-top: 6px;
+}
+.btnAvatar {
+  margin-right: 3px;
+  margin-top: 12px;
+  margin-left: 1px;
+  padding: 4px 12px;
+  font-size: 15px;
+  margin-bottom: 13px;
+  border: 1px solid #ddd;
+}
+.btnEdit {
+  padding: 4px 10px;
+  font-size: 10px;
+  border: 1px solid #ddd;
+}
+.btnSave{
+  padding: 4px 10px;
+  font-size: 10px;
+  margin-top: -1px;
+  margin-left: 9px;
+  border: 1px solid #ddd;
+}
+.btnSaveTextarea{
+  margin-left: 0 !important;
+  margin-top: 5px;
+  float: right;
+  border: 1px solid #ddd;
+}
+.headline {
+  font-size: 16px;
+  margin-top: 22px;
+}
+.m5 {
+  margin-top: 5px;
+}
+.m15 {
+  margin-top: 11px;
+  padding-top: 9px;
+  min-height: 35px;
+}
+.m15v2 {
+  margin-top: 11px;
+  padding-top: 9px;
+  min-height: 35px;
+}
+.pb20border{}
+.mb10 {
+  margin-bottom: 9px !important;
+}
+.mb35 {
+  margin-bottom: 35px;
+}
+.m0p0{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.pro70 {
+  width: 70%;
+}
+.topLine {
+  border-top: 1px solid #ddd;
+}
+.topLine2 {
+  border-top: 1px solid #ddd;
+}
+.fixFormStyle{
+  max-height: 27px;
+  margin-right: -5px !important;
+}
+.fixTextarea{
+  min-height: 100px;
+}
+.makeItalic{
+  font-style: italic;
+}
+.plusAP{
+  padding-left: 0px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.btnDelete{
+  opacity: 0.6;
+}
+.whiteSpacePreWrap{
+  white-space:: pre-wrap;
+}
+.font999{
+  color: #999999;
+}
+.clickElement{
+  cursor: pointer; cursor: hand;
+}
+.avatar1{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_01.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar2{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_02.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar3{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_03.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar4{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_04.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar5{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_05.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar6{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_06.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar7{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_07.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar8{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_08.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar9{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_09.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar10{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_10.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar11{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_11.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar12{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_12.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar13{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_13.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar14{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_14.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar15{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_15.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar16{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_16.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar17{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_17.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar18{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_18.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar19{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_19.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar20{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_20.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar21{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_21.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar22{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_22.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar23{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_23.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar24{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_24.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar25{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/m/avatar_m_25.jpg') no-repeat center center; background-size: cover; background-position: center;}
+
+.avatar26{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_01.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar27{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_02.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar28{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_03.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar29{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_04.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar30{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_05.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar31{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_06.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar32{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_07.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar33{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_08.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar34{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_09.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar35{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_10.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar36{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_11.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar37{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_12.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar38{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_13.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar39{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_14.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar40{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_15.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar41{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_16.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar42{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_17.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar43{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_18.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar44{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_19.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar45{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_20.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar46{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_21.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar47{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_22.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar48{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_23.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar49{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_24.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.avatar50{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/f/avatar_f_25.jpg') no-repeat center center; background-size: cover; background-position: center;}
+
+.flag0{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag0.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag1{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag1.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag2{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag2.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag3{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag3.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag4{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag4.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag5{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag5.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag6{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag6.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag7{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag7.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag8{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag8.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag9{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag9.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag10{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag10.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag11{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag11.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag12{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag12.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag13{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag13.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag14{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag14.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag15{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag15.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag16{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag16.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag17{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag17.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag18{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag18.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag19{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag19.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag20{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag20.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag21{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag21.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag22{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag22.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag23{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag23.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag24{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag24.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag25{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag25.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag26{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag26.jpg') no-repeat center center; background-size: cover; background-position: center;}
+.flag27{background: #ffffff url('//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/myprofile/flags/flag27.jpg') no-repeat center center; background-size: cover; background-position: center;}
+
+.formControlP {
+  width: 100%;
+  height: 26px;
+  padding: 6px 12px;
+  background-color: #f9f9f9;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-top: 1px;
+}
+
+.wellLayouting{ margin-bottom: 11px; }
+.dateStyle{
+  font-size: 10px;
+  font-style: italic;
+  color: grey;
+}
+
+.myprofilePage {
+  h3{
+    margin-top: 0px;
+  }
+  input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 6px;
+  }
+  form {
+    margin: 30px 0;
+    :global(.btn) {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 982px) {
+  .myprofilePage {
+    .wellLayouting{
+      right: 15px;
+      top: 7px;
+      margin-bottom: 11px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .myprofilePage {
+    .wellLayouting{
+      right: 8%;
+      top: 5px;
+      margin-bottom: 11px;
+    }
+    .topLine2 {
+      border-top: none;
+    }
+    .pb20border{
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .m15v2 {
+      margin-top: 0;
+      padding-top: 0;
+      margin-bottom: -14px;
+      min-height: 35px;
+    }
+    h3{
+      margin-top: 0px;
+    }
+    form {
+      :global(.btn) {
+        margin-left: 0px;
+      }
+    }
+    input {
+      margin-right: 0px;
+    }
+    .btnSpacer{
+      margin-right: 10px;
+    }
+    .container{
+      margin-top: 20px !important;
+    }
+  }
+}

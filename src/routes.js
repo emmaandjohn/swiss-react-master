@@ -16,6 +16,7 @@ import {
     Kontakt,
     Community,
     MyProfile,
+    User,
     //Survey,
     NotFound,
     Suche,
@@ -63,7 +64,7 @@ export default (store) => {
       <Route path="community" component={Community}/>
       <Route path="community/:id" component={Article}/>
       <Route path="meinprofil" component={MyProfile}/>
-      <Route path="user" component={MyProfile}/>
+      <Route path="user/:nickname" component={User}/>
       <Route path="suche" component={Suche}/>
       { /*<Route path="survey" component={Survey}/>
         <Route path="widgets" component={Widgets}/> */ }
