@@ -1,5 +1,5 @@
 export default function reducer(state={
-    msgBoxStatus: {
+    msgcontent: {
       status: false,
       msg: null
     },
@@ -8,7 +8,7 @@ export default function reducer(state={
       case 'MSG_BOX_FULFILLED': {
         return {
           ...state,
-          msgBoxStatus: action.payload,
+          msgcontent: action.payload,
         };
       }
     }
