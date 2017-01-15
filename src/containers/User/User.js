@@ -445,7 +445,7 @@ export default class User extends Component {
                             <div className={styles.m15 + ' ' + styles.m0p0}>
                               <div>
                                 <input type="text" ref="pw" name="pw" id="pw" className={styles.fixFormStyle + ' ' + styles.pro70} defaultValue={getPassword !== null ? getPassword : null} placeholder={getPassword === null ? 'Keine Angabe' : getPassword} onKeyPress={(event) => this.handleKeyPress(event, 'password', this.refs.pw.value)} />
-                                <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('password', this.refs.password.value)}><i className="fa fa-check"/></Button>
+                                <Button bsSize="small" className={styles.btnSave} onClick={() => this.updateUserProfile('password', this.refs.pw.value)}><i className="fa fa-check"/></Button>
                               </div>
                             </div>
                           </div>

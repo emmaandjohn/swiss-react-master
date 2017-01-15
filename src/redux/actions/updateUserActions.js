@@ -1,5 +1,5 @@
 export function updateUser(whichField, newValue, userData){
-  var pw = userData.pw;
+  var password = userData.password;
   var birthday = userData.birthday;
   var avatar = userData.avatar;
   var nickname = userData.nickname;
@@ -14,7 +14,7 @@ export function updateUser(whichField, newValue, userData){
   var socialXing = userData.socialXing;
   var socialWebsite = userData.socialWebsite;
 
-  if(whichField === 'pw'){pw = newValue;}
+  if(whichField === 'password'){password = newValue;}
   if(whichField === 'birthday'){birthday = newValue;}
   if(whichField === 'avatar'){avatar = newValue;}
   if(whichField === 'nickname'){nickname = newValue;}
@@ -28,12 +28,12 @@ export function updateUser(whichField, newValue, userData){
   if(whichField === 'socialLinkedin'){socialLinkedin = newValue;}
   if(whichField === 'socialXing'){socialXing = newValue;}
   if(whichField === 'socialWebsite'){socialWebsite = newValue;}
-  
+
   return function(dispatch) {
     dispatch({
       type: 'UPDATE_USER_FULFILLED',
       payload: {
-        pw: pw,
+        password: password,
         birthday: birthday,
         avatar: avatar,
         nickname: nickname,

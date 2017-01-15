@@ -1,6 +1,6 @@
 export default function reducer(state={
     user: {
-      pw: null,
+      password: null,
       birthday: null,
       avatar: null,
       nickname: null,
