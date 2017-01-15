@@ -116,17 +116,10 @@ export default class Article extends Component {
                     }
                   </h1>
                 </div>
-                {cookie.load('ck_tempUserID') !== 'false' ?
-                  <div className='col-sm-3 col-xs-12 cpointer' onClick={() => this.checkProfile(specificArticleData.userUuid)}>
-                    <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
-                    <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
-                  </div>
-                :
-                <div className='col-sm-3 col-xs-12'>
+                <div className='col-sm-3 col-xs-12 cpointer' onClick={() => this.checkProfile(specificArticleData.userUuid)}>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
-                }
                 <div className='col-sm-9 col-xs-12'>
                   <div className={'col-xs-12 ' + stylesArticle.pb7 + ' ' + stylesArticle.mt20m}>Autor: <strong>{specificArticleData.userNickname}</strong></div>
                   <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}>{specificArticleTechData}</div>
