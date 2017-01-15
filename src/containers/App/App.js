@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { IndexLink } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
+import { Navbar, Nav, NavItem, Alert } from 'react-bootstrap/lib';
 import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
@@ -18,6 +16,7 @@ import Loader from 'react-loader-advanced';
 /* Import here only for Dispatchers */
 import { getUser } from '../../redux/actions/getUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
+import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -38,6 +37,7 @@ import { activateNewUser } from '../../redux/actions/activateNewUserActions';
   return {
     getUserState: store.getUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
+    msgBoxState: store.msgBox.msgBoxState,
   };
 })
 
@@ -88,19 +88,16 @@ export default class App extends Component {
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
+      this.props.dispatch(msgBox(true, "Du hast dich erfolgreich ausgeloggt!"));
     }
 
     onNavbarToggle = () => {
       this.setState({ navExpanded: ! this.state.navExpanded });
     }
-    /*handleLogout = (event) => {
-      event.preventDefault();
-      this.props.logout();
-    }*/
 
     render() {
       const styles = require('./App.scss');
-      const { getUserState, activateNewUserState } = this.props;
+      const { getUserState, activateNewUserState, msgBoxState } = this.props;
 
       return (
         <div className={styles.app}>
@@ -147,6 +144,12 @@ export default class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </Loader>
+          {(msgBoxState.state === true ?
+          <div className={styles.msgBox}>
+            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: msgBoxState.msg}}></div></Alert>
+          </div>
+          :
+          null }
           <div className={styles.appContent}>
             {this.props.children}
           </div>

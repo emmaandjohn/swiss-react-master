@@ -8,10 +8,12 @@ import { Link } from 'react-router';
 
 /* Import here only for Dispatchers */
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
+import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @connect((store) => {
   return {
     activateNewUserState: store.activateNewUser.userStatus,
+    msgBoxState: store.msgBox.msgBoxState,
   };
 })
 
@@ -33,6 +35,7 @@ export default class Login extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if (res.body.status === 1) {
+          if(res.body.userData.nickname === null){res.body.userData.nickname = 'noob';}
           this.setState({formStatus: 2});
           this.setState({formMsg: 'Login erfolgreich! Willkommen zurück <strong>' + res.body.userData.nickname + '</strong>!'});
 

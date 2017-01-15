@@ -16,6 +16,7 @@ import getSearchEntries from './getSearchEntriesReducer';
 import updateUser from './updateUserReducer';
 import syncUserData from './syncUserDataReducer';
 import getUserContent from './getUserContentReducer';
+import msgBox from './msgBoxReducer';
 
 export default combineReducers({
   routing: routerReducer,
@@ -36,5 +37,7 @@ export default combineReducers({
   getSearchEntries,
   updateUser,
   syncUserData,
-  getUserContent
+  syncUserData,
+  getUserContent,
+  msgBox
 });
