@@ -52,7 +52,7 @@ export default class Article extends Component {
 
   checkProfile = (id, nickname) => {
     cookie.save('ck_tempUserID', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-    this.props.dispatch(push('user/'+nickname));
+    this.props.dispatch(push('/user/'+nickname));
   }
 
   editArticle = (id) => {
