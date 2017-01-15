@@ -91,7 +91,7 @@ export default class App extends Component {
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
-      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <i className="closing fa fa-remove" aria-hidden="true" onClick='{() => this.closeThat()}'></i>'));
+      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <i className="closing fa fa-remove" aria-hidden="true"></i>'));
     }
 
     onNavbarToggle = () => {
@@ -148,7 +148,7 @@ export default class App extends Component {
             </Navbar>
           </Loader>
           { msgBoxState.status === true ?
-          <div className={styles.msgBox}>
+          <div className={styles.msgBox} onClick={() => this.closeThat()}>
             <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: msgBoxState.msg}}></div></Alert>
           </div>
           : null
