@@ -64,6 +64,7 @@ export default class Login extends Component {
           cookie.save('ck_social_website', res.body.userData.socialWebsite, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
           cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+          cookie.save('ck_tempUserID', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
 
           this.props.dispatch(push('/meinprofil'));
           scroll(0,0);

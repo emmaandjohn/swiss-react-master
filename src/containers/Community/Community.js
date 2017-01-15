@@ -57,6 +57,7 @@ export default class RichEditorExample extends Component {
   componentDidMount() {
     /* EDIT ARTICLE MODE */
     this.setState({editModeOnSwitchBtn: 0})
+
     if(cookie.load('ck_tempEditArt') !== 'false'){
       this.setState({editModeOnSwitchBtn: 1})
 
@@ -99,6 +100,7 @@ export default class RichEditorExample extends Component {
 
   componentWillUnmount() {
     cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+    cookie.save('ck_tempUserID', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
   }
 
   _handleKeyCommand(command) {

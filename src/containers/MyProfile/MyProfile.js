@@ -215,6 +215,7 @@ export default class MyProfile extends Component {
           cookie.remove('ck_tempEditArt', { path: '/' });
           cookie.remove('ck_userLoggedIn', { path: '/' });
           cookie.remove('ck_uuid', { path: '/' });
+          cookie.remove('ck_tempUserID', { path: '/' });
 
           /* Reload State with LoggedOut User-State */
           this.props.dispatch(activateNewUser(true, false));
@@ -389,7 +390,7 @@ export default class MyProfile extends Component {
               <Row>
                 <Col xs={12}>
                   {this.state.show1a === true ?
-                    <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}><i className="fa fa-pencil"/></Button></h1>
+                    <h1>{getNickname} <Button bsSize="small" className={styles.btnEdit} onClick={() => this.show1a(false)}>{ cookie.load('ck_tempUserID') === 'false' ? <i className="fa fa-pencil"/></Button> : null }</h1>
                   :
                     <div className={styles.mb10 + ' ' + styles.headline}>
                         <input className={styles.fixFormStyle} type="text" ref="nickname" name="nickname" id="nickname" defaultValue={getNickname} onKeyPress={(event) => this.handleKeyPress(event, 'nickname', this.refs.nickname.value)} />
@@ -409,6 +410,7 @@ export default class MyProfile extends Component {
                         <Col xs={4}>
                           <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
                         </Col>
+                        { cookie.load('ck_tempUserID') === 'false' ?
                         <Col xs={8}>
                           <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>
                             <i className="fa fa-male" />
@@ -417,6 +419,7 @@ export default class MyProfile extends Component {
                             <i className="fa fa-female" />
                           </Button>
                         </Col>
+                        : null }
                       </Row>
                     </Col>
 
