@@ -91,7 +91,7 @@ export default class App extends Component {
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
-      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <i onClick={() => this.closeThat()} className="closing fa fa-remove" aria-hidden="true"></i>'));
+      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <i className="closing fa fa-remove" aria-hidden="true" onClick='{() => this.closeThat()}'></i>'));
     }
 
     onNavbarToggle = () => {
