@@ -99,8 +99,10 @@ export default class Article extends Component {
                         { artDeleteStatus === false ?
                           <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle()}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button>
                         :
-                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleDef(specificArticleData.articleId)}><i className="fa fa-remove" aria-hidden="true"></i> Wirklich löschen?</button>
-                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleRevert()}><i className="fa fa-remove" aria-hidden="true"></i></button>
+                          <span>
+                            <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleDef(specificArticleData.articleId)}><i className="fa fa-remove" aria-hidden="true"></i> Wirklich löschen?</button>
+                            <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleRevert()}><i className="fa fa-remove" aria-hidden="true"></i></button>
+                          </span>
                         }
                       </span>
                     : null

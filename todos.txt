@@ -16,8 +16,7 @@ X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 -) loader icon
 
 X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
-
--) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
+fb) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
 
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) Userprofil eines anderen anschauen können
