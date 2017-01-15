@@ -1,9 +1,10 @@
-export function msgBox(msgBoxStatus) {
+export function msgBox(status, msg) {
   return function(dispatch) {
     dispatch({
       type: 'MSG_BOX_FULFILLED',
       payload: {
-        msgBoxStatus: msgBoxStatus
+        status: status,
+        msg: msg
       }
     });
   };
