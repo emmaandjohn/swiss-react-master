@@ -84,7 +84,7 @@ export default class Article extends Component {
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
                       <span>
                         <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
-                        <button className="btn btn-primary" onClick={() => this.deleteArticle(specificArticleData.articleId)}>Beitrag löschen</button>
+                        <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle(specificArticleData.articleId)}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button>
                       </span>
                     : null
                     }

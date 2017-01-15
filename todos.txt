@@ -1,5 +1,4 @@
 
--) userNickname Search geht nicht
 X) artikel url ändert nicht nachdem artikel geändert
 X) Artikel und Projekt badges (rot und black)
 ^X) Mobile zoom unterbinden - ios10 issue!
@@ -14,8 +13,8 @@ X) Codeblock Keyboard handling? 2x enter mehr bei EditMode!
 X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 
 
+-) loader icon
 
-fb) check alerts register!
 X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
 
 -) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
@@ -26,6 +25,7 @@ X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei t
 
 low
 ------------
+-) userNickname Search geht nicht
 -) Kantonsnamen anzeigen - Myprofile und Tooltips
 -) Privacy policy, agb etc. in footer
 
@@ -37,6 +37,8 @@ low
 ------------------------------------------------------------------------
 
 
+
+X) check alerts register!
 X) artikel löschen?
 X) Profil löschen funktionalität?
 
