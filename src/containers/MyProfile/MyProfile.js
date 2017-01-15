@@ -605,7 +605,7 @@ export default class MyProfile extends Component {
                       }
                     </Col>
                     { cookie.load('ck_tempUserID') === 'false' ?
-                    {this.state.deleteState === true ?
+                    this.state.deleteState === true ?
                       <Col className={styles.m15 + ' ' + styles.topLine + ' ' + styles.plusAP} xs={12}>
                         <Alert bsStyle="danger">
                           <strong>ACHTUNG!</strong> Dein Account und alle deine Beiträge welche du erstellt hast werden ebenfalls gelöscht! Ganz sicher löschen?<br /><br />
@@ -614,7 +614,7 @@ export default class MyProfile extends Component {
                       </Col>
                     :
                       <Col className={styles.m15 + ' ' + styles.topLine2 + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
-                    }
+                    
                     : null }
               </Col>
 
