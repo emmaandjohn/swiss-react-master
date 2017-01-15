@@ -29,7 +29,7 @@ import { msgBox } from '../../redux/actions/msgBoxActions';
 export default class MyProfile extends Component {
 
   componentDidMount() {
-    console.log("sadsda: "+ cookie.load('ck_tempUserID'););
+    console.log("sadsda: "+ cookie.load('ck_tempUserID'));
     let syncUserUuid = cookie.load('ck_uuid');
 
     if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
