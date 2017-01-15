@@ -51,9 +51,7 @@ export default class Article extends Component {
   }
 
   checkProfile = (id, nickname) => {
-    if(id !== cookie.load('ck_uuid')){
-      cookie.save('ck_tempUserID', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-    }
+    cookie.save('ck_tempUserID', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
     this.props.dispatch(push('user/'+nickname));
   }
 
