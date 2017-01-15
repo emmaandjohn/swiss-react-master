@@ -31,8 +31,7 @@ export default class MyProfile extends Component {
   componentDidMount() {
     let syncUserUuid = cookie.load('ck_uuid');
 
-    console.log("tempuuid: "+cookie.load('ck_tempUserID'));
-    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); console.log("yep fremd user: " + syncUserUuid); }
+    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
 
     superagent
     .post('/syncUserData')
