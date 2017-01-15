@@ -5,6 +5,7 @@ import superagent from 'superagent';
 import { Well, Alert, Button } from 'react-bootstrap/lib';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
+import { push } from 'react-router-redux';
 
 /* Import here only for Dispatchers */
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';

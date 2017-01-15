@@ -72,7 +72,7 @@ export default class Article extends Component {
       if(res.body.status === 1) {
         this.props.dispatch(push('/meinprofil'));
         scroll(0,0);
-        this.props.dispatch(msgBox(true, 'Der Artikel wurde erfolgreich gelöscht! <i class="fa fa-remove" aria-hidden="true"></i>'));
+        this.props.dispatch(msgBox(true, 'Der Artikel wurde erfolgreich gelöscht! <u>Schliessen</u>'));
       }
     });
   }
@@ -97,7 +97,7 @@ export default class Article extends Component {
                       <span>
                         <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
                         { artDeleteStatus === false ?
-                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle()}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button> 
+                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle()}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button>
                         :
                           <span>
                             <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleDef(specificArticleData.articleId)}>Wirklich löschen?</button>

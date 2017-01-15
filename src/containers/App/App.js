@@ -92,7 +92,7 @@ export default class App extends Component {
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
       scroll(0,0);
-      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <i class="fa fa-remove" aria-hidden="true"></i>'));
+      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <u>Schliessen</u>'));
     }
 
     onNavbarToggle = () => {

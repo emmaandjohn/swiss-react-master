@@ -220,7 +220,7 @@ export default class MyProfile extends Component {
           this.props.dispatch(activateNewUser(true, false));
           this.props.dispatch(push('/'));
           scroll(0,0);
-          this.props.dispatch(msgBox(true, 'Dein Profil und deine Beiträge wurden erfolgreich gelöscht! <i class="fa fa-remove" aria-hidden="true"></i>'));
+          this.props.dispatch(msgBox(true, 'Dein Profil und deine Beiträge wurden erfolgreich gelöscht! <u>Schliessen</u>'));
         }
       });
 
