@@ -16,7 +16,7 @@ import Loader from 'react-loader-advanced';
 /* Import here only for Dispatchers */
 import { getUser } from '../../redux/actions/getUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
-import { msgBox } from '../../redux/actions/msgBoxActions';
+//import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -37,7 +37,6 @@ import { msgBox } from '../../redux/actions/msgBoxActions';
   return {
     getUserState: store.getUser.user,
     activateNewUserState: store.activateNewUser.userStatus,
-    msgBoxState: store.msgBox.msgBoxState,
   };
 })
 
@@ -88,7 +87,7 @@ export default class App extends Component {
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
-      this.props.dispatch(msgBox(true, "Du hast dich erfolgreich ausgeloggt!"));
+      //this.props.dispatch(msgBox(true, "Du hast dich erfolgreich ausgeloggt!"));
     }
 
     onNavbarToggle = () => {
@@ -144,11 +143,6 @@ export default class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </Loader>
-          {msgBoxState.state === true ?
-          <div className={styles.msgBox}>
-            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: msgBoxState.msg}}></div></Alert>
-          </div>
-          : null }
           <div className={styles.appContent}>
             {this.props.children}
           </div>
