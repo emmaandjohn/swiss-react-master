@@ -79,6 +79,9 @@ export default class App extends Component {
     onNavItemClick = () => {
       this.setState({ navExpanded: false });
     }
+    closeThat = () => {
+      this.props.dispatch(msgBox(false, ''));
+    }
 
     onLogout = () => {
       this.onNavItemClick();
@@ -88,7 +91,7 @@ export default class App extends Component {
       /* Reload State with LoggedOut User-State */
       this.props.dispatch(activateNewUser(true, false));
       this.props.dispatch(push('/'));
-      this.props.dispatch(msgBox(true, "Du hast dich erfolgreich ausgeloggt!"));
+      this.props.dispatch(msgBox(true, 'Du hast dich erfolgreich ausgeloggt! <i onClick={() => this.closeThat()} className="closing fa fa-remove" aria-hidden="true"></i>'));
     }
 
     onNavbarToggle = () => {
@@ -98,7 +101,6 @@ export default class App extends Component {
     render() {
       const styles = require('./App.scss');
       const { getUserState, activateNewUserState, msgBoxState } = this.props;
-      console.log(JSON.stringify(msgBoxState.status)); console.log(JSON.stringify(msgBoxState.msg));
 
       return (
         <div className={styles.app}>
@@ -145,9 +147,12 @@ export default class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </Loader>
+          { msgBoxState.status === true ?
           <div className={styles.msgBox}>
-            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: 'aaa'}}></div></Alert>
+            <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: msgBoxState.msg}}></div></Alert>
           </div>
+          : null
+          }
           <div className={styles.appContent}>
             {this.props.children}
           </div>

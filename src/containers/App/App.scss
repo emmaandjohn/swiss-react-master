@@ -153,8 +153,9 @@ url("//s3.eu-central-1.amazonaws.com/swiss-react.ch/resources/img/infobar/cylon.
 .msgBox{
 	z-index: 999;
 	position: absolute;
-	width: 300px;
+	width: 100%;
 	height: 50px;
+	text-align: center;
 }
 .faNav{
 	font-size: 1.2em !important;
