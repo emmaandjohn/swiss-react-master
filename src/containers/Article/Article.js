@@ -79,7 +79,7 @@ export default class Article extends Component {
       if(res.body.status === 1) {
         this.props.dispatch(push('/meinprofil'));
         scroll(0,0);
-        this.props.dispatch(msgBox(true, 'Der Artikel wurde erfolgreich gelöscht! <u>Schliessen</u>'));
+        this.props.dispatch(msgBox(true, 'Der Artikel wurde erfolgreich gelöscht! <u class="cpointer">Schliessen</u>'));
       }
     });
   }
@@ -116,7 +116,7 @@ export default class Article extends Component {
                     }
                   </h1>
                 </div>
-                <div className='col-sm-3 col-xs-12' onClick={() => this.checkProfile(specificArticleData.userUuid)}>
+                <div className='col-sm-3 col-xs-12 cpointer' onClick={() => this.checkProfile(specificArticleData.userUuid)}>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
