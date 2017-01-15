@@ -195,7 +195,6 @@ export default class MyProfile extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if(res.body.status === 1) {
-          console.log("ok all deleted! push to Home + cookie delete ALL and Logout + Message....");
           cookie.remove('ck_activation', { path: '/' });
           cookie.remove('ck_avatar', { path: '/' });
           cookie.remove('ck_birthday', { path: '/' });
@@ -360,7 +359,7 @@ export default class MyProfile extends Component {
                 <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMiniProfile}></div>
               </div>
               <div className={'col-xs-10 col-sm-11' + ' ' + styles.wellLayouting}>
-                <div className='col-xs-12'>{entry.titel + ' ' + styles.m5}</div>
+                <div className={'col-xs-12 ' + styles.m5}>{entry.titel}</div>
                 <div className={'col-xs-12 ' + stylesHome.dateStyle + ' ' + styles.m5}>{entry.timeFormatted}</div>
                 <div className={'col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => entry.technologies[0][key].length > 1 ? <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null ) }</div>
               </div>
@@ -373,7 +372,7 @@ export default class MyProfile extends Component {
                 <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.avatarMiniProfile}></div>
               </div>
               <div className={'col-xs-10 col-sm-11' + ' ' + styles.wellLayouting}>
-                <div className='col-xs-12'>{entry.titel + ' ' + styles.m5}</div>
+                <div className={'col-xs-12 ' + styles.m5}>{entry.titel}</div>
                 <div className={'col-xs-12 ' + stylesHome.dateStyle + ' ' + styles.m5}>{entry.timeFormatted}</div>
                 <div className={'col-xs-12 ' + stylesHome.techStyle}>{ Object.keys(entry.technologies[0]).map(key => <span title={entry.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span>) }</div>
               </div>

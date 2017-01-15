@@ -97,10 +97,10 @@ export default class Article extends Component {
                       <span>
                         <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
                         { artDeleteStatus === false ?
-                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle()}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button>
+                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle()}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button> 
                         :
                           <span>
-                            <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleDef(specificArticleData.articleId)}><i className="fa fa-remove" aria-hidden="true"></i> Wirklich löschen?</button>
+                            <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleDef(specificArticleData.articleId)}>Wirklich löschen?</button>
                             <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleRevert()}><i className="fa fa-remove" aria-hidden="true"></i></button>
                           </span>
                         }
