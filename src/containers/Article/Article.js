@@ -82,7 +82,7 @@ export default class Article extends Component {
     const styles = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    const {formStatus, formMsg, specificArticleData, specificArticleTechData} = this.state;
+    const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData} = this.state;
     const { activateNewUserState, getBlogEntriesState} = this.props;
 
     return (
