@@ -10,6 +10,7 @@ import { push } from 'react-router-redux';
 import { Link } from 'react-router';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @connect((store) => {
   return {
@@ -23,7 +24,8 @@ export default class Article extends Component {
     formStatus: 0,
     formMsg: '',
     specificArticleData: {},
-    specificArticleTechData: ''
+    specificArticleTechData: '',
+    artDeleteStatus: false
   }
 
   componentDidMount() {
@@ -53,7 +55,15 @@ export default class Article extends Component {
     this.props.dispatch(push('/community'));
   }
 
-  deleteArticle = (deleteArticleID) => {
+  deleteArticle = () => {
+    this.setState({ artDeleteStatus: true });
+  }
+
+  deleteArticleRevert = () => {
+    this.setState({ artDeleteStatus: false });
+  }
+
+  deleteArticleDef = (deleteArticleID) => {
     superagent
     .post('/deleteArticle')
     .send({ deleteArticleID: deleteArticleID })
@@ -61,6 +71,8 @@ export default class Article extends Component {
     .end((error, res) => {
       if(res.body.status === 1) {
         this.props.dispatch(push('/meinprofil'));
+        scroll(0,0);
+        this.props.dispatch(msgBox(true, 'Der Artikel wurde erfolgreich gelöscht! <i class="fa fa-remove" aria-hidden="true"></i>'));
       }
     });
   }
@@ -84,7 +96,12 @@ export default class Article extends Component {
                     { specificArticleData.userUuid === cookie.load('ck_uuid') ?
                       <span>
                         <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
-                        <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle(specificArticleData.articleId)}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button>
+                        { artDeleteStatus === false ?
+                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticle()}><i className="fa fa-remove" aria-hidden="true"></i> Beitrag löschen</button>
+                        :
+                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleDef(specificArticleData.articleId)}><i className="fa fa-remove" aria-hidden="true"></i> Wirklich löschen?</button>
+                          <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.deleteArticleRevert()}><i className="fa fa-remove" aria-hidden="true"></i></button>
+                        }
                       </span>
                     : null
                     }

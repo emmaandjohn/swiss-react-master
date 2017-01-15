@@ -14,6 +14,7 @@ import { getUser } from '../../redux/actions/getUserActions';
 import { updateUser } from '../../redux/actions/updateUserActions';
 import { activateNewUser } from '../../redux/actions/activateNewUserActions';
 import { getUserContent } from '../../redux/actions/getUserContentActions';
+import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @connect((store) => {
   return {
@@ -219,6 +220,8 @@ export default class MyProfile extends Component {
           /* Reload State with LoggedOut User-State */
           this.props.dispatch(activateNewUser(true, false));
           this.props.dispatch(push('/'));
+          scroll(0,0);
+          this.props.dispatch(msgBox(true, 'Dein Profil und deine Beiträge wurden erfolgreich gelöscht! <i class="fa fa-remove" aria-hidden="true"></i>'));
         }
       });
 
