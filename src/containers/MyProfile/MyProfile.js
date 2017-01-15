@@ -29,9 +29,10 @@ import { msgBox } from '../../redux/actions/msgBoxActions';
 export default class MyProfile extends Component {
 
   componentDidMount() {
+    console.log("sadsda: "+ cookie.load('ck_tempUserID'););
     let syncUserUuid = cookie.load('ck_uuid');
 
-    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); cookie.save('ck_tempEditArt', 'false', { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) }); }
+    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
 
     superagent
     .post('/syncUserData')
