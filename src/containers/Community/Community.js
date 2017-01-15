@@ -15,8 +15,8 @@ require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
 
-//import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 import { syncUserData } from '../../redux/actions/syncUserDataActions';
+import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @connect((store) => {
   return {
@@ -182,7 +182,7 @@ export default class RichEditorExample extends Component {
     let titelOld = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
     if(editModeOn === 1){
-      loadStatus = 9; successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!'; titelOld = this.state.oldTitleState;
+      loadStatus = 9; /*successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!';*/ titelOld = this.state.oldTitleState;
     }
 
     superagent
@@ -219,15 +219,24 @@ export default class RichEditorExample extends Component {
                         let editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
                         this.setState({ editorState });
 
-                        this.setState({formStatus: 2});
+                        /*this.setState({formStatus: 2});
                         this.setState({formMsg: successMsg});
-                        scroll(0,0);
+                        scroll(0,0);*/
                         let counter = '';
                         for(let i=1; i<41; i++){
                           if(i < 10){
                             counter = "t0"+i;
                           } else{counter = "t"+i;}
                           this.refs[counter].checked = false;
+                        }
+
+                        /* Go to new article or edited article */
+                        this.props.dispatch(push('/community/'+res.body.titlenew));
+                        scroll(0,0);
+                        if(editModeOn === 1){
+                          this.props.dispatch(msgBox(true, 'Du hast erfolgreich deinen Beitrag aktualisiert! <u class="cpointer">Schliessen</u>'));
+                        } else{
+                          this.props.dispatch(msgBox(true, 'Du hast erfolgreich einen Beitrag erstellt! <u class="cpointer">Schliessen</u>'));
                         }
                       }
                     });
