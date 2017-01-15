@@ -144,12 +144,11 @@ export default class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </Loader>
-          {(msgBoxState.state === true ?
+          {msgBoxState.state === true ?
           <div className={styles.msgBox}>
             <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: msgBoxState.msg}}></div></Alert>
           </div>
-          :
-          null }
+          : null }
           <div className={styles.appContent}>
             {this.props.children}
           </div>
