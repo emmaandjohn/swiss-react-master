@@ -29,7 +29,7 @@ import { msgBox } from '../../redux/actions/msgBoxActions';
 export default class MyProfile extends Component {
 
   componentDidMount() {
-    const syncUserUuid = cookie.load('ck_uuid');
+    let syncUserUuid = cookie.load('ck_uuid');
 
     if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID')}
 
@@ -614,7 +614,7 @@ export default class MyProfile extends Component {
                       </Col>
                     :
                       <Col className={styles.m15 + ' ' + styles.topLine2 + ' ' + styles.plusAP} xs={12}><button className={"btn btn-default " + styles.btnDelete} onClick={() => this.deleteProfile()}><i className="fa fa-user-times" aria-hidden="true"></i> Profil löschen</button></Col>
-                    
+
                     : null }
               </Col>
 
