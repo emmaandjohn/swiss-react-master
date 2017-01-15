@@ -68,7 +68,7 @@ export default class Login extends Component {
 
           this.props.dispatch(push('/meinprofil'));
           scroll(0,0);
-          this.props.dispatch(msgBox(true, 'Login erfolgreich! Willkommen zurück <strong>' + res.body.userData.nickname + '</strong>!'));
+          this.props.dispatch(msgBox(true, 'Login erfolgreich! Willkommen zurück <strong>' + res.body.userData.nickname + '</strong>! <u class="cpointer">Schliessen</u>'));
 
         } else {
           this.setState({formStatus: 1});
