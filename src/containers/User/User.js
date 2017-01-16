@@ -29,13 +29,14 @@ import { msgBox } from '../../redux/actions/msgBoxActions';
 export default class User extends Component {
 
   componentDidMount() {
-    let syncUserUuid = cookie.load('ck_uuid');
+    //let syncUserUuid = cookie.load('ck_uuid');
+    let getNicknameUrl = this.props.params.nickname;
 
-    if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
+    //if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
 
     superagent
-    .post('/syncUserData')
-    .send({ userUuid: syncUserUuid })
+    .post('/syncUserData2')
+    .send({ nicknameUrl: getNicknameUrl })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
@@ -45,8 +46,8 @@ export default class User extends Component {
 
     /* get Articles and Projects from the User */
     superagent
-    .post('/getUserContent')
-    .send({ userUuid: syncUserUuid })
+    .post('/getUserContent2')
+    .send({ nicknameUrl: getNicknameUrl })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {

@@ -52,6 +52,7 @@ var userSchema = new mongoose.Schema({
   birthday: String,
   avatar: String,
   nickname: String,
+  nicknameUrl: String,
   job: String,
   company: String,
   description: String,
@@ -70,6 +71,7 @@ var blogSchema = new mongoose.Schema({
   userAvatar: String,
   userKanton: String,
   userNickname: String,
+  nicknameUrl: String,
   category: String,
   titel: String,
   markup: String,
@@ -79,7 +81,7 @@ var blogSchema = new mongoose.Schema({
   articleId: String,
   urlFriendlyTitel: String
 });
-blogSchema.index({titel: 'text', markup: 'text', userNickname: 'text'});
+blogSchema.index({titel: 'text', markup: 'text', nicknameUrl: 'text'});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -112,6 +114,7 @@ app.post('/registrieren', function(req, res) {
       birthday: null,
       avatar: 1,
       nickname: null,
+      nicknameUrl: null,
       job: null,
       company: null,
       description: null,
@@ -427,6 +430,19 @@ app.post('/syncUserData', function(req, res) {
     });
 });
 
+/* **** Check UserData FROM ANOTHER USER */
+app.post('/syncUserData2', function(req, res) {
+    var nicknameUrl = req.body.nicknameUrl;
+
+    UserModel.findOne({ nicknameUrl: nicknameUrl }, function(error, result){
+      if(result !== null){
+        res.json({ status: 1, userDataSync: result });
+      } else{
+        res.json({ status: 0 });
+      }
+    });
+});
+
 
 /* **** Save new User-Post-Entry to database/mongoose */
 app.post('/community', function(req, res) {
@@ -479,6 +495,7 @@ app.post('/community', function(req, res) {
 
       /* make url-friendly-title */
       var urlFriendlyTitel = titelData.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+      var urlFriendlyNickname = userNickname.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
       /* 0 = NEW Article to Database */
       if(loadStatus === 0){
@@ -487,6 +504,7 @@ app.post('/community', function(req, res) {
           userAvatar: userAvatar,
           userKanton: userKanton,
           userNickname: userNickname,
+          nicknameUrl: urlFriendlyNickname,
           category: categoryData,
           titel: titelData,
           markup: markupData,
@@ -541,7 +559,6 @@ app.post('/community', function(req, res) {
 /* **** get Users Projects and Articles for MyProfile.js */
 app.post('/getUserContent', function(req, res) {
     var contentUserUuid = req.body.userUuid;
-
     /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
     BlogModel.find({userUuid: contentUserUuid}).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
       if(err){
@@ -555,9 +572,24 @@ app.post('/getUserContent', function(req, res) {
         res.json({ status: 1, blogArticles: result });
       }
     });
-
 });
-
+/* **** get Users Projects and Articles for MyProfile.js FROM ANOTHER USER */
+app.post('/getUserContent2', function(req, res) {
+    var nicknameUrl = req.body.nicknameUrl;
+    /* 1 = Community Load Data Initial - 2 = Home Load Data Initial */
+    BlogModel.find({nicknameUrl: nicknameUrl}).sort({'category': 1, 'unixtime': -1}).exec(function(err, result) {
+      if(err){
+        res.json(err);
+        res.json({ status: 0 });
+      }
+      else if(result === null){
+        res.json({ status: 0 });
+      }
+      else{
+        res.json({ status: 1, blogArticles: result });
+      }
+    });
+});
 
 
 
@@ -568,24 +600,32 @@ app.post('/updateUserProfile', function(req, res) {
     var getEmail = req.body.email;
     var getUuid = req.body.uuid;
     var newValue = req.body.newvalue;
+    var nicknameUrl = 0;
 
     if(newValue.length > 0){
 
       if(getField === 'avatar' || getField === 'nickname' || getField === 'kanton'){
         var getField1 = '';
         if(getField === 'avatar'){getField1 = 'userAvatar';}
-        if(getField === 'nickname'){getField1 = 'userNickname';}
+        if(getField === 'nickname'){getField1 = 'userNickname'; nicknameUrl = newValue.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-'); }
         if(getField === 'kanton'){getField1 = 'userKanton';}
 
         BlogModel.findOne({ userUuid: getUuid }, 'userUuid', function(error, result){
           if(result !== null){
             var query1 = {"userUuid": getUuid};
-            var update1 = {};
-            update1[getField1] = newValue;
+            var update1 = {}; var update2 = {}; /* update2: also update nicknameURL if getField is "nickname" ! */
+            update1[getField1] = newValue; update2['nicknameUrl'] = nicknameUrl;
             var options1 = {multi: true};
             BlogModel.update(query1, update1, options1, function(err, result) {
               if (err) {
                 console.log(err);
+              }
+              if(nicknameUrl !== 0){ /* also update nicknameURL ! */
+                BlogModel.update(query1, update2, options1, function(err, result) {
+                  if (err) {
+                    console.log(err);
+                  }
+                });
               }
             });
           }
@@ -593,15 +633,26 @@ app.post('/updateUserProfile', function(req, res) {
       }
 
       var query = {"email": getEmail, "uuid": getUuid};
-      var update = {};
-      update[getField] = newValue;
+      var update = {}; var update3 = {}; /* update2: also update nicknameURL if getField is "nickname" ! */
+      update[getField] = newValue; update3['nicknameUrl'] = nicknameUrl;
       var options = {new: true};
       UserModel.findOneAndUpdate(query, update, options, function(err, result) {
         if (err) {
           res.json({ status: 0 });
         }
         else if(result !== null){
-            res.json({ status: 1, userData: result });
+          UserModel.findOneAndUpdate(query, update3, options, function(err, result) {
+            if (err) {
+              res.json({ status: 0 });
+            }
+            else if(result !== null){
+                res.json({ status: 1, userData: result }); /* also update nicknameURL ! */
+            }
+            else {
+              res.json({ status: 0 });
+            }
+          });
+          //res.json({ status: 1, userData: result });
         }
         else {
           res.json({ status: 0 });

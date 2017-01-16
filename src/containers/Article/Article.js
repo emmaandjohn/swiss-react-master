@@ -50,9 +50,10 @@ export default class Article extends Component {
     });
   }
 
-  checkProfile = (id, nickname) => {
-    cookie.save('ck_tempUserID', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
-    this.props.dispatch(push('/user/'+nickname));
+  checkProfile = (nicknameUrl) => {
+    // no id needed?
+    //cookie.save('ck_tempUserID', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
+    this.props.dispatch(push('/user/'+nicknameUrl));
   }
 
   editArticle = (id) => {
@@ -114,7 +115,7 @@ export default class Article extends Component {
                     }
                   </h1>
                 </div>
-                <div className='col-sm-3 col-xs-12 cpointer' onClick={() => this.checkProfile(specificArticleData.userUuid, specificArticleData.userNickname)}>
+                <div className='col-sm-3 col-xs-12 cpointer' onClick={() => this.checkProfile(specificArticleData.nicknameUrl)}>
                   <div className={stylesMyProfile['avatar'+specificArticleData.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                   <div className={stylesMyProfile['flag'+specificArticleData.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain}></div>
                 </div>
