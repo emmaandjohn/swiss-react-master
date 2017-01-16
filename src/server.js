@@ -641,18 +641,21 @@ app.post('/updateUserProfile', function(req, res) {
           res.json({ status: 0 });
         }
         else if(result !== null){
-          UserModel.findOneAndUpdate(query, update3, options, function(err, result) {
-            if (err) {
-              res.json({ status: 0 });
-            }
-            else if(result !== null){
-                res.json({ status: 1, userData: result }); /* also update nicknameURL ! */
-            }
-            else {
-              res.json({ status: 0 });
-            }
-          });
-          //res.json({ status: 1, userData: result });
+          if(nicknameUrl !== 0){ /* also update nicknameURL ! */
+            UserModel.findOneAndUpdate(query, update3, options, function(err, result) {
+              if (err) {
+                res.json({ status: 0 });
+              }
+              else if(result !== null){
+                  res.json({ status: 1, userData: result }); /* also update nicknameURL ! */
+              }
+              else {
+                res.json({ status: 0 });
+              }
+            });
+          } else{
+            res.json({ status: 1, userData: result }); /* also update nicknameURL ! */
+          }
         }
         else {
           res.json({ status: 0 });
