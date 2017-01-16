@@ -234,9 +234,6 @@ export default class User extends Component {
         <div className={styles.myprofilePage + ' container profilepage'}>
           <Helmet title="User"/>
           { getNickname !== 'noob' ?
-          <div>
-          {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && syncActivation === true) ?
-            <div>
               <Row>
                 <Col xs={12}>
                   <h1>{getNickname}</h1>
@@ -323,14 +320,6 @@ export default class User extends Component {
                 </Col>
               </Col>
             </Row>
-
-            </div>
-          :
-            <Loader show={!getUserState.loading} message={''} hideContentOnLoad={true}>
-                <Alert bsStyle="warning">Fehler: Bitte erstelle einen Account oder logge dich mit deinem bestehenden Usernamen und Passwort ein.</Alert>
-            </Loader>
-          }
-        </div>
         :
           <div><p>Hoppla! Gemäss Swiss-React-Reglement, zeigen wir keine Detailseiten von Usern welche ihren Usernamen vom Default-Wert -> <strong>noob</strong> nicht abgeändert haben.</p></div>
         }
