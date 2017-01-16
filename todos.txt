@@ -15,12 +15,12 @@ X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
 X) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
 
--) Userprofil URL muss immer zugägnlich sein /user/Gozilla -> direkt zugreifen
+fb) Userprofil URL muss immer zugägnlich sein /user/Gozilla -> direkt zugreifen
 -) loader icon
 -) Simple Kommentare von anderen Usern unten eine Artikels?
 -) nachricht schicken an anderen user?
 -) activation Success Styling Well
--) if null = nickname => zeige keine User-Detailseite an!
+fb) if null = nickname => zeige keine User-Detailseite an!
 
 low
 ------------
