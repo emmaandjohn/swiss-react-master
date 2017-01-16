@@ -112,7 +112,7 @@ export default class User extends Component {
     let flagClass = styles[objectSelectorFlag];
 
     let getNickname = syncNickname;
-    if(getNickname.length < 0){getNickname = 'noob';}
+    if(typeof getNickname === 'undefined' || !getNickname){getNickname = 'noob';}
 
     let getJob = syncJob;
     let getCompany = syncCompany;
@@ -127,7 +127,7 @@ export default class User extends Component {
     let getSocialXing = syncSxing;
     let getSocialWebsite = syncSwebsite;
 
-    console.log("getNickname: "+getNickname + getNickname.length);
+    console.log("getNickname: "+getNickname + syncNickname);
 
 
     /* list Articles and Projects from the User */
