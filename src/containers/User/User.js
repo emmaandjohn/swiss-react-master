@@ -31,6 +31,7 @@ export default class User extends Component {
   componentDidMount() {
     //let syncUserUuid = cookie.load('ck_uuid');
     let getNicknameUrl = this.props.params.nickname;
+    console.log("getNicknameUrl: "+getNicknameUrl);
 
     //if(cookie.load('ck_tempUserID') !== 'false'){syncUserUuid = cookie.load('ck_tempUserID'); }
 
@@ -40,6 +41,7 @@ export default class User extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
+        console.log("11: "+JSON.stringify(res.body.userDataSync));
         this.props.dispatch(syncUserData(res.body.userDataSync));
       }
     });
@@ -51,6 +53,7 @@ export default class User extends Component {
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
+        console.log("22: "+JSON.stringify(res.body.blogArticles));
         this.props.dispatch(getUserContent(res.body.blogArticles));
       }
     });
