@@ -526,7 +526,7 @@ app.post('/community', function(req, res) {
                   return console.log(err);
                   res.json({ status: 0 });
                 } else{
-                  res.json({ status: 1 });
+                  res.json({ status: 1, titlenew: urlFriendlyTitel });
                 }
               });
             }
