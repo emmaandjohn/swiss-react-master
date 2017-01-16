@@ -105,99 +105,29 @@ export default class User extends Component {
     let syncSwebsite = syncUserDataState.userdata.socialWebsite;
     let syncActivation = syncUserDataState.userdata.activation;
 
-    /* Set avatar either from Cache or when ou change the avatar -> from State */
     let objectSelector = 'avatar'+syncAvatar;
     let avatarClass = styles[objectSelector];
-    /*if(updateUserState.avatar){
-      let objectSelector = 'avatar'+updateUserState.avatar;
-      avatarClass = styles[objectSelector];
-    }*/
 
-    /* Set KANTON-flag either from Cache or when ou change the flag -> from State */
     let objectSelectorFlag = 'flag'+syncKanton;
     let flagClass = styles[objectSelectorFlag];
-    /*if(updateUserState.kanton){
-      let objectSelectorFlag = 'flag'+updateUserState.kanton;
-      flagClass = styles[objectSelectorFlag];
-    }*/
 
-    /* Set nickname (1) */
     let getNickname = syncNickname;
-    /*if(updateUserState.nickname){
-      getNickname = updateUserState.nickname;
-    }*/
-    if(getNickname === null){getNickname = 'noob';}
+    if(getNickname === null || getNickname === 'null'){getNickname = 'noob';}
 
-    /* Set password (5) */
-    /*let getPassword = syncPw;
-    if(updateUserState.password){
-      getPassword = updateUserState.password;
-    }*/
-    //if(getPassword === null){getPassword = 'Keine Angabe';}
-
-    /* Set job (2) */
     let getJob = syncJob;
-    /*if(updateUserState.job){
-      getJob = updateUserState.job;
-    }*/
-    //if(getJob === null){getJob = 'Keine Angabe';}
-
-    /* Set company (3) */
     let getCompany = syncCompany;
-    /*if(updateUserState.company){
-      getCompany = updateUserState.company;
-    }*/
-    //if(getCompany === null){getCompany = 'Keine Angabe';}
-
-    /* Set birthday (6) */
     let getBirthday = syncBirthday;
-    /*if(updateUserState.birthday){
-      getBirthday = updateUserState.birthday;
-    }*/
-    //if(getBirthday === null){getBirthday = 'Keine Angabe';}
 
-    /* Set description (4) */
     let getDescription = syncDescription;
-    /*if(updateUserState.description){
-      getDescription = updateUserState.description;
-    }*/
     if(getDescription === null){getDescription = 'Keine Angabe';}
 
-
-    /* Set socialGithub (7) */
     let getSocialGithub = syncSgithub;
-    /*if(updateUserState.socialGithub){
-      getSocialGithub = updateUserState.socialGithub;
-    }*/
-    //if(getSocialGithub === null){getSocialGithub = 'Keine Angabe';}
-
-    /* Set socialFb (8) */
     let getSocialFb = syncSfb;
-    /*if(updateUserState.socialFb){
-      getSocialFb = updateUserState.socialFb;
-    }*/
-    //if(getSocialFb === null){getSocialFb = 'Keine Angabe';}
-
-    /* Set socialTwitter (9) */
     let getSocialTwitter = syncStwitter;
-    /*if(updateUserState.socialTwitter){
-      getSocialTwitter = updateUserState.socialTwitter;
-    }*/
-    //if(getSocialTwitter === null){getSocialTwitter = 'Keine Angabe';}
-
-    /* Set socialXing (10) */
     let getSocialXing = syncSxing;
-    /*if(updateUserState.socialXing){
-      getSocialXing = updateUserState.socialXing;
-    }*/
-    //if(getSocialXing === null){getSocialXing = 'Keine Angabe';}
-
-    /* Set socialWebsite (11) */
     let getSocialWebsite = syncSwebsite;
-    /*if(updateUserState.socialWebsite){
-      getSocialWebsite = updateUserState.socialWebsite;
-    }*/
-    //if(getSocialWebsite === null){getSocialWebsite = 'Keine Angabe';}
+
+    console.log("getNickname: "+getNickname);
 
 
     /* list Articles and Projects from the User */
