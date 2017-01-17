@@ -84,6 +84,23 @@ var blogSchema = new mongoose.Schema({
 blogSchema.index({titel: 'text', markup: 'text', nicknameUrl: 'text'});
 var BlogModel = mongoose.model('Blog', blogSchema);
 
+
+var commentsRatingSchema = new mongoose.Schema({
+  category: String,
+  targetArticleId: String,
+  targetUuid: String,
+  commentersUuid: String,
+  commentersAvatar: String,
+  commentersKanton: String,
+  commentersNickname: String,
+  commentersNicknameUrl: String,
+  commentersText: String,
+  commentersTimestamp: String,
+  rating: String
+});
+var CommentsModel = mongoose.model('Comments', commentsSchema);
+
+
 app.use(cookieParser()); // use cookieParser for User-Cookies
 
 /* **** Body Parser */

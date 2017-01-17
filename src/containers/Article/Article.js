@@ -39,9 +39,6 @@ export default class Article extends Component {
     .end((error, res) => {
       if(res.body.status === 1) {
         this.setState({specificArticleData: res.body.specificArticleData});
-        /*this.setState({ specificArticleTechData: Object.keys(this.state.specificArticleData.technologies[0]).map(
-          key => this.state.specificArticleData.technologies[0][key]
-        ) });*/
         let sadData = Object.keys(this.state.specificArticleData.technologies[0]).map(key => this.state.specificArticleData.technologies[0][key].length > 1 ? <span title={this.state.specificArticleData.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null );
         this.setState({ specificArticleTechData: sadData });
       } else{
@@ -50,9 +47,11 @@ export default class Article extends Component {
     });
   }
 
+  rateOrComment = (category, articleId, userUuid) => {
+    console.log(category, articleId, userUuid);
+  }
+
   checkProfile = (nicknameUrl) => {
-    // no id needed?
-    //cookie.save('ck_tempUserID', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
     this.props.dispatch(push('/user/'+nicknameUrl));
   }
 
@@ -124,7 +123,27 @@ export default class Article extends Component {
                   <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}>{specificArticleTechData}</div>
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
-                <div className={'col-xs-12 ' + ' ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
+                <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
+                <br />
+                <div className={'col-xs-12 ' + styles.topLine}>
+                    <h5>Bewertungen</h5>
+                    <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
+                    <p>1, 2, 3, 4...</p>
+                    <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.rateOrComment('rate', specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+                </div>
+                <div className={'col-xs-12 ' + styles.topLine}>
+                    <h5>Reactionen dieses Beitrages</h5>
+                    <p>List all existing Reactions here...</p>
+                </div>
+                <br />
+                <div className={'col-xs-12 ' + styles.topLine}>
+                    <h5>Kommentare</h5>
+                    <p>Kommentarfeld</p>
+                    <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.rateOrComment('comment', specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
+                </div>
+                <div className={'col-xs-12 ' + styles.topLine}>
+                    <p>List all existing Comments here...</p>
+                </div>
               </div>
             </div>
           </div>

@@ -61,17 +61,17 @@ export default class Activation extends Component {
             : null
           }
           {responseStatus === 1 ?
-            <Well>
-              <h3>Erfolgreich Account bestätigt</h3>
-              <div dangerouslySetInnerHTML={{__html: responseMsg}}></div>
-            </Well>
+              <Alert bsStyle="success">
+                <h3>Erfolgreich Account bestätigt</h3>
+                <div dangerouslySetInnerHTML={{__html: responseMsg}}></div>
+              </Alert>
             : null
           }
           {responseStatus === 2 ?
-            <Well>
+            <Alert bsStyle="danger">
               <h3>Fehler bei der Bestätigung deines Accounts</h3>
               <div dangerouslySetInnerHTML={{__html: responseMsg}}></div>
-            </Well>
+            </Alert>
             : null
           }
       </div>

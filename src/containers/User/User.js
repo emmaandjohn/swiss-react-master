@@ -254,7 +254,7 @@ export default class User extends Component {
               </Col>
             </Row>
         :
-          <div><p>Hoppla! Gemäss Swiss-React-Reglement, zeigen wir keine Detailseiten von Usern welche ihren Usernamen vom Default-Wert -> <strong>noob</strong> nicht abgeändert haben.</p></div>
+          <div><br /><br /><p>Hoppla! Gemäss Swiss-React-Reglement, zeigen wir keine Detailseiten von Usern welche ihren Usernamen vom Default-Wert -> <strong>noob</strong> nicht abgeändert haben.</p></div>
         }
         </div>
     );
