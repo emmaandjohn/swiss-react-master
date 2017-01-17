@@ -94,11 +94,10 @@ var commentsRatingSchema = new mongoose.Schema({
   commentersKanton: String,
   commentersNickname: String,
   commentersNicknameUrl: String,
-  commentersText: String,
   commentersTimestamp: String,
-  rating: String
+  rateOrCommentValue: String
 });
-var CommentsModel = mongoose.model('Comments', commentsRatingSchema);
+var CommentsRatingModel = mongoose.model('CommentsRating', commentsRatingSchema);
 
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
@@ -172,6 +171,48 @@ app.post('/registrieren', function(req, res) {
         }
     });
 });
+
+
+/* **** rateOrComment */
+app.post('/rateOrComment', function(req, res) {
+
+    var category = req.body.category;
+    var targetArticleId = req.body.targetArticleId;
+    var targetUuid = req.body.targetUuid;
+    var commentersUuid = req.body.commentersUuid;
+    var commentersAvatar = req.body.commentersAvatar;
+    var commentersKanton = req.body.commentersKanton;
+    var commentersNickname = req.body.commentersNickname;
+    var commentersNicknameUrl = req.body.commentersNicknameUrl;
+    var rateOrCommentValue = req.body.rateOrCommentValue;
+
+    var unixDateNow = Date.now(); // e.g. 1299827226
+    var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
+
+    var CommentsOrRatingData = new CommentsRatingModel({
+      category: category,
+      targetArticleId: targetArticleId,
+      targetUuid: targetUuid,
+      commentersUuid: commentersUuid,
+      commentersAvatar: commentersAvatar,
+      commentersKanton: commentersKanton,
+      commentersNickname: commentersNickname,
+      commentersNicknameUrl: commentersNicknameUrl,
+      commentersTimestamp: humanDate,
+      rateOrCommentValue: rateOrCommentValue
+    });
+
+    CommentsOrRatingData.save(function (err) {
+        if (err) {
+          return console.log(err);
+          res.json({ status: 0 });
+        } else{
+          res.json({ status: 1 });
+        }
+    });
+
+});
+
 
 
 /* **** Get POST Form data from Registration */

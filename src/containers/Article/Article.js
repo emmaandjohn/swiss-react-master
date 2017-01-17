@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
+import { Well, Alert, Button } from 'react-bootstrap/lib';
 
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +26,8 @@ export default class Article extends Component {
     formMsg: '',
     specificArticleData: {},
     specificArticleTechData: '',
-    artDeleteStatus: false
+    artDeleteStatus: false,
+    ratedRadio: null
   }
 
   componentDidMount() {
@@ -47,8 +49,47 @@ export default class Article extends Component {
     });
   }
 
-  rateOrComment = (category, articleId, userUuid) => {
-    console.log(category, articleId, userUuid);
+  rateOrComment = (category, rateOrCommentValue, targetArticleId, targetUuid) => {
+    let commentersUuid = cookie.load('ck_uuid');
+    let commentersAvatar = cookie.load('ck_avatar');
+    let commentersKanton = cookie.load('ck_kanton');
+    let commentersNickname = cookie.load('ck_nickname');
+    let commentersNicknameUrl = cookie.load('ck_nicknameUrl');
+
+    let checkCode = 1;
+    if(category === 'comment'){
+      if(rateOrCommentValue.length < 3){
+        this.setState({formStatus: 1});
+        this.setState({formMsg: 'Fehler: Dein Kommentar ist zu kurz, verfasse mindestens 3 Zeichen!'});
+        checkCode = 0;
+      }
+      if(rateOrCommentValue.length > 1000){
+        this.setState({formStatus: 1});
+        this.setState({formMsg: 'Fehler: Dein Kommentar ist leider etwas zu lange! Kommentare sollten 1000 Zeichen nicht überschreiten!'});
+        checkCode = 0;
+      }
+    }
+    if(category === 'rate'){
+      if(rateOrCommentValue.length < 1){
+        this.setState({formStatus: 1});
+        this.setState({formMsg: 'Fehler: Keine Reaction ausgewählt!'});
+        checkCode = 0;
+      }
+    }
+
+    if(checkCode === 1){
+      superagent
+      .post('/rateOrComment')
+      .send({ category: category, rateOrCommentValue: rateOrCommentValue, targetArticleId: targetArticleId, targetUuid: targetUuid, commentersUuid: commentersUuid, commentersAvatar: commentersAvatar, commentersKanton: commentersKanton, commentersNickname: commentersNickname, commentersNicknameUrl: commentersNicknameUrl })
+      .set('Accept', 'application/json')
+      .end((error, res) => {
+        if(res.body.status === 1) {
+          console.log("Success, dispatch Action here to reload Comments/Ratings..");
+        } else{
+          console.log("Error, rateOrComment");
+        }
+      });
+    }
   }
 
   checkProfile = (nicknameUrl) => {
@@ -58,6 +99,14 @@ export default class Article extends Component {
   editArticle = (id) => {
     cookie.save('ck_tempEditArt', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
     this.props.dispatch(push('/community'));
+  }
+
+  onChangeRadio = (event, r, rValue) => {
+      let checkValue = '';
+      if(event.target.checked === true){
+        checkValue = tValue;
+      }
+      this.setState({ ratedRadio: checkValue });
   }
 
   deleteArticle = () => {
@@ -87,7 +136,7 @@ export default class Article extends Component {
     const styles = require('../Home/Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
-    const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData} = this.state;
+    const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
     const { activateNewUserState, getBlogEntriesState} = this.props;
 
     return (
@@ -124,22 +173,43 @@ export default class Article extends Component {
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
-                <br />
+                <br /><br /><br />
                 <div className={'col-xs-12 ' + styles.topLine}>
-                    <h5>Bewertungen</h5>
+                    <strong>Reactionen</strong>
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
-                    <p>1, 2, 3, 4...</p>
-                    <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.rateOrComment('rate', specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+                      <label className={'checkbox-inline'}>
+                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r01', this.refs.r01.value)} ref="r01" value="r01" />
+                      </label>
+                      <label className={'checkbox-inline'}>
+                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r02', this.refs.r02.value)} ref="r02" value="r02" />
+                      </label>
+                      <label className={'checkbox-inline'}>
+                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r03', this.refs.r03.value)} ref="r03" value="r03" />
+                      </label>
+                      <label className={'checkbox-inline'}>
+                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r04', this.refs.r04.value)} ref="r04" value="r04" />
+                      </label>
+                      <label className={'checkbox-inline'}>
+                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r05', this.refs.r05.value)} ref="r05" value="r05" />
+                      </label>
+                      <label className={'checkbox-inline'}>
+                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r06', this.refs.r06.value)} ref="r06" value="r06" />
+                      </label>
+                      <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+                      {ratedRadio}
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine}>
-                    <h5>Reactionen dieses Beitrages</h5>
                     <p>List all existing Reactions here...</p>
                 </div>
                 <br />
+                {formStatus === 1 ?
+                  <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
+                : null
+                }
                 <div className={'col-xs-12 ' + styles.topLine}>
-                    <h5>Kommentare</h5>
-                    <p>Kommentarfeld</p>
-                    <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.rateOrComment('comment', specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
+                    <strong>Kommentare</strong>
+                    <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
+                    <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine}>
                     <p>List all existing Comments here...</p>
