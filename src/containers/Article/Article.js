@@ -27,7 +27,7 @@ export default class Article extends Component {
     specificArticleData: {},
     specificArticleTechData: '',
     artDeleteStatus: false,
-    ratedRadio: null
+    r01: false, r02: false, r03: false, r04: false, r05: false, r06: false
   }
 
   componentDidMount() {
@@ -101,12 +101,13 @@ export default class Article extends Component {
     this.props.dispatch(push('/community'));
   }
 
-  onChangeRadio = (event, r, rValue) => {
-      let checkValue = '';
-      if(event.target.checked === true){
-        checkValue = tValue;
-      }
-      this.setState({ ratedRadio: checkValue });
+  onChangeRadio = (event, rValue) => {
+    if(rValue === 'r01'){ this.setState({ r01: true, r02: false, r03: false, r04: false, r05: false, r06: false }); }
+    if(rValue === 'r02'){ this.setState({ r01: false, r02: true, r03: false, r04: false, r05: false, r06: false }); }
+    if(rValue === 'r03'){ this.setState({ r01: false, r02: false, r03: true, r04: false, r05: false, r06: false }); }
+    if(rValue === 'r04'){ this.setState({ r01: false, r02: false, r03: false, r04: true, r05: false, r06: false }); }
+    if(rValue === 'r05'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: true, r06: false }); }
+    if(rValue === 'r06'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: true }); }
   }
 
   deleteArticle = () => {
@@ -183,22 +184,22 @@ export default class Article extends Component {
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
                       <fieldset>
                         <label className={'checkbox-inline'}>
-                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r01', this.refs.r01.value)} ref="r01" id="r01" value="r01" />
+                          <input checked={this.state.r01} type="radio" onChange={(event) => this.onChangeRadio(event, 'r01')} ref="r01" id="r01" value="r01" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r02', this.refs.r02.value)} ref="r02" id="r02" value="r02" />
+                          <input checked={this.state.r02} type="radio" onChange={(event) => this.onChangeRadio(event, 'r02')} ref="r02" id="r02" value="r02" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r03', this.refs.r03.value)} ref="r03" id="r03" value="r03" />
+                          <input checked={this.state.r03} type="radio" onChange={(event) => this.onChangeRadio(event, 'r03')} ref="r03" id="r03" value="r03" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r04', this.refs.r04.value)} ref="r04" id="r04" value="r04" />
+                          <input checked={this.state.r04} type="radio" onChange={(event) => this.onChangeRadio(event, 'r04')} ref="r04" id="r04" value="r04" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r05', this.refs.r05.value)} ref="r05" id="r05" value="r05" />
+                          <input checked={this.state.r05} type="radio" onChange={(event) => this.onChangeRadio(event, 'r05')} ref="r05" id="r05" value="r05" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r06', this.refs.r06.value)} ref="r06" id="r06" value="r06" />
+                          <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
                         </label>
                       </fieldset>
                       <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
