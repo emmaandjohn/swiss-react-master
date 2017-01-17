@@ -177,24 +177,26 @@ export default class Article extends Component {
                 <div className={'col-xs-12 ' + styles.topLine}>
                     <strong>Reactionen</strong>
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
-                      <label className={'checkbox-inline'}>
-                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r01', this.refs.r01.value)} ref="r01" value="r01" />
-                      </label>
-                      <label className={'checkbox-inline'}>
-                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r02', this.refs.r02.value)} ref="r02" value="r02" />
-                      </label>
-                      <label className={'checkbox-inline'}>
-                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r03', this.refs.r03.value)} ref="r03" value="r03" />
-                      </label>
-                      <label className={'checkbox-inline'}>
-                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r04', this.refs.r04.value)} ref="r04" value="r04" />
-                      </label>
-                      <label className={'checkbox-inline'}>
-                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r05', this.refs.r05.value)} ref="r05" value="r05" />
-                      </label>
-                      <label className={'checkbox-inline'}>
-                        <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r06', this.refs.r06.value)} ref="r06" value="r06" />
-                      </label>
+                      <fieldset>
+                        <label className={'checkbox-inline'}>
+                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r01', this.refs.r01.value)} ref="r01" id="r01" value="r01" />
+                        </label>
+                        <label className={'checkbox-inline'}>
+                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r02', this.refs.r02.value)} ref="r02" id="r02" value="r02" />
+                        </label>
+                        <label className={'checkbox-inline'}>
+                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r03', this.refs.r03.value)} ref="r03" id="r03" value="r03" />
+                        </label>
+                        <label className={'checkbox-inline'}>
+                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r04', this.refs.r04.value)} ref="r04" id="r04" value="r04" />
+                        </label>
+                        <label className={'checkbox-inline'}>
+                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r05', this.refs.r05.value)} ref="r05" id="r05" value="r05" />
+                        </label>
+                        <label className={'checkbox-inline'}>
+                          <input type="radio" onChange={(event) => this.onChangeRadio(event, 'r06', this.refs.r06.value)} ref="r06" id="r06" value="r06" />
+                        </label>
+                      </fieldset>
                       <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                       {ratedRadio}
                 </div>
