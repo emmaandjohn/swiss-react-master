@@ -71,7 +71,7 @@ export default class Article extends Component {
     }
     if(category === 'rate'){
       if(rateOrCommentValue.length < 1){
-        this.setState({formStatus: 1});
+        this.setState({formStatus: 2});
         this.setState({formMsg: 'Fehler: Keine Reaction ausgewählt!'});
         checkCode = 0;
       }
@@ -172,10 +172,14 @@ export default class Article extends Component {
                   <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}>{specificArticleTechData}</div>
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
-                <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div></div>
-                <br /><br /><br />
+                <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
                 <div className={'col-xs-12 ' + styles.topLine}>
+                    <br /><br /><br />
                     <strong>Reactionen</strong>
+                    {formStatus === 2 ?
+                      <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
+                    : null
+                    }
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
                       <fieldset>
                         <label className={'checkbox-inline'}>
@@ -204,12 +208,12 @@ export default class Article extends Component {
                     <p>List all existing Reactions here...</p>
                 </div>
                 <br />
-                {formStatus === 1 ?
-                  <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
-                : null
-                }
                 <div className={'col-xs-12 ' + styles.topLine}>
                     <strong>Kommentare</strong>
+                    {formStatus === 1 ?
+                      <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
+                    : null
+                    }
                     <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
                     <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
