@@ -98,7 +98,7 @@ var commentsRatingSchema = new mongoose.Schema({
   commentersTimestamp: String,
   rating: String
 });
-var CommentsModel = mongoose.model('Comments', commentsSchema);
+var CommentsModel = mongoose.model('Comments', commentsRatingSchema);
 
 
 app.use(cookieParser()); // use cookieParser for User-Cookies
