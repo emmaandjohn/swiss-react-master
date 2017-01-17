@@ -27,7 +27,8 @@ export default class Article extends Component {
     specificArticleData: {},
     specificArticleTechData: '',
     artDeleteStatus: false,
-    r01: false, r02: false, r03: false, r04: false, r05: false, r06: false
+    r01: false, r02: false, r03: false, r04: false, r05: false, r06: false,
+    ratedRadio: null
   }
 
   componentDidMount() {
@@ -102,12 +103,12 @@ export default class Article extends Component {
   }
 
   onChangeRadio = (event, rValue) => {
-    if(rValue === 'r01'){ this.setState({ r01: true, r02: false, r03: false, r04: false, r05: false, r06: false }); }
-    if(rValue === 'r02'){ this.setState({ r01: false, r02: true, r03: false, r04: false, r05: false, r06: false }); }
-    if(rValue === 'r03'){ this.setState({ r01: false, r02: false, r03: true, r04: false, r05: false, r06: false }); }
-    if(rValue === 'r04'){ this.setState({ r01: false, r02: false, r03: false, r04: true, r05: false, r06: false }); }
-    if(rValue === 'r05'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: true, r06: false }); }
-    if(rValue === 'r06'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: true }); }
+    if(rValue === 'r01'){ this.setState({ r01: true, r02: false, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+    if(rValue === 'r02'){ this.setState({ r01: false, r02: true, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+    if(rValue === 'r03'){ this.setState({ r01: false, r02: false, r03: true, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+    if(rValue === 'r04'){ this.setState({ r01: false, r02: false, r03: false, r04: true, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+    if(rValue === 'r05'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: true, r06: false }); this.setState({ ratedRadio: rValue }); }
+    if(rValue === 'r06'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: true }); this.setState({ ratedRadio: rValue }); }
   }
 
   deleteArticle = () => {
