@@ -203,7 +203,7 @@ export default class Article extends Component {
                           <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
                         </label>
                       </fieldset>
-                      <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={(ratedRadio) => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine}>
                     <p>List all existing Reactions here...</p>
