@@ -177,7 +177,7 @@ export default class Article extends Component {
                 <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
                     <br /><br /><br />
-                    <span style={stylesArticle.italic}><strong>Reactionen</strong></span>
+                    <span className={stylesArticle.italic}><strong>Reactionen</strong></span>
                     {formStatus === 2 ?
                       <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
                     : null
@@ -210,7 +210,7 @@ export default class Article extends Component {
                 </div>
                 <br />
                 <div className={'col-xs-12 ' + styles.topLine}>
-                    <span style={stylesArticle.italic}><strong>Kommentare</strong></span>
+                    <span className={stylesArticle.italic}><strong>Kommentare</strong></span>
                     {formStatus === 1 ?
                       <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
                     : null
