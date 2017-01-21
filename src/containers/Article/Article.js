@@ -205,11 +205,11 @@ export default class Article extends Component {
                       </fieldset>
                       <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                 </div>
-                <div className={'col-xs-12 ' + styles.topLine}>
+                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
                     <p>List all existing Reactions here...</p>
                 </div>
                 <br />
-                <div className={'col-xs-12 ' + styles.topLine}>
+                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
                     <span className={stylesArticle.italic}><strong>Kommentare</strong></span>
                     {formStatus === 1 ?
                       <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
@@ -218,7 +218,7 @@ export default class Article extends Component {
                     <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
                     <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
-                <div className={'col-xs-12 ' + styles.topLine}>
+                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
                     <p>List all existing Comments here...</p>
                 </div>
               </div>
