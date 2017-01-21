@@ -24,6 +24,8 @@ export default class Article extends Component {
   state = {
     formStatus: 0,
     formMsg: '',
+    formStatusRoC: 0,
+    formMsgRoC: '',
     specificArticleData: {},
     specificArticleTechData: '',
     artDeleteStatus: false,
@@ -70,6 +72,7 @@ export default class Article extends Component {
         checkCode = 0;
       }
     }
+    console.log(rateOrCommentValue + rateOrCommentValue.length);
     if(category === 'rate'){
       if(rateOrCommentValue.length < 1){
         this.setState({formStatus: 2});
@@ -103,12 +106,12 @@ export default class Article extends Component {
   }
 
   onChangeRadio = (event, rValue) => {
-    if(rValue === 'r01'){ this.setState({ r01: true, r02: false, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
-    if(rValue === 'r02'){ this.setState({ r01: false, r02: true, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
-    if(rValue === 'r03'){ this.setState({ r01: false, r02: false, r03: true, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
-    if(rValue === 'r04'){ this.setState({ r01: false, r02: false, r03: false, r04: true, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
-    if(rValue === 'r05'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: true, r06: false }); this.setState({ ratedRadio: rValue }); }
-    if(rValue === 'r06'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: true }); this.setState({ ratedRadio: rValue }); }
+      if(rValue === 'r01'){ this.setState({ r01: true, r02: false, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+      if(rValue === 'r02'){ this.setState({ r01: false, r02: true, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+      if(rValue === 'r03'){ this.setState({ r01: false, r02: false, r03: true, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+      if(rValue === 'r04'){ this.setState({ r01: false, r02: false, r03: false, r04: true, r05: false, r06: false }); this.setState({ ratedRadio: rValue }); }
+      if(rValue === 'r05'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: true, r06: false }); this.setState({ ratedRadio: rValue }); }
+      if(rValue === 'r06'){ this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: true }); this.setState({ ratedRadio: rValue }); }
   }
 
   deleteArticle = () => {
