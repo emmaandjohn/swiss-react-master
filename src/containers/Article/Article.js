@@ -72,9 +72,8 @@ export default class Article extends Component {
         checkCode = 0;
       }
     }
-    console.log(rateOrCommentValue + rateOrCommentValue.length);
     if(category === 'rate'){
-      if(rateOrCommentValue.length < 1){
+      if(rateOrCommentValue === null){
         this.setState({formStatus: 2});
         this.setState({formMsg: 'Fehler: Keine Reaction ausgewählt!'});
         checkCode = 0;
