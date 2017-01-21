@@ -175,7 +175,7 @@ export default class Article extends Component {
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
-                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
+                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
                     <br /><br /><br />
                     <span className={stylesArticle.italic}><strong>Reactionen</strong></span>
                     {formStatus === 2 ?
@@ -203,20 +203,20 @@ export default class Article extends Component {
                           <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
                         </label>
                       </fieldset>
-                      <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+                      <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
                     <p>List all existing Reactions here...</p>
                 </div>
                 <br />
-                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
+                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
                     <span className={stylesArticle.italic}><strong>Kommentare</strong></span>
                     {formStatus === 1 ?
                       <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
                     : null
                     }
                     <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
-                    <button className={"btn btn-default " + stylesArticle.btnDelete} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
+                    <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
                     <p>List all existing Comments here...</p>
