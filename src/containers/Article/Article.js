@@ -185,21 +185,27 @@ export default class Article extends Component {
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
                       <fieldset>
                         <label className={'checkbox-inline'}>
+                          Crap!
                           <input checked={this.state.r01} type="radio" onChange={(event) => this.onChangeRadio(event, 'r01')} ref="r01" id="r01" value="r01" />
                         </label>
                         <label className={'checkbox-inline'}>
+                          WTF!
                           <input checked={this.state.r02} type="radio" onChange={(event) => this.onChangeRadio(event, 'r02')} ref="r02" id="r02" value="r02" />
                         </label>
                         <label className={'checkbox-inline'}>
+                          Cool!
                           <input checked={this.state.r03} type="radio" onChange={(event) => this.onChangeRadio(event, 'r03')} ref="r03" id="r03" value="r03" />
                         </label>
                         <label className={'checkbox-inline'}>
+                          Awesome!
                           <input checked={this.state.r04} type="radio" onChange={(event) => this.onChangeRadio(event, 'r04')} ref="r04" id="r04" value="r04" />
                         </label>
                         <label className={'checkbox-inline'}>
+                          Dope Shit!
                           <input checked={this.state.r05} type="radio" onChange={(event) => this.onChangeRadio(event, 'r05')} ref="r05" id="r05" value="r05" />
                         </label>
                         <label className={'checkbox-inline'}>
+                          God Mode!
                           <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
                         </label>
                       </fieldset>
@@ -210,6 +216,7 @@ export default class Article extends Component {
                 </div>
                 <br />
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
+                    <br /><br /><br />
                     <span className={stylesArticle.italic}><strong>Kommentare</strong></span>
                     {formStatus === 1 ?
                       <Alert bsStyle="danger"><div dangerouslySetInnerHTML={{__html: formMsg}}></div></Alert>
