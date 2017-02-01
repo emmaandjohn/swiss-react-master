@@ -161,12 +161,12 @@ export default class Article extends Component {
 
     let rateContentDef = []; let ratingVal = 0;
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal = Crap! <i className="fa fa-trash fa-2" aria-hidden="true"></i> }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal = WTF! <i className="fa fa-warning fa-2" aria-hidden="true"></i> }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal = Cool! <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i> }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal = Awesome! <i className="fa fa-star-o fa-2" aria-hidden="true"></i> }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal = Dope Shit! <i className="fa fa-trophy fa-2" aria-hidden="true"></i> }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal = God Mode! <i className="fa fa-university fa-2" aria-hidden="true"></i> }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal = Crap! <i className="fa fa-trash fa-2" aria-hidden="true"></i>; }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal = WTF! <i className="fa fa-warning fa-2" aria-hidden="true"></i>; }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal = Cool! <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i>; }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal = Awesome! <i className="fa fa-star-o fa-2" aria-hidden="true"></i>; }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal = Dope Shit! <i className="fa fa-trophy fa-2" aria-hidden="true"></i>; }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal = God Mode! <i className="fa fa-university fa-2" aria-hidden="true"></i>; }
 
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
