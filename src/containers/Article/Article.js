@@ -11,12 +11,16 @@ import { push } from 'react-router-redux';
 import { Link } from 'react-router';
 
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+import { getRateEntries } from '../../redux/actions/getRateEntriesActions';
+import { getCommentEntries } from '../../redux/actions/getCommentEntriesActions';
 import { msgBox } from '../../redux/actions/msgBoxActions';
 
 @connect((store) => {
   return {
     activateNewUserState: store.activateNewUser.userStatus,
     getBlogEntriesState: store.getBlogEntries.articleList,
+    getRateEntriesState: store.getRateEntries.articleList,
+    getCommentEntriesState: store.getCommentEntries.articleList,
   };
 })
 
@@ -47,6 +51,13 @@ export default class Article extends Component {
         this.setState({specificArticleData: res.body.specificArticleData});
         let sadData = Object.keys(this.state.specificArticleData.technologies[0]).map(key => this.state.specificArticleData.technologies[0][key].length > 1 ? <span title={this.state.specificArticleData.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null );
         this.setState({ specificArticleTechData: sadData });
+
+        if(res.body.rateData !== null){
+          this.props.dispatch(getRateEntries(res.body.rateData));
+        }
+        if(res.body.commentData !== null){
+          this.props.dispatch(getCommentEntries(res.body.commentData));
+        }
       } else{
         console.log("Error, Article url does not exist in DB");
       }
@@ -145,7 +156,42 @@ export default class Article extends Component {
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
 
     const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
-    const { activateNewUserState, getBlogEntriesState} = this.props;
+    const { activateNewUserState, getBlogEntriesState, getRateEntriesState, getCommentEntriesState} = this.props;
+
+    let rateContentDef = [];
+    getRateEntriesState.articles.forEach(function(entry){
+      rateContentDef.push(
+        <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
+          <div className='row'>
+            <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+              <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            </div>
+            <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
+            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{entry.rateOrCommentValue}</div>
+            <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
+          </div>
+        </div>
+      );
+    }.bind(this));
+
+    let commentContentDef = [];
+    getCommentEntriesState.articles.forEach(function(entry){
+      commentContentDef.push(
+        <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
+          <div className='row'>
+            <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+              <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            </div>
+            <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
+            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{entry.rateOrCommentValue}</div>
+            <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
+          </div>
+        </div>
+      );
+    }.bind(this));
+
 
     return (
       <div className="container" id="articlePage">
@@ -218,7 +264,7 @@ export default class Article extends Component {
                       <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
-                    <p>List all existing Reactions here...</p>
+                    {rateContentDef}
                 </div>
                 <br />
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
@@ -232,7 +278,7 @@ export default class Article extends Component {
                     <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
-                    <p>List all existing Comments here...</p>
+                    {commentContentDef}
                 </div>
               </div>
             </div>

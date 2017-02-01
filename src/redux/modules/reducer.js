@@ -12,6 +12,8 @@ import registerNewUser from './registerNewUserReducer';
 import activateNewUser from './activateNewUserReducer';
 import getUser from './getUserReducer';
 import getBlogEntries from './getBlogEntriesReducer';
+import getRateEntries from './getRateEntriesReducer';
+import getCommentEntries from './getCommentEntriesReducer';
 import getSearchEntries from './getSearchEntriesReducer';
 import updateUser from './updateUserReducer';
 import syncUserData from './syncUserDataReducer';
@@ -34,6 +36,8 @@ export default combineReducers({
   activateNewUser,
   getUser,
   getBlogEntries,
+  getRateEntries,
+  getCommentEntries,
   getSearchEntries,
   updateUser,
   syncUserData,
