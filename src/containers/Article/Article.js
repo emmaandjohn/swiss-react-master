@@ -159,14 +159,14 @@ export default class Article extends Component {
     const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
     const { activateNewUserState, getBlogEntriesState, getRateEntriesState, getCommentEntriesState} = this.props;
 
-    let rateContentDef = []; let ratingVal = [];
+    let rateContentDef = []; let ratingVal = 0;
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal.push( 'Crap!', <i className="fa fa-trash fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal.push( 'WTF!', <i className="fa fa-warning fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal.push( 'Cool!', <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal.push( 'Awesome!', <i className="fa fa-star-o fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal.push( 'Dope Shit!', <i className="fa fa-trophy fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal.push( 'God Mode!', <i className="fa fa-university fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( 'Crap!', <i className="fa fa-trash fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( 'WTF!', <i className="fa fa-warning fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( 'Cool!', <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( 'Awesome!', <i className="fa fa-star-o fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal = ( 'Dope Shit!', <i className="fa fa-trophy fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal = ( 'God Mode!', <i className="fa fa-university fa-2" aria-hidden="true"></i> ); }
 
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
