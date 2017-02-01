@@ -51,10 +51,16 @@ export default class Article extends Component {
         this.setState({specificArticleData: res.body.specificArticleData});
         let sadData = Object.keys(this.state.specificArticleData.technologies[0]).map(key => this.state.specificArticleData.technologies[0][key].length > 1 ? <span title={this.state.specificArticleData.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null );
         this.setState({ specificArticleTechData: sadData });
+        console.log("rate: "+JSON.stringify(res.body.rateData));
+        console.log("comment: "+JSON.stringify(res.body.commentData));
 
-        this.props.dispatch(getRateEntries(res.body.rateData));
-        this.props.dispatch(getCommentEntries(res.body.commentData));
-        
+        if(res.body.rateData !== null){
+          this.props.dispatch(getRateEntries(res.body.rateData));
+        }
+        if(res.body.commentData !== null){
+          this.props.dispatch(getCommentEntries(res.body.commentData));
+        }
+
       } else{
         console.log("Error, Article url does not exist in DB");
       }
