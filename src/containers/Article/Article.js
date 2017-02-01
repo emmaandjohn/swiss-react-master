@@ -54,10 +54,10 @@ export default class Article extends Component {
         console.log("rate: "+JSON.stringify(res.body.rateData));
         console.log("comment: "+JSON.stringify(res.body.commentData));
 
-        if(res.body.rateData !== null){
+        if(res.body.rateData !== '0'){
           this.props.dispatch(getRateEntries(res.body.rateData));
         }
-        if(res.body.commentData !== null){
+        if(res.body.commentData !== '0'){
           this.props.dispatch(getCommentEntries(res.body.commentData));
         }
 

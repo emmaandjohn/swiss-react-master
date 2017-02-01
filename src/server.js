@@ -469,7 +469,7 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
       if(result !== null){
           console.log(result.articleId);
           let articleIDforRaC = result.articleId;
-          let rateData = null; let commentData = null;
+          let rateData = 0; let commentData = 0;
 
           CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'rate'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
             console.log("111");
@@ -485,6 +485,10 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
               commentData = result;
             }
           });
+          console.log("333");
+          console.log(rateData);
+          console.log("444");
+          console.log(commentData);
           res.json({ status: 1, specificArticleData: result, rateData: rateData, commentData: commentData });
       } else{
         res.json({ status: 0 });
