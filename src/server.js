@@ -471,25 +471,23 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
           let articleIDforRaC = result.articleId;
           let rateData = 0; let commentData = 0;
 
-          CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'rate'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
-            console.log("111");
-            console.log(result);
-            if(result !== null){
-              rateData = result;
+          CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'rate'}).sort({'commentersUnixTime': -1}).exec(function(err2, result2) {
+            if(result2 !== null){
+              rateData = result2;
             }
+            CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'comment'}).sort({'commentersUnixTime': -1}).exec(function(err3, result3) {
+              if(result3 !== null){
+                commentData = result3;
+              }
+              res.json({ status: 1, specificArticleData: result, rateData: rateData, commentData: commentData });
+            });
           });
-          CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'comment'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
-            console.log("222");
-            console.log(result);
-            if(result !== null){
-              commentData = result;
-            }
-          });
+
           console.log("333");
           console.log(rateData);
           console.log("444");
           console.log(commentData);
-          res.json({ status: 1, specificArticleData: result, rateData: rateData, commentData: commentData });
+
       } else{
         res.json({ status: 0 });
       }
