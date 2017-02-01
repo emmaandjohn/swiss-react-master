@@ -82,7 +82,7 @@ export default class Article extends Component {
         }
         if(res.body.commentData !== '0'){
           this.props.dispatch(getCommentEntries(res.body.commentData));
-          this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: null });
+          this.refs.comment.value = '';
         }
       } else{
         console.log("Error, Article url does not exist in DB");
@@ -194,7 +194,7 @@ export default class Article extends Component {
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
             <div className={'col-sm-3 col-xs-6 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
-            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'cpointer col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
@@ -210,7 +210,7 @@ export default class Article extends Component {
       commentContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
-            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'cpointer col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
