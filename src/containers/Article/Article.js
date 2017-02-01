@@ -159,8 +159,15 @@ export default class Article extends Component {
     const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
     const { activateNewUserState, getBlogEntriesState, getRateEntriesState, getCommentEntriesState} = this.props;
 
-    let rateContentDef = [];
+    let rateContentDef = []; let ratingVal = 0;
     getRateEntriesState.articles.forEach(function(entry){
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal = Crap! <i className="fa fa-trash fa-2" aria-hidden="true"></i> }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal = WTF! <i className="fa fa-warning fa-2" aria-hidden="true"></i> }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal = Cool! <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i> }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal = Awesome! <i className="fa fa-star-o fa-2" aria-hidden="true"></i> }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal = Dope Shit! <i className="fa fa-trophy fa-2" aria-hidden="true"></i> }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal = God Mode! <i className="fa fa-university fa-2" aria-hidden="true"></i> }
+
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
@@ -169,7 +176,7 @@ export default class Article extends Component {
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
             <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
-            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{entry.rateOrCommentValue}</div>
+            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
             <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
         </div>
@@ -238,27 +245,27 @@ export default class Article extends Component {
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
                       <fieldset>
                         <label className={'checkbox-inline'}>
-                          Crap!
+                          Crap! <i className="fa fa-trash fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r01} type="radio" onChange={(event) => this.onChangeRadio(event, 'r01')} ref="r01" id="r01" value="r01" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          WTF!
+                          WTF! <i className="fa fa-warning fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r02} type="radio" onChange={(event) => this.onChangeRadio(event, 'r02')} ref="r02" id="r02" value="r02" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          Cool!
+                          Cool! <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r03} type="radio" onChange={(event) => this.onChangeRadio(event, 'r03')} ref="r03" id="r03" value="r03" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          Awesome!
+                          Awesome! <i className="fa fa-star-o fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r04} type="radio" onChange={(event) => this.onChangeRadio(event, 'r04')} ref="r04" id="r04" value="r04" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          Dope Shit!
+                          Dope Shit! <i className="fa fa-trophy fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r05} type="radio" onChange={(event) => this.onChangeRadio(event, 'r05')} ref="r05" id="r05" value="r05" />
                         </label>
                         <label className={'checkbox-inline'}>
-                          God Mode!
+                          God Mode! <i className="fa fa-university fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
                         </label>
                       </fieldset>
