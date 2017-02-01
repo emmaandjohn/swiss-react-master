@@ -37,6 +37,7 @@ export default class Article extends Component {
     let getUrl = this.props.params.id;
     const stylesCommunity = require('../Community/Community.scss');
 
+    // Get Specific Article + get depending rates + comments
     superagent
     .post('/getSpecificArticleWithUrl')
     .send({ urlFriendly: getUrl })
@@ -50,6 +51,9 @@ export default class Article extends Component {
         console.log("Error, Article url does not exist in DB");
       }
     });
+
+
+
   }
 
   rateOrComment = (category, rateOrCommentValue, targetArticleId, targetUuid) => {

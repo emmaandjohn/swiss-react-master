@@ -95,6 +95,7 @@ var commentsRatingSchema = new mongoose.Schema({
   commentersNickname: String,
   commentersNicknameUrl: String,
   commentersTimestamp: String,
+  commentersUnixTime: String,
   rateOrCommentValue: String
 });
 var CommentsRatingModel = mongoose.model('CommentsRating', commentsRatingSchema);
@@ -199,6 +200,7 @@ app.post('/rateOrComment', function(req, res) {
       commentersNickname: commentersNickname,
       commentersNicknameUrl: commentersNicknameUrl,
       commentersTimestamp: humanDate,
+      commentersUnixTime: unixDateNow,
       rateOrCommentValue: rateOrCommentValue
     });
 
@@ -453,7 +455,21 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
 
     BlogModel.findOne({ urlFriendlyTitel: urlFriendlyBrowser }, function(error, result){
       if(result !== null){
-        res.json({ status: 1, specificArticleData: result });
+          console.log(result.articleId);
+          let articleIDforRaC = result.articleId;
+          let rateData = null; let commentData = null;
+
+          CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'rate'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
+            if(result !== null){
+              rateData = result;
+            }
+          });
+          CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'comment'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
+            if(result !== null){
+              commentData = result;
+            }
+          });
+          res.json({ status: 1, specificArticleData: result, rateData: rateData, commentData: commentData });
       } else{
         res.json({ status: 0 });
       }
