@@ -78,9 +78,11 @@ export default class Article extends Component {
       if(res.body.status === 1) {
         if(res.body.rateData !== '0'){
           this.props.dispatch(getRateEntries(res.body.rateData));
+          this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: null });
         }
         if(res.body.commentData !== '0'){
           this.props.dispatch(getCommentEntries(res.body.commentData));
+          this.setState({ r01: false, r02: false, r03: false, r04: false, r05: false, r06: false }); this.setState({ ratedRadio: null });
         }
       } else{
         console.log("Error, Article url does not exist in DB");
@@ -195,9 +197,9 @@ export default class Article extends Component {
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
-            <div className={'col-sm-3 col-xs-3 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
-            <div className={'col-sm-1 col-xs-1 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
-            <div className={'col-sm-7 col-xs-4 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
+            <div className={'col-sm-3 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
+            <div className={'col-sm-1 col-xs-6 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
+            <div className={'col-sm-7 col-xs-6 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
         </div>
       );
