@@ -472,11 +472,15 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
           let rateData = null; let commentData = null;
 
           CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'rate'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
+            console.log("111");
+            console.log(result);
             if(result !== null){
               rateData = result;
             }
           });
           CommentsRatingModel.find({targetArticleId: articleIDforRaC, category: 'comment'}).sort({'commentersUnixTime': -1}).exec(function(err, result) {
+            console.log("222");
+            console.log(result);
             if(result !== null){
               commentData = result;
             }
