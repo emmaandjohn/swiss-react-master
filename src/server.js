@@ -317,6 +317,18 @@ app.post('/deleteProfile', function(req, res) {
         doc.remove();
       });
     });
+
+    var query22 = {"commentersUuid": deleteUuid};
+
+    CommentsRatingModel.find( query22, options11, function(err,docs){
+      if (err) return console.log(err);
+      if (!docs || !Array.isArray(docs) || docs.length === 0)
+        return console.log('no docs found');
+      docs.forEach( function (doc) {
+        doc.remove();
+      });
+    });
+
     res.json({ status: 1 });
 });
 
@@ -704,7 +716,36 @@ app.post('/updateUserProfile', function(req, res) {
             });
           }
         });
+
+        /* Update Comments and Rates User Information */
+        var getField2 = '';
+        if(getField === 'avatar'){getField2 = 'commentersAvatar';}
+        if(getField === 'nickname'){getField2 = 'commentersNickname';}
+        if(getField === 'kanton'){getField2 = 'commentersKanton';}
+
+        CommentsRatingModel.findOne({ commentersUuid: getUuid }, 'commentersUuid', function(error, result){
+          if(result !== null){
+            var query3 = {"commentersUuid": getUuid};
+            var update3 = {}; var update23 = {}; /* update2: also update nicknameURL if getField is "nickname" ! */
+
+            update3[getField2] = newValue; update23['commentersNicknameUrl'] = nicknameUrl;
+            var options3 = {multi: true};
+            CommentsRatingModel.update(query3, update3, options3, function(err, result) {
+              if (err) {
+                console.log(err);
+              }
+              if(nicknameUrl !== 0){ /* also update nicknameURL ! */
+                CommentsRatingModel.update(query3, update23, options3, function(err, result) {
+                  if (err) {
+                    console.log(err);
+                  }
+                });
+              }
+            });
+          }
+        });
       }
+
 
       var query = {"email": getEmail, "uuid": getUuid};
       var update = {}; var update3 = {}; /* update2: also update nicknameURL if getField is "nickname" ! */
