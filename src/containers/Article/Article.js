@@ -64,8 +64,28 @@ export default class Article extends Component {
       }
     });
 
+  }
 
+  updateRoC = () => {
+    let getUrl = this.props.params.id;
 
+    // Get depending rates + comments
+    superagent
+    .post('/getSpecificArticleWithUrl')
+    .send({ urlFriendly: getUrl })
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if(res.body.status === 1) {
+        if(res.body.rateData !== '0'){
+          this.props.dispatch(getRateEntries(res.body.rateData));
+        }
+        if(res.body.commentData !== '0'){
+          this.props.dispatch(getCommentEntries(res.body.commentData));
+        }
+      } else{
+        console.log("Error, Article url does not exist in DB");
+      }
+    });
   }
 
   rateOrComment = (category, rateOrCommentValue, targetArticleId, targetUuid) => {
@@ -103,7 +123,7 @@ export default class Article extends Component {
       .set('Accept', 'application/json')
       .end((error, res) => {
         if(res.body.status === 1) {
-          console.log("Success, dispatch Action here to reload Comments/Ratings..");
+          this.updateRoC();
         } else{
           console.log("Error, rateOrComment");
         }
@@ -161,7 +181,7 @@ export default class Article extends Component {
 
     let rateContentDef = []; let ratingVal = 0;
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( 'Crap!', <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
       if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( 'WTF!', <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
       if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( 'Cool!', <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
       if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( 'Awesome!', <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }

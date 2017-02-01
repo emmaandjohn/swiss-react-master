@@ -467,7 +467,6 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
 
     BlogModel.findOne({ urlFriendlyTitel: urlFriendlyBrowser }, function(error, result){
       if(result !== null){
-          console.log(result.articleId);
           let articleIDforRaC = result.articleId;
           let rateData = 0; let commentData = 0;
 
