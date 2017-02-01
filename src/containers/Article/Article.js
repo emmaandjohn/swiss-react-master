@@ -182,11 +182,11 @@ export default class Article extends Component {
     let rateContentDef = []; let ratingVal = 0;
     getRateEntriesState.articles.forEach(function(entry){
       if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( 'WTF!', <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( 'Cool!', <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( 'Awesome!', <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal = ( 'Dope Shit!', <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal = ( 'God Mode!', <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal = ( <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal = ( <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
 
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
