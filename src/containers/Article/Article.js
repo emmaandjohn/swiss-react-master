@@ -161,12 +161,12 @@ export default class Article extends Component {
 
     let rateContentDef = []; let ratingVal = 0;
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( 'Crap!', <i className="fa fa-trash fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( 'WTF!', <i className="fa fa-warning fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( 'Cool!', <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( 'Awesome!', <i className="fa fa-star-o fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal = ( 'Dope Shit!', <i className="fa fa-trophy fa-2" aria-hidden="true"></i> ); }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal = ( 'God Mode!', <i className="fa fa-university fa-2" aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( 'Crap!', <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( 'WTF!', <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( 'Cool!', <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( 'Awesome!', <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal = ( 'Dope Shit!', <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal = ( 'God Mode!', <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i> ); }
 
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
@@ -244,29 +244,29 @@ export default class Article extends Component {
                     }
                     <p>Wie findest du diesen Beitrag? Sende dem Autor deine Reaction!</p>
                       <fieldset>
-                        <label className={'checkbox-inline'}>
-                          Crap! <i className="fa fa-trash fa-2" aria-hidden="true"></i>
+                        <label className={'checkbox-inline ' + stylesArticle.pn}>
                           <input checked={this.state.r01} type="radio" onChange={(event) => this.onChangeRadio(event, 'r01')} ref="r01" id="r01" value="r01" />
+                          Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>
                         </label>
                         <label className={'checkbox-inline'}>
-                          WTF! <i className="fa fa-warning fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r02} type="radio" onChange={(event) => this.onChangeRadio(event, 'r02')} ref="r02" id="r02" value="r02" />
+                          WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>
                         </label>
                         <label className={'checkbox-inline'}>
-                          Cool! <i className="fa fa-thumbs-o-up fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r03} type="radio" onChange={(event) => this.onChangeRadio(event, 'r03')} ref="r03" id="r03" value="r03" />
+                          Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>
                         </label>
                         <label className={'checkbox-inline'}>
-                          Awesome! <i className="fa fa-star-o fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r04} type="radio" onChange={(event) => this.onChangeRadio(event, 'r04')} ref="r04" id="r04" value="r04" />
+                          Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>
                         </label>
                         <label className={'checkbox-inline'}>
-                          Dope Shit! <i className="fa fa-trophy fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r05} type="radio" onChange={(event) => this.onChangeRadio(event, 'r05')} ref="r05" id="r05" value="r05" />
+                          Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>
                         </label>
                         <label className={'checkbox-inline'}>
-                          God Mode! <i className="fa fa-university fa-2" aria-hidden="true"></i>
                           <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
+                          God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>
                         </label>
                       </fieldset>
                       <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
