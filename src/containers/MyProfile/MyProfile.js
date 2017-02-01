@@ -279,8 +279,6 @@ export default class MyProfile extends Component {
 
     /* Set password (5) */
     let getPassword = syncPw;
-    console.log("1: "+getPassword);
-    console.log("2: "+updateUserState.password);
     if(updateUserState.password){
       getPassword = updateUserState.password;
     }

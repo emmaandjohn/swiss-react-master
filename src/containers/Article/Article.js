@@ -51,8 +51,6 @@ export default class Article extends Component {
         this.setState({specificArticleData: res.body.specificArticleData});
         let sadData = Object.keys(this.state.specificArticleData.technologies[0]).map(key => this.state.specificArticleData.technologies[0][key].length > 1 ? <span title={this.state.specificArticleData.technologies[0][key]} className={stylesCommunity.cbs00Home + ' ' + stylesCommunity['cbs'+key]}></span> : null );
         this.setState({ specificArticleTechData: sadData });
-        console.log("rate: "+JSON.stringify(res.body.rateData));
-        console.log("comment: "+JSON.stringify(res.body.commentData));
 
         if(res.body.rateData !== '0'){
           this.props.dispatch(getRateEntries(res.body.rateData));
@@ -166,7 +164,7 @@ export default class Article extends Component {
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
-            <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
@@ -183,7 +181,7 @@ export default class Article extends Component {
       commentContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
-            <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
+            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
@@ -266,7 +264,7 @@ export default class Article extends Component {
                       </fieldset>
                       <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                 </div>
-                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
+                <div className={'col-xs-12 ' + stylesArticle.roc}>
                     {rateContentDef}
                 </div>
                 <br />
@@ -280,7 +278,7 @@ export default class Article extends Component {
                     <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
                     <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
-                <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc}>
+                <div className={'col-xs-12 ' + stylesArticle.roc}>
                     {commentContentDef}
                 </div>
               </div>

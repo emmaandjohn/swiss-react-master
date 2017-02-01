@@ -482,12 +482,6 @@ app.post('/getSpecificArticleWithUrl', function(req, res) {
               res.json({ status: 1, specificArticleData: result, rateData: rateData, commentData: commentData });
             });
           });
-
-          console.log("333");
-          console.log(rateData);
-          console.log("444");
-          console.log(commentData);
-
       } else{
         res.json({ status: 0 });
       }
