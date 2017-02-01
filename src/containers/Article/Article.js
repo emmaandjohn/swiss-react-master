@@ -193,13 +193,13 @@ export default class Article extends Component {
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
+            <div className={'col-sm-3 col-xs-6 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
             <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
             <div className={'col-sm-3 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
-            <div className={'col-sm-1 col-xs-6 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
-            <div className={'col-sm-7 col-xs-6 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
+            <div className={'col-sm-5 col-xs-6 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
         </div>
       );
