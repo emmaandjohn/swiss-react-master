@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Well from 'react-bootstrap/lib/Well';
+import { Well, Alert, Button } from 'react-bootstrap/lib';
 import Helmet from 'react-helmet';
 import superagent from 'superagent';
 import cookie from 'react-cookie';
