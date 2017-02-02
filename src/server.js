@@ -205,7 +205,7 @@ app.post('/rateOrComment', function(req, res) {
     });
 
     if(category === 'rate'){
-      var query = {targetArticleId: targetArticleId, commentersUuid: commentersUuid};
+      var query = {targetArticleId: targetArticleId, commentersUuid: commentersUuid, category: 'rate'};
       var update = {rateOrCommentValue: rateOrCommentValue};
       var options = {new: true};
       CommentsRatingModel.findOneAndUpdate(query, update, options, function(err, result) {
