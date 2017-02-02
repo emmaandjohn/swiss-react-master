@@ -257,6 +257,7 @@ export default class Article extends Component {
                 </div>
 
                 {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
+                <div>
                 <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
                     <br /><br /><br />
@@ -310,6 +311,7 @@ export default class Article extends Component {
                 </div>
                 <div className={'col-xs-12 ' + stylesArticle.roc}>
                     {commentContentDef}
+                </div>
                 </div>
                 :
                 null }
