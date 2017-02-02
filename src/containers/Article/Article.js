@@ -186,24 +186,24 @@ export default class Article extends Component {
     let nicks1 = ''; let nicks2 = ''; let nicks3 = ''; let nicks4 = ''; let nicks5 = ''; let nicks6 = '';
 
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+' | ';} //( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += entry.commentersNickname+' | ';} // ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += entry.commentersNickname+' | ';} // ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += entry.commentersNickname+' | ';} // ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += entry.commentersNickname+' | ';} // ( <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += entry.commentersNickname+' | ';} // ( <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+' | ';}
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += entry.commentersNickname+' | ';}
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += entry.commentersNickname+' | ';}
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += entry.commentersNickname+' | ';}
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += entry.commentersNickname+' | ';}
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += entry.commentersNickname+' | ';}
     }.bind(this));
 
     rateContentDef.push(
       <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
         <div className='row'>
           <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal1+'</strong>' + ' (' + nicks1 ')'}</span>
-            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal2+'</strong>' + ' (' + nicks2 ')'}</span>
-            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal3+'</strong>' + ' (' + nicks3 ')'}</span>
-            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal4+'</strong>' + ' (' + nicks4 ')'}</span>
-            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal5+'</strong>' + ' (' + nicks5 ')'}</span>
-            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal6+'</strong>' + ' (' + nicks6 ')'}</span>
+            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal1+'</strong>' + ' (' + nicks1 + ')'}</span>
+            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal2+'</strong>' + ' (' + nicks2 + ')'}</span>
+            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal3+'</strong>' + ' (' + nicks3 + ')'}</span>
+            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal4+'</strong>' + ' (' + nicks4 + ')'}</span>
+            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal5+'</strong>' + ' (' + nicks5 + ')'}</span>
+            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal6+'</strong>' + ' (' + nicks6 + ')'}</span>
           </div>
         </div>
       </div>
