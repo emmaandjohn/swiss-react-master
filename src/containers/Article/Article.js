@@ -181,7 +181,9 @@ export default class Article extends Component {
     const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
     const { activateNewUserState, getBlogEntriesState, getRateEntriesState, getCommentEntriesState} = this.props;
 
-    let rateContentDef = []; let ratingVal = 0;
+    let rateContentDef = []; let commentContentDef = []; let ratingVal = 0;
+
+    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
     getRateEntriesState.articles.forEach(function(entry){
       if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
       if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
@@ -205,7 +207,6 @@ export default class Article extends Component {
       );
     }.bind(this));
 
-    let commentContentDef = [];
     getCommentEntriesState.articles.forEach(function(entry){
       commentContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
@@ -221,6 +222,8 @@ export default class Article extends Component {
         </div>
       );
     }.bind(this));
+    :
+    null }
 
 
     return (
