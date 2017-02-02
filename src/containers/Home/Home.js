@@ -18,12 +18,14 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 export default class Home extends Component {
 
   componentDidMount() {
+    this.setState({showSpinner: 1})
     superagent
     .post('/community')
     .send({ loadStatus: 2 })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
+        this.setState({showSpinner: 0})
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });
@@ -103,6 +105,10 @@ export default class Home extends Component {
         <div className='container'>
           <h3 className={styles.mb20}>React Activity Feed</h3>
           <div className={'row ' + styles.minHeightCont}>
+            {showSpinner === 1 ?
+              <i ref="spinnerloader" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            : null
+            }
             {blogContentDef}
           </div>
         </div>
