@@ -181,31 +181,33 @@ export default class Article extends Component {
     const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
     const { activateNewUserState, getBlogEntriesState, getRateEntriesState, getCommentEntriesState} = this.props;
 
-    let rateContentDef = []; let commentContentDef = []; let ratingVal1 = 0; let ratingVal2 = 0; let ratingVal3 = 0; let ratingVal4 = 0; let ratingVal5 = 0; let ratingVal6 = 0;
+    let rateContentDef = []; let commentContentDef = [];
+    let ratingVal1 = 0; let ratingVal2 = 0; let ratingVal3 = 0; let ratingVal4 = 0; let ratingVal5 = 0; let ratingVal6 = 0;
+    let nicks1 = ''; let nicks2 = '' let nicks3 = ''; let nicks4 = ''; let nicks5 = ''; let nicks6 = '';
 
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1;} //( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1;} // ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1;} // ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1;} // ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1;} // ( <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1;} // ( <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+' | '; } //( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += entry.commentersNickname+' | ';} // ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += entry.commentersNickname+' | ';} // ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += entry.commentersNickname+' | ';} // ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += entry.commentersNickname+' | ';} // ( <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += entry.commentersNickname+' | ';} // ( <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+    }.bind(this));
 
-      rateContentDef.push(
-        <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
-          <div className='row'>
-            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>
-              <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal1}
-              <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal2}
-              <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal3}
-              <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal4}
-              <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal5}
-              <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal6}
-            </div>
+    rateContentDef.push(
+      <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
+        <div className='row'>
+          <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal1+'</strong>' + ' (' + nicks1 ')'}</span>
+            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal2+'</strong>' + ' (' + nicks2 ')'}</span>
+            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal3+'</strong>' + ' (' + nicks3 ')'}</span>
+            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal4+'</strong>' + ' (' + nicks4 ')'}</span>
+            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal5+'</strong>' + ' (' + nicks5 ')'}</span>
+            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: {'<strong>'+ratingVal6+'</strong>' + ' (' + nicks6 ')'}</span>
           </div>
         </div>
-      );
-    }.bind(this));
+      </div>
+    );
 
     getCommentEntriesState.articles.forEach(function(entry){
       commentContentDef.push(
@@ -297,7 +299,7 @@ export default class Article extends Component {
                               <span> God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
                           </fieldset>
-                          <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+                          <button className={"btn btn-primary " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                       </div>
                       : null
                       }
@@ -314,10 +316,10 @@ export default class Article extends Component {
                       : null
                       }
                       <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
-                      <button className={"btn btn-default " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
+                      <button className={"btn btn-primary " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
                 <div className={'col-xs-12 ' + stylesArticle.roc}>
-                      {commentContentDef}
+                    {commentContentDef}
                 </div>
               </div>
                 :
