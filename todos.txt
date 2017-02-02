@@ -18,10 +18,11 @@ X) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
 X) prevent to rate your own articles! 
 X) prevent rate and comment for not reg. users
 -) only rate once per article! comment multiple is ok..
--) notifications if you get a new comment/rate?
 -) comment === null wenn neu registriert? (noob)?
 -) delete your own rate and comment? (gelöschter inhalt)
 -) delete your profile.. will comments also deleted?
+-) summarize "rates" - not list every rate per user
+-) notifications if you get a new comment/rate?
 
 
 X) Simple Kommentare von anderen Usern unten eine Artikels?

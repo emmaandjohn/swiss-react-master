@@ -199,7 +199,7 @@ export default class Article extends Component {
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
-            <div className={'col-sm-3 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
+            <div className={'col-sm-3 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname === null ? 'noob' : entry.commentersNickname}</div>
             <div className={'col-sm-5 col-xs-6 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
         </div>
@@ -214,7 +214,7 @@ export default class Article extends Component {
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
-            <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname}</div>
+            <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname === null ? 'noob' : entry.commentersNickname}</div>
             <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{entry.rateOrCommentValue}</div>
             <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
