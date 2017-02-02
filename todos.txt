@@ -20,8 +20,8 @@ X) prevent to rate your own articles!
 X) prevent rate and comment for not reg. users
 X) comment === null wenn neu registriert? (noob)?
 
--) only rate once per article! comment multiple is ok..
--) delete your own comment? (gelöschter inhalt)
+X) only rate once per article! comment multiple is ok..
+-//) delete your own comment? (gelöschter inhalt)
 -) delete your profile.. will comments also deleted?
 -) notifications if you get a new comment/rate?
 

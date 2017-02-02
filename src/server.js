@@ -209,6 +209,7 @@ app.post('/rateOrComment', function(req, res) {
       var update = {rateOrCommentValue: rateOrCommentValue};
       var options = {new: true};
       CommentsRatingModel.findOneAndUpdate(query, update, options, function(err, result) {
+        console.log(result);
         if (err) {
           res.json({ status: 0 });
         }
