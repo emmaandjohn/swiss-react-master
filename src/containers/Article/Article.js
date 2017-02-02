@@ -181,26 +181,27 @@ export default class Article extends Component {
     const {artDeleteStatus, formStatus, formMsg, specificArticleData, specificArticleTechData, ratedRadio} = this.state;
     const { activateNewUserState, getBlogEntriesState, getRateEntriesState, getCommentEntriesState} = this.props;
 
-    let rateContentDef = []; let commentContentDef = []; let ratingVal = 0;
+    let rateContentDef = []; let commentContentDef = []; let ratingVal1 = 0; let ratingVal2 = 0; let ratingVal3 = 0; let ratingVal4 = 0; let ratingVal5 = 0; let ratingVal6 = 0;
 
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal = ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal = ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal = ( <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal = ( <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1;} //( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1;} // ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1;} // ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1;} // ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1;} // ( <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1;} // ( <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
 
       rateContentDef.push(
         <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
           <div className='row'>
-            <div className={'col-sm-3 col-xs-6 ' + styles.mt5 + ' ' + styles.oh}>{ratingVal}</div>
-            <div onClick={() => this.checkProfile(entry.commentersNicknameUrl)} className={'cpointer col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
-              <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
-              <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>
+              <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal1}
+              <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal2}
+              <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal3}
+              <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal4}
+              <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal5}
+              <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>: {ratingVal6}
             </div>
-            <div className={'col-sm-3 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname === null ? 'noob' : entry.commentersNickname}</div>
-            <div className={'col-sm-5 col-xs-6 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
         </div>
       );
@@ -214,7 +215,7 @@ export default class Article extends Component {
               <div className={stylesMyProfile['avatar'+entry.commentersAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.commentersKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
             </div>
-            <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname === null ? 'noob' : entry.commentersNickname}</div>
+            <div className={'col-sm-11 col-xs-8 ' + styles.mt5 + ' ' + styles.oh}>{entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname}</div>
             <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>{entry.rateOrCommentValue}</div>
             <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.mt5 + ' ' + styles.mb10}>{entry.commentersTimestamp}</div>
           </div>
