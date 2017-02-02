@@ -183,7 +183,6 @@ export default class Article extends Component {
 
     let rateContentDef = []; let commentContentDef = []; let ratingVal = 0;
 
-    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
     getRateEntriesState.articles.forEach(function(entry){
       if(entry.rateOrCommentValue === 'r01'){ ratingVal = ( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
       if(entry.rateOrCommentValue === 'r02'){ ratingVal = ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
@@ -222,9 +221,6 @@ export default class Article extends Component {
         </div>
       );
     }.bind(this));
-    :
-    null }
-
 
     return (
       <div className="container" id="articlePage">
@@ -259,6 +255,8 @@ export default class Article extends Component {
                   <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.pb7}>{specificArticleTechData}</div>
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
+
+                {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                 <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
                     <br /><br /><br />
@@ -313,6 +311,8 @@ export default class Article extends Component {
                 <div className={'col-xs-12 ' + stylesArticle.roc}>
                     {commentContentDef}
                 </div>
+                :
+                null }
               </div>
             </div>
           </div>
