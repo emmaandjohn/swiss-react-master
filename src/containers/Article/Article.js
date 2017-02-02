@@ -186,24 +186,31 @@ export default class Article extends Component {
     let nicks1 = ''; let nicks2 = ''; let nicks3 = ''; let nicks4 = ''; let nicks5 = ''; let nicks6 = '';
 
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+' | ';}
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += entry.commentersNickname+' | ';}
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += entry.commentersNickname+' | ';}
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += entry.commentersNickname+' | ';}
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += entry.commentersNickname+' | ';}
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += entry.commentersNickname+' | ';}
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+', ';}
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += entry.commentersNickname+',¨';}
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += entry.commentersNickname+', ';}
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += entry.commentersNickname+', ';}
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += entry.commentersNickname+', ';}
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += entry.commentersNickname+', ';}
     }.bind(this));
+
+    if(nicks1.length > 1){nicks1 = nicks1.slice(0, -2);}
+    if(nicks2.length > 1){nicks2 = nicks2.slice(0, -2);}
+    if(nicks3.length > 1){nicks3 = nicks3.slice(0, -2);}
+    if(nicks4.length > 1){nicks4 = nicks4.slice(0, -2);}
+    if(nicks5.length > 1){nicks5 = nicks5.slice(0, -2);}
+    if(nicks6.length > 1){nicks6 = nicks6.slice(0, -2);}
 
     rateContentDef.push(
       <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
         <div className='row'>
           <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: <strong>{ratingVal1}</strong> (<i>{nicks1}</i>)</span>
-            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: <strong>{ratingVal2}</strong> (<i>{nicks2}</i>)</span>
-            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: <strong>{ratingVal3}</strong> (<i>{nicks3}</i>)</span>
-            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: <strong>{ratingVal4}</strong> (<i>{nicks4}</i>)</span>
-            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: <strong>{ratingVal5}</strong> (<i>{nicks5}</i>)</span>
-            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor + " " + stylesArticle.mr10} aria-hidden="true"></i>: <strong>{ratingVal6}</strong> (<i>{nicks6}</i>)</span>
+            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal1}</strong> (<i>{nicks1}</i>)</span><br />
+            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal2}</strong> (<i>{nicks2}</i>)</span><br />
+            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal3}</strong> (<i>{nicks3}</i>)</span><br />
+            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal4}</strong> (<i>{nicks4}</i>)</span><br />
+            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal5}</strong> (<i>{nicks5}</i>)</span><br />
+            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal6}</strong> (<i>{nicks6}</i>)</span><br />
           </div>
         </div>
       </div>
@@ -299,7 +306,7 @@ export default class Article extends Component {
                               <span> God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
                           </fieldset>
-                          <button className={"btn btn-primary " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
+                          <button className={"btn btn-primary " + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('rate', ratedRadio, specificArticleData.articleId, specificArticleData.userUuid)}>Sende Reaction</button>
                       </div>
                       : null
                       }
@@ -316,7 +323,7 @@ export default class Article extends Component {
                       : null
                       }
                       <textarea name="comment" ref="comment" placeholder="Dein Kommentar..." className={'form-control ' + stylesMyProfile.fixTextarea}></textarea>
-                      <button className={"btn btn-primary " + stylesArticle.btnDelete + ' ' + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
+                      <button className={"btn btn-primary " + stylesArticle.btnPaddings} onClick={() => this.rateOrComment('comment', this.refs.comment.value, specificArticleData.articleId, specificArticleData.userUuid)}>Kommentar posten</button>
                 </div>
                 <div className={'col-xs-12 ' + stylesArticle.roc}>
                     {commentContentDef}
