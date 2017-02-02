@@ -59,6 +59,7 @@ export default class Home extends Component {
     const stylesCommunity = require('../Community/Community.scss');
     const stylesSuche = require('../Suche/Suche.scss');
     const { getBlogEntriesState } = this.props;
+    const {showSpinner} = this.state;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
@@ -106,7 +107,7 @@ export default class Home extends Component {
           <h3 className={styles.mb20}>React Activity Feed</h3>
           <div className={'row ' + styles.minHeightCont}>
             {showSpinner === 1 ?
-              <i ref="spinnerloader" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+              <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
             : null
             }
             {blogContentDef}
