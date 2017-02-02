@@ -203,45 +203,45 @@ export default class Article extends Component {
       <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
         <div className='row'>
           <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: </span>
           </div>
           <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
-            <strong>{ratingVal1}</strong> (<i>{nicks1}</i>)</span><br />
+            <strong>{ratingVal1}</strong> (<i>{nicks1}</i>)
           </div>
 
           <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: </span>
           </div>
           <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
-            <strong>{ratingVal2}</strong> (<i>{nicks2}</i>)</span><br />
+            <strong>{ratingVal2}</strong> (<i>{nicks2}</i>)
           </div>
 
           <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: </span>
           </div>
           <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
-            <strong>{ratingVal3}</strong> (<i>{nicks3}</i>)</span><br />
+            <strong>{ratingVal3}</strong> (<i>{nicks3}</i>)
           </div>
 
           <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: </span>
           </div>
           <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
-            <strong>{ratingVal4}</strong> (<i>{nicks4}</i>)</span><br />
+            <strong>{ratingVal4}</strong> (<i>{nicks4}</i>)
           </div>
 
           <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: </span>
           </div>
           <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
-            <strong>{ratingVal5}</strong> (<i>{nicks5}</i>)</span><br />
+            <strong>{ratingVal5}</strong> (<i>{nicks5}</i>)
           </div>
 
           <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: </span>
           </div>
           <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
-            <strong>{ratingVal6}</strong> (<i>{nicks6}</i>)</span><br />
+            <strong>{ratingVal6}</strong> (<i>{nicks6}</i>)
           </div>
 
         </div>
