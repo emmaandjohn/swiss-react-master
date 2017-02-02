@@ -183,10 +183,10 @@ export default class Article extends Component {
 
     let rateContentDef = []; let commentContentDef = [];
     let ratingVal1 = 0; let ratingVal2 = 0; let ratingVal3 = 0; let ratingVal4 = 0; let ratingVal5 = 0; let ratingVal6 = 0;
-    let nicks1 = ''; let nicks2 = '' let nicks3 = ''; let nicks4 = ''; let nicks5 = ''; let nicks6 = '';
+    let nicks1 = ''; let nicks2 = ''; let nicks3 = ''; let nicks4 = ''; let nicks5 = ''; let nicks6 = '';
 
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+' | '; } //( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += entry.commentersNickname+' | ';} //( <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
       if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += entry.commentersNickname+' | ';} // ( <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
       if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += entry.commentersNickname+' | ';} // ( <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
       if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += entry.commentersNickname+' | ';} // ( <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span> ); }
