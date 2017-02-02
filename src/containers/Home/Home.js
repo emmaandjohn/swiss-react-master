@@ -16,16 +16,19 @@ import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
 })
 
 export default class Home extends Component {
+  state = {
+    showSpinner: 1
+  }
 
   componentDidMount() {
-    this.setState({showSpinner: 1})
+    this.setState({showSpinner: 1});
     superagent
     .post('/community')
     .send({ loadStatus: 2 })
     .set('Accept', 'application/json')
     .end((error, res) => {
       if (res.body.status === 1) {
-        this.setState({showSpinner: 0})
+        this.setState({showSpinner: 0});
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });
