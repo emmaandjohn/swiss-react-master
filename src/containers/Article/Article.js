@@ -127,10 +127,6 @@ export default class Article extends Component {
         if(res.body.status === 1) {
           this.updateRoC();
         }
-        if(res.body.status === 2) {
-          this.setState({formStatus: 2});
-          this.setState({formMsg: 'Du hast diesen Artikel bereits mit einer Reaction bewertet!'});
-        }
       });
     }
   }
