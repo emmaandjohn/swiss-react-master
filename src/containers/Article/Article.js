@@ -202,14 +202,48 @@ export default class Article extends Component {
     rateContentDef.push(
       <div className={styles.topLine + ' animated fadeIn col-xs-12'}>
         <div className='row'>
-          <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.oh}>
-            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal1}</strong> (<i>{nicks1}</i>)</span><br />
-            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal2}</strong> (<i>{nicks2}</i>)</span><br />
-            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal3}</strong> (<i>{nicks3}</i>)</span><br />
-            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal4}</strong> (<i>{nicks4}</i>)</span><br />
-            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal5}</strong> (<i>{nicks5}</i>)</span><br />
-            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>: <strong>{ratingVal6}</strong> (<i>{nicks6}</i>)</span><br />
+          <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
           </div>
+          <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
+            <strong>{ratingVal1}</strong> (<i>{nicks1}</i>)</span><br />
+          </div>
+
+          <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+          </div>
+          <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
+            <strong>{ratingVal2}</strong> (<i>{nicks2}</i>)</span><br />
+          </div>
+
+          <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+          </div>
+          <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
+            <strong>{ratingVal3}</strong> (<i>{nicks3}</i>)</span><br />
+          </div>
+
+          <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+          </div>
+          <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
+            <strong>{ratingVal4}</strong> (<i>{nicks4}</i>)</span><br />
+          </div>
+
+          <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+          </div>
+          <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
+            <strong>{ratingVal5}</strong> (<i>{nicks5}</i>)</span><br />
+          </div>
+
+          <div className={'col-xs-6 col-sm-3 ' + styles.mt5 + ' ' + styles.oh}>
+            <span>God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i>:
+          </div>
+          <div className={'col-xs-6 col-sm-9 ' + styles.mt5 + ' ' + styles.oh}>
+            <strong>{ratingVal6}</strong> (<i>{nicks6}</i>)</span><br />
+          </div>
+
         </div>
       </div>
     );
@@ -283,23 +317,23 @@ export default class Article extends Component {
                               <input checked={this.state.r01} type="radio" onChange={(event) => this.onChangeRadio(event, 'r01')} ref="r01" id="r01" value="r01" />
                               <span> Crap! <i className={"fa fa-trash fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
-                            <label className={'checkbox-inline'}>
+                            <label className={'checkbox-inline ' + stylesArticle.pn}>
                               <input checked={this.state.r02} type="radio" onChange={(event) => this.onChangeRadio(event, 'r02')} ref="r02" id="r02" value="r02" />
                               <span> WTF! <i className={"fa fa-warning fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
-                            <label className={'checkbox-inline'}>
+                            <label className={'checkbox-inline ' + stylesArticle.pn}>
                               <input checked={this.state.r03} type="radio" onChange={(event) => this.onChangeRadio(event, 'r03')} ref="r03" id="r03" value="r03" />
                               <span> Cool! <i className={"fa fa-thumbs-up fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
-                            <label className={'checkbox-inline'}>
+                            <label className={'checkbox-inline ' + stylesArticle.pn}>
                               <input checked={this.state.r04} type="radio" onChange={(event) => this.onChangeRadio(event, 'r04')} ref="r04" id="r04" value="r04" />
                               <span> Awesome! <i className={"fa fa-star fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
-                            <label className={'checkbox-inline'}>
+                            <label className={'checkbox-inline ' + stylesArticle.pn}>
                               <input checked={this.state.r05} type="radio" onChange={(event) => this.onChangeRadio(event, 'r05')} ref="r05" id="r05" value="r05" />
                               <span> Dope Shit! <i className={"fa fa-trophy fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
-                            <label className={'checkbox-inline'}>
+                            <label className={'checkbox-inline ' + stylesArticle.pn}>
                               <input checked={this.state.r06} type="radio" onChange={(event) => this.onChangeRadio(event, 'r06')} ref="r06" id="r06" value="r06" />
                               <span> God Mode! <i className={"fa fa-university fa-3 " + stylesArticle.faColor} aria-hidden="true"></i></span>
                             </label>
