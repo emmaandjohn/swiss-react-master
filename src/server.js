@@ -204,14 +204,35 @@ app.post('/rateOrComment', function(req, res) {
       rateOrCommentValue: rateOrCommentValue
     });
 
-    CommentsOrRatingData.save(function (err) {
-        if (err) {
-          return console.log(err);
-          res.json({ status: 0 });
-        } else{
-          res.json({ status: 1 });
-        }
-    });
+    if(category === 'rate'){
+      CommentsRatingModel.findOne({ targetArticleId: targetArticleId, commentersUuid: commentersUuid }, function(error, result){
+          if(error){
+              res.json(error);
+          }
+          else if(result === null){ /* No rating found, one and only rate for that article will be saved */
+            CommentsOrRatingData.save(function (err) {
+                if (err) {
+                  return console.log(err);
+                  res.json({ status: 0 });
+                } else{
+                  res.json({ status: 1 });
+                }
+            });
+          }
+          else{
+              res.json({ status: 2 }); /* User has already rated this article! */
+          }
+      });
+    } else{ /* comments are not limited to 1 */
+      CommentsOrRatingData.save(function (err) {
+          if (err) {
+            return console.log(err);
+            res.json({ status: 0 });
+          } else{
+            res.json({ status: 1 });
+          }
+      });
+    }
 
 });
 

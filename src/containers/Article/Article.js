@@ -126,8 +126,10 @@ export default class Article extends Component {
       .end((error, res) => {
         if(res.body.status === 1) {
           this.updateRoC();
-        } else{
-          console.log("Error, rateOrComment");
+        }
+        if(res.body.status === 2) {
+          this.setState({formStatus: 2});
+          this.setState({formMsg: 'Du hast diesen Artikel bereits mit einer Reaction bewertet!'});
         }
       });
     }

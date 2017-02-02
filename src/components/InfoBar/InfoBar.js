@@ -20,7 +20,7 @@ export default class InfoBar extends Component {
       <div className={styles.infoBar + ' well'}>
         <div className="container">
           <div className={styles.cylon}></div>
-          <div className={styles.mt5}>Node.js Sternenzeit:{' '}<strong>{info ? info.message : 'no info!'}</strong></div>
+          <div className={styles.mt5}>React.js, React Router, Redux / Redux Saga, React Router Redux, Flux, Relay, GraphQL, Node.js, MongoDB / Mongoose, MySQL, Firebase, Docker, AWS, Express / Koa / Hapi / Socket.io, JSX, Babel, Webpack, Browserify, Gulp, Grunt, ES6, ES7, ES8, React Native, Sass, Less, Bootstrap, Foundation, Universal / Isomorphic, Immutable.js, Omnicient / Om, Meteor, Vue.js, ESLint / JSLint / JSHint, Mocha / Enzyme, Selenium, Sonarqube, Cordova / Phonegap</div>
         </div>
         <div className={styles.adcontainerDesktop + ' container'}>
           <AdSense.Google client='ca-pub-4161847192982174'

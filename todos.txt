@@ -15,13 +15,14 @@ X) Responsive Activity Feed / Styling allerorts allgemein verbessern!
 X) Suche oder Suche innerhalb von Categories? --> auf Home "mehr anzeigen" bei top10
 X) nach logout, nach profil löschen, nach artikel löschen = MELDUNG!
 
+X) summarize "rates" - not list every rate per user
 X) prevent to rate your own articles! 
 X) prevent rate and comment for not reg. users
+X) comment === null wenn neu registriert? (noob)?
+
 -) only rate once per article! comment multiple is ok..
--) comment === null wenn neu registriert? (noob)?
--) delete your own rate and comment? (gelöschter inhalt)
+-) delete your own comment? (gelöschter inhalt)
 -) delete your profile.. will comments also deleted?
--) summarize "rates" - not list every rate per user
 -) notifications if you get a new comment/rate?
 
 
