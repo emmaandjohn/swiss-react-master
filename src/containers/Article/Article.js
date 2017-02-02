@@ -230,7 +230,7 @@ export default class Article extends Component {
               <div className='row'>
                 <div className={'col-xs-12 ' + styles.pb20}>
                   <h1 className={stylesArticle.hyphens}><span className={stylesArticle.h1BtnStyle}>{specificArticleData.titel + ' '}</span>
-                    { specificArticleData.userUuid === cookie.load('ck_uuid') ?
+                  {(specificArticleData.userUuid === cookie.load('ck_uuid')) && ((activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true')) ?
                       <span>
                         <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.editArticle(specificArticleData.articleId)}>Deinen Beitrag bearbeiten</button>
                         { artDeleteStatus === false ?
@@ -256,9 +256,9 @@ export default class Article extends Component {
                   <div className={'col-xs-12 ' + styles.dateStyle + ' ' + styles.topLine + ' ' + styles.pb40}>Beitrag vom: {specificArticleData.timeFormatted} | Kategorie: <strong>{specificArticleData.category}</strong></div>
                 </div>
 
+                <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
                 {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                 <div>
-                <div className={'col-xs-12 ' + styles.topLine}><div dangerouslySetInnerHTML={{__html: specificArticleData.markup}}></div><br /><br /></div>
                 <div className={'col-xs-12 ' + styles.topLine + ' ' + stylesArticle.roc + ' ' + stylesArticle.pt35}>
                     <br /><br /><br />
                     <span className={stylesArticle.italic}><strong>Reactionen</strong></span>

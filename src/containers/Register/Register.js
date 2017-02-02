@@ -101,7 +101,7 @@ export default class Register extends Component {
               <div className="form-group">
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
-              <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Registrieren</button>
+              <button type="submit" className="btn btn-primary"><i className="fa fa-sign-in"/> Registrieren</button>
             </form>
           </div>
           : null

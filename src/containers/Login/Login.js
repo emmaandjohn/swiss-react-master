@@ -103,7 +103,7 @@ export default class Login extends Component {
               <div className="form-group">
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
-              <button type="submit" className={styles.btnSpacer + ' btn btn-success'}><i className="fa fa-sign-in"/> Login</button>
+              <button type="submit" className={styles.btnSpacer + ' btn btn-primary'}><i className="fa fa-sign-in"/> Login</button>
               <Link to="/forgot"><Button>Passwort vergessen</Button></Link>
             </form>
           </div>

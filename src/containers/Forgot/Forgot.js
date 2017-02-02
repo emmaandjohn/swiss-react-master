@@ -66,7 +66,7 @@ export default class Forgot extends Component {
               <div className="form-group">
                 <input type="text" ref="email" name="email" id="email" placeholder="Email" autocorrect="off" autocapitalize="none" className="form-control"/>
               </div>
-              <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Passwort zustellen</button>
+              <button type="submit" className="btn btn-primary"><i className="fa fa-sign-in"/> Passwort zustellen</button>
             </form>
           </div>
           : null
