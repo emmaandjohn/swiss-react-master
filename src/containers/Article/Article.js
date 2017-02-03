@@ -184,12 +184,12 @@ export default class Article extends Component {
     let nicks1 = ''; let nicks2 = ''; let nicks3 = ''; let nicks4 = ''; let nicks5 = ''; let nicks6 = '';
 
     getRateEntriesState.articles.forEach(function(entry){
-      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += (entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname)+', ';}
-      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += (entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname)+', ';}
-      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += (entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname)+', ';}
-      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += (entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname)+', ';}
-      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += (entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname)+', ';}
-      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += (entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname)+', ';}
+      if(entry.rateOrCommentValue === 'r01'){ ratingVal1 += 1; nicks1 += (<span onClick={() => this.checkProfile(entry.commentersNicknameUrl)}> entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname </span>)+', ';}
+      if(entry.rateOrCommentValue === 'r02'){ ratingVal2 += 1; nicks2 += (<span onClick={() => this.checkProfile(entry.commentersNicknameUrl)}> entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname </span>)+', ';}
+      if(entry.rateOrCommentValue === 'r03'){ ratingVal3 += 1; nicks3 += (<span onClick={() => this.checkProfile(entry.commentersNicknameUrl)}> entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname </span>)+', ';}
+      if(entry.rateOrCommentValue === 'r04'){ ratingVal4 += 1; nicks4 += (<span onClick={() => this.checkProfile(entry.commentersNicknameUrl)}> entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname </span>)+', ';}
+      if(entry.rateOrCommentValue === 'r05'){ ratingVal5 += 1; nicks5 += (<span onClick={() => this.checkProfile(entry.commentersNicknameUrl)}> entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname </span>)+', ';}
+      if(entry.rateOrCommentValue === 'r06'){ ratingVal6 += 1; nicks6 += (<span onClick={() => this.checkProfile(entry.commentersNicknameUrl)}> entry.commentersNickname === 'null' ? 'noob' : entry.commentersNickname </span>)+', ';}
     }.bind(this));
 
     if(nicks1.length > 1){nicks1 = nicks1.slice(0, -2);}
