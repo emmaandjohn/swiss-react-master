@@ -110,7 +110,7 @@ export default class Home extends Component {
 
     getUserEntriesState.articles.forEach(function(entry){
       userContentDef.push(
-        <div onClick={() => this.checkProfile(entry.nicknameUrl)} className={'animated well cpointer fadeIn col-xs-12 col-sm-4 ' + styles.hover}>
+        <div onClick={() => this.checkProfile(entry.nicknameUrl)} className={'animated well cpointer fadeIn col-xs-12 col-sm-4 ' + styles.hover + ' ' + styles.pm0}>
           <div>
             <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.avatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
