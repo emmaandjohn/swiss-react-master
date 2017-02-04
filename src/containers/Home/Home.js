@@ -112,11 +112,11 @@ export default class Home extends Component {
       userContentDef.push(
         <div onClick={() => this.checkProfile(entry.nicknameUrl)} className={styles.topLine + ' animated well cpointer fadeIn col-xs-2 ' + styles.hover}>
           <div className='row'>
-            <div className={'col-xs-5 ' + styles.mt5 + ' ' + styles.mr35minus}>
-              <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
-              <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.mr35minus}>
+              <div className={stylesMyProfile['avatar'+entry.avatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={stylesMyProfile['flag'+entry.kanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={styles.mt5 + ' ' + styles.oh}>{entry.nickname}</div>
             </div>
-            <div className={'col-xs-7 ' + styles.mt5 + ' ' + styles.oh}>{entry.userNickname}</div>
           </div>
         </div>
       );
@@ -140,7 +140,7 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3 className={styles.mb20}>React Activity Feed</h3>
-          <div className={'row ' + styles.minHeightCont}>
+          <div className={'row'}>
             {showSpinner === 1 ?
               <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
             : null
@@ -151,7 +151,7 @@ export default class Home extends Component {
 
         <div className='container'>
           <h3 className={styles.mb20}>Neuste User</h3>
-          <div className={'row ' + styles.minHeightCont}>
+          <div className={'row'}>
             {showSpinner2 === 1 ?
               <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
             : null
