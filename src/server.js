@@ -665,6 +665,20 @@ app.post('/community', function(req, res) {
 });
 
 
+/* **** Get newsest Users (Home) */
+app.post('/getNewestUsers', function(req, res) {
+      UserModel.find({}).sort({'date': -1}).limit(30).exec(function(err, result) {
+        if(err){
+          res.json(err);
+          res.json({ status: 0 });
+        }
+        else{
+          res.json({ status: 1, userArticles: result });
+        }
+      });
+});
+
+
 
 /* **** get Users Projects and Articles for MyProfile.js */
 app.post('/getUserContent', function(req, res) {

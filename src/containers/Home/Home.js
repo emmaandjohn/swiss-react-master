@@ -8,20 +8,24 @@ import { push } from 'react-router-redux';
 
 import { getUser } from '../../redux/actions/getUserActions';
 import { getBlogEntries } from '../../redux/actions/getBlogEntriesActions';
+import { getUserEntries } from '../../redux/actions/getUserEntriesActions';
 
 @connect((store) => {
   return {
     getBlogEntriesState: store.getBlogEntries.articleList,
+    getUserEntriesState: store.getUserEntries.articleList,
   };
 })
 
 export default class Home extends Component {
   state = {
-    showSpinner: 1
+    showSpinner: 1,
+    showSpinner2: 1
   }
 
   componentDidMount() {
-    this.setState({showSpinner: 1});
+    this.setState({showSpinner: 1}); this.setState({showSpinner2: 1});
+    /* get newest articles */
     superagent
     .post('/community')
     .send({ loadStatus: 2 })
@@ -32,12 +36,26 @@ export default class Home extends Component {
         this.props.dispatch(getBlogEntries(res.body.blogArticles));
       }
     });
+    /* get newest users */
+    superagent
+    .post('/getNewestUsers')
+    .set('Accept', 'application/json')
+    .end((error, res) => {
+      if (res.body.status === 1) {
+        this.setState({showSpinner2: 0});
+        this.props.dispatch(getUserEntries(res.body.userArticles));
+      }
+    });
   }
 
   static propTypes = {
     userLoggedIn: PropTypes.string
   }
 
+
+  checkProfile = (nicknameUrl) => {
+    this.props.dispatch(push('/user/'+nicknameUrl));
+  }
 
   loadArticle = (id) => {
     superagent
@@ -61,12 +79,12 @@ export default class Home extends Component {
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
     const stylesCommunity = require('../Community/Community.scss');
     const stylesSuche = require('../Suche/Suche.scss');
-    const { getBlogEntriesState } = this.props;
-    const {showSpinner} = this.state;
+    const { getBlogEntriesState, getUserEntriesState } = this.props;
+    const {showSpinner, showSpinner2} = this.state;
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
 
-    let blogContentDef = [];
+    let blogContentDef = []; let userContentDef = [];
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeIn col-xs-12 ' + styles.hover}>
@@ -89,6 +107,20 @@ export default class Home extends Component {
         <button className={"btn btn-primary " + stylesSuche.search2button + ' ' + styles.mt45} onClick={() => this.goToSearch()}>Mehr Beiträge / Suche</button>
       </div>
     );
+
+    getUserEntriesState.articles.forEach(function(entry){
+      userContentDef.push(
+        <div onClick={() => this.checkProfile(entry.nicknameUrl)} className={styles.topLine + ' animated well cpointer fadeIn col-xs-2 ' + styles.hover}>
+          <div className='row'>
+            <div className={'col-xs-5 ' + styles.mt5 + ' ' + styles.mr35minus}>
+              <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+              <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
+            </div>
+            <div className={'col-xs-7 ' + styles.mt5 + ' ' + styles.oh}>{entry.userNickname}</div>
+          </div>
+        </div>
+      );
+    }.bind(this));
 
     return (
       <div className={styles.home}>
@@ -114,6 +146,17 @@ export default class Home extends Component {
             : null
             }
             {blogContentDef}
+          </div>
+        </div>
+
+        <div className='container'>
+          <h3 className={styles.mb20}>Neuste User</h3>
+          <div className={'row ' + styles.minHeightCont}>
+            {showSpinner2 === 1 ?
+              <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            : null
+            }
+            {userContentDef}
           </div>
         </div>
       </div>
