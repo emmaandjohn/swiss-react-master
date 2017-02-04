@@ -88,7 +88,7 @@ export default class Home extends Component {
     getBlogEntriesState.articles.forEach(function(entry){
       blogContentDef.push(
         <div onClick={() => this.loadArticle(entry.articleId)} className={styles.topLine + ' animated fadeIn col-xs-12 ' + styles.hover}>
-          <div className='row'>
+          <div>
             <div className={'col-sm-1 col-xs-4 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.userAvatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.userKanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
@@ -110,12 +110,12 @@ export default class Home extends Component {
 
     getUserEntriesState.articles.forEach(function(entry){
       userContentDef.push(
-        <div onClick={() => this.checkProfile(entry.nicknameUrl)} className={styles.topLine + ' animated well cpointer fadeIn col-xs-2 ' + styles.hover}>
-          <div className='row'>
+        <div onClick={() => this.checkProfile(entry.nicknameUrl)} className={'animated cpointer fadeIn col-xs-5 col-sm-2 ' + styles.hover}>
+          <div>
             <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.avatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.kanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
-              <div className={styles.mt5 + ' ' + styles.oh}>{entry.nickname}</div>
+              <div className={styles.mt5 + ' ' + styles.ml5 + ' ' + styles.oh}>{entry.nickname}</div>
             </div>
           </div>
         </div>
