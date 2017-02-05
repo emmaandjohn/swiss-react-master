@@ -115,7 +115,7 @@ export default class Home extends Component {
             <div className={'col-xs-12 ' + styles.mt5 + ' ' + styles.mr35minus}>
               <div className={stylesMyProfile['avatar'+entry.avatar] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
               <div className={stylesMyProfile['flag'+entry.kanton] + ' ' + stylesMyProfile.avatarRound + ' ' + stylesMyProfile.avatarMain + ' ' + stylesMyProfile.avatarMini}></div>
-              <div className={styles.mt5 + ' ' + styles.ml68 + ' ' + styles.oh}>{entry.nickname === 'null' ? 'noob' : entry.nickname}</div>
+              <div className={styles.mt5 + ' ' + styles.ml68 + ' ' + styles.oh}>{entry.nickname === null ? 'noob' : entry.nickname}</div>
             </div>
           </div>
         </div>
