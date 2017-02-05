@@ -667,7 +667,7 @@ app.post('/community', function(req, res) {
 
 /* **** Get newsest Users (Home) */
 app.post('/getNewestUsers', function(req, res) {
-      UserModel.find({ activation: true }).limit(30).exec(function(err, result) {
+      UserModel.find({ activation: true }).limit(30).sort({date: -1}).exec(function(err, result) {
         if(err){
           res.json(err);
           res.json({ status: 0 });
