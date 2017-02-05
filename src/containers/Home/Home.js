@@ -161,13 +161,16 @@ export default class Home extends Component {
         <div className='container'>
           <h3 className={styles.mb20}>Medien</h3>
           <div className={'row'}>
-            <div className={'col-xs-4'}>
+            <div className={'col-sm-4 col-xs-12'}>
               <iframe width="320" height="180" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div className={'col-xs-4'}>
+            <div className={'col-sm-4 col-xs-12'}>
               <iframe width="320" height="180" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div className={'col-xs-4'}>
+            <div className={'col-sm-4 col-xs-12'}>
+              <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div className={'col-sm-4 col-xs-12'}>
               <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
