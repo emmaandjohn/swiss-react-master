@@ -152,7 +152,7 @@ export default class App extends Component {
             </Navbar>
           </Loader>
           { msgBoxState.status === true ?
-          <div className={'animated fadeInDown ' + styles.msgBox} onClick={() => this.closeThat()}>
+          <div className={'animated3 fadeInOut ' + styles.msgBox} onClick={() => this.closeThat()}>
             <Alert bsStyle="success"><div dangerouslySetInnerHTML={{__html: msgBoxState.msg}}></div></Alert>
           </div>
           : null

@@ -183,7 +183,7 @@ export default class RichEditorExample extends Component {
     let titelOld = 0;
     let successMsg = 'Du hast erfolgreich einen Beitrag erstellt!';
     if(editModeOn === 1){
-      loadStatus = 9; /*successMsg = 'Du hast erfolgreich deinen Beitrag aktualisiert!';*/ titelOld = this.state.oldTitleState;
+      loadStatus = 9; titelOld = this.state.oldTitleState;
     }
 
     superagent
@@ -220,9 +220,6 @@ export default class RichEditorExample extends Component {
                         let editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
                         this.setState({ editorState });
 
-                        /*this.setState({formStatus: 2});
-                        this.setState({formMsg: successMsg});
-                        scroll(0,0);*/
                         let counter = '';
                         for(let i=1; i<41; i++){
                           if(i < 10){
