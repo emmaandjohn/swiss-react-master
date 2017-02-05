@@ -8,7 +8,6 @@ export Login from './Login/Login';
 //export Survey from './Survey/Survey';
 export NotFound from './NotFound/NotFound';
 export Register from './Register/Register';
-export Kontakt from './Kontakt/Kontakt';
 export Community from './Community/Community';
 export Article from './Article/Article';
 export Activation from './Activation/Activation';

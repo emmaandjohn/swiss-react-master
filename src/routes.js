@@ -9,7 +9,6 @@ import {
     Home,
     Login,
     Register,
-    Kontakt,
     Community,
     MyProfile,
     User,
@@ -56,7 +55,6 @@ export default (store) => {
       { /* <Route path="about" component={About}/> */ }
       <Route path="login" component={Login}/>
       <Route path="registrieren" component={Register}/>
-      <Route path="kontakt" component={Kontakt}/>
       <Route path="community" component={Community}/>
       <Route path="community/:id" component={Article}/>
       <Route path="meinprofil" component={MyProfile}/>
