@@ -80,6 +80,7 @@ export default class Home extends Component {
     const styles = require('./Home.scss');
     const stylesMyProfile = require('../MyProfile/MyProfile.scss');
     const stylesCommunity = require('../Community/Community.scss');
+    const stylesVideos = require('../Videos/Videos.scss');
     const stylesSuche = require('../Suche/Suche.scss');
     const { getBlogEntriesState, getUserEntriesState } = this.props;
     const {showSpinner, showSpinner2} = this.state;
@@ -165,13 +166,19 @@ export default class Home extends Component {
           <h3 className={styles.mb20}>Videos</h3>
           <div className={'row'}>
             <div className={'col-sm-4 col-xs-12'}>
-              <iframe width="320" height="180" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
+              <div className={stylesVideos.videoWrapper}>
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
+              </div>
             </div>
             <div className={'col-sm-4 col-xs-12'}>
-              <iframe width="320" height="180" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
+              <div className={stylesVideos.videoWrapper}>
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
+              </div>
             </div>
             <div className={'col-sm-4 col-xs-12'}>
-              <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+              <div className={stylesVideos.videoWrapper}>
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+              </div>
             </div>
             <div className={'text-center col-xs-12'}>
               <button className={"btn btn-primary " + stylesSuche.search2button + ' ' + styles.mt45} onClick={() => this.goToVideos()}>Mehr Videos</button>

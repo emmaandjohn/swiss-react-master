@@ -416,7 +416,7 @@ export default class MyProfile extends Component {
                     <Col xs={12}>
                       <Row>
                         <Col xs={4}>
-                          <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain} onClick={() => this.modalOpen(modalSync)}></div>
+                          <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain + ' ' + styles.clickElement} onClick={() => this.modalOpen(modalSync)}></div>
                         </Col>
                         <Col xs={8}>
                           <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>

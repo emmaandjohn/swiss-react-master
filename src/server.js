@@ -307,7 +307,7 @@ app.post('/activation', function(req, res) {
     var humanDate = Moment(unixDateNow).tz('Europe/Zurich').format('DD.MM.YYYY - HH:mm:ss');
 
     var query = {"email": queryM, "uuid": queryU};
-    var update = {activation: true, membersince: humanDate};
+    var update = {activation: true, membersince: humanDate, membersinceU: unixDateNow};
     var options = {new: true};
     UserModel.findOneAndUpdate(query, update, options, function(err, result) {
       if (err) {
@@ -315,7 +315,7 @@ app.post('/activation', function(req, res) {
         res.json({ status: 0 });
       }
       else if(result !== null){
-          res.json({ status: 1, membersince: humanDate });
+          res.json({ status: 1, membersince: humanDate, membersinceU: unixDateNow });
       }
       else {
         res.json({ status: 0 });
@@ -669,7 +669,7 @@ app.post('/community', function(req, res) {
 
 /* **** Get newsest Users (Home) */
 app.post('/getNewestUsers', function(req, res) {
-      UserModel.find({ activation: true }).limit(30).sort({'membersinceU': 1}).exec(function(err, result) {
+      UserModel.find({ activation: true }).limit(30).sort({'membersinceU': -1}).exec(function(err, result) {
         if(err){
           res.json(err);
           res.json({ status: 0 });

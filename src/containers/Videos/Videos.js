@@ -19,14 +19,20 @@ export default class Videos extends Component {
           <Helmet title="Videos"/>
 
             <div className={'row'}>
-              <div className={styles.videoWrapper}>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
+              <div className={'col-xs-12'}>
+                <div className={styles.videoWrapper}>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
+                </div>
               </div>
-              <div className={styles.videoWrapper}>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
+              <div className={'col-xs-12'}>
+                <div className={styles.videoWrapper}>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
+                </div>
               </div>
-              <div className={styles.videoWrapper}>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+              <div className={'col-xs-12'}>
+                <div className={styles.videoWrapper}>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+                </div>
               </div>
             </div>
 
