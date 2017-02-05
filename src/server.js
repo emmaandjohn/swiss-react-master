@@ -669,7 +669,7 @@ app.post('/community', function(req, res) {
 
 /* **** Get newsest Users (Home) */
 app.post('/getNewestUsers', function(req, res) {
-      UserModel.find({ activation: true }).limit(30).sort({'membersinceU': -1}).exec(function(err, result) {
+      UserModel.find({ activation: true }).limit(30).sort({'membersinceU': 1}).exec(function(err, result) {
         if(err){
           res.json(err);
           res.json({ status: 0 });
@@ -764,20 +764,26 @@ app.post('/updateUserProfile', function(req, res) {
         if(getField === 'kanton'){getField2 = 'commentersKanton';}
 
         CommentsRatingModel.findOne({ commentersUuid: getUuid }, 'commentersUuid', function(error, result){
+          console.log("11: ");
+          console.log(result);
           if(result !== null){
             var query3 = {"commentersUuid": getUuid};
             var update3 = {}; var update23 = {}; /* update2: also update nicknameURL if getField is "nickname" ! */
 
             update3[getField2] = newValue; update23['commentersNicknameUrl'] = nicknameUrl;
             var options3 = {multi: true};
-            CommentsRatingModel.update(query3, update3, options3, function(err, result) {
-              if (err) {
-                console.log(err);
+            CommentsRatingModel.update(query3, update3, options3, function(err22, result22) {
+              console.log("22: ");
+              console.log(result22);
+              if (err22) {
+                console.log(err22);
               }
               if(nicknameUrl !== 0){ /* also update nicknameURL ! */
-                CommentsRatingModel.update(query3, update23, options3, function(err, result) {
-                  if (err) {
-                    console.log(err);
+                CommentsRatingModel.update(query3, update23, options3, function(err33, result33) {
+                  console.log("33: ");
+                  console.log(result33);
+                  if (err33) {
+                    console.log(err33);
                   }
                 });
               }
