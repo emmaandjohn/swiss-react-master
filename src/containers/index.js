@@ -16,3 +16,4 @@ export Forgot from './Forgot/Forgot';
 export MyProfile from './MyProfile/MyProfile';
 export User from './User/User';
 export Suche from './Suche/Suche';
+export Videos from './Videos/Vidoes';

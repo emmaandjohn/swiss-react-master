@@ -72,7 +72,9 @@ export default class Home extends Component {
   goToSearch = () => {
     this.props.dispatch(push('suche/'));
   }
-
+  goToVideos = () => {
+    this.props.dispatch(push('videos/'));
+  }
 
   render() {
     const styles = require('./Home.scss');
@@ -159,7 +161,8 @@ export default class Home extends Component {
           </div>
         </div>
         <div className='container'>
-          <h3 className={styles.mb20}>Medien</h3>
+          <br />
+          <h3 className={styles.mb20}>Videos</h3>
           <div className={'row'}>
             <div className={'col-sm-4 col-xs-12'}>
               <iframe width="320" height="180" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
@@ -171,7 +174,10 @@ export default class Home extends Component {
               <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
             </div>
             <div className={'col-sm-4 col-xs-12'}>
-              <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+              <iframe width="320" height="180" src="https://www.youtube.com/watch?v=vu_rIMPROoQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div className={'text-center col-xs-12'}>
+              <button className={"btn btn-primary " + stylesSuche.search2button + ' ' + styles.mt45} onClick={() => this.goToVideos()}>Mehr Videos</button>
             </div>
           </div>
         </div>

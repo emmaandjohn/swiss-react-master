@@ -5,21 +5,17 @@ import {
     App,
     Activation,
     Article,
-    //Chat,
     Forgot,
     Home,
-    //Widgets,
-    //About,
     Login,
-    //LoginSuccess,
     Register,
     Kontakt,
     Community,
     MyProfile,
     User,
-    //Survey,
     NotFound,
     Suche,
+    Videos,
   } from 'containers';
 
 
@@ -66,6 +62,7 @@ export default (store) => {
       <Route path="meinprofil" component={MyProfile}/>
       <Route path="user/:nickname" component={User}/>
       <Route path="suche" component={Suche}/>
+      <Route path="videos" component={Videos}/>
       { /*<Route path="survey" component={Survey}/>
         <Route path="widgets" component={Widgets}/> */ }
       <Route path="activation" component={Activation}/>

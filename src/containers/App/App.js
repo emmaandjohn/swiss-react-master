@@ -128,6 +128,9 @@ export default class App extends Component {
                     <LinkContainer to="/suche">
                       <NavItem eventKey={2} onClick={ this.onNavItemClick }><i className={"fa fa-search " + styles.faNav} aria-hidden="true"></i> Suche</NavItem>
                     </LinkContainer>
+                    <LinkContainer to="/videos">
+                      <NavItem eventKey={2} onClick={ this.onNavItemClick }><i className={"fa fa-play-circle " + styles.faNav} aria-hidden="true"></i> Videos</NavItem>
+                    </LinkContainer>
                     {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
                     <LinkContainer to="/meinprofil">
                       <NavItem eventKey={3} onClick={ this.onNavItemClick }><i className={"fa fa-user " + styles.faNav} aria-hidden="true"></i> Mein Profil</NavItem>
