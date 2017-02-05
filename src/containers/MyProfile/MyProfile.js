@@ -346,7 +346,16 @@ export default class MyProfile extends Component {
     if(updateUserState.socialWebsite){
       getSocialWebsite = updateUserState.socialWebsite;
     }
-    //if(getSocialWebsite === null){getSocialWebsite = 'Keine Angabe';}
+
+    let modalSync = 1;
+    if(syncAvatar > 25){ /* all females */
+      modalSync = 2;
+    }
+    if(updateUserState.avatar){
+      if(updateUserState.avatar > 25){ /* all females */
+        modalSync = 2;
+      }else{ modalSync = 1; }
+    }
 
 
     /* list Articles and Projects from the User */
@@ -407,7 +416,7 @@ export default class MyProfile extends Component {
                     <Col xs={12}>
                       <Row>
                         <Col xs={4}>
-                          <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain}></div>
+                          <div className={avatarClass + ' ' + styles.avatarRound + ' ' + styles.avatarMain} onClick={() => this.modalOpen(modalSync)}></div>
                         </Col>
                         <Col xs={8}>
                           <Button className={styles.btnAvatar} bsSize="small" onClick={() => this.modalOpen(1)}>

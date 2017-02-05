@@ -57,6 +57,7 @@ var userSchema = new mongoose.Schema({
   company: String,
   description: String,
   membersince: String,
+  membersinceU: String,
   kanton: String,
   socialFb: String,
   socialGithub: String,
@@ -136,6 +137,7 @@ app.post('/registrieren', function(req, res) {
       company: null,
       description: null,
       membersince: null,
+      membersinceU: null,
       kanton: 0,
       socialFb: null,
       socialGithub: null,
@@ -667,7 +669,7 @@ app.post('/community', function(req, res) {
 
 /* **** Get newsest Users (Home) */
 app.post('/getNewestUsers', function(req, res) {
-      UserModel.find({ activation: true }).sort({'date': -1}).limit(30).exec(function(err, result) {
+      UserModel.find({ activation: true }).limit(30).sort({'membersinceU': -1}).exec(function(err, result) {
         if(err){
           res.json(err);
           res.json({ status: 0 });
