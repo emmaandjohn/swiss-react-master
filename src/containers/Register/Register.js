@@ -96,7 +96,7 @@ export default class Register extends Component {
           <div id="register-form">
             <form className="login-form form-inline" onSubmit={this.handleSubmit.bind(this)}>
               <div className="form-group">
-                <input type="text" ref="email" name="email" id="email" placeholder="Email" autocorrect="off" autocapitalize="none" className="form-control"/>
+                <input autocorrect="off" autocapitalize="none" type="email" ref="email" name="email" id="email" placeholder="Email" className="form-control"/>
               </div>
               <div className="form-group">
                 <input type="password" ref="password" name="password" id="password" placeholder="Passwort" autocorrect="off" autocapitalize="none" className="form-control"/>
