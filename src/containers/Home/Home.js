@@ -148,7 +148,6 @@ export default class Home extends Component {
             {blogContentDef}
           </div>
         </div>
-
         <div className='container'>
           <h3 className={styles.mb20}>Neuste User</h3>
           <div className={'row'}>
@@ -159,7 +158,6 @@ export default class Home extends Component {
             {userContentDef}
           </div>
         </div>
-
         <div className='container'>
           <h3 className={styles.mb20}>Medien</h3>
           <div className={'row'}>
