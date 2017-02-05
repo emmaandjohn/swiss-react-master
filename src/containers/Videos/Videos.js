@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 export default class Videos extends Component {
 
   render() {
+    const styles = require('./Videos.scss');
     const { registerNewUserState } = this.props;
     return (
         <div className="container">
