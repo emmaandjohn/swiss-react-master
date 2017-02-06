@@ -460,7 +460,7 @@ export default class RichEditorExample extends Component {
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't39', this.refs.t39.value)} ref="t39" value="Android-App-Development" /> <div className={styles.cbs00 + ' ' + styles.cbst39}> Android-App-Development
           </div></label>
           <label className={'checkbox-inline ' + styles.cbs}>
-            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't40', this.refs.t40.value)} ref="t40" value="Cordova/Phonegap" /> <div className={styles.cbs00 + ' ' + styles.cbst40}> Cordova/Phonegap
+            <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't40', this.refs.t40.value)} ref="t40" value="Andere Technologie" /> <div className={styles.cbs00 + ' ' + styles.cbst40}> Andere Technologie
           </div></label>
         </div>
         <br />
