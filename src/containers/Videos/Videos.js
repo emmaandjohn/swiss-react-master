@@ -19,54 +19,9 @@ export default class Videos extends Component {
           <Helmet title="Videos"/>
 
             <div className={'row'}>
-              <div className={'col-xs-12 col-sm-4'}>
+              <div className={'col-xs-12'}>
                 <div className={styles.videoWrapper}>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/qh3dYM6Keuw" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/_D1JGNidMr4" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/1iAG6h9ff5s" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/ZBxMljq9GSE" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/XVdwq8W2ZsM" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/PvjNglsyOHs" frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div className={'col-xs-12 col-sm-4'}>
-                <div className={styles.videoWrapper}>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/bvEC6i7CUyE" frameborder="0" allowfullscreen></iframe>
                 </div>
               </div>
             </div>

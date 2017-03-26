@@ -165,19 +165,9 @@ export default class Home extends Component {
           <br />
           <h3 className={styles.mb20}>Videos</h3>
           <div className={'row'}>
-            <div className={'col-sm-4 col-xs-12'}>
+            <div className={'col-xs-12'}>
               <div className={stylesVideos.videoWrapper}>
-                <iframe width="320" height="180" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div className={'col-sm-4 col-xs-12'}>
-              <div className={stylesVideos.videoWrapper}>
-                <iframe width="320" height="180" src="https://www.youtube.com/embed/MhkGQAoc7bc" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div className={'col-sm-4 col-xs-12'}>
-              <div className={stylesVideos.videoWrapper}>
-                <iframe width="320" height="180" src="https://www.youtube.com/embed/fd2Cayhez58" frameborder="0" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6I5SKBVIX9Q" frameborder="0" allowfullscreen></iframe>
               </div>
             </div>
             <div className={'text-center col-xs-12'}>

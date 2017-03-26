@@ -16,10 +16,6 @@ import { push } from 'react-router-redux';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
-const linkifyPlugin = createLinkifyPlugin();
-const plugins = [
-  linkifyPlugin,
-];
 
 import { syncUserData } from '../../redux/actions/syncUserDataActions';
 import { msgBox } from '../../redux/actions/msgBoxActions';
@@ -276,6 +272,10 @@ export default class RichEditorExample extends Component {
     const {formStatus, formMsg, editorState, techObject} = this.state;
     const { activateNewUserState } = this.props;
     const styles = require('./Community.scss');
+    const linkifyPlugin = createLinkifyPlugin();
+    const plugins = [
+      linkifyPlugin,
+    ];
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
