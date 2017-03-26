@@ -16,6 +16,10 @@ import { push } from 'react-router-redux';
 require('./Community.scss');
 
 var PrismDecorator = require('draft-js-prism');
+const linkifyPlugin = createLinkifyPlugin();
+const plugins = [
+  linkifyPlugin,
+];
 
 import { syncUserData } from '../../redux/actions/syncUserDataActions';
 import { msgBox } from '../../redux/actions/msgBoxActions';
@@ -286,6 +290,11 @@ export default class RichEditorExample extends Component {
       <div className="container" id="communityPage">
         <h1>Community</h1>
         <p>Erstelle oder bearbeite hier dein eigener Artikel/Tutorial oder dein eigenes Projekt.</p><br />
+        {this.state.editModeOnSwitchBtn === 0 ?
+        <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(0)}>Speichern</button>
+        :
+        <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
+        }
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
@@ -338,12 +347,18 @@ export default class RichEditorExample extends Component {
               placeholder=""
               ref="editor"
               spellCheck={true}
+              plugins={plugins}
               />
           </div>
         </div>
         <br />
         <span className={styles.dateStyle}>* Drücke innerhalb eines Code Block CTRL+Enter um einen neuen Codeblock hinzuzufügen.</span>
         <br /><br /><br />
+        {this.state.editModeOnSwitchBtn === 0 ?
+        <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(0)}>Speichern</button>
+        :
+        <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
+        }
         <div>
           <label className={'checkbox-inline ' + styles.cbs}>
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> <div className={styles.cbs00 + ' ' + styles.cbst01}> React.js
