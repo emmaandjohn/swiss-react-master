@@ -314,6 +314,7 @@ export default class RichEditorExample extends Component {
           </form>
         </div>
         <div className="RichEditor-root">
+          <div className="RichEditor-controls-container">
             <BlockStyleControls
               editorState={editorState}
               onToggle={this.toggleBlockType}
@@ -322,6 +323,7 @@ export default class RichEditorExample extends Component {
               editorState={editorState}
               onToggle={this.toggleInlineStyle}
               />
+          </div>
           <div className={className} onClick={this.focus}>
             <Editor
               blockStyleFn={getBlockStyle}
