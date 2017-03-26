@@ -6,6 +6,7 @@ import { Draft, Editor, EditorState, ContentState, RichUtils, convertFromRaw, co
 import CodeUtils from 'draft-js-code';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
+import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import Helmet from 'react-helmet';
 import cookie from 'react-cookie';
 import superagent from 'superagent';
@@ -271,6 +272,10 @@ export default class RichEditorExample extends Component {
     const {formStatus, formMsg, editorState, techObject} = this.state;
     const { activateNewUserState } = this.props;
     const styles = require('./Community.scss');
+
+    const linkifyPlugin = createLinkifyPlugin({
+      target: '_blank'  // default is '_self'
+    });
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
