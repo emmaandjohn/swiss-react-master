@@ -295,6 +295,7 @@ export default class RichEditorExample extends Component {
         :
         <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
         }
+        <br />
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
@@ -353,12 +354,13 @@ export default class RichEditorExample extends Component {
         </div>
         <br />
         <span className={styles.dateStyle}>* Drücke innerhalb eines Code Block CTRL+Enter um einen neuen Codeblock hinzuzufügen.</span>
-        <br /><br /><br />
+        <br />
         {this.state.editModeOnSwitchBtn === 0 ?
         <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(0)}>Speichern</button>
         :
         <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
         }
+        <br /><br />
         <div>
           <label className={'checkbox-inline ' + styles.cbs}>
             <input type="checkbox" onChange={(event) => this.onChangeCheckbox(event, 't01', this.refs.t01.value)} ref="t01" value="React.js" /> <div className={styles.cbs00 + ' ' + styles.cbst01}> React.js
@@ -487,6 +489,7 @@ export default class RichEditorExample extends Component {
           :
           <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
           }
+          <br />
         </div>
         :
         <Alert bsStyle="warning">Wenn du selbst Beiträge erfassen möchtest, erstelle jetzt <Link to="/registrieren">hier</Link> deinen eigenen Account.</Alert>
