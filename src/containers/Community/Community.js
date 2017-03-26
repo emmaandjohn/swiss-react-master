@@ -273,10 +273,6 @@ export default class RichEditorExample extends Component {
     const { activateNewUserState } = this.props;
     const styles = require('./Community.scss');
 
-    const linkifyPlugin = createLinkifyPlugin({
-      target: '_blank'  // default is '_self'
-    });
-
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
