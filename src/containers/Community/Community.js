@@ -295,7 +295,7 @@ export default class RichEditorExample extends Component {
         :
         <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(1)}>Speichern</button>
         }
-        <br />
+        <br /><br />
         <Helmet title="Community"/>
         {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
         <div>
@@ -354,7 +354,7 @@ export default class RichEditorExample extends Component {
         </div>
         <br />
         <span className={styles.dateStyle}>* Drücke innerhalb eines Code Block CTRL+Enter um einen neuen Codeblock hinzuzufügen.</span>
-        <br />
+        <br /><br />
         {this.state.editModeOnSwitchBtn === 0 ?
         <button className="btn btn-primary" onClick={() => this.saveDataToDatabase(0)}>Speichern</button>
         :
