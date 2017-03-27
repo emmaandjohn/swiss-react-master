@@ -287,6 +287,10 @@ export default class Article extends Component {
                           </span>
                         }
                       </span>
+                    : null
+                    }
+                    {(activateNewUserState.activatedUser === true && activateNewUserState.loggedInUser === true) || (cookie.load('ck_userLoggedIn') === 'true' && cookie.load('ck_activation') === 'true') ?
+                    null
                     :
                     <span>
                       <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.becomeMember()}>Join Swiss React Community!</button>
