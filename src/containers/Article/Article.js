@@ -134,6 +134,9 @@ export default class Article extends Component {
   checkProfile = (nicknameUrl) => {
     this.props.dispatch(push('/user/'+nicknameUrl));
   }
+  becomeMember = () => {
+    this.props.dispatch(push('/registrieren/'));
+  }
 
   editArticle = (id) => {
     cookie.save('ck_tempEditArt', id, { path: '/', expires: new Date(new Date().getTime() + (3600*3600*3600)) });
@@ -284,7 +287,10 @@ export default class Article extends Component {
                           </span>
                         }
                       </span>
-                    : null
+                    :
+                    <span>
+                      <button className={"btn btn-primary " + stylesArticle.mr5} onClick={() => this.becomeMember()}>Join Swiss React Community!</button>
+                    </span>
                     }
                   </h1>
                 </div>
